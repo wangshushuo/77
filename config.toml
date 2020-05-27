@@ -1,4 +1,5 @@
-baseURL = "http://example.org/"
+baseURL = "https://docs.wss.cool/"
 languageCode = "zh-cn"
 title = "My New Hugo Site"
 theme = "book"
+publishDir = "docs"
