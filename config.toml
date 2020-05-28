@@ -1,5 +1,5 @@
 baseURL = "https://docs.wss.cool/"
 languageCode = "zh-cn"
-title = "My New Hugo Site"
+title = "wss.cool"
 theme = "book"
 publishDir = "docs"

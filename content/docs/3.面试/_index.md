@@ -1,6 +1,6 @@
 ---
-weight: 3
-title: 错题本
+weight: 4
+bookFlatSection: true
 ---
 
 # 错题本
