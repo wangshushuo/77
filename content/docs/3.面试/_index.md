@@ -1,39 +1,22 @@
 ---
 weight: 4
 bookFlatSection: true
+bookCollapseSection: true
 ---
 
-# 错题本
+# 准备面试
 
-## ES6+
+[前端工作面试问题](https://h5bp.org/Front-end-Developer-Interview-Questions/translations/chinese/)
+1. 常见问题
+1. HTML 相关问题
+1. CSS 相关问题
+1. JS 相关问题
+1. 测试相关问题
+1. 效能相关问题
+1. 网络相关问题
+1. 代码相关问题
+1. 趣味问题
 
-Map的原理，与array相比的优缺点
+---
 
-Promise.all如果其中有失败的结果，怎么获取到？
-
-常用的ES6语法
-
-箭头函数的this
-
-## 网络协议
-
-介绍一下WebSocket
-
-## 移动端
-
-适配方案——淘宝——实现原理
-
-## 工程化
-
-CI/CD怎么从原来的10多分钟优化成5分钟的
-
-## 组件化
-
-设计过什么通用的组件、复杂业务组件
-
-设计原则
-
-## 其他
-
-擅长什么，哪里需要改进
-
+[错题本](/docs/3.面试/错题本/)
