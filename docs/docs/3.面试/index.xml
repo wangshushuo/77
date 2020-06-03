@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wss.cool</title>
+    <link>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/</link>
+    <description>Recent content on wss.cool</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/js%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/js%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</guid>
+      <description>JS相关问题 1. 请解释事件代理 (event delegation)。 解答 比如有body&amp;gt;div&amp;gt;button，事件代理就是在一个高级元素（body）上绑定一个事件处理函数处理其子元素，利用了事件冒泡机制。
+好处节省内存和事件。因为事件处理函数就是一个对象，对象会占用内存，绑定处理函数也会花费事件。
+延伸
+  2. 请解释 JavaScript 中 this 是如何工作的。 解答 this指向函数运行时所在的对象，而不是创建时。
+比如，对象a的b属性是一个函数，其中打印this。当调用a.b()时打印的是对象a。如果把a.b赋值给一个变量c，在调用c，则打印出来的this是全局变量window。 当函数作为对象的方法时，this指向对象。当直接调用函数时，this指向全局变量。
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/%E8%81%8A%E9%A1%B9%E7%9B%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/%E8%81%8A%E9%A1%B9%E7%9B%AE/</guid>
+      <description>聊项目 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/%E8%AE%BE%E8%AE%A1%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/%E8%AE%BE%E8%AE%A1%E7%BB%84%E4%BB%B6/</guid>
+      <description>设计组件 通用组件 通用组件就是自身有一定功能逻辑，且这个逻辑是可以在多个场景下通用的。有可能其中有一些东西在不同场景下是不同的。比如现实的文字、事件、回调函数等。
+通用组件 = (可变的内容，事件回调函数) =&amp;gt; { 通用的逻辑 ?=&amp;gt; 触发回调函数 return UI，显示可变的内容，触发回调函数 } 举例
+倒计时组件： 通用的逻辑：倒计时 可变的部分：总时间，暂停，timeChange回调（当前时间，是否结束），倒计时UI作为默认children
+在倒计时的过程中触发timeChange，根据timeChange的结果修改UI，UI可以是个进度条，可以只是一个数字。
+上传图片： 通用逻辑：向接口上传文件 可变部分：可选的已上传图片，上传成功的回调返回图片url。
+有图片url则显示出来，点击再上传，返回新的url。没有则显示展位UI。
+封装hooks 白板hook，在canvas上打印笔迹——usePrint。
+userPrint接收canvas的ref和所有笔迹lines的数组为参数。
+将lines绘制到canvas上，因为有背景图，所以要对lines进行缩放转换，以适应不同的尺寸的显示。
+lines是在画线条是产生的。这个hook用于在刷新页面时将lines重绘出来，在老师查看一个学生的作品时，在老师开启一个学生的展示给所有其他学生时。
+storybook 用于开发过程中对组件功能的测试。
+对一个插件的不同的参数、参数的组合进行测试。
+可以当作测试用例，在后期修改了代码后做验证性测试。
+好处：可以提高开发效率。一个组件的某些用例可能需要若干前置条件，如果用传统的办法开发、测试，就需要在页面上进行一些操作，这就会花时间。用了storybook，可以制造出特定的条件来直接测试组件。
+坏处：需要学习成本，有学习能力，有写测试的能力。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/%E9%94%99%E9%A2%98%E6%9C%AC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/%E9%94%99%E9%A2%98%E6%9C%AC/</guid>
+      <description>错题本 面试中不会或者答的不好的问题
+ES6+ Map的原理，与array相比的优缺点
+Promise.all如果其中有失败的结果，怎么获取到？
+常用的ES6语法
+箭头函数的this
+网络协议 介绍一下WebSocket
+移动端 适配方案——淘宝——实现原理
+工程化 CI/CD怎么从原来的10多分钟优化成5分钟的
+组件化 设计过什么通用的组件、复杂业务组件
+设计原则
+其他 擅长什么，哪里需要改进</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wss.cool</title>
+    <link>https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+    <description>Recent content on wss.cool</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/hash%E8%A1%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/hash%E8%A1%A8/</guid>
+      <description>Hash表 </description>
+    </item>
+    
+  </channel>
+</rss>

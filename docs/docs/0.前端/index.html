@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="前端 前端掌握了常用的JavaScript、CSS、HTML，React、Redux或者Vue，就能完成大多数的前端工作了。如果有余力、有追求，就要学习程序员的技能——数据结构和算法、网络知识等等。
+知识结构 2/60  程序运行的环境——浏览器——的工作原理  基础的：event loop 、重绘重排、跨域、事件（代理、冒泡）   语言HTML、CSS  块级上下文、盒子模型、居中   语言JavaScript  基础：  数据类型 [2020.05.28] 对象函数 创建对象（设计模式） 继承（原型）   中级：模块化、立即执行函数、闭包、变量提升、作用域、箭头函数 高级：深拷贝、截流   语言ES6&#43;  箭头函数 [2020.06.02] 代理 object array promise   语言TypeScript  枚举、泛型   框架React  生命周期 Diff 虚拟DOM React元素与组件   框架Redux  数据流 与props、state的不同，适用场景    资料 《JavaScript高级程序设计》这本书中有很多有用的知识点。
+HTML5规范，这里是很多知识的第一手资料，比如结构化克隆算法1、Event loop、CORS等等。这些实际工作不怎么样，面试喜欢问。HTML Living Standard，中文翻译
+  用于深拷贝 &#x21a9;&#xfe0e;">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/" />
+
+<title>0.前端 | wss.cool</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.5265c6f880b98bce38a6cac2079253a46af2959c1455d2afc076857e63ad1d6a.js" integrity="sha256-UmXG&#43;IC5i844psrCB5JTpGrylZwUVdKvwHaFfmOtHWo="></script>
+<link rel="alternate" type="application/rss+xml" href="https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/index.xml" title="wss.cool" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>wss.cool</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/" class="collapsed active">0.前端</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/event-loop/" class="">Event Loop</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="">原型与原型链</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="">执行环境及作用域</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">数据类型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="">深浅拷贝</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="">箭头函数</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/" class="collapsed ">1.程序员</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <span>2.工程师</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/" class="collapsed ">3.面试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/4.%E7%AC%94%E8%AE%B0/" class="collapsed ">4.笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>0.前端</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#知识结构-260">知识结构 2/60</a></li>
+    <li><a href="#资料">资料</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="前端">前端</h1>
+<p>前端掌握了常用的JavaScript、CSS、HTML，React、Redux或者Vue，就能完成大多数的前端工作了。如果有余力、有追求，就要学习程序员的技能——数据结构和算法、网络知识等等。</p>
+<h2 id="知识结构-260">知识结构 2/60</h2>
+<ol>
+<li>程序运行的环境——浏览器——的工作原理
+<ul>
+<li>基础的：event loop 、重绘重排、跨域、事件（代理、冒泡）</li>
+</ul>
+</li>
+<li>语言HTML、CSS
+<ul>
+<li>块级上下文、盒子模型、居中</li>
+</ul>
+</li>
+<li>语言JavaScript
+<ul>
+<li>基础：
+<ul>
+<li><input checked="" disabled="" type="checkbox"> <a href="/docs/0.%e5%89%8d%e7%ab%af/%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b/">数据类型</a> [2020.05.28]</li>
+<li><input disabled="" type="checkbox"> 对象函数</li>
+<li><input disabled="" type="checkbox"> 创建对象（设计模式）</li>
+<li><input disabled="" type="checkbox"> 继承（原型）</li>
+</ul>
+</li>
+<li>中级：模块化、立即执行函数、闭包、变量提升、作用域、箭头函数</li>
+<li>高级：<a href="/docs/0.%e5%89%8d%e7%ab%af/%e6%b7%b1%e6%b5%85%e6%8b%b7%e8%b4%9d/">深拷贝</a>、截流</li>
+</ul>
+</li>
+<li>语言ES6+
+<ul>
+<li><a href="/docs/0.%e5%89%8d%e7%ab%af/%e7%ae%ad%e5%a4%b4%e5%87%bd%e6%95%b0/">箭头函数</a> [2020.06.02]</li>
+<li>代理</li>
+<li>object</li>
+<li>array</li>
+<li>promise</li>
+</ul>
+</li>
+<li>语言TypeScript
+<ul>
+<li>枚举、泛型</li>
+</ul>
+</li>
+<li>框架React
+<ul>
+<li>生命周期</li>
+<li>Diff</li>
+<li>虚拟DOM</li>
+<li>React元素与组件</li>
+</ul>
+</li>
+<li>框架Redux
+<ul>
+<li>数据流</li>
+<li>与props、state的不同，适用场景</li>
+</ul>
+</li>
+</ol>
+<h2 id="资料">资料</h2>
+<p>《JavaScript高级程序设计》这本书中有很多有用的知识点。</p>
+<p>HTML5规范，这里是很多知识的第一手资料，比如结构化克隆算法<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>、Event loop、CORS等等。这些实际工作不怎么样，面试喜欢问。<a href="https://html.spec.whatwg.org/multipage/structured-data.html">HTML Living Standard</a>，<a href="https://whatwg-cn.github.io/html">中文翻译</a></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>用于深拷贝 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#知识结构-260">知识结构 2/60</a></li>
+    <li><a href="#资料">资料</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="深浅拷贝 什么是拷贝，什么是深浅拷贝 在 JavaScript 中，变量中保存的是对象的引用。比如像下面这样的操作
+var a = 对象1; var b = a; a和b都在引用对象1，如果对对象1进行修改，则a和b两个变量都会受到影响，有时我们不希望出现这种情况，就要对对象进行拷贝操作来切换引用。比如
+var a = 对象1; var b = 拷贝(a); 那么如何实现拷贝呢？
+我们知道对象是由多个key和value组成的，所以拷贝就是创建一个新的对象，将旧对象的key和value拷贝到新对象中，让新旧对象的key和value完全一样。比如像下面这样
+Object.keys(对象1).forEach(key =&gt; { 新对象[key] = 对象1[key]; }) 这样的操作需要注意value的类型，分为基本类型和引用类型1，如果所有的value都是基本类型，但是如果value是引用类型就会出现新旧对象中都引用了一个对象的情况，也就是上文提到的a和b变量的问题。..如果想完全切断引用，就要对引用类型的value在进行一次拷贝..。对于是否需要完全切断引用就有了两种拷贝方式，需要完全切断引用的就是「深拷贝」，不需要的就是「浅拷贝」。
+简单概括一下。
+「浅拷贝」是只对对象的key和value进行一次遍历拷贝，不管内部的引用。
+「深拷贝」要将对象内部的引用完全切断，对对象进行递归地拷贝。
+如何实现深拷贝 先看一种实现方式
+1function clone(旧对象) { 2 var 新对象 = {}; 3 Object.keys(旧对象).forEach(key =&gt; { 4 var value = 旧对象[key]; 5 if(is基本类型(value)) { 6 新对象[key] = 旧对象[key]; 7 } else { 8 新对象[key] = clone(value); // 递归 9 } 10 }) 11 return 新对象; 12}  这种方法用的是递归，即当value不是基本类型时就对它进行拷贝。它有一个明显的问题，当出现循环引用时，就进入了一个死循环。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="深浅拷贝 什么是拷贝，什么是深浅拷贝 在 JavaScript 中，变量中保存的是对象的引用。比如像下面这样的操作
+var a = 对象1; var b = a; a和b都在引用对象1，如果对对象1进行修改，则a和b两个变量都会受到影响，有时我们不希望出现这种情况，就要对对象进行拷贝操作来切换引用。比如
+var a = 对象1; var b = 拷贝(a); 那么如何实现拷贝呢？
+我们知道对象是由多个key和value组成的，所以拷贝就是创建一个新的对象，将旧对象的key和value拷贝到新对象中，让新旧对象的key和value完全一样。比如像下面这样
+Object.keys(对象1).forEach(key =&gt; { 新对象[key] = 对象1[key]; }) 这样的操作需要注意value的类型，分为基本类型和引用类型1，如果所有的value都是基本类型，但是如果value是引用类型就会出现新旧对象中都引用了一个对象的情况，也就是上文提到的a和b变量的问题。..如果想完全切断引用，就要对引用类型的value在进行一次拷贝..。对于是否需要完全切断引用就有了两种拷贝方式，需要完全切断引用的就是「深拷贝」，不需要的就是「浅拷贝」。
+简单概括一下。
+「浅拷贝」是只对对象的key和value进行一次遍历拷贝，不管内部的引用。
+「深拷贝」要将对象内部的引用完全切断，对对象进行递归地拷贝。
+如何实现深拷贝 先看一种实现方式
+1function clone(旧对象) { 2 var 新对象 = {}; 3 Object.keys(旧对象).forEach(key =&gt; { 4 var value = 旧对象[key]; 5 if(is基本类型(value)) { 6 新对象[key] = 旧对象[key]; 7 } else { 8 新对象[key] = clone(value); // 递归 9 } 10 }) 11 return 新对象; 12}  这种方法用的是递归，即当value不是基本类型时就对它进行拷贝。它有一个明显的问题，当出现循环引用时，就进入了一个死循环。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" />
+
+<title>深浅拷贝 | wss.cool</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.5265c6f880b98bce38a6cac2079253a46af2959c1455d2afc076857e63ad1d6a.js" integrity="sha256-UmXG&#43;IC5i844psrCB5JTpGrylZwUVdKvwHaFfmOtHWo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>wss.cool</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/" class="collapsed ">0.前端</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/event-loop/" class="">Event Loop</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="">原型与原型链</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="">执行环境及作用域</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">数据类型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="active">深浅拷贝</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="">箭头函数</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/" class="collapsed ">1.程序员</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <span>2.工程师</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/" class="collapsed ">3.面试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/4.%E7%AC%94%E8%AE%B0/" class="collapsed ">4.笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>深浅拷贝</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是拷贝什么是深浅拷贝">什么是拷贝，什么是深浅拷贝</a></li>
+    <li><a href="#如何实现深拷贝">如何实现深拷贝</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="深浅拷贝">深浅拷贝</h1>
+<h2 id="什么是拷贝什么是深浅拷贝">什么是拷贝，什么是深浅拷贝</h2>
+<p>在 JavaScript 中，变量中保存的是对象的引用。比如像下面这样的操作</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">对象1</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>;
+</code></pre></div><p>a和b都在引用对象1，如果对对象1进行修改，则a和b两个变量都会受到影响，有时我们不希望出现这种情况，就要对对象进行拷贝操作来切换引用。比如</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">对象1</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">拷贝</span>(<span style="color:#a6e22e">a</span>);
+</code></pre></div><p>那么如何实现拷贝呢？</p>
+<p>我们知道对象是由多个key和value组成的，所以拷贝就是创建一个新的对象，将旧对象的key和value拷贝到新对象中，让新旧对象的key和value完全一样。比如像下面这样</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">对象1</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">key</span> =&gt; {
+  <span style="color:#a6e22e">新对象</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">对象1</span>[<span style="color:#a6e22e">key</span>];
+})
+</code></pre></div><p>这样的操作需要注意value的类型，分为基本类型和引用类型<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，如果所有的value都是基本类型，但是如果value是引用类型就会出现新旧对象中都引用了一个对象的情况，也就是上文提到的a和b变量的问题。..如果想完全切断引用，就要对引用类型的value在进行一次拷贝..。对于是否需要完全切断引用就有了两种拷贝方式，需要完全切断引用的就是「深拷贝」，不需要的就是「浅拷贝」。</p>
+<p>简单概括一下。</p>
+<p>「浅拷贝」是只对对象的key和value进行一次遍历拷贝，不管内部的引用。</p>
+<p>「深拷贝」要将对象内部的引用完全切断，对对象进行递归地拷贝。</p>
+<h2 id="如何实现深拷贝">如何实现深拷贝</h2>
+<p>先看一种实现方式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">旧对象</span>) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">新对象</span> <span style="color:#f92672">=</span> {};
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>  Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">旧对象</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">key</span> =&gt; {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">旧对象</span>[<span style="color:#a6e22e">key</span>];
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">is基本类型</span>(<span style="color:#a6e22e">value</span>)) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>      <span style="color:#a6e22e">新对象</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">旧对象</span>[<span style="color:#a6e22e">key</span>];
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>    } <span style="color:#66d9ef">else</span> {
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>      <span style="color:#a6e22e">新对象</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">value</span>); <span style="color:#75715e">// 递归
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#75715e"></span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>  })
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">新对象</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>}
+</code></pre></div>
+<p>这种方法用的是递归，即当value不是基本类型时就对它进行拷贝。它有一个明显的问题，当出现循环引用时，就进入了一个死循环。</p>
+<p>我们知道，函数的调用会形成一个「执行栈」，函数执行过程中如果又调用了函数就像该函数压入栈顶并执行，前一个函数就暂停了等待新函数执行完。</p>
+<p>递归就是当前对象还没有拷贝完，就开始了下一次拷贝，就是在「执行栈」又压入了一次函数调用，而循环引用会导致不停滴往执行栈顶添加，对后执行栈超过限制大小，而中断。</p>
+<p>为了避免爆栈问题，可以让一次拷贝进行完之后再开始下一次拷贝。就是把遇到的对象放在一个地方（数组1），当遇到对象时把它保存起来，完成一次拷贝后去检查看还有没有需要拷贝的对象。</p>
+<p>这样虽然解决了爆栈，但是仍是一个死循环，因为会不停地向那个地方添加对象。所以需要一种方法来判断已经拷贝过的对象。</p>
+<p>我们再创建一个数组2，用来保存拷贝过的对象，当遇到新的对象时，先去数组内查找，就不向数组1添加了，也就阻止了死循环。</p>
+<p>下面的代码是对上面分析的过程的实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// value 参数为原对象
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cloneLoop</span>(<span style="color:#a6e22e">oldObject</span>) {
+
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uniqueList</span> <span style="color:#f92672">=</span> []; <span style="color:#75715e">// 用来去重
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// 新的空对象
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">root</span> <span style="color:#f92672">=</span> {};
+
+  <span style="color:#75715e">// 存储子对象的数组
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">children</span> <span style="color:#f92672">=</span> [
+    {
+      <span style="color:#a6e22e">parent</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">root</span>,
+      <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>,
+      <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">oldObject</span>,
+    }
+  ];
+
+  <span style="color:#75715e">// 如果children内有子对象，则将其copy
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">while</span>(<span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">length</span>) {
+    <span style="color:#75715e">// 深度优先，如果使用shift()则是广度有限。
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">node</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">pop</span>();
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">parent</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">key</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">childObject</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">childObject</span>;
+
+    <span style="color:#75715e">// 当key是undefined时，parent是{}，也就是刚开始
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 当key不是undefined时，就是已经复制到子对象了，这时key肯定时有值的，
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 需要把key对应的value初始化为空对象，后面的循环把子对象的 key 和 value 复制到空对象上。
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parent</span>;
+    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;undefined&#39;</span>) {
+      <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parent</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> {};
+    }
+
+    <span style="color:#75715e">// 当循环引用时，childObject会与拷贝过的对象相等，就可以把它直接赋值到新对象上。完成一次拷贝。
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">uniqueData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">uniqueList</span>, <span style="color:#a6e22e">childObject</span>);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">uniqueData</span>) {
+      <span style="color:#a6e22e">parent</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">uniqueData</span>.<span style="color:#a6e22e">target</span>;
+      <span style="color:#66d9ef">break</span>; <span style="color:#75715e">// 中断本次循环
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#75715e">// 数据不存在
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 保存源数据，在拷贝数据中对应的引用
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">uniqueList</span>.<span style="color:#a6e22e">push</span>({
+      <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">childObject</span>,
+      <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">res</span>,
+    });
+
+    <span style="color:#75715e">// 遍历子对象
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">childObject</span>) {
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">hasOwnProperty</span>(<span style="color:#a6e22e">k</span>)) {
+        <span style="color:#75715e">// 如果value时对象，将子对象放入「子对象数组」中，待下一次while读取遍历
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">childObject</span>[<span style="color:#a6e22e">k</span>] <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;object&#39;</span>) {
+          <span style="color:#75715e">// 下一次循环
+</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">push</span>({
+            <span style="color:#a6e22e">parent</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">res</span>,
+            <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">k</span>,
+            <span style="color:#a6e22e">childObject</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">childObject</span>[<span style="color:#a6e22e">k</span>],
+          });
+        } <span style="color:#66d9ef">else</span> {
+          <span style="color:#a6e22e">res</span>[<span style="color:#a6e22e">k</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">childObject</span>[<span style="color:#a6e22e">k</span>];
+        }
+      }
+    }
+  }
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">root</span>;
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">arr</span>, <span style="color:#a6e22e">item</span>) {
+  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">source</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">item</span>) {
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>];
+    }
+  }
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+}
+</code></pre></div><p>总结一下要点：</p>
+<ol>
+<li>使用一个数组存储copy过程中遇到的对象，以破解爆栈的问题。</li>
+<li>使用另一个数组存储copy过的对象，以破解循环引用的问题。</li>
+</ol>
+<p>对于拷贝一个对象的过程lodash使用的是「结构化克隆算法」<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，普通对象直接复制key和value，数组等其他对象使用相应的复制方法。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Nicholas Zakas.JavaScript高级程序设计(第3版).李松峰译.基本类型与引用类型的值 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>MDN web docs；<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm">结构化克隆算法</a>。HTML Living Standard；<a href="https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializeinternal">结构化克隆算法</a>，<a href="https://whatwg-cn.github.io/html/#structuredserializeinternal">中文翻译</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是拷贝什么是深浅拷贝">什么是拷贝，什么是深浅拷贝</a></li>
+    <li><a href="#如何实现深拷贝">如何实现深拷贝</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

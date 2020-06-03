@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Event Loop  函数调用形成执行栈，执行完弹出。 当执行栈为空时，检查消息队列。 获取第一个消息，调用其绑定的回调函数。此时又循环回第一步。  上面的三部分的循环进行就是Event Loop。
+一个事件循环具有一个或多个任务队列。任务队列是一组任务。
+当执行栈为空时，会优先检查「微任务队列」。
+ 微任务队列 常用的就是Promise 任务队列 可以理解为timeout、用户时间、网路请求事件   研究规范 任务队列是集合，而不是队列1，因为事件循环处理模型的第一步是从所选队列中获取第一个可运行任务，而不是使第一个任务出队。
+微任务队列不是任务队列。2
+每个事件循环都有一个微任务队列，该队列是一个微任务队列，最初是空的。微任务是一种通俗的方式，指的是通过「queue a microtask」算法创建的任务。
+https://html.spec.whatwg.org/multipage/webappapis.html#generic-task-sources
+  Task queues are sets, not queues. event-loop规范 &#x21a9;&#xfe0e;
+ The microtask queue is not a task queue. event-loop规范 &#x21a9;&#xfe0e;
+   ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Event Loop  函数调用形成执行栈，执行完弹出。 当执行栈为空时，检查消息队列。 获取第一个消息，调用其绑定的回调函数。此时又循环回第一步。  上面的三部分的循环进行就是Event Loop。
+一个事件循环具有一个或多个任务队列。任务队列是一组任务。
+当执行栈为空时，会优先检查「微任务队列」。
+ 微任务队列 常用的就是Promise 任务队列 可以理解为timeout、用户时间、网路请求事件   研究规范 任务队列是集合，而不是队列1，因为事件循环处理模型的第一步是从所选队列中获取第一个可运行任务，而不是使第一个任务出队。
+微任务队列不是任务队列。2
+每个事件循环都有一个微任务队列，该队列是一个微任务队列，最初是空的。微任务是一种通俗的方式，指的是通过「queue a microtask」算法创建的任务。
+https://html.spec.whatwg.org/multipage/webappapis.html#generic-task-sources
+  Task queues are sets, not queues. event-loop规范 &#x21a9;&#xfe0e;
+ The microtask queue is not a task queue. event-loop规范 &#x21a9;&#xfe0e;
+   " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/event-loop/" />
+
+<title>Event Loop | wss.cool</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.5265c6f880b98bce38a6cac2079253a46af2959c1455d2afc076857e63ad1d6a.js" integrity="sha256-UmXG&#43;IC5i844psrCB5JTpGrylZwUVdKvwHaFfmOtHWo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>wss.cool</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/" class="collapsed ">0.前端</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/event-loop/" class="active">Event Loop</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="">原型与原型链</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="">执行环境及作用域</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">数据类型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="">深浅拷贝</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="">箭头函数</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/" class="collapsed ">1.程序员</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <span>2.工程师</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/" class="collapsed ">3.面试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/4.%E7%AC%94%E8%AE%B0/" class="collapsed ">4.笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Event Loop</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#研究规范">研究规范</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="event-loop">Event Loop</h1>
+<ol>
+<li>函数调用形成执行栈，执行完弹出。</li>
+<li>当执行栈为空时，检查消息队列。</li>
+<li>获取第一个消息，调用其绑定的回调函数。此时又循环回第一步。</li>
+</ol>
+<p>上面的三部分的循环进行就是Event Loop。</p>
+<p>一个事件循环具有一个或多个任务队列。任务队列是一组任务。</p>
+<p>当执行栈为空时，会优先检查「微任务队列」。</p>
+<dl>
+<dt>微任务队列</dt>
+<dd>常用的就是Promise</dd>
+<dt>任务队列</dt>
+<dd>可以理解为timeout、用户时间、网路请求事件</dd>
+</dl>
+<hr>
+<h2 id="研究规范">研究规范</h2>
+<p>任务队列是集合，而不是队列<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，因为事件循环处理模型的第一步是从所选队列中获取第一个可运行任务，而不是使第一个任务出队。</p>
+<p>微任务队列不是任务队列。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>每个事件循环都有一个微任务队列，该队列是一个微任务队列，最初是空的。微任务是一种通俗的方式，指的是通过「queue a microtask」算法创建的任务。</p>
+<p><a href="https://html.spec.whatwg.org/multipage/webappapis.html#generic-task-sources">https://html.spec.whatwg.org/multipage/webappapis.html#generic-task-sources</a></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Task queues are sets, not queues. <a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-loop">event-loop规范</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>The microtask queue is not a task queue. <a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-loop">event-loop规范</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#研究规范">研究规范</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

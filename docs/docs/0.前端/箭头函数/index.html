@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="箭头函数 箭头函数的特点：
+ 比函数表达式简短 不绑定this、arguments、super 不能作为构造函数  this 普通函数中的this，是在被调用的时候确定的。而箭头函数的this由作用域决定。
+普通函数：
+ 构造函数中，指向新对象 对象的方法，指向对象 直接调用函数，指向全局变量window apply、bind、call，指向参数  箭头函数不会创建自己的this，它只会从自己的作用域链的上一层继承this。
+ 延伸问题：什么是作用域？
+ 需要注意下面这种情况
+&#39;use strict&#39;; var obj = { i: 10, b: () =&gt; console.log(this.i, this), c: function() { console.log( this.i, this) } } obj.b(); // undefined, Window{...} obj.c(); // 10, Object {...} 这是因为(对象字面量构成的)对象不构成单独的作用域，导致箭头函数定义时的作用域就是全局作用域。
+参考  阮一峰.ECMAScript 6入门.函数的扩展 MDN web docs.箭头函数  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="箭头函数 箭头函数的特点：
+ 比函数表达式简短 不绑定this、arguments、super 不能作为构造函数  this 普通函数中的this，是在被调用的时候确定的。而箭头函数的this由作用域决定。
+普通函数：
+ 构造函数中，指向新对象 对象的方法，指向对象 直接调用函数，指向全局变量window apply、bind、call，指向参数  箭头函数不会创建自己的this，它只会从自己的作用域链的上一层继承this。
+ 延伸问题：什么是作用域？
+ 需要注意下面这种情况
+&#39;use strict&#39;; var obj = { i: 10, b: () =&gt; console.log(this.i, this), c: function() { console.log( this.i, this) } } obj.b(); // undefined, Window{...} obj.c(); // 10, Object {...} 这是因为(对象字面量构成的)对象不构成单独的作用域，导致箭头函数定义时的作用域就是全局作用域。
+参考  阮一峰.ECMAScript 6入门.函数的扩展 MDN web docs.箭头函数  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" />
+
+<title>箭头函数 | wss.cool</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.5265c6f880b98bce38a6cac2079253a46af2959c1455d2afc076857e63ad1d6a.js" integrity="sha256-UmXG&#43;IC5i844psrCB5JTpGrylZwUVdKvwHaFfmOtHWo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>wss.cool</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/" class="collapsed ">0.前端</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/event-loop/" class="">Event Loop</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="">原型与原型链</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="">执行环境及作用域</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">数据类型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="">深浅拷贝</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="active">箭头函数</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/" class="collapsed ">1.程序员</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <span>2.工程师</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/" class="collapsed ">3.面试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/4.%E7%AC%94%E8%AE%B0/" class="collapsed ">4.笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>箭头函数</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#this">this</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="箭头函数">箭头函数</h1>
+<p>箭头函数的特点：</p>
+<ul>
+<li>比函数表达式简短</li>
+<li>不绑定<code>this</code>、<code>arguments</code>、<code>super</code></li>
+<li>不能作为构造函数</li>
+</ul>
+<h2 id="this">this</h2>
+<p>普通函数中的<code>this</code>，是在被调用的时候确定的。而箭头函数的<code>this</code>由作用域决定。</p>
+<p>普通函数：</p>
+<ul>
+<li>构造函数中，指向新对象</li>
+<li>对象的方法，指向对象</li>
+<li>直接调用函数，指向全局变量<code>window</code></li>
+<li><code>apply</code>、<code>bind</code>、<code>call</code>，指向参数</li>
+</ul>
+<p>箭头函数不会创建自己的<code>this</code>，它只会从自己的<strong>作用域链</strong>的上一层继承<code>this</code>。</p>
+<blockquote>
+<p>延伸问题：什么是作用域？</p>
+</blockquote>
+<p>需要注意下面这种情况</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#e6db74">&#39;use strict&#39;</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">i</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>,
+  <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">i</span>, <span style="color:#66d9ef">this</span>),
+  <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">i</span>, <span style="color:#66d9ef">this</span>)
+  }
+}
+<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">b</span>(); 
+<span style="color:#75715e">// undefined, Window{...}
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">c</span>(); 
+<span style="color:#75715e">// 10, Object {...}
+</span></code></pre></div><p>这是因为(对象字面量构成的)对象不构成单独的作用域，导致箭头函数定义时的作用域就是全局作用域。</p>
+<h2 id="参考">参考</h2>
+<ol>
+<li>阮一峰.<a href="https://es6.ruanyifeng.com/#docs/function#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">ECMAScript 6入门.函数的扩展</a></li>
+<li>MDN web docs.<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions">箭头函数</a></li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#this">this</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

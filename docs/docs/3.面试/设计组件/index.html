@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="设计组件 通用组件 通用组件就是自身有一定功能逻辑，且这个逻辑是可以在多个场景下通用的。有可能其中有一些东西在不同场景下是不同的。比如现实的文字、事件、回调函数等。
+通用组件 = (可变的内容，事件回调函数) =&gt; { 通用的逻辑 ?=&gt; 触发回调函数 return UI，显示可变的内容，触发回调函数 } 举例
+倒计时组件： 通用的逻辑：倒计时 可变的部分：总时间，暂停，timeChange回调（当前时间，是否结束），倒计时UI作为默认children
+在倒计时的过程中触发timeChange，根据timeChange的结果修改UI，UI可以是个进度条，可以只是一个数字。
+上传图片： 通用逻辑：向接口上传文件 可变部分：可选的已上传图片，上传成功的回调返回图片url。
+有图片url则显示出来，点击再上传，返回新的url。没有则显示展位UI。
+封装hooks 白板hook，在canvas上打印笔迹——usePrint。
+userPrint接收canvas的ref和所有笔迹lines的数组为参数。
+将lines绘制到canvas上，因为有背景图，所以要对lines进行缩放转换，以适应不同的尺寸的显示。
+lines是在画线条是产生的。这个hook用于在刷新页面时将lines重绘出来，在老师查看一个学生的作品时，在老师开启一个学生的展示给所有其他学生时。
+storybook 用于开发过程中对组件功能的测试。
+对一个插件的不同的参数、参数的组合进行测试。
+可以当作测试用例，在后期修改了代码后做验证性测试。
+好处：可以提高开发效率。一个组件的某些用例可能需要若干前置条件，如果用传统的办法开发、测试，就需要在页面上进行一些操作，这就会花时间。用了storybook，可以制造出特定的条件来直接测试组件。
+坏处：需要学习成本，有学习能力，有写测试的能力。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="设计组件 通用组件 通用组件就是自身有一定功能逻辑，且这个逻辑是可以在多个场景下通用的。有可能其中有一些东西在不同场景下是不同的。比如现实的文字、事件、回调函数等。
+通用组件 = (可变的内容，事件回调函数) =&gt; { 通用的逻辑 ?=&gt; 触发回调函数 return UI，显示可变的内容，触发回调函数 } 举例
+倒计时组件： 通用的逻辑：倒计时 可变的部分：总时间，暂停，timeChange回调（当前时间，是否结束），倒计时UI作为默认children
+在倒计时的过程中触发timeChange，根据timeChange的结果修改UI，UI可以是个进度条，可以只是一个数字。
+上传图片： 通用逻辑：向接口上传文件 可变部分：可选的已上传图片，上传成功的回调返回图片url。
+有图片url则显示出来，点击再上传，返回新的url。没有则显示展位UI。
+封装hooks 白板hook，在canvas上打印笔迹——usePrint。
+userPrint接收canvas的ref和所有笔迹lines的数组为参数。
+将lines绘制到canvas上，因为有背景图，所以要对lines进行缩放转换，以适应不同的尺寸的显示。
+lines是在画线条是产生的。这个hook用于在刷新页面时将lines重绘出来，在老师查看一个学生的作品时，在老师开启一个学生的展示给所有其他学生时。
+storybook 用于开发过程中对组件功能的测试。
+对一个插件的不同的参数、参数的组合进行测试。
+可以当作测试用例，在后期修改了代码后做验证性测试。
+好处：可以提高开发效率。一个组件的某些用例可能需要若干前置条件，如果用传统的办法开发、测试，就需要在页面上进行一些操作，这就会花时间。用了storybook，可以制造出特定的条件来直接测试组件。
+坏处：需要学习成本，有学习能力，有写测试的能力。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/%E8%AE%BE%E8%AE%A1%E7%BB%84%E4%BB%B6/" />
+
+<title>设计组件 | wss.cool</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.5265c6f880b98bce38a6cac2079253a46af2959c1455d2afc076857e63ad1d6a.js" integrity="sha256-UmXG&#43;IC5i844psrCB5JTpGrylZwUVdKvwHaFfmOtHWo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>wss.cool</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/" class="collapsed ">0.前端</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/" class="collapsed ">1.程序员</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <span>2.工程师</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/" class="collapsed ">3.面试</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/js%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" class="">J S相关问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/%E8%81%8A%E9%A1%B9%E7%9B%AE/" class="">聊项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/%E8%AE%BE%E8%AE%A1%E7%BB%84%E4%BB%B6/" class="active">设计组件</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/%E9%94%99%E9%A2%98%E6%9C%AC/" class="">错题本</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/4.%E7%AC%94%E8%AE%B0/" class="collapsed ">4.笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>设计组件</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#通用组件">通用组件</a></li>
+    <li><a href="#封装hooks">封装hooks</a></li>
+    <li><a href="#storybook">storybook</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="设计组件">设计组件</h1>
+<h2 id="通用组件">通用组件</h2>
+<p>通用组件就是自身有一定功能逻辑，且这个逻辑是可以在多个场景下通用的。有可能其中有一些东西在不同场景下是不同的。比如现实的文字、事件、回调函数等。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">通用组件</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">可变的内容</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">事件回调函数</span>) =&gt; {
+  <span style="color:#a6e22e">通用的逻辑</span> <span style="color:#f92672">?</span>=&gt; <span style="color:#a6e22e">触发回调函数</span>
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">UI</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">显示可变的内容</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">触发回调函数</span>
+}
+</code></pre></div><p><strong>举例</strong></p>
+<p>倒计时组件：
+通用的逻辑：倒计时
+可变的部分：总时间，暂停，timeChange回调（当前时间，是否结束），倒计时UI作为默认children</p>
+<p>在倒计时的过程中触发timeChange，根据timeChange的结果修改UI，UI可以是个进度条，可以只是一个数字。</p>
+<p>上传图片：
+通用逻辑：向接口上传文件
+可变部分：可选的已上传图片，上传成功的回调返回图片url。</p>
+<p>有图片url则显示出来，点击再上传，返回新的url。没有则显示展位UI。</p>
+<h2 id="封装hooks">封装hooks</h2>
+<p>白板hook，在canvas上打印笔迹——usePrint。</p>
+<p>userPrint接收canvas的ref和所有笔迹lines的数组为参数。</p>
+<p>将lines绘制到canvas上，因为有背景图，所以要对lines进行缩放转换，以适应不同的尺寸的显示。</p>
+<p>lines是在画线条是产生的。这个hook用于在刷新页面时将lines重绘出来，在老师查看一个学生的作品时，在老师开启一个学生的展示给所有其他学生时。</p>
+<h2 id="storybook">storybook</h2>
+<p>用于开发过程中对组件功能的测试。</p>
+<p>对一个插件的不同的参数、参数的组合进行测试。</p>
+<p>可以当作测试用例，在后期修改了代码后做验证性测试。</p>
+<p>好处：可以提高开发效率。一个组件的某些用例可能需要若干前置条件，如果用传统的办法开发、测试，就需要在页面上进行一些操作，这就会花时间。用了storybook，可以制造出特定的条件来直接测试组件。</p>
+<p>坏处：需要学习成本，有学习能力，有写测试的能力。</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#通用组件">通用组件</a></li>
+    <li><a href="#封装hooks">封装hooks</a></li>
+    <li><a href="#storybook">storybook</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

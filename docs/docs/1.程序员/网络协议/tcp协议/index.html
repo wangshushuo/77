@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="学习TCP 三次握手  SYN：client 随机生成起始分组序列号 x ，并发送SYN分组，还有其他TCP表示和选项 SYN ACK：server 将 x&#43;1 ，生成随机序列号 y ACK：client 将 x &#43; 1，y &#43; 1，发送ACK分组，完成握手。此时可以发起请求，比如 Http Get 。  慢启动 完成了三次握手，client发送了http/get请求，server处理完请求开始发送响应数据，新TCP链接传输的最大值取rwnd和cwnd的最小值，也就是4个TCP段。client收到4个TCP段后分别发送ACK确认，也就是4个ACK确认。server收到4个ACK，每收到一个ACK，慢启动算法会让服务器cwnd递增一个TCP段，此时cwnd就增加到8个TCP段。这就是慢启动和指数增长。
+ rwnd 缩放窗口 cwnd 拥塞窗口 TCP段 一个TCP数据包。负载1460字节 &#43; TCP头信息20字节 &#43; IP头信息20字节 &#43; 以太网头信息22字节 = 以太网数据包1522字节 4个TCP段 协议规定的服务器默认cwnd值，新版协议是10个。  参考  阮一峰.TCP 协议简介.[2017年6月8日] Ilya Grigorik.Web性能权威指南.李松峰译.北京:人民邮电出版社，2014  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="学习TCP 三次握手  SYN：client 随机生成起始分组序列号 x ，并发送SYN分组，还有其他TCP表示和选项 SYN ACK：server 将 x&#43;1 ，生成随机序列号 y ACK：client 将 x &#43; 1，y &#43; 1，发送ACK分组，完成握手。此时可以发起请求，比如 Http Get 。  慢启动 完成了三次握手，client发送了http/get请求，server处理完请求开始发送响应数据，新TCP链接传输的最大值取rwnd和cwnd的最小值，也就是4个TCP段。client收到4个TCP段后分别发送ACK确认，也就是4个ACK确认。server收到4个ACK，每收到一个ACK，慢启动算法会让服务器cwnd递增一个TCP段，此时cwnd就增加到8个TCP段。这就是慢启动和指数增长。
+ rwnd 缩放窗口 cwnd 拥塞窗口 TCP段 一个TCP数据包。负载1460字节 &#43; TCP头信息20字节 &#43; IP头信息20字节 &#43; 以太网头信息22字节 = 以太网数据包1522字节 4个TCP段 协议规定的服务器默认cwnd值，新版协议是10个。  参考  阮一峰.TCP 协议简介.[2017年6月8日] Ilya Grigorik.Web性能权威指南.李松峰译.北京:人民邮电出版社，2014  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/tcp%E5%8D%8F%E8%AE%AE/" />
+
+<title>T C P协议 | wss.cool</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.5265c6f880b98bce38a6cac2079253a46af2959c1455d2afc076857e63ad1d6a.js" integrity="sha256-UmXG&#43;IC5i844psrCB5JTpGrylZwUVdKvwHaFfmOtHWo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>wss.cool</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/" class="collapsed ">0.前端</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/" class="collapsed ">1.程序员</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <span>算法</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/" class="">排序</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>数据结构</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/hash%E8%A1%A8/" class="">Hash表</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>网络协议</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/tcp%E5%8D%8F%E8%AE%AE/" class="active">T C P协议</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/websocket/" class="">Web Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <span>2.工程师</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/" class="collapsed ">3.面试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/4.%E7%AC%94%E8%AE%B0/" class="collapsed ">4.笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>T C P协议</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#三次握手">三次握手</a></li>
+    <li><a href="#慢启动">慢启动</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="学习tcp">学习TCP</h1>
+<h2 id="三次握手">三次握手</h2>
+<ol>
+<li>SYN：client 随机生成起始分组序列号 x ，并发送SYN分组，还有其他TCP表示和选项</li>
+<li>SYN ACK：server 将 x+1 ，生成随机序列号 y</li>
+<li>ACK：client 将 x + 1，y + 1，发送ACK分组，完成握手。此时可以发起请求，比如 Http Get 。</li>
+</ol>
+<h2 id="慢启动">慢启动</h2>
+<p>完成了三次握手，client发送了http/get请求，server处理完请求开始发送响应数据，新TCP链接传输的最大值取rwnd和cwnd的最小值，也就是4个TCP段。client收到4个TCP段后分别发送ACK确认，也就是4个ACK确认。server收到4个ACK，每收到一个ACK，慢启动算法会让服务器cwnd递增一个TCP段，此时cwnd就增加到8个TCP段。这就是慢启动和指数增长。</p>
+<dl>
+<dt>rwnd</dt>
+<dd>缩放窗口</dd>
+<dt>cwnd</dt>
+<dd>拥塞窗口</dd>
+<dt>TCP段</dt>
+<dd>一个TCP数据包。负载1460字节 + TCP头信息20字节 + IP头信息20字节 + 以太网头信息22字节 = 以太网数据包1522字节</dd>
+<dt>4个TCP段</dt>
+<dd>协议规定的服务器默认cwnd值，新版协议是10个。</dd>
+</dl>
+<h2 id="参考">参考</h2>
+<ol>
+<li>阮一峰.<a href="http://www.ruanyifeng.com/blog/2017/06/tcp-protocol.html">TCP 协议简介</a>.[2017年6月8日]</li>
+<li>Ilya Grigorik.Web性能权威指南.李松峰译.北京:人民邮电出版社，2014</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#三次握手">三次握手</a></li>
+    <li><a href="#慢启动">慢启动</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JS相关问题 1. 请解释事件代理 (event delegation)。 解答 比如有body&gt;div&gt;button，事件代理就是在一个高级元素（body）上绑定一个事件处理函数处理其子元素，利用了事件冒泡机制。
+好处节省内存和事件。因为事件处理函数就是一个对象，对象会占用内存，绑定处理函数也会花费事件。
+延伸
+  2. 请解释 JavaScript 中 this 是如何工作的。 解答 this指向函数运行时所在的对象，而不是创建时。
+比如，对象a的b属性是一个函数，其中打印this。当调用a.b()时打印的是对象a。如果把a.b赋值给一个变量c，在调用c，则打印出来的this是全局变量window。 当函数作为对象的方法时，this指向对象。当直接调用函数时，this指向全局变量。
+  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="JS相关问题 1. 请解释事件代理 (event delegation)。 解答 比如有body&gt;div&gt;button，事件代理就是在一个高级元素（body）上绑定一个事件处理函数处理其子元素，利用了事件冒泡机制。
+好处节省内存和事件。因为事件处理函数就是一个对象，对象会占用内存，绑定处理函数也会花费事件。
+延伸
+  2. 请解释 JavaScript 中 this 是如何工作的。 解答 this指向函数运行时所在的对象，而不是创建时。
+比如，对象a的b属性是一个函数，其中打印this。当调用a.b()时打印的是对象a。如果把a.b赋值给一个变量c，在调用c，则打印出来的this是全局变量window。 当函数作为对象的方法时，this指向对象。当直接调用函数时，this指向全局变量。
+  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.wss.cool/docs/3.%E9%9D%A2%E8%AF%95/js%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" />
+
+<title>J S相关问题 | wss.cool</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.5265c6f880b98bce38a6cac2079253a46af2959c1455d2afc076857e63ad1d6a.js" integrity="sha256-UmXG&#43;IC5i844psrCB5JTpGrylZwUVdKvwHaFfmOtHWo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>wss.cool</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/0.%E5%89%8D%E7%AB%AF/" class="collapsed ">0.前端</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/" class="collapsed ">1.程序员</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <span>2.工程师</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/" class="collapsed ">3.面试</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/js%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" class="active">J S相关问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/%E8%81%8A%E9%A1%B9%E7%9B%AE/" class="">聊项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/%E8%AE%BE%E8%AE%A1%E7%BB%84%E4%BB%B6/" class="">设计组件</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/3.%E9%9D%A2%E8%AF%95/%E9%94%99%E9%A2%98%E6%9C%AC/" class="">错题本</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/4.%E7%AC%94%E8%AE%B0/" class="collapsed ">4.笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>J S相关问题</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-请解释事件代理-event-delegation">1. 请解释事件代理 (event delegation)。</a></li>
+    <li><a href="#2-请解释-javascript-中-this-是如何工作的">2. 请解释 JavaScript 中 this 是如何工作的。</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="js相关问题">JS相关问题</h1>
+<h2 id="1-请解释事件代理-event-delegation">1. 请解释事件代理 (event delegation)。</h2>
+<details >
+  <summary>解答</summary>
+  <div class="markdown-inner">
+    <p>比如有<code>body&gt;div&gt;button</code>，事件代理就是在一个高级元素（body）上绑定一个事件处理函数处理其子元素，利用了事件冒泡机制。</p>
+<p>好处节省内存和事件。因为事件处理函数就是一个对象，对象会占用内存，绑定处理函数也会花费事件。</p>
+<p>延伸</p>
+
+  </div>
+</details>
+
+<h2 id="2-请解释-javascript-中-this-是如何工作的">2. 请解释 JavaScript 中 this 是如何工作的。</h2>
+<details >
+  <summary>解答</summary>
+  <div class="markdown-inner">
+    <p>this指向函数运行时所在的对象，而不是创建时。</p>
+<p>比如，对象a的b属性是一个函数，其中打印this。当调用a.b()时打印的是对象a。如果把a.b赋值给一个变量c，在调用c，则打印出来的this是全局变量window。
+<img src="/image/this-1.jpg" alt="this"></p>
+<p>当函数作为对象的方法时，this指向对象。当直接调用函数时，this指向全局变量。</p>
+
+  </div>
+</details>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-请解释事件代理-event-delegation">1. 请解释事件代理 (event delegation)。</a></li>
+    <li><a href="#2-请解释-javascript-中-this-是如何工作的">2. 请解释 JavaScript 中 this 是如何工作的。</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

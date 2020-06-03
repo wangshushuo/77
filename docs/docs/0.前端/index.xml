@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wss.cool</title>
+    <link>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content on wss.cool</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/event-loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/event-loop/</guid>
+      <description>Event Loop  函数调用形成执行栈，执行完弹出。 当执行栈为空时，检查消息队列。 获取第一个消息，调用其绑定的回调函数。此时又循环回第一步。  上面的三部分的循环进行就是Event Loop。
+一个事件循环具有一个或多个任务队列。任务队列是一组任务。
+当执行栈为空时，会优先检查「微任务队列」。
+ 微任务队列 常用的就是Promise 任务队列 可以理解为timeout、用户时间、网路请求事件   研究规范 任务队列是集合，而不是队列1，因为事件循环处理模型的第一步是从所选队列中获取第一个可运行任务，而不是使第一个任务出队。
+微任务队列不是任务队列。2
+每个事件循环都有一个微任务队列，该队列是一个微任务队列，最初是空的。微任务是一种通俗的方式，指的是通过「queue a microtask」算法创建的任务。
+https://html.spec.whatwg.org/multipage/webappapis.html#generic-task-sources
+  Task queues are sets, not queues. event-loop规范 &amp;#x21a9;&amp;#xfe0e;
+ The microtask queue is not a task queue. event-loop规范 &amp;#x21a9;&amp;#xfe0e;
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/</guid>
+      <description>原型与原型链 我认为这是一个过时的知识，而且晦涩难懂，学习它很浪费时间。如果代码中有大量的原型代码，对于维护是一个很大的挑战。
+这东西主要用于面向对象，ES6提供了class和extend来代替我们直接操作原型，是个更好的选择。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+      <description>执行环境及作用域 执行环境定义了变量和函数有权访问的其他数据，决定了它们各自的行为。
+每个执行环境关联一个变量对象，环境中的所有变量和函数都保存在这个对象中。
+每个函数都有自己的执行环境。
+执行环境就是代码执行时的上下文环境，其中包含代码可访问的所有变量和函数，可以理解为执行环境就是变量对象，就是作用域。
+函数有自己的作用域，当函数中又点用来函数时，就存在来2个作用域，它们形成了作用域链。
+作用域链的最前端，时当前执行代码所在环境的对象变量。如果环境是函数，则将活动对象作为环境变量。
+活动对象最开始只包含一个arguments对象。
+标识符解析会沿着作用域链搜索。
+ 箭头函数的this与作用域有关。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+      <description>数据类型 变量的值分为基本类型和引用类型。
+基本类型有五种：String、Number、Boolean、Undefined和Null。
+引用类型也就是对象，之所以叫“引用”是因为变量其实是对对象的内存地址的引用。当出现下面这样的操作时，赋值传递的是引用。
+var a = 引用类型; var b = a; a 和 b 其实引用的是一个对象，当对 a 或 b 任意一方进行修改时，都会在另一个身上体现出来。
+ 对于JavaScript的某些对象还可以把它们叫做「宿主对象」或「原生对象」。
+宿主对象是JavaScript运行环境提供的对象。浏览器就是一个运行环境，它提供了DOM和BOM等对象。
+ DOM对象：window、document等 BOM对象：history、location、navigator等  原生对象是JavaScript语言提供的，比如Math、Array、Date、RegExp等，还有ES6的Set、Map等。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/</guid>
+      <description>深浅拷贝 什么是拷贝，什么是深浅拷贝 在 JavaScript 中，变量中保存的是对象的引用。比如像下面这样的操作
+var a = 对象1; var b = a; a和b都在引用对象1，如果对对象1进行修改，则a和b两个变量都会受到影响，有时我们不希望出现这种情况，就要对对象进行拷贝操作来切换引用。比如
+var a = 对象1; var b = 拷贝(a); 那么如何实现拷贝呢？
+我们知道对象是由多个key和value组成的，所以拷贝就是创建一个新的对象，将旧对象的key和value拷贝到新对象中，让新旧对象的key和value完全一样。比如像下面这样
+Object.keys(对象1).forEach(key =&amp;gt; { 新对象[key] = 对象1[key]; }) 这样的操作需要注意value的类型，分为基本类型和引用类型1，如果所有的value都是基本类型，但是如果value是引用类型就会出现新旧对象中都引用了一个对象的情况，也就是上文提到的a和b变量的问题。..如果想完全切断引用，就要对引用类型的value在进行一次拷贝..。对于是否需要完全切断引用就有了两种拷贝方式，需要完全切断引用的就是「深拷贝」，不需要的就是「浅拷贝」。
+简单概括一下。
+「浅拷贝」是只对对象的key和value进行一次遍历拷贝，不管内部的引用。
+「深拷贝」要将对象内部的引用完全切断，对对象进行递归地拷贝。
+如何实现深拷贝 先看一种实现方式
+1function clone(旧对象) { 2 var 新对象 = {}; 3 Object.keys(旧对象).forEach(key =&amp;gt; { 4 var value = 旧对象[key]; 5 if(is基本类型(value)) { 6 新对象[key] = 旧对象[key]; 7 } else { 8 新对象[key] = clone(value); // 递归 9 } 10 }) 11 return 新对象; 12}  这种方法用的是递归，即当value不是基本类型时就对它进行拷贝。它有一个明显的问题，当出现循环引用时，就进入了一个死循环。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/0.%E5%89%8D%E7%AB%AF/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</guid>
+      <description>箭头函数 箭头函数的特点：
+ 比函数表达式简短 不绑定this、arguments、super 不能作为构造函数  this 普通函数中的this，是在被调用的时候确定的。而箭头函数的this由作用域决定。
+普通函数：
+ 构造函数中，指向新对象 对象的方法，指向对象 直接调用函数，指向全局变量window apply、bind、call，指向参数  箭头函数不会创建自己的this，它只会从自己的作用域链的上一层继承this。
+ 延伸问题：什么是作用域？
+ 需要注意下面这种情况
+&amp;#39;use strict&amp;#39;; var obj = { i: 10, b: () =&amp;gt; console.log(this.i, this), c: function() { console.log( this.i, this) } } obj.b(); // undefined, Window{...} obj.c(); // 10, Object {...} 这是因为(对象字面量构成的)对象不构成单独的作用域，导致箭头函数定义时的作用域就是全局作用域。
+参考  阮一峰.ECMAScript 6入门.函数的扩展 MDN web docs.箭头函数  </description>
+    </item>
+    
+  </channel>
+</rss>

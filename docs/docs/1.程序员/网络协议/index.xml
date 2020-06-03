@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wss.cool</title>
+    <link>https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</link>
+    <description>Recent content on wss.cool</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/tcp%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/tcp%E5%8D%8F%E8%AE%AE/</guid>
+      <description>学习TCP 三次握手  SYN：client 随机生成起始分组序列号 x ，并发送SYN分组，还有其他TCP表示和选项 SYN ACK：server 将 x+1 ，生成随机序列号 y ACK：client 将 x + 1，y + 1，发送ACK分组，完成握手。此时可以发起请求，比如 Http Get 。  慢启动 完成了三次握手，client发送了http/get请求，server处理完请求开始发送响应数据，新TCP链接传输的最大值取rwnd和cwnd的最小值，也就是4个TCP段。client收到4个TCP段后分别发送ACK确认，也就是4个ACK确认。server收到4个ACK，每收到一个ACK，慢启动算法会让服务器cwnd递增一个TCP段，此时cwnd就增加到8个TCP段。这就是慢启动和指数增长。
+ rwnd 缩放窗口 cwnd 拥塞窗口 TCP段 一个TCP数据包。负载1460字节 + TCP头信息20字节 + IP头信息20字节 + 以太网头信息22字节 = 以太网数据包1522字节 4个TCP段 协议规定的服务器默认cwnd值，新版协议是10个。  参考  阮一峰.TCP 协议简介.[2017年6月8日] Ilya Grigorik.Web性能权威指南.李松峰译.北京:人民邮电出版社，2014  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/websocket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.wss.cool/docs/1.%E7%A8%8B%E5%BA%8F%E5%91%98/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/websocket/</guid>
+      <description>WebSocket 第一部分：WebSocket API
+二进制的类型 WebSocket的消息可以是文本或者二进制数据，可以设置接收二进制数据的格式：Blob、ArrayBuffer。
+ Blob是不可变的文件对象，适合直接保存、传给img ArrayBuffer适合放在内存中进行操作  二进制数据可以用于传输文件、图片。普通消息用文本。
+排队 发送消息前检查客户端缓冲的数据量。
+if(ws.bufferedAmount === 0) { ws.send(message); } 消息按照客户端排队的顺序逐个发送，大量的消息甚至一个大消息，都会导致排在后面的消息延迟——队首阻塞！
+子协议 通过使用子协议来沟通元数据，可以在JSON中定义一个字段，可以使用文本+二进制。
+WebSocket提供了协商子协议的API——构造函数的第二个参数。浏览器选择一个协议，如果一个不选就会断开连接。
+第二部分：WebSocket协议
+协议 HTTP握手协商连接参数，二进制消息分帧进行文本和二进制数据消息传输。
+二进制分帧层 将一个消息分成若干帧，传输以帧为单位进行，发送到目的地后组成起来，等接收到完整的消息时再通知接收方。
+容易发生队首阻塞，因为消息的帧不能交错发送，要等一个消息的帧发送完了才会发送下一个消息的帧。
+不支持多路复用，每个WebSocket连接需要一个TCP连接。
+HTTP升级协商  HTTP握手 Connection: Upgrade 跨域  性能 XHR轮询、SSE（EventSource协议）、WebSocket协议。
+轮询有间隔时间，SSE客户端不能给服务端发消息，SSE和WebSocket都可以立即发消息。
+实战 使用sockjs
+使用stompjs
+断线重连</description>
+    </item>
+    
+  </channel>
+</rss>

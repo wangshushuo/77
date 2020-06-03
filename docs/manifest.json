@@ -1,6 +1,6 @@
 {
-  "name": "My New Hugo Site",
-  "short_name": "My New Hugo Site",
+  "name": "wss.cool",
+  "short_name": "wss.cool",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
