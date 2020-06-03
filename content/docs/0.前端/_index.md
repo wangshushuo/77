@@ -24,7 +24,11 @@ bookCollapseSection: true
     - 中级：模块化、立即执行函数、闭包、变量提升、作用域、箭头函数
     - 高级：[深拷贝][a1]、截流
 1. 语言ES6+
-    - 箭头函数、代理、object、array、promise
+    - [箭头函数][a3] [2020.06.02]
+    - 代理
+    - object
+    - array
+    - promise
 1. 语言TypeScript
     - 枚举、泛型
 1. 框架React
@@ -47,3 +51,4 @@ HTML5规范，这里是很多知识的第一手资料，比如结构化克隆算
 
 [a1]:/docs/0.前端/深浅拷贝/
 [a2]:/docs/0.前端/数据类型/
+[a3]:/docs/0.前端/箭头函数/
