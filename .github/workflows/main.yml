@@ -27,9 +27,9 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.TOKEN }}
-          external_repository: wangshushuo/api
+          external_repository: wangshushuo/77
           publish_dir: ./docs
           keep_files: false
           publish_branch: gh-pages
-          cname: api.wss.cool
+          cname: 77doc.wss.cool
 
