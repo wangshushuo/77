@@ -1,5 +1,5 @@
-baseURL = "https://docs.wss.cool/"
+baseURL = "https://api.wss.cool/"
 languageCode = "zh-cn"
-title = "wss.cool"
+title = "77前端文档"
 theme = "book"
 publishDir = "docs"
