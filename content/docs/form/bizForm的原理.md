@@ -1,5 +1,6 @@
 ---
 title: "BizForm的原理"
+weight: 300
 ---
 ## BizForm的原理
 
