@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>列表方案 on 77前端文档</title>
+    <link>https://api.wss.cool/docs/list/</link>
+    <description>Recent content in 列表方案 on 77前端文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://api.wss.cool/docs/list/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

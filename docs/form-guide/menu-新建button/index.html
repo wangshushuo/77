@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="向Menu中添加Button 此攻略会向你介绍如何往查看态表单的menu中加一个按钮
+新建一个menu按钮 按下面的步骤就可以创建一个按钮，并把它加到menu中
+ 按钮的名字 按钮的Creator函数 声明按钮 声明分组 添加到menu中  给搞一个名字 在 apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts 文件中在BizFormMenuButtons对象声明按钮的 id 。
+搞Creator函数创建按钮 export const ProjectBudgetCreator = () =&gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&gt; { return ( &lt;React.Fragment&gt; &lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&gt; &lt;/React.Fragment&gt; ); }, }; }; 其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
+声明按钮 有了id和creator函数，就可以声明按钮了。 在 apps/link/src/solutions/biz-form/page/menu-buttons/index.tsx 文件中声明了所有menu按钮的Creator函数。你新创建的按钮也需要在这里声明。
+export const buildInMenus = { [BizFormMenuButtons.SourcePicking]: SourcePickCreator, [BizFormMenuButtons.ImportConsumeItem]: ImportConsumeItemCreator, } 声明类型 相同类型的按钮会放到同一分组。 在 apps/link/src/solutions/biz-form/page/declare.ts 文件的 BizformMenuButtonType 对象中为按钮一个类型。
+把按钮放到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="新建一个MenuButton" />
+<meta property="og:description" content="向Menu中添加Button 此攻略会向你介绍如何往查看态表单的menu中加一个按钮
+新建一个menu按钮 按下面的步骤就可以创建一个按钮，并把它加到menu中
+ 按钮的名字 按钮的Creator函数 声明按钮 声明分组 添加到menu中  给搞一个名字 在 apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts 文件中在BizFormMenuButtons对象声明按钮的 id 。
+搞Creator函数创建按钮 export const ProjectBudgetCreator = () =&gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&gt; { return ( &lt;React.Fragment&gt; &lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&gt; &lt;/React.Fragment&gt; ); }, }; }; 其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
+声明按钮 有了id和creator函数，就可以声明按钮了。 在 apps/link/src/solutions/biz-form/page/menu-buttons/index.tsx 文件中声明了所有menu按钮的Creator函数。你新创建的按钮也需要在这里声明。
+export const buildInMenus = { [BizFormMenuButtons.SourcePicking]: SourcePickCreator, [BizFormMenuButtons.ImportConsumeItem]: ImportConsumeItemCreator, } 声明类型 相同类型的按钮会放到同一分组。 在 apps/link/src/solutions/biz-form/page/declare.ts 文件的 BizformMenuButtonType 对象中为按钮一个类型。
+把按钮放到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://api.wss.cool/docs/form-guide/menu-%E6%96%B0%E5%BB%BAbutton/" />
+
+<title>新建一个MenuButton | 77前端文档</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.9073e101a303beb8eb01df24bbba14a9e44e8e12456d1fd9dfb1615e82d39045.js" integrity="sha256-kHPhAaMDvrjrAd8ku7oUqeROjhJFbR/Z37FhXoLTkEU="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>77前端文档</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <span>BizForm基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/what-is-bizform/" class="">什么是BizForm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="">BizForm的组成部分</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" class="">BizForm的原理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm实用攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-%E4%BF%AE%E6%94%B9button/" class="">修改Menu中的Button</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-%E6%96%B0%E5%BB%BAbutton/" class="active">新建一个MenuButton</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>H5/小程序</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>新建一个MenuButton</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#新建一个menu按钮">新建一个menu按钮</a>
+      <ul>
+        <li><a href="#给搞一个名字">给搞一个名字</a></li>
+        <li><a href="#搞creator函数创建按钮">搞Creator函数创建按钮</a></li>
+        <li><a href="#声明按钮">声明按钮</a></li>
+        <li><a href="#声明类型">声明类型</a></li>
+        <li><a href="#把按钮放到menu中">把按钮放到menu中</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="向menu中添加button">向Menu中添加Button</h1>
+<p>此攻略会向你介绍如何往查看态表单的menu中加一个按钮</p>
+<p><img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20201219173459_0df051375728f03fe55bfe251d82cfef.png" alt="20201219173459_0df051375728f03fe55bfe251d82cfef.png" /></p>
+<h2 id="新建一个menu按钮">新建一个menu按钮</h2>
+<p>按下面的步骤就可以创建一个按钮，并把它加到menu中</p>
+<ol>
+<li>按钮的名字</li>
+<li>按钮的Creator函数</li>
+<li>声明按钮</li>
+<li>声明分组</li>
+<li>添加到menu中</li>
+</ol>
+<h3 id="给搞一个名字">给搞一个名字</h3>
+<p>在 <code>apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts</code> 文件中在BizFormMenuButtons对象声明按钮的 id 。</p>
+<h3 id="搞creator函数创建按钮">搞Creator函数创建按钮</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ProjectBudgetCreator</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">BizFormMenuButtons.ProjectBudget</span>,
+    <span style="color:#a6e22e">render</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> {
+      <span style="color:#66d9ef">return</span> (
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Fragment</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ProjectBudgetButton</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">BizFormMenuButtons</span>.<span style="color:#a6e22e">ProjectBudget</span>} <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/React.Fragment&gt;</span>
+      );
+    },
+  };
+};
+</code></pre></div><p>其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。</p>
+<h3 id="声明按钮">声明按钮</h3>
+<p>有了id和creator函数，就可以声明按钮了。
+在 <code>apps/link/src/solutions/biz-form/page/menu-buttons/index.tsx</code> 文件中声明了所有menu按钮的Creator函数。你新创建的按钮也需要在这里声明。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">buildInMenus</span> <span style="color:#f92672">=</span> {
+  [<span style="color:#a6e22e">BizFormMenuButtons</span>.<span style="color:#a6e22e">SourcePicking</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">SourcePickCreator</span>,
+  [<span style="color:#a6e22e">BizFormMenuButtons</span>.<span style="color:#a6e22e">ImportConsumeItem</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">ImportConsumeItemCreator</span>,
+}
+</code></pre></div><h3 id="声明类型">声明类型</h3>
+<p>相同类型的按钮会放到同一分组。
+在 <code>apps/link/src/solutions/biz-form/page/declare.ts</code> 文件的 BizformMenuButtonType 对象中为按钮一个类型。</p>
+<h3 id="把按钮放到menu中">把按钮放到menu中</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">xxFormPresenter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">EasyBizFormPresenter</span> {
+  <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">getMenuOptions</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">MenuOptions</span> {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">menus</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">getMenuOptions</span>().<span style="color:#a6e22e">menus</span>;
+    <span style="color:#a6e22e">menus</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">buildInMenus</span>.<span style="color:#a6e22e">ProjectPlan</span>());
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">menus</span>;
+  }
+}
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#新建一个menu按钮">新建一个menu按钮</a>
+      <ul>
+        <li><a href="#给搞一个名字">给搞一个名字</a></li>
+        <li><a href="#搞creator函数创建按钮">搞Creator函数创建按钮</a></li>
+        <li><a href="#声明按钮">声明按钮</a></li>
+        <li><a href="#声明类型">声明类型</a></li>
+        <li><a href="#把按钮放到menu中">把按钮放到menu中</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

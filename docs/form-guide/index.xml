@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BizForm实用攻略 on 77前端文档</title>
+    <link>https://api.wss.cool/docs/form-guide/</link>
+    <description>Recent content in BizForm实用攻略 on 77前端文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://api.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>修改Menu中的Button</title>
+      <link>https://api.wss.cool/docs/form-guide/menu-%E4%BF%AE%E6%94%B9button/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/form-guide/menu-%E4%BF%AE%E6%94%B9button/</guid>
+      <description>向Menu中添加Button 此攻略会向你介绍如何往查看态的menu中加一个按钮
+已有按钮添加到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.getMenuOptions().menus; // 删改menus数组  return menus; } } 在这里修改menus数组就可以了。
+可以直接往里面添加按钮。也可能要根据权限、是不是变更单等条件过滤掉一些按钮。</description>
+    </item>
+    
+    <item>
+      <title>新建一个MenuButton</title>
+      <link>https://api.wss.cool/docs/form-guide/menu-%E6%96%B0%E5%BB%BAbutton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/form-guide/menu-%E6%96%B0%E5%BB%BAbutton/</guid>
+      <description>向Menu中添加Button 此攻略会向你介绍如何往查看态表单的menu中加一个按钮
+新建一个menu按钮 按下面的步骤就可以创建一个按钮，并把它加到menu中
+ 按钮的名字 按钮的Creator函数 声明按钮 声明分组 添加到menu中  给搞一个名字 在 apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts 文件中在BizFormMenuButtons对象声明按钮的 id 。
+搞Creator函数创建按钮 export const ProjectBudgetCreator = () =&amp;gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&amp;gt; { return ( &amp;lt;React.Fragment&amp;gt; &amp;lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&amp;gt; &amp;lt;/React.Fragment&amp;gt; ); }, }; }; 其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
+声明按钮 有了id和creator函数，就可以声明按钮了。 在 apps/link/src/solutions/biz-form/page/menu-buttons/index.tsx 文件中声明了所有menu按钮的Creator函数。你新创建的按钮也需要在这里声明。
+export const buildInMenus = { [BizFormMenuButtons.SourcePicking]: SourcePickCreator, [BizFormMenuButtons.ImportConsumeItem]: ImportConsumeItemCreator, } 声明类型 相同类型的按钮会放到同一分组。 在 apps/link/src/solutions/biz-form/page/declare.ts 文件的 BizformMenuButtonType 对象中为按钮一个类型。
+把按钮放到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.</description>
+    </item>
+    
+  </channel>
+</rss>
