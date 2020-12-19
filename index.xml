@@ -63,6 +63,27 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
     </item>
     
     <item>
+      <title>模型、entity与元数据</title>
+      <link>https://api.wss.cool/docs/base/entity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/entity/</guid>
+      <description>模型、entity与元数据 模型 我们系统的后端是领域模型驱动的。 上图是预算编制方案的模型，其中包含了很多实体(entity)(蓝色的)。
+entity 一个entity就是一个对象，可以通过模型看到各个属性的名字和类型，以及entity之间的关系。
+我们前端工作就是为entity制作表单和列表，来创建entity的实例或展示entity的信息。
+元数据 前度的元数据主要是对entity的描述。entity的名字、entity的属性名等等。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/</guid>
+      <description>预置数据 </description>
+    </item>
+    
+    <item>
       <title>什么是BizForm</title>
       <link>https://api.wss.cool/docs/form/what-is-bizform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -73,12 +94,42 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
     </item>
     
     <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/list-guide/%E7%A9%BF%E9%80%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/list-guide/%E7%A9%BF%E9%80%8F/</guid>
+      <description>穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能，在这里(1)会跳到项目计划详情，(2)会跳到项目详情。
+代码实现 图片中(2)复杂一点，从项目计划列表跳到项目详情页。
+class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IListOption { return { ...super.getListOption(), gridOption: { columnResolver: columnDefs =&amp;gt; { // 将数组转化为map，这个可以不做，直接用find在数组中找到你想找的column  const columnDefsMap = new Map(); columnDefs.forEach(i =&amp;gt; { columnDefsMap.set(i.field, i); }) // 找到column  const projectCode = columnDefsMap.get(&amp;#39;project.code&amp;#39;); // 设置样式和点击事件  projectCode.cellClass = &amp;#39;object-cell-linkable&amp;#39;; projectCode.onCellClicked = event =&amp;gt; { // 实用列表方案的api来实现跳转  this.presenter.listSolutionConnector.rowActionController.masterHashResolver( {name: EN_Project} as Entity, BizListActionEnum.View, {id: event.data.project.id}, event.rowIndex, this.presenter.listSolutionConnector.rowActionController.saveSuccess, ); }; } } } } } 代码比较容易理解，通过gridOption的columnResolver来重新定义某以列的columnDef。</description>
+    </item>
+    
+    <item>
       <title>BizForm的组成部分</title>
       <link>https://api.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://api.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/</guid>
       <description>查看态  表单状态 异步任务异常 menu-buttons rang-walk 主表 审批流 子表 ？不知道  </description>
+    </item>
+    
+    <item>
+      <title>BizForm的原理</title>
+      <link>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</guid>
+      <description>BizForm的原理 总体来说分为三个阶段：
+ 创建model（mobx-state-tree） 创建form 展示form  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
+      <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
     </item>
     
     <item>
@@ -107,6 +158,15 @@ Follow the following steps:
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</guid>
+      <description>权限 import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View) </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/example/collapsed/3rd-level/4th-level/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -123,6 +183,51 @@ Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii.
       <guid>https://api.wss.cool/docs/example/hidden/</guid>
       <description>This page is hidden in menu Quondam non pater est dignior ille Eurotas Latent te facies Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
  Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor  Cum honorum Latona O fallor in sustinui iussorum equidem.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/form-guide/menu-button/%E8%81%94%E6%9F%A5%E6%8C%89%E9%92%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/form-guide/menu-button/%E8%81%94%E6%9F%A5%E6%8C%89%E9%92%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</guid>
+      <description>通过go实现 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%AF%BC%E5%87%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%AF%BC%E5%87%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/</guid>
+      <description>a </description>
     </item>
     
     <item>
@@ -209,21 +314,11 @@ Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat str
     </item>
     
     <item>
-      <title>BizForm的原理</title>
-      <link>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</guid>
-      <description>BizForm的原理 总体来说分为三个阶段：
- 创建model（mobx-state-tree） 创建form 展示form  </description>
-    </item>
-    
-    <item>
       <title>修改Menu中的Button</title>
-      <link>https://api.wss.cool/docs/form-guide/menu-%E4%BF%AE%E6%94%B9button/</link>
+      <link>https://api.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://api.wss.cool/docs/form-guide/menu-%E4%BF%AE%E6%94%B9button/</guid>
+      <guid>https://api.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/</guid>
       <description>向Menu中添加Button 此攻略会向你介绍如何往查看态的menu中加一个按钮
 已有按钮添加到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.getMenuOptions().menus; // 删改menus数组  return menus; } } 在这里修改menus数组就可以了。
 可以直接往里面添加按钮。也可能要根据权限、是不是变更单等条件过滤掉一些按钮。</description>
@@ -231,10 +326,10 @@ Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat str
     
     <item>
       <title>新建一个MenuButton</title>
-      <link>https://api.wss.cool/docs/form-guide/menu-%E6%96%B0%E5%BB%BAbutton/</link>
+      <link>https://api.wss.cool/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://api.wss.cool/docs/form-guide/menu-%E6%96%B0%E5%BB%BAbutton/</guid>
+      <guid>https://api.wss.cool/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/</guid>
       <description>向Menu中添加Button 此攻略会向你介绍如何往查看态表单的menu中加一个按钮
 新建一个menu按钮 按下面的步骤就可以创建一个按钮，并把它加到menu中
  按钮的名字 按钮的Creator函数 声明按钮 声明分组 添加到menu中  给搞一个名字 在 apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts 文件中在BizFormMenuButtons对象声明按钮的 id 。

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>通用功能的攻略 on 77前端文档</title>
+    <link>https://api.wss.cool/docs/common/</link>
+    <description>Recent content in 通用功能的攻略 on 77前端文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://api.wss.cool/docs/common/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</guid>
+      <description>权限 import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View) </description>
+    </item>
+    
+  </channel>
+</rss>

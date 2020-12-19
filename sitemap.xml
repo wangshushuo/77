@@ -33,6 +33,18 @@
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/base/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/base/entity/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/form/</loc>
   </url>
   
@@ -45,15 +57,31 @@
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/list-guide/%E7%A9%BF%E9%80%8F/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/</loc>
   </url>
   
   <url>
-    <loc>https://api.wss.cool/docs/list/</loc>
+    <loc>https://api.wss.cool/docs/list-guide/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</loc>
   </url>
   
   <url>
     <loc>https://api.wss.cool/docs/h5/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/common/</loc>
   </url>
   
   <url>
@@ -127,6 +155,10 @@
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/example/collapsed/3rd-level/4th-level/</loc>
   </url>
   
@@ -136,6 +168,34 @@
   
   <url>
     <loc>https://api.wss.cool/docs/example/hidden/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/form-guide/menu-button/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/form-guide/menu-button/%E8%81%94%E6%9F%A5%E6%8C%89%E9%92%AE/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%AF%BC%E5%87%BA/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/list/</loc>
   </url>
   
   <url>
@@ -175,10 +235,6 @@
   </url>
   
   <url>
-    <loc>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</loc>
-  </url>
-  
-  <url>
     <loc>https://api.wss.cool/docs/</loc>
   </url>
   
@@ -187,11 +243,15 @@
   </url>
   
   <url>
-    <loc>https://api.wss.cool/docs/form-guide/menu-%E4%BF%AE%E6%94%B9button/</loc>
+    <loc>https://api.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/</loc>
   </url>
   
   <url>
-    <loc>https://api.wss.cool/docs/form-guide/menu-%E6%96%B0%E5%BB%BAbutton/</loc>
+    <loc>https://api.wss.cool/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/</loc>
   </url>
   
 </urlset>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端框架基础 on 77前端文档</title>
+    <link>https://api.wss.cool/docs/base/</link>
+    <description>Recent content in 前端框架基础 on 77前端文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://api.wss.cool/docs/base/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>模型、entity与元数据</title>
+      <link>https://api.wss.cool/docs/base/entity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/entity/</guid>
+      <description>模型、entity与元数据 模型 我们系统的后端是领域模型驱动的。 上图是预算编制方案的模型，其中包含了很多实体(entity)(蓝色的)。
+entity 一个entity就是一个对象，可以通过模型看到各个属性的名字和类型，以及entity之间的关系。
+我们前端工作就是为entity制作表单和列表，来创建entity的实例或展示entity的信息。
+元数据 前度的元数据主要是对entity的描述。entity的名字、entity的属性名等等。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/</guid>
+      <description>预置数据 </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>列表方案实用攻略 on 77前端文档</title>
+    <link>https://api.wss.cool/docs/list-guide/</link>
+    <description>Recent content in 列表方案实用攻略 on 77前端文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://api.wss.cool/docs/list-guide/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/list-guide/%E7%A9%BF%E9%80%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/list-guide/%E7%A9%BF%E9%80%8F/</guid>
+      <description>穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能，在这里(1)会跳到项目计划详情，(2)会跳到项目详情。
+代码实现 图片中(2)复杂一点，从项目计划列表跳到项目详情页。
+class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IListOption { return { ...super.getListOption(), gridOption: { columnResolver: columnDefs =&amp;gt; { // 将数组转化为map，这个可以不做，直接用find在数组中找到你想找的column  const columnDefsMap = new Map(); columnDefs.forEach(i =&amp;gt; { columnDefsMap.set(i.field, i); }) // 找到column  const projectCode = columnDefsMap.get(&amp;#39;project.code&amp;#39;); // 设置样式和点击事件  projectCode.cellClass = &amp;#39;object-cell-linkable&amp;#39;; projectCode.onCellClicked = event =&amp;gt; { // 实用列表方案的api来实现跳转  this.presenter.listSolutionConnector.rowActionController.masterHashResolver( {name: EN_Project} as Entity, BizListActionEnum.View, {id: event.data.project.id}, event.rowIndex, this.presenter.listSolutionConnector.rowActionController.saveSuccess, ); }; } } } } } 代码比较容易理解，通过gridOption的columnResolver来重新定义某以列的columnDef。</description>
+    </item>
+    
+  </channel>
+</rss>
