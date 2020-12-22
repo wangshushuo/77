@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BizForm的原理 FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
+<meta name="description" content="BizForm的原理  model template  InitialController 由onBeansReady事件开始
+ entityName，params，initUrl axios.post  response.data entityName, solution.metadata, solution.template =&gt; configTransformer =&gt; {model,template} model =&gt; BizFormModel =&gt; model   onInitialStart  FormController  创建entityCRUD：formEntityCRUD =&gt; entityCRUD 初始化entityCRUD：initData =&gt; entityCRUD.init  init: initData &#43; initForm() =&gt; entityCRUD.form =&gt; form  initForm: EntityFormHelper.createForm(entityName, mergedFormOptions) =&gt; form      LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
 也就是initForm和createForm。
 initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
 initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
- 创建FormEntityCRUD  this.entityCRUD = new FormEntityCRUD(entityOptions); 使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下
-export interface IEntityOptions extends IBaseEntityOptions { httpOptions?: { headers?: { [key: string]: any, } }; } export interface IEntityOptions extends IEntityLifecycle { // entity 名称  entityName: string; // query 模式，是新增 还是 查询  queryMode?: &#39;blank&#39; | &#39;query&#39;; // 查询数据时，需要额外查询的字段  queryFields?: Array&lt;string&gt;; // 如果是查询或者删除，则需要给 id  dataId?: string; // formOptions  formOptions?: EntityFormOptions; // 是否为空行  isEmptyRow?">
+ editOptions dataOptions { queryFields, dataResolver }  entityCRUD  options.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="BizForm的原理" />
-<meta property="og:description" content="BizForm的原理 FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
+<meta property="og:description" content="BizForm的原理  model template  InitialController 由onBeansReady事件开始
+ entityName，params，initUrl axios.post  response.data entityName, solution.metadata, solution.template =&gt; configTransformer =&gt; {model,template} model =&gt; BizFormModel =&gt; model   onInitialStart  FormController  创建entityCRUD：formEntityCRUD =&gt; entityCRUD 初始化entityCRUD：initData =&gt; entityCRUD.init  init: initData &#43; initForm() =&gt; entityCRUD.form =&gt; form  initForm: EntityFormHelper.createForm(entityName, mergedFormOptions) =&gt; form      LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
 也就是initForm和createForm。
 initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
 initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
- 创建FormEntityCRUD  this.entityCRUD = new FormEntityCRUD(entityOptions); 使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下
-export interface IEntityOptions extends IBaseEntityOptions { httpOptions?: { headers?: { [key: string]: any, } }; } export interface IEntityOptions extends IEntityLifecycle { // entity 名称  entityName: string; // query 模式，是新增 还是 查询  queryMode?: &#39;blank&#39; | &#39;query&#39;; // 查询数据时，需要额外查询的字段  queryFields?: Array&lt;string&gt;; // 如果是查询或者删除，则需要给 id  dataId?: string; // formOptions  formOptions?: EntityFormOptions; // 是否为空行  isEmptyRow?" />
+ editOptions dataOptions { queryFields, dataResolver }  entityCRUD  options." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" />
 
@@ -24,7 +24,7 @@ export interface IEntityOptions extends IBaseEntityOptions { httpOptions?: { hea
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.5e5f4f21203f0f7ab87bf516221f5054c527c20baf8c7209dd27127ac154efa3.js" integrity="sha256-Xl9PISA/D3q4e/UWIh9QVMUnwguvjHIJ3ScSesFU76M="></script>
+<script defer src="/en.search.min.146d6666e61d4e480512520776723cd4c92ee2e64a5f1f93c85c83c5e3d01616.js" integrity="sha256-FG1mZuYdTkgFElIHdnI81Mku4uZKXx&#43;TyFyDxePQFhY="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -507,7 +507,10 @@ https://github.com/alex-shpak/hugo-book
   <nav id="TableOfContents">
   <ul>
     <li><a href="#bizform的原理">BizForm的原理</a></li>
+    <li><a href="#initialcontroller">InitialController</a></li>
     <li><a href="#formcontroller">FormController</a></li>
+    <li><a href="#entitycrud">entityCRUD</a></li>
+    <li><a href="#formentitycrud的参数">FormEntityCRUD的参数</a></li>
   </ul>
 </nav>
 
@@ -520,15 +523,60 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h2 id="bizform的原理">BizForm的原理</h2>
+<ul>
+<li>model</li>
+<li>template</li>
+</ul>
+<h2 id="initialcontroller">InitialController</h2>
+<p>由onBeansReady事件开始</p>
+<ul>
+<li>entityName，params，initUrl</li>
+<li>axios.post
+<ul>
+<li>response.data</li>
+<li>entityName, solution.metadata, solution.template =&gt; configTransformer =&gt; {model,template}</li>
+<li>model =&gt; BizFormModel =&gt; model</li>
+</ul>
+</li>
+<li>onInitialStart</li>
+</ul>
 <h2 id="formcontroller">FormController</h2>
+<ul>
+<li>创建entityCRUD：formEntityCRUD =&gt; entityCRUD</li>
+<li>初始化entityCRUD：initData =&gt; entityCRUD.init
+<ul>
+<li>init: initData + initForm() =&gt; entityCRUD.form =&gt; form
+<ul>
+<li>initForm: EntityFormHelper.createForm(entityName, mergedFormOptions) =&gt; form</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。</p>
 <p>也就是initForm和createForm。</p>
 <p>initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。
 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。</p>
 <p>initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。</p>
-<ol>
-<li>创建FormEntityCRUD</li>
-</ol>
+<ul>
+<li>editOptions</li>
+<li>dataOptions {
+queryFields,
+dataResolver
+}</li>
+</ul>
+<h2 id="entitycrud">entityCRUD</h2>
+<ul>
+<li>options.formOptions.model</li>
+<li>model.nest是对象，value是子model</li>
+<li>model.pick是数组，是字段名的集合</li>
+</ul>
+<p>construct：
+- attachDetailField：处理model.nest。如果nest对应的字段是entity，给nestModel加uid和editFlag。如果entity还是子表，还要保证它的pick中有ordinal
+- allPaths：遍历pick，遇到nest就遍历value的pick，递归</p>
+<p>init：
+- mst-form&gt;EntityFormHelper&gt;createForm</p>
+<h2 id="formentitycrud的参数">FormEntityCRUD的参数</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">entityCRUD</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormEntityCRUD</span>(<span style="color:#a6e22e">entityOptions</span>);
 </code></pre></div><p>使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IEntityOptions</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">IBaseEntityOptions</span> {
@@ -579,6 +627,27 @@ createForm实用initData对entityCRUD进行了初始化。然后触发了Lifecyc
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">isIgnoreCleanId?</span>: <span style="color:#66d9ef">boolean</span>;
 }
 
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">EntityFormOptions</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">MSTFormOptions</span> {
+    <span style="color:#a6e22e">model</span>: <span style="color:#66d9ef">EntityModelOptions</span>;
+    <span style="color:#a6e22e">initValue?</span>: <span style="color:#66d9ef">any</span>;
+}
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">EntityModelOptions</span> {
+    <span style="color:#a6e22e">pick</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
+    <span style="color:#a6e22e">pickOptions</span><span style="color:#f92672">?:</span> {
+        [<span style="color:#a6e22e">fieldName</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">IFormPickOption</span>;
+    };
+    <span style="color:#a6e22e">nest</span><span style="color:#f92672">?:</span> {
+        [<span style="color:#a6e22e">nestFieldName</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">EntityModelOptions</span>;
+    };
+    <span style="color:#a6e22e">extra</span><span style="color:#f92672">?:</span> {
+        [<span style="color:#a6e22e">fieldName</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">IType</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span>, <span style="color:#a6e22e">any</span>, <span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
+    };
+    <span style="color:#a6e22e">related</span><span style="color:#f92672">?:</span> {
+        [<span style="color:#a6e22e">fieldName</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> Array<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
+    };
+}
+
 </code></pre></div><p>总体来说分为三个阶段：</p>
 <ul>
 <li>创建model（mobx-state-tree）</li>
@@ -620,7 +689,10 @@ createForm实用initData对entityCRUD进行了初始化。然后触发了Lifecyc
   <nav id="TableOfContents">
   <ul>
     <li><a href="#bizform的原理">BizForm的原理</a></li>
+    <li><a href="#initialcontroller">InitialController</a></li>
     <li><a href="#formcontroller">FormController</a></li>
+    <li><a href="#entitycrud">entityCRUD</a></li>
+    <li><a href="#formentitycrud的参数">FormEntityCRUD的参数</a></li>
   </ul>
 </nav>
 

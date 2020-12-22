@@ -3,7 +3,7 @@ input.addEventListener('focus',init);input.addEventListener('keyup',search);docu
 const characterPressed=String.fromCharCode(event.charCode);if(!isHotkey(characterPressed)){return;}
 input.focus();event.preventDefault();}
 function isHotkey(character){const dataHotkeys=input.getAttribute('data-hotkeys')||'';return dataHotkeys.indexOf(character)>=0;}
-function init(){input.removeEventListener('focus',init);input.required=true;loadScript('/flexsearch.min.js');loadScript('/en.search-data.min.852af11b4f0c1fe7d0f05c98966ea5f6658642928225a890cf3f367e0fb53d7f.js',function(){input.required=false;search();});}
+function init(){input.removeEventListener('focus',init);input.required=true;loadScript('/flexsearch.min.js');loadScript('/en.search-data.min.ee36676ea3359694c45d7d7919a28b872dc8e5ec9cadff2bb107d34ca2805e64.js',function(){input.required=false;search();});}
 function search(){while(results.firstChild){results.removeChild(results.firstChild);}
 if(!input.value){return;}
 const searchHits=window.bookSearchIndex.search(input.value,10);searchHits.forEach(function(page){const li=document.createElement('li'),a=li.appendChild(document.createElement('a'));a.href=page.href;a.textContent=page.title;results.appendChild(li);});}
