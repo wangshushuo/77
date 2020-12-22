@@ -68,10 +68,9 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://api.wss.cool/docs/base/entity/</guid>
-      <description>模型、entity与元数据 模型 我们系统的后端是领域模型驱动的。 上图是预算编制方案的模型，其中包含了很多实体(entity)(蓝色的)。
-entity 一个entity就是一个对象，可以通过模型看到各个属性的名字和类型，以及entity之间的关系。
-我们前端工作就是为entity制作表单和列表，来创建entity的实例或展示entity的信息。
-元数据 前度的元数据主要是对entity的描述。entity的名字、entity的属性名等等。</description>
+      <description>模型、entity与元数据 模型 我们系统的后端是领域模型驱动的。比如下图是预算编制方案的模型，其中包含了很多实体(entity)(蓝色的)。 entity 一个entity就是一个对象，可以通过模型看到各个属性的名字和类型，以及entity之间的关系。
+我们前端的工作就是为entity制作表单和列表，来创建entity的实例或展示entity的信息。
+元数据 前端的元数据主要是对entity的描述。entity的名字、entity的属性名、属性类型等等。</description>
     </item>
     
     <item>
@@ -119,7 +118,11 @@ class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IL
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</guid>
-      <description>BizForm的原理 总体来说分为三个阶段：
+      <description>FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
+也就是initForm和createForm。
+initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
+initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
+BizForm的原理 总体来说分为三个阶段：
  创建model（mobx-state-tree） 创建form 展示form  </description>
     </item>
     

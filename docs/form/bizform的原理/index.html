@@ -4,10 +4,18 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BizForm的原理 总体来说分为三个阶段：
+<meta name="description" content="FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
+也就是initForm和createForm。
+initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
+initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
+BizForm的原理 总体来说分为三个阶段：
  创建model（mobx-state-tree） 创建form 展示form  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="BizForm的原理" />
-<meta property="og:description" content="BizForm的原理 总体来说分为三个阶段：
+<meta property="og:description" content="FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
+也就是initForm和createForm。
+initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
+initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
+BizForm的原理 总体来说分为三个阶段：
  创建model（mobx-state-tree） 创建form 展示form  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" />
@@ -16,7 +24,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.f25d8befba9941160e0640afef5d90d5561c3121082f5d9ede90bd9748d0f15a.js" integrity="sha256-8l2L77qZQRYOBkCv712Q1VYcMSEIL12e3pC9l0jQ8Vo="></script>
+<script defer src="/en.search.min.d6d7abc7c9b444e9e4d66369d6f9ed5b407913491c070a437d07d5b063598a5d.js" integrity="sha256-1terx8m0ROnk1mNp1vntW0B5E0kcBwpDfQfVsGNZil0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -478,6 +486,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#formcontroller">FormController</a></li>
     <li><a href="#bizform的原理">BizForm的原理</a></li>
   </ul>
 </nav>
@@ -490,7 +499,13 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h2 id="bizform的原理">BizForm的原理</h2>
+  <article class="markdown"><h2 id="formcontroller">FormController</h2>
+<p>LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。</p>
+<p>也就是initForm和createForm。</p>
+<p>initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。
+createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。</p>
+<p>initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。</p>
+<h2 id="bizform的原理">BizForm的原理</h2>
 <p>总体来说分为三个阶段：</p>
 <ul>
 <li>创建model（mobx-state-tree）</li>
@@ -531,6 +546,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#formcontroller">FormController</a></li>
     <li><a href="#bizform的原理">BizForm的原理</a></li>
   </ul>
 </nav>
