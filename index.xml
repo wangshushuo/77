@@ -118,12 +118,12 @@ class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IL
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</guid>
-      <description>FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
+      <description>BizForm的原理 FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
 也就是initForm和createForm。
 initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
 initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
-BizForm的原理 总体来说分为三个阶段：
- 创建model（mobx-state-tree） 创建form 展示form  </description>
+ 创建FormEntityCRUD  this.entityCRUD = new FormEntityCRUD(entityOptions); 使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下
+export interface IEntityOptions extends IBaseEntityOptions { httpOptions?: { headers?: { [key: string]: any, } }; } export interface IEntityOptions extends IEntityLifecycle { // entity 名称  entityName: string; // query 模式，是新增 还是 查询  queryMode?: &amp;#39;blank&amp;#39; | &amp;#39;query&amp;#39;; // 查询数据时，需要额外查询的字段  queryFields?: Array&amp;lt;string&amp;gt;; // 如果是查询或者删除，则需要给 id  dataId?: string; // formOptions  formOptions?: EntityFormOptions; // 是否为空行  isEmptyRow?</description>
     </item>
     
     <item>
@@ -157,6 +157,17 @@ More complete instructions are available at Install Hugo
 Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
 Follow the following steps:
  Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/base/grid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/grid/</guid>
+      <description>grid grid是前端解决子表和列表的方案，对应的组件是AdvanceGird。
+editOptions editOptions下面的editParams会传给单元格的渲染组件
+表单 </description>
     </item>
     
     <item>
@@ -204,6 +215,17 @@ Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii.
       
       <guid>https://api.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</guid>
       <description>通过go实现 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/</guid>
+      <description>审批时修改  声明需要修改的实体  在 trek/services/form-services/middlewares/common/can-edit-fields-when-approving.go 文件中，将需要这个功能的 entity 加到 needCanEditFieldsList 变量中即可。
+声明需要修改的字段  在审批流中设置
+验证  在移动端的表单的更多菜单中，如果有一个【修改】选项就说明成功了。</description>
     </item>
     
     <item>

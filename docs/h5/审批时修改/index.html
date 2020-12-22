@@ -4,18 +4,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="a">
+<meta name="description" content="审批时修改  声明需要修改的实体  在 trek/services/form-services/middlewares/common/can-edit-fields-when-approving.go 文件中，将需要这个功能的 entity 加到 needCanEditFieldsList 变量中即可。
+声明需要修改的字段  在审批流中设置
+验证  在移动端的表单的更多菜单中，如果有一个【修改】选项就说明成功了。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://api.wss.cool/docs/shortcodes/" />
+<meta property="og:description" content="审批时修改  声明需要修改的实体  在 trek/services/form-services/middlewares/common/can-edit-fields-when-approving.go 文件中，将需要这个功能的 entity 加到 needCanEditFieldsList 变量中即可。
+声明需要修改的字段  在审批流中设置
+验证  在移动端的表单的更多菜单中，如果有一个【修改】选项就说明成功了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://api.wss.cool/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/" />
 
-<title>Shortcodes | 77前端文档</title>
+<title>审批时修改 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
 <script defer src="/en.search.min.5e5f4f21203f0f7ab87bf516221f5054c527c20baf8c7209dd27127ac154efa3.js" integrity="sha256-Xl9PISA/D3q4e/UWIh9QVMUnwguvjHIJ3ScSesFU76M="></script>
-<link rel="alternate" type="application/rss+xml" href="https://api.wss.cool/docs/shortcodes/index.xml" title="77前端文档" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -335,7 +338,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/" class="">审批时修改</a>
+    <a href="/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/" class="active">审批时修改</a>
   
 
         </li>
@@ -403,7 +406,7 @@ https://github.com/alex-shpak/hugo-book
         <li class="book-section-flat" >
           
   
-    <a href="/docs/shortcodes/" class="collapsed active">Shortcodes</a>
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
   
 
           
@@ -411,90 +414,6 @@ https://github.com/alex-shpak/hugo-book
   
   
 
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/buttons/" class="">Buttons</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/columns/" class="">Columns</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/details/" class="">Details</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/expand/" class="">Expand</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/hints/" class="">Hints</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/katex/" class="">Katex</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/mermaid/" class="">Mermaid</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/tabs/" class="">Tabs</a>
-  
-
-        </li>
-      
-    
-  </ul>
   
 
         </li>
@@ -565,7 +484,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Shortcodes</strong>
+  <strong>审批时修改</strong>
 
   <label for="toc-control">
     
@@ -589,7 +508,19 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p>a</p>
+  <article class="markdown"><h1 id="审批时修改">审批时修改</h1>
+<ol>
+<li>声明需要修改的实体</li>
+</ol>
+<p>在 <code>trek/services/form-services/middlewares/common/can-edit-fields-when-approving.go</code> 文件中，将需要这个功能的 entity 加到 <code>needCanEditFieldsList</code> 变量中即可。</p>
+<ol start="2">
+<li>声明需要修改的字段</li>
+</ol>
+<p>在审批流中设置</p>
+<ol start="3">
+<li>验证</li>
+</ol>
+<p>在移动端的表单的更多菜单中，如果有一个【修改】选项就说明成功了。</p>
 </article>
  
       

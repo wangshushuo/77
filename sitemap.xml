@@ -155,6 +155,10 @@
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/base/grid/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</loc>
   </url>
   
@@ -180,6 +184,10 @@
   
   <url>
     <loc>https://api.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/</loc>
   </url>
   
   <url>

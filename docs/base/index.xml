@@ -30,5 +30,16 @@
       <description>预置数据 </description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/base/grid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/grid/</guid>
+      <description>grid grid是前端解决子表和列表的方案，对应的组件是AdvanceGird。
+editOptions editOptions下面的editParams会传给单元格的渲染组件
+表单 </description>
+    </item>
+    
   </channel>
 </rss>

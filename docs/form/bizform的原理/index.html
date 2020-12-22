@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
+<meta name="description" content="BizForm的原理 FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
 也就是initForm和createForm。
 initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
 initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
-BizForm的原理 总体来说分为三个阶段：
- 创建model（mobx-state-tree） 创建form 展示form  ">
+ 创建FormEntityCRUD  this.entityCRUD = new FormEntityCRUD(entityOptions); 使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下
+export interface IEntityOptions extends IBaseEntityOptions { httpOptions?: { headers?: { [key: string]: any, } }; } export interface IEntityOptions extends IEntityLifecycle { // entity 名称  entityName: string; // query 模式，是新增 还是 查询  queryMode?: &#39;blank&#39; | &#39;query&#39;; // 查询数据时，需要额外查询的字段  queryFields?: Array&lt;string&gt;; // 如果是查询或者删除，则需要给 id  dataId?: string; // formOptions  formOptions?: EntityFormOptions; // 是否为空行  isEmptyRow?">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="BizForm的原理" />
-<meta property="og:description" content="FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
+<meta property="og:description" content="BizForm的原理 FormController LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
 也就是initForm和createForm。
 initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
 initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
-BizForm的原理 总体来说分为三个阶段：
- 创建model（mobx-state-tree） 创建form 展示form  " />
+ 创建FormEntityCRUD  this.entityCRUD = new FormEntityCRUD(entityOptions); 使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下
+export interface IEntityOptions extends IBaseEntityOptions { httpOptions?: { headers?: { [key: string]: any, } }; } export interface IEntityOptions extends IEntityLifecycle { // entity 名称  entityName: string; // query 模式，是新增 还是 查询  queryMode?: &#39;blank&#39; | &#39;query&#39;; // 查询数据时，需要额外查询的字段  queryFields?: Array&lt;string&gt;; // 如果是查询或者删除，则需要给 id  dataId?: string; // formOptions  formOptions?: EntityFormOptions; // 是否为空行  isEmptyRow?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" />
 
@@ -24,7 +24,7 @@ BizForm的原理 总体来说分为三个阶段：
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.d6d7abc7c9b444e9e4d66369d6f9ed5b407913491c070a437d07d5b063598a5d.js" integrity="sha256-1terx8m0ROnk1mNp1vntW0B5E0kcBwpDfQfVsGNZil0="></script>
+<script defer src="/en.search.min.5e5f4f21203f0f7ab87bf516221f5054c527c20baf8c7209dd27127ac154efa3.js" integrity="sha256-Xl9PISA/D3q4e/UWIh9QVMUnwguvjHIJ3ScSesFU76M="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -103,6 +103,16 @@ https://github.com/alex-shpak/hugo-book
           
   
     <a href="/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/" class="">预置数据</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/grid/" class="">Grid</a>
   
 
         </li>
@@ -330,6 +340,16 @@ https://github.com/alex-shpak/hugo-book
   
   <ul>
     
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/" class="">审批时修改</a>
+  
+
+        </li>
+      
+    
   </ul>
   
 
@@ -486,8 +506,8 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#formcontroller">FormController</a></li>
     <li><a href="#bizform的原理">BizForm的原理</a></li>
+    <li><a href="#formcontroller">FormController</a></li>
   </ul>
 </nav>
 
@@ -499,14 +519,67 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h2 id="formcontroller">FormController</h2>
+  <article class="markdown"><h2 id="bizform的原理">BizForm的原理</h2>
+<h2 id="formcontroller">FormController</h2>
 <p>LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。</p>
 <p>也就是initForm和createForm。</p>
 <p>initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。
 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。</p>
 <p>initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。</p>
-<h2 id="bizform的原理">BizForm的原理</h2>
-<p>总体来说分为三个阶段：</p>
+<ol>
+<li>创建FormEntityCRUD</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">entityCRUD</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormEntityCRUD</span>(<span style="color:#a6e22e">entityOptions</span>);
+</code></pre></div><p>使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IEntityOptions</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">IBaseEntityOptions</span> {
+    <span style="color:#a6e22e">httpOptions</span><span style="color:#f92672">?:</span> {
+        <span style="color:#a6e22e">headers</span><span style="color:#f92672">?:</span> {
+            [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>,
+        }
+    };
+}
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IEntityOptions</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">IEntityLifecycle</span> {
+  <span style="color:#75715e">// entity 名称
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entityName</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#75715e">// query 模式，是新增 还是 查询
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">queryMode</span><span style="color:#f92672">?:</span> <span style="color:#e6db74">&#39;blank&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;query&#39;</span>;
+  <span style="color:#75715e">// 查询数据时，需要额外查询的字段
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">queryFields?</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
+  <span style="color:#75715e">// 如果是查询或者删除，则需要给 id
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">dataId?</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#75715e">// formOptions
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">formOptions?</span>: <span style="color:#66d9ef">EntityFormOptions</span>;
+  <span style="color:#75715e">// 是否为空行
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">isEmptyRow</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">logicPath</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">path</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">rowField</span>: <span style="color:#66d9ef">MSTFormField</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span>;
+
+  <span style="color:#75715e">// 在 update 时，阻止数据处理，返回原始数据
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">suppressDataFilterWhenUpdate?</span>: <span style="color:#66d9ef">boolean</span>;
+
+  <span style="color:#75715e">// 阻止空行的清理
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">suppressCleanEmptyRow?</span>: <span style="color:#66d9ef">boolean</span>;
+
+  <span style="color:#75715e">// 阻止unchanged行的清理
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">suppressCleanUnchangeRow</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">logicPath</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">path</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">rowField</span>: <span style="color:#66d9ef">MSTFormField</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span>;
+
+  <span style="color:#75715e">// 在保存成功后阻止刷新
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">suppressQueryAfterSave?</span>: <span style="color:#66d9ef">boolean</span>;
+  <span style="color:#75715e">// 需要返回 responseData
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">needResponseData?</span>: <span style="color:#66d9ef">boolean</span>;
+
+  <span style="color:#75715e">// 在clean时，需要忽略的字段
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ignoreCleanPath?</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
+  <span style="color:#75715e">// 在clean时，需要保留的字段
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">containCleanPath?</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
+  <span style="color:#75715e">// 排序方法
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">sortResolver</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">path</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">data</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>)<span style="color:#f92672">:</span> Array<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
+  <span style="color:#75715e">// 数据处理器
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">processors?</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">IDataProcessor</span><span style="color:#f92672">&gt;</span>;
+
+  <span style="color:#75715e">// 是否清理ID
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">isIgnoreCleanId?</span>: <span style="color:#66d9ef">boolean</span>;
+}
+
+</code></pre></div><p>总体来说分为三个阶段：</p>
 <ul>
 <li>创建model（mobx-state-tree）</li>
 <li>创建form</li>
@@ -546,8 +619,8 @@ createForm实用initData对entityCRUD进行了初始化。然后触发了Lifecyc
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#formcontroller">FormController</a></li>
     <li><a href="#bizform的原理">BizForm的原理</a></li>
+    <li><a href="#formcontroller">FormController</a></li>
   </ul>
 </nav>
 
