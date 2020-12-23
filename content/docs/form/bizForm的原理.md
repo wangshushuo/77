@@ -4,7 +4,27 @@ weight: 300
 ---
 ## BizForm的原理
 
+- model
+- template
+
+## InitialController
+由onBeansReady事件开始
+
+- entityName，params，initUrl
+- axios.post
+    - response.data
+    - entityName, solution.metadata, solution.template => configTransformer => {model,template}
+    - model => BizFormModel => model
+- onInitialStart
+
+
 ## FormController
+- 创建entityCRUD：formEntityCRUD => entityCRUD
+- 初始化entityCRUD：initData => entityCRUD.init 
+    - init: initData + initForm() => entityCRUD.form => form
+        - initForm: EntityFormHelper.createForm(entityName, mergedFormOptions) => form
+
+
 LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
 
 也就是initForm和createForm。
@@ -14,8 +34,25 @@ createForm实用initData对entityCRUD进行了初始化。然后触发了Lifecyc
 
 initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
 
+- editOptions
+- dataOptions {
+    queryFields,
+    dataResolver
+}
 
-1. 创建FormEntityCRUD
+## entityCRUD
+- options.formOptions.model
+- model.nest是对象，value是子model
+- model.pick是数组，是字段名的集合
+
+construct：
+    - attachDetailField：处理model.nest。如果nest对应的字段是entity，给nestModel加uid和editFlag。如果entity还是子表，还要保证它的pick中有ordinal
+    - allPaths：遍历pick，遇到nest就遍历value的pick，递归
+
+init：
+    - mst-form>EntityFormHelper>createForm
+
+## FormEntityCRUD的参数
 
 ```ts
 this.entityCRUD = new FormEntityCRUD(entityOptions);
@@ -69,6 +106,27 @@ export interface IEntityOptions extends IEntityLifecycle {
 
   // 是否清理ID
   isIgnoreCleanId?: boolean;
+}
+
+export interface EntityFormOptions extends MSTFormOptions {
+    model: EntityModelOptions;
+    initValue?: any;
+}
+
+export interface EntityModelOptions {
+    pick: Array<string>;
+    pickOptions?: {
+        [fieldName: string]: IFormPickOption;
+    };
+    nest?: {
+        [nestFieldName: string]: EntityModelOptions;
+    };
+    extra?: {
+        [fieldName: string]: IType<any, any, any>;
+    };
+    related?: {
+        [fieldName: string]: Array<string>;
+    };
 }
 
 ```
