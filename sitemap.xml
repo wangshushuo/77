@@ -155,11 +155,31 @@
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/base/entitycrud/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/base/gen%E4%B8%8Etsc/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/base/grid/</loc>
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/component/tablist/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</loc>
   </url>
   
   <url>

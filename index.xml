@@ -161,6 +161,25 @@ Follow the following steps:
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/base/entitycrud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/entitycrud/</guid>
+      <description>脱离form对entity进行crud import { EntityCRUDHelper } from &amp;#39;@root/solutions/entity-crud&amp;#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) 注意事项 entity不能是子表。子表必须通过主表创建。
+EntityCRUDHelper的其他api 方法 | 参数 | 描述 :&amp;mdash;:|:&amp;mdash;|:&amp;mdash; create | entityName, data | 创建一条记录 update | entityName, data | 修改一条记录</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/base/gen%E4%B8%8Etsc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/gen%E4%B8%8Etsc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/base/grid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -172,11 +191,40 @@ editOptions editOptions下面的editParams会传给单元格的渲染组件
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</guid>
+      <description>数据权限 前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，
+const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { criteriaStr: `projectId=&amp;#39;${this.projectId}&amp;#39;`, sorts: [{ name: &amp;#39;createdTime&amp;#39;, isDesending: true }], contextObject: &amp;#39;ignoreDataAuth&amp;#39;, } as IDataLoaderQueryOptions); </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</guid>
       <description>权限 import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View) </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/component/tablist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/component/tablist/</guid>
+      <description>TabList &amp;lt;TabList focusIndex={this.focusIndex} onTabChange={index =&amp;gt; { }} &amp;gt; &amp;lt;Tab key={1} title=&amp;#34;编码方案&amp;#34; /&amp;gt; &amp;lt;Tab key={2} title=&amp;#34;对照码&amp;#34; /&amp;gt; &amp;lt;/TabList&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</guid>
+      <description>如何做详设？ 一个功能如何实现？
+ 改旧的功能  原来怎么实现的 数据从自哪个entity、哪个字段？进行了哪些拼装、组合、转换？   新的功能  公共的支持吗？  用过吗？怎么用？   非标的吗？如何设计？  如何管理状态、数据？ 数据从自哪个entity、哪个字段？需要拼装、组合、转换吗？ 有哪些数据需要展示？ 哪些数据分给哪个组件？ 组件  能使用哪些公共组件？ 组件需要的参数 内部需要管理状态吗？   保存数据时需要转换数据吗？ 回显时需要转换数据吗？      </description>
     </item>
     
     <item>

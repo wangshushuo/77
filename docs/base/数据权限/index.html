@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Columns Columns help organize shorter pieces of content horizontally for readability.
-{{&lt; columns &gt;}} &lt;!-- begin columns block --&gt; # Left Content Lorem markdownum insigne... &lt;---&gt; &lt;!-- magic sparator, between columns --&gt; # Mid Content Lorem markdownum insigne... &lt;---&gt; &lt;!-- magic sparator, between columns --&gt; # Right Content Lorem markdownum insigne... {{&lt; /columns &gt;}} Example Left Content Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!">
+<meta name="description" content="数据权限 前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，
+const dataLoader = new DataLoader(EN_BudgetPlan, [&#39;id&#39;], { criteriaStr: `projectId=&#39;${this.projectId}&#39;`, sorts: [{ name: &#39;createdTime&#39;, isDesending: true }], contextObject: &#39;ignoreDataAuth&#39;, } as IDataLoaderQueryOptions); ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Columns Columns help organize shorter pieces of content horizontally for readability.
-{{&lt; columns &gt;}} &lt;!-- begin columns block --&gt; # Left Content Lorem markdownum insigne... &lt;---&gt; &lt;!-- magic sparator, between columns --&gt; # Mid Content Lorem markdownum insigne... &lt;---&gt; &lt;!-- magic sparator, between columns --&gt; # Right Content Lorem markdownum insigne... {{&lt; /columns &gt;}} Example Left Content Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!" />
+<meta property="og:description" content="数据权限 前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，
+const dataLoader = new DataLoader(EN_BudgetPlan, [&#39;id&#39;], { criteriaStr: `projectId=&#39;${this.projectId}&#39;`, sorts: [{ name: &#39;createdTime&#39;, isDesending: true }], contextObject: &#39;ignoreDataAuth&#39;, } as IDataLoaderQueryOptions); " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://api.wss.cool/docs/shortcodes/columns/" />
+<meta property="og:url" content="https://api.wss.cool/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/" />
 
-<title>Columns | 77前端文档</title>
+<title>数据权限 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
@@ -126,7 +126,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/" class="">数据权限</a>
+    <a href="/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/" class="active">数据权限</a>
   
 
         </li>
@@ -455,90 +455,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/buttons/" class="">Buttons</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/columns/" class="active">Columns</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/details/" class="">Details</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/expand/" class="">Expand</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/hints/" class="">Hints</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/katex/" class="">Katex</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/mermaid/" class="">Mermaid</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/shortcodes/tabs/" class="">Tabs</a>
-  
-
-        </li>
-      
-    
-  </ul>
-  
 
         </li>
       
@@ -608,7 +524,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Columns</strong>
+  <strong>数据权限</strong>
 
   <label for="toc-control">
     
@@ -622,11 +538,7 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#example">Example</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
 
     </aside>
@@ -636,50 +548,14 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="columns">Columns</h1>
-<p>Columns help organize shorter pieces of content horizontally for readability.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{&lt; <span style="color:#f92672">columns</span> &gt;}} <span style="color:#75715e">&lt;!-- begin columns block --&gt;</span>
-# Left Content
-Lorem markdownum insigne...
-
-&lt;<span style="color:#f92672">---</span>&gt; <span style="color:#75715e">&lt;!-- magic sparator, between columns --&gt;</span>
-
-# Mid Content
-Lorem markdownum insigne...
-
-&lt;<span style="color:#f92672">---</span>&gt; <span style="color:#75715e">&lt;!-- magic sparator, between columns --&gt;</span>
-
-# Right Content
-Lorem markdownum insigne...
-{{&lt; /<span style="color:#f92672">columns</span> &gt;}}
-</code></pre></div><h2 id="example">Example</h2>
-<div class="book-columns flex flex-wrap">
-  
-  <div class="flex-even markdown-inner">
-    <h2 id="left-content">Left Content</h2>
-<p>Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-protulit, sed sed aere valvis inhaesuro Pallas animam: qui <em>quid</em>, ignes.
-Miseratus fonte Ditis conubia.
-  </div>
-  
-  <div class="flex-even markdown-inner">
-    <h2 id="mid-content">Mid Content</h2>
-<p>Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter!
-  </div>
-  
-  <div class="flex-even markdown-inner">
-    <h2 id="right-content">Right Content</h2>
-<p>Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-protulit, sed sed aere valvis inhaesuro Pallas animam: qui <em>quid</em>, ignes.
-Miseratus fonte Ditis conubia.
-  </div>
-  
-</div>
-
-</article>
+  <article class="markdown"><h1 id="数据权限">数据权限</h1>
+<p>前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dataLoader</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DataLoader</span>(<span style="color:#a6e22e">EN_BudgetPlan</span>, [<span style="color:#e6db74">&#39;id&#39;</span>], {
+  <span style="color:#a6e22e">criteriaStr</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`projectId=&#39;</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">projectId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;`</span>,
+  <span style="color:#a6e22e">sorts</span><span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;createdTime&#39;</span>, <span style="color:#a6e22e">isDesending</span>: <span style="color:#66d9ef">true</span> }],
+  <span style="color:#a6e22e">contextObject</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ignoreDataAuth&#39;</span>,
+} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">IDataLoaderQueryOptions</span>);
+</code></pre></div></article>
  
       
 
@@ -711,11 +587,7 @@ Miseratus fonte Ditis conubia.
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#example">Example</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
  
     </aside>
