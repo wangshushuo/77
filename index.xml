@@ -201,6 +201,16 @@ const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { crite
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/base/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</guid>
+      <description>新建开发用租户 新环境就只有一个test1账号可以用，怎么自己新建一个租户、账号呢？
+找运维开一个运维平台的账号 进入运维平台，http://ops.q7link.com:8080/ 在运维工具&amp;gt;环境信息，中找到你的环境，以bj-test为例，看哪个服务器部署了qbos，然后复制这个服务器的IP  访问服务器IP的5000端口。用test1账号通用密码登录。如果登录失败，要进行初始化管理员  选择test1，点右下角的初始化按钮，就可以了。然后还是用test1登录。   登录后，进到租户页面，点新建按钮创建租户。信息随便填。 在你新建的租户这行的最后面有个操作栏，里面有个”权益”按钮，进去以后在点“新建” 产品名称，选择“标准版”，它的权益比较全  生效时间如果选错了在重选时会不大好操作，可以先把它叉掉。  填好以后，出来到租户列表，操作里有个“开通“按钮，填上名字和”你的手机“，这个手机后面激活账号时要收短信。 开通确定以后要等一会，看”企业属性”栏为正式时，就可以去登录了。 我们开发都是在localhost:3000，这里要激活刚刚那个手机号作为登录的账号  激活后，选一下会计期间，换个页面在选一下启用模块就都WWok了。  </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -267,6 +277,16 @@ Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii.
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/h5/tips/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/h5/tips/</guid>
+      <description>子表单独页面展示 默认不显示子表，需要通过查看明细跳到另一个页面查看。
+如果想在主表下面直接显示子表，像下面这样 可以在DisplayOptions或者constructor中设置isDetailSinglePage为false </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -274,6 +294,16 @@ Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii.
       <description>审批时修改  声明需要修改的实体  在 trek/services/form-services/middlewares/common/can-edit-fields-when-approving.go 文件中，将需要这个功能的 entity 加到 needCanEditFieldsList 变量中即可。
 声明需要修改的字段  在审批流中设置
 验证  在移动端的表单的更多菜单中，如果有一个【修改】选项就说明成功了。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</guid>
+      <description>在apps/link-h5/src/authorize/index.ts文件中 讲下面的代码替换掉原来的代码
+class Authorize{ auth = { &amp;#34;tenantId&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;accountId&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;accessToken&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;refreshToken&amp;#34;: &amp;#34;xxx&amp;#34; } private _token = this.auth.accessToken; private _refreshToken = this.auth.refreshToken; public tenantId = this.auth.tenantId; } auth的值，可以在这里搞 </description>
     </item>
     
     <item>

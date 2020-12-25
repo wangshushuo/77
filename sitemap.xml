@@ -171,6 +171,10 @@
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/base/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</loc>
   </url>
   
@@ -207,7 +211,15 @@
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/h5/tips/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</loc>
   </url>
   
   <url>

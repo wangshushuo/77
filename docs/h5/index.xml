@@ -12,6 +12,16 @@
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/h5/tips/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/h5/tips/</guid>
+      <description>子表单独页面展示 默认不显示子表，需要通过查看明细跳到另一个页面查看。
+如果想在主表下面直接显示子表，像下面这样 可以在DisplayOptions或者constructor中设置isDetailSinglePage为false </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -19,6 +29,16 @@
       <description>审批时修改  声明需要修改的实体  在 trek/services/form-services/middlewares/common/can-edit-fields-when-approving.go 文件中，将需要这个功能的 entity 加到 needCanEditFieldsList 变量中即可。
 声明需要修改的字段  在审批流中设置
 验证  在移动端的表单的更多菜单中，如果有一个【修改】选项就说明成功了。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://api.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</guid>
+      <description>在apps/link-h5/src/authorize/index.ts文件中 讲下面的代码替换掉原来的代码
+class Authorize{ auth = { &amp;#34;tenantId&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;accountId&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;accessToken&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;refreshToken&amp;#34;: &amp;#34;xxx&amp;#34; } private _token = this.auth.accessToken; private _refreshToken = this.auth.refreshToken; public tenantId = this.auth.tenantId; } auth的值，可以在这里搞 </description>
     </item>
     
   </channel>
