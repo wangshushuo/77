@@ -24,7 +24,7 @@ initEntityOptions也是值得一提的，它组织了entity初始化需要的参
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.f6bef2c2ebadb43ae67ce97631c6b4c5baedcae372ba76a9d686290321abc0d1.js" integrity="sha256-9r7ywuuttDrmfOl2Mca0xbrtyuNyunap1oYpAyGrwNE="></script>
+<script defer src="/en.search.min.2c089371b5265d2100421fd86a6c19bdf55e25d45274ff8f194a52ba7c2d552b.js" integrity="sha256-LAiTcbUmXSEAQh/YamwZvfVeJdRSdP&#43;PGUpSunwtVSs="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -396,6 +396,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/docs/h5/%E6%9B%B4%E5%A4%9A%E6%8C%89%E9%92%AE/" class="">更多按钮</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <a href="/docs/h5/%E7%99%BB%E5%BD%95/" class="">登录</a>
   
 
@@ -640,14 +650,18 @@ dataResolver
 <h2 id="entitycrud">entityCRUD</h2>
 <ul>
 <li>options.formOptions.model</li>
-<li>model.nest是对象，value是子model</li>
+<li>model.nest是对象，key是字段名，value是子model</li>
 <li>model.pick是数组，是字段名的集合</li>
 </ul>
-<p>construct：
-- attachDetailField：处理model.nest。如果nest对应的字段是entity，给nestModel加uid和editFlag。如果entity还是子表，还要保证它的pick中有ordinal
-- allPaths：遍历pick，遇到nest就遍历value的pick，递归</p>
-<p>init：
-- mst-form&gt;EntityFormHelper&gt;createForm</p>
+<p>construct：</p>
+<ul>
+<li>attachDetailField：处理model.nest。如果nest对应的字段是entity，给nestModel加uid和editFlag。如果entity还是子表，还要保证它的pick中有ordinal</li>
+<li>allPaths：遍历pick，遇到nest就遍历value的pick，递归</li>
+</ul>
+<p>init：</p>
+<ul>
+<li>mst-form&gt;EntityFormHelper&gt;createForm</li>
+</ul>
 <h2 id="formentitycrud的参数">FormEntityCRUD的参数</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">entityCRUD</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormEntityCRUD</span>(<span style="color:#a6e22e">entityOptions</span>);
 </code></pre></div><p>使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下</p>

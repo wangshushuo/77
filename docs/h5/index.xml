@@ -33,6 +33,15 @@
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/h5/%E6%9B%B4%E5%A4%9A%E6%8C%89%E9%92%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/h5/%E6%9B%B4%E5%A4%9A%E6%8C%89%E9%92%AE/</guid>
+      <description>更多按钮  过滤掉子按钮：在getMenuOptions方法中可以控制不显示哪些按钮。 动态控制按钮显示：MenuController.setVisible方法  class ProjectScheduleFormPresenter extends EasyBizFormPresenter&amp;lt;IProjectSchedule&amp;gt; { constructor(options: IEasyBizFormPresenterOptions) { super(EN_ProjectSchedule, options); } isRestartVisible() { const currentUserId = store.currentUser.id; const formCreateUserId = oc(this.formValue).createdUser.id(&amp;#39;&amp;#39;); this.formPresenter .getBean(BeanNames.MenuController) .setVisible(BizFormMenuButtons.Restart, currentUserId === formCreateUserId); } protected onFormCreated(form: EntityForm, disposers: Array&amp;lt;IDisposer&amp;gt;) { this.isRestartVisible(); } protected getMenuOptions(): MenuOptions { const defaultMenuOptions = super.getMenuOptions(); const excludeButtons: BizFormMenuCreator[] = [buildInMenus.Aborted, buildInMenus.Copy]; const filterCopyMenu = defaultMenuOptions.menus.filter(menu =&amp;gt; !excludeButtons.includes(menu)); return { ...defaultMenuOptions, menus: filterCopyMenu, }; } </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
