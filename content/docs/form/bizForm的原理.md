@@ -42,15 +42,15 @@ initEntityOptions也是值得一提的，它组织了entity初始化需要的参
 
 ## entityCRUD
 - options.formOptions.model
-- model.nest是对象，value是子model
+- model.nest是对象，key是字段名，value是子model
 - model.pick是数组，是字段名的集合
 
 construct：
-    - attachDetailField：处理model.nest。如果nest对应的字段是entity，给nestModel加uid和editFlag。如果entity还是子表，还要保证它的pick中有ordinal
-    - allPaths：遍历pick，遇到nest就遍历value的pick，递归
+- attachDetailField：处理model.nest。如果nest对应的字段是entity，给nestModel加uid和editFlag。如果entity还是子表，还要保证它的pick中有ordinal
+- allPaths：遍历pick，遇到nest就遍历value的pick，递归
 
 init：
-    - mst-form>EntityFormHelper>createForm
+- mst-form>EntityFormHelper>createForm
 
 ## FormEntityCRUD的参数
 
