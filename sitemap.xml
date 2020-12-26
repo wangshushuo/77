@@ -175,10 +175,6 @@
   </url>
   
   <url>
-    <loc>https://api.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/</loc>
-  </url>
-  
-  <url>
     <loc>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</loc>
   </url>
   
@@ -292,6 +288,10 @@
   
   <url>
     <loc>https://api.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/</loc>
   </url>
   
   <url>

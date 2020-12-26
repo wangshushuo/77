@@ -12,6 +12,15 @@
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</guid>
+      <description>权限 import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View) </description>
+    </item>
+    
+    <item>
+      <title>后端的接口</title>
       <link>https://api.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -21,17 +30,9 @@
 比如这样
 // 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost + &amp;#34;/baseapp/BudgetAccount/batchSetIndicators&amp;#34; 其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
 二、添加go的接口 找到文件 trek/web/controllers/web-controllers/transparent/index.go
- 在 BeforeActivation 方法中创建go的接口  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &amp;#34;/BudgetAccount/batchSetIndicators&amp;#34;, &amp;#34;BudgetAccountBatchSetIndicators&amp;#34;) // ... } 其中b.Handle 方法的三个参数分别是
- http method go接口url（前端访问的url） go接口的处理函数  实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法 1 2 3 4 5 6 7 8 9 10 11 12 13  // ... func (c *transparentController) BeforeActivation(b mvc.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</guid>
-      <description>权限 import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View) </description>
+1. 在 BeforeActivation 方法中创建go的接口 1 2 3 4 5  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &amp;#34;/BudgetAccount/batchSetIndicators&amp;#34;, &amp;#34;BudgetAccountBatchSetIndicators&amp;#34;)  // ... }   其中b.Handle 方法的三个参数分别是
+ http method go接口url（前端访问的url） go接口的处理函数  2. 实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法，也就是接口处理函数，内容就是直接给后端发起一个请求。
+其中第11行是第一步中声明的后端url地址 1 2 3 4 5 6 7 8 9 10 11 12  func (c *transparentController) BeforeActivation(b mvc.</description>
     </item>
     
   </channel>
