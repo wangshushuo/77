@@ -175,15 +175,15 @@
   </url>
   
   <url>
+    <loc>https://api.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/</loc>
+  </url>
+  
+  <url>
     <loc>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</loc>
   </url>
   
   <url>
     <loc>https://api.wss.cool/docs/component/tablist/</loc>
-  </url>
-  
-  <url>
-    <loc>https://api.wss.cool/docs/design/</loc>
   </url>
   
   <url>
@@ -300,6 +300,10 @@
   
   <url>
     <loc>https://api.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/</loc>
+  </url>
+  
+  <url>
+    <loc>https://api.wss.cool/docs/design/</loc>
   </url>
   
 </urlset>

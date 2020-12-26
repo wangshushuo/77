@@ -211,6 +211,21 @@ const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { crite
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/</guid>
+      <description>接口 后端提供的接口，只能通过go访问，因为前端只能访问到go不能直接访问到后端。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。下面介绍一下实现一个go接口的步骤。
+一、声明后端接口地址 在文件 trek/urls/url.go 中声明接口地址
+比如这样
+// 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost + &amp;#34;/baseapp/BudgetAccount/batchSetIndicators&amp;#34; 其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
+二、添加go的接口 找到文件 trek/web/controllers/web-controllers/transparent/index.go
+ 在 BeforeActivation 方法中创建go的接口  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &amp;#34;/BudgetAccount/batchSetIndicators&amp;#34;, &amp;#34;BudgetAccountBatchSetIndicators&amp;#34;) // ... } 其中b.Handle 方法的三个参数分别是
+ http method go接口url（前端访问的url） go接口的处理函数  实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法 1 2 3 4 5 6 7 8 9 10 11 12 13  // ... func (c *transparentController) BeforeActivation(b mvc.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

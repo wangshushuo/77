@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="接口 后端提供的接口，只能通过go访问，因为前端只能访问到go不能直接访问到后端。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。下面介绍一下实现一个go接口的步骤。
+一、声明后端接口地址 在文件 trek/urls/url.go 中声明接口地址
+比如这样
+// 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost &#43; &#34;/baseapp/BudgetAccount/batchSetIndicators&#34; 其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
+二、添加go的接口 找到文件 trek/web/controllers/web-controllers/transparent/index.go
+ 在 BeforeActivation 方法中创建go的接口  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &#34;/BudgetAccount/batchSetIndicators&#34;, &#34;BudgetAccountBatchSetIndicators&#34;) // ... } 其中b.Handle 方法的三个参数分别是
+ http method go接口url（前端访问的url） go接口的处理函数  实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法 1 2 3 4 5 6 7 8 9 10 11 12 13  // ... func (c *transparentController) BeforeActivation(b mvc.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="接口 后端提供的接口，只能通过go访问，因为前端只能访问到go不能直接访问到后端。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。下面介绍一下实现一个go接口的步骤。
+一、声明后端接口地址 在文件 trek/urls/url.go 中声明接口地址
+比如这样
+// 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost &#43; &#34;/baseapp/BudgetAccount/batchSetIndicators&#34; 其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
+二、添加go的接口 找到文件 trek/web/controllers/web-controllers/transparent/index.go
+ 在 BeforeActivation 方法中创建go的接口  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &#34;/BudgetAccount/batchSetIndicators&#34;, &#34;BudgetAccountBatchSetIndicators&#34;) // ... } 其中b.Handle 方法的三个参数分别是
+ http method go接口url（前端访问的url） go接口的处理函数  实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法 1 2 3 4 5 6 7 8 9 10 11 12 13  // ... func (c *transparentController) BeforeActivation(b mvc." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://api.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/" />
+
+<title>接口 | 77前端文档</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.99e26e986f78fa54757d9c6444347e6bc40e528996215dbe3f532e0e798b947c.js" integrity="sha256-meJumG94&#43;lR1fZxkRDR&#43;a8QOUomWIV2&#43;P1MuDnmLlHw="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>77前端文档</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <span>前端框架基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/entity/" class="">模型、entity与元数据</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/" class="">预置数据</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/entitycrud/" class="">Entity C R U D</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/grid/" class="">Grid</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/" class="">数据权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/" class="">新建租户</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/what-is-bizform/" class="">什么是BizForm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="">BizForm的组成部分</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" class="">BizForm的原理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm实用攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/" class="">打印模板</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>Menu Button</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/" class="">修改Menu中的Button</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/" class="">新建一个MenuButton</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/" class="">加一个field</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案实用攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E7%A9%BF%E9%80%8F/" class="">穿透</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>虚拟字段</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+    
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/" class="">查询方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>H5/小程序</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/tips/" class="">Tips</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/" class="">审批时修改</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E6%9B%B4%E5%A4%9A%E6%8C%89%E9%92%AE/" class="">更多按钮</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E7%99%BB%E5%BD%95/" class="">登录</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>通用功能的攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%8E%A5%E5%8F%A3/" class="active">接口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/tablist/" class="">Tab List</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>List</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/docs/shortcodes/" class="collapsed ">Shortcodes</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/example/" class="collapsed ">Introduction</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>设计</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/" class="">如何做详设</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>接口</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一声明后端接口地址">一、声明后端接口地址</a></li>
+    <li><a href="#二添加go的接口">二、添加go的接口</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="接口">接口</h1>
+<p>后端提供的接口，只能通过go访问，因为前端只能访问到go不能直接访问到后端。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。下面介绍一下实现一个go接口的步骤。</p>
+<h2 id="一声明后端接口地址">一、声明后端接口地址</h2>
+<p>在文件 <code>trek/urls/url.go</code> 中声明接口地址</p>
+<p>比如这样</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#75715e">// 批量设置执行指标
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">BudgetBatchSetIndicators</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">BudgetHost</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/baseapp/BudgetAccount/batchSetIndicators&#34;</span>
+</code></pre></div><p>其中的 <code>BudgetHost</code> 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。</p>
+<h2 id="二添加go的接口">二、添加go的接口</h2>
+<p>找到文件 <code>trek/web/controllers/web-controllers/transparent/index.go</code></p>
+<ol>
+<li>在 <code>BeforeActivation</code> 方法中创建go的接口</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">BeforeActivation</span>(<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">mvc</span>.<span style="color:#a6e22e">BeforeActivation</span>) {
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#a6e22e">iris</span>.<span style="color:#a6e22e">MethodPost</span>, <span style="color:#e6db74">&#34;/BudgetAccount/batchSetIndicators&#34;</span>, <span style="color:#e6db74">&#34;BudgetAccountBatchSetIndicators&#34;</span>)
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>其中<code>b.Handle</code> 方法的三个参数分别是</p>
+<ul>
+<li>http method</li>
+<li>go接口url（前端访问的url）</li>
+<li>go接口的处理函数</li>
+</ul>
+<ol start="2">
+<li>实现“处理函数”
+在上面提到的<code>BeforeActivation</code>方法下面，创建一个与它同级的方法
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">BeforeActivation</span>(<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">mvc</span>.<span style="color:#a6e22e">BeforeActivation</span>) {
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#a6e22e">iris</span>.<span style="color:#a6e22e">MethodPost</span>, <span style="color:#e6db74">&#34;/BudgetAccount/batchSetIndicators&#34;</span>, <span style="color:#e6db74">&#34;BudgetAccountBatchSetIndicators&#34;</span>)
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>}
+<span style="display:block;width:100%;background-color:#3c3d38">
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">BudgetAccountBatchSetIndicators</span>() <span style="color:#66d9ef">interface</span>{} {
+</span><span style="display:block;width:100%;background-color:#3c3d38">	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Fetch</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">TFetchOption</span>{
+</span><span style="display:block;width:100%;background-color:#3c3d38">		<span style="color:#a6e22e">Method</span>: <span style="color:#e6db74">&#34;post&#34;</span>,
+</span><span style="display:block;width:100%;background-color:#3c3d38">		<span style="color:#a6e22e">Url</span>:	<span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">BudgetBatchSetIndicators</span>,
+</span><span style="display:block;width:100%;background-color:#3c3d38">	})
+</span>}</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">BudgetAccountBatchSetIndicators</span>() <span style="color:#66d9ef">interface</span>{} {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Fetch</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">TFetchOption</span>{
+		<span style="color:#a6e22e">Method</span>: <span style="color:#e6db74">&#34;post&#34;</span>,
+		<span style="color:#a6e22e">Url</span>:	<span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">BudgetBatchSetIndicators</span>,
+	})
+}
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一声明后端接口地址">一、声明后端接口地址</a></li>
+    <li><a href="#二添加go的接口">二、添加go的接口</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
