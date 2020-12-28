@@ -426,6 +426,17 @@ Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat str
     </item>
     
     <item>
+      <title>GQL plus</title>
+      <link>https://api.wss.cool/docs/base/gql-plus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/gql-plus/</guid>
+      <description>gql plus 如何用gql做关联查询/子查询呢？看下面的例子。
+BudgetIndicator(criteriaStr: &amp;quot;isComposite=true&amp;quot;) { isComposite id parents { parentIndicatorId childIndicator { name id } } a: exprField(expr: &amp;quot;(select string_agg(id,&#39;,&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) b: exprField(expr: &amp;quot;(select count(id) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) } 每个实体上都有一个exprField字段，这个字段接收一个sql作为expr参数。其中的m.id是主表（BudgetIndicator）的id，也就是说子查询中可以通过m引用到主表。
+这样就可以避免在前端进行多次查gql了。</description>
+    </item>
+    
+    <item>
       <title>修改Menu中的Button</title>
       <link>https://api.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
