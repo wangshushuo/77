@@ -51,6 +51,24 @@ EntityCRUDHelper的其他api 方法 | 参数 | 描述 :&amp;mdash;:|:&amp;mdash;
     
     <item>
       <title></title>
+      <link>https://api.wss.cool/docs/base/gql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://api.wss.cool/docs/base/gql/</guid>
+      <description>GQL 普通的gql 最简单的，直接查一个对象（表）的全部数据
+{ BudgetAccount{ id name accountType { id name } } } 加一点查询条件
+{ BudgetAccount(criteriaStr:&amp;quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&amp;quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
+高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
+ 因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
+ { BudgetAccount(criteriaStr:&amp;quot;&amp;quot;){ a: exprField(expr:&amp;quot;()&amp;quot;) b: exprField(expr:&amp;quot;()&amp;quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
+常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串 string_agg(object.name, &amp;lsquo;, &amp;lsquo;)
+coalesce：如果alias存在则取alias，不存在取name string_agg((coalesce(indicator.alias, indicator.name)), &amp;lsquo;, &amp;lsquo;)
+CONCAT_WS：拼装一条记录的多个字段为一个字段 string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)
+ BudgetIndicator(criteriaStr:&amp;quot;isComposite=true&amp;quot;){ id isComposite exprField(expr:&amp;quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) } DataLoader const settingDataLoader = new DataLoader(EN_Setting, [&amp;#39;values.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://api.wss.cool/docs/base/grid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
