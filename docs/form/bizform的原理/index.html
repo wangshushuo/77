@@ -18,13 +18,13 @@ initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。
 initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
  editOptions dataOptions { queryFields, dataResolver }  entityCRUD  options." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" />
 
 <title>BizForm的原理 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.918a9598dfc61d15214db51c631a19da32b48485e7293b02daf6af9a1a64f1fb.js" integrity="sha256-kYqVmN/GHRUhTbUcYxoZ2jK0hIXnKTsC2vavmhpk8fs="></script>
+<script defer src="/en.search.min.40bbcc598e5a319494ee4d8c0bf2736792481e32dde352dab873b92e437df8a3.js" integrity="sha256-QLvMWY5aMZSU7k2MC/JzZ5JIHjLd41LauHO5LkN9&#43;KM="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -638,13 +638,13 @@ https://github.com/alex-shpak/hugo-book
     <aside class="hidden clearfix">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#bizform的原理">BizForm的原理</a></li>
     <li><a href="#initialcontroller">InitialController</a></li>
     <li><a href="#formcontroller">FormController</a></li>
     <li><a href="#entitycrud">entityCRUD</a></li>
     <li><a href="#formentitycrud的参数">FormEntityCRUD的参数</a></li>
-  </ul>
+  </ol>
 </nav>
 
 
@@ -714,78 +714,160 @@ dataResolver
 <li>mst-form&gt;EntityFormHelper&gt;createForm</li>
 </ul>
 <h2 id="formentitycrud的参数">FormEntityCRUD的参数</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">entityCRUD</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormEntityCRUD</span>(<span style="color:#a6e22e">entityOptions</span>);
-</code></pre></div><p>使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IEntityOptions</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">IBaseEntityOptions</span> {
-    <span style="color:#a6e22e">httpOptions</span><span style="color:#f92672">?:</span> {
-        <span style="color:#a6e22e">headers</span><span style="color:#f92672">?:</span> {
-            [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>,
-        }
-    };
-}
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IEntityOptions</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">IEntityLifecycle</span> {
-  <span style="color:#75715e">// entity 名称
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entityName</span>: <span style="color:#66d9ef">string</span>;
-  <span style="color:#75715e">// query 模式，是新增 还是 查询
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">queryMode</span><span style="color:#f92672">?:</span> <span style="color:#e6db74">&#39;blank&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;query&#39;</span>;
-  <span style="color:#75715e">// 查询数据时，需要额外查询的字段
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">queryFields?</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
-  <span style="color:#75715e">// 如果是查询或者删除，则需要给 id
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">dataId?</span>: <span style="color:#66d9ef">string</span>;
-  <span style="color:#75715e">// formOptions
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">formOptions?</span>: <span style="color:#66d9ef">EntityFormOptions</span>;
-  <span style="color:#75715e">// 是否为空行
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">isEmptyRow</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">logicPath</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">path</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">rowField</span>: <span style="color:#66d9ef">MSTFormField</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span>;
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="k">this</span><span class="p">.</span><span class="nx">entityCRUD</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormEntityCRUD</span><span class="p">(</span><span class="nx">entityOptions</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用entityOptions创建FormEntityCRUD。entityOptions的类型是IEntityOptions，具体参数如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">IEntityOptions</span> <span class="kr">extends</span> <span class="nx">IBaseEntityOptions</span> <span class="p">{</span>
+    <span class="nx">httpOptions</span><span class="o">?:</span> <span class="p">{</span>
+        <span class="nx">headers</span><span class="o">?:</span> <span class="p">{</span>
+            <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">any</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">IEntityOptions</span> <span class="kr">extends</span> <span class="nx">IEntityLifecycle</span> <span class="p">{</span>
+  <span class="c1">// entity 名称
+</span><span class="c1"></span>  <span class="nx">entityName</span>: <span class="kt">string</span><span class="p">;</span>
+  <span class="c1">// query 模式，是新增 还是 查询
+</span><span class="c1"></span>  <span class="nx">queryMode</span><span class="o">?:</span> <span class="s1">&#39;blank&#39;</span> <span class="o">|</span> <span class="s1">&#39;query&#39;</span><span class="p">;</span>
+  <span class="c1">// 查询数据时，需要额外查询的字段
+</span><span class="c1"></span>  <span class="nx">queryFields?</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="c1">// 如果是查询或者删除，则需要给 id
+</span><span class="c1"></span>  <span class="nx">dataId?</span>: <span class="kt">string</span><span class="p">;</span>
+  <span class="c1">// formOptions
+</span><span class="c1"></span>  <span class="nx">formOptions?</span>: <span class="kt">EntityFormOptions</span><span class="p">;</span>
+  <span class="c1">// 是否为空行
+</span><span class="c1"></span>  <span class="nx">isEmptyRow</span><span class="o">?</span><span class="p">(</span><span class="nx">logicPath</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">path</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">rowField</span>: <span class="kt">MSTFormField</span><span class="p">)</span><span class="o">:</span> <span class="kr">boolean</span><span class="p">;</span>
 
-  <span style="color:#75715e">// 在 update 时，阻止数据处理，返回原始数据
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">suppressDataFilterWhenUpdate?</span>: <span style="color:#66d9ef">boolean</span>;
+  <span class="c1">// 在 update 时，阻止数据处理，返回原始数据
+</span><span class="c1"></span>  <span class="nx">suppressDataFilterWhenUpdate?</span>: <span class="kt">boolean</span><span class="p">;</span>
 
-  <span style="color:#75715e">// 阻止空行的清理
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">suppressCleanEmptyRow?</span>: <span style="color:#66d9ef">boolean</span>;
+  <span class="c1">// 阻止空行的清理
+</span><span class="c1"></span>  <span class="nx">suppressCleanEmptyRow?</span>: <span class="kt">boolean</span><span class="p">;</span>
 
-  <span style="color:#75715e">// 阻止unchanged行的清理
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">suppressCleanUnchangeRow</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">logicPath</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">path</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">rowField</span>: <span style="color:#66d9ef">MSTFormField</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span>;
+  <span class="c1">// 阻止unchanged行的清理
+</span><span class="c1"></span>  <span class="nx">suppressCleanUnchangeRow</span><span class="o">?</span><span class="p">(</span><span class="nx">logicPath</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">path</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">rowField</span>: <span class="kt">MSTFormField</span><span class="p">)</span><span class="o">:</span> <span class="kr">boolean</span><span class="p">;</span>
 
-  <span style="color:#75715e">// 在保存成功后阻止刷新
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">suppressQueryAfterSave?</span>: <span style="color:#66d9ef">boolean</span>;
-  <span style="color:#75715e">// 需要返回 responseData
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">needResponseData?</span>: <span style="color:#66d9ef">boolean</span>;
+  <span class="c1">// 在保存成功后阻止刷新
+</span><span class="c1"></span>  <span class="nx">suppressQueryAfterSave?</span>: <span class="kt">boolean</span><span class="p">;</span>
+  <span class="c1">// 需要返回 responseData
+</span><span class="c1"></span>  <span class="nx">needResponseData?</span>: <span class="kt">boolean</span><span class="p">;</span>
 
-  <span style="color:#75715e">// 在clean时，需要忽略的字段
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ignoreCleanPath?</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
-  <span style="color:#75715e">// 在clean时，需要保留的字段
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">containCleanPath?</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
-  <span style="color:#75715e">// 排序方法
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">sortResolver</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">path</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">data</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>)<span style="color:#f92672">:</span> Array<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
-  <span style="color:#75715e">// 数据处理器
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">processors?</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">IDataProcessor</span><span style="color:#f92672">&gt;</span>;
+  <span class="c1">// 在clean时，需要忽略的字段
+</span><span class="c1"></span>  <span class="nx">ignoreCleanPath?</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="c1">// 在clean时，需要保留的字段
+</span><span class="c1"></span>  <span class="nx">containCleanPath?</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="c1">// 排序方法
+</span><span class="c1"></span>  <span class="nx">sortResolver</span><span class="o">?</span><span class="p">(</span><span class="nx">path</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">data</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="c1">// 数据处理器
+</span><span class="c1"></span>  <span class="nx">processors?</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">IDataProcessor</span><span class="o">&gt;</span><span class="p">;</span>
 
-  <span style="color:#75715e">// 是否清理ID
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">isIgnoreCleanId?</span>: <span style="color:#66d9ef">boolean</span>;
-}
+  <span class="c1">// 是否清理ID
+</span><span class="c1"></span>  <span class="nx">isIgnoreCleanId?</span>: <span class="kt">boolean</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">EntityFormOptions</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">MSTFormOptions</span> {
-    <span style="color:#a6e22e">model</span>: <span style="color:#66d9ef">EntityModelOptions</span>;
-    <span style="color:#a6e22e">initValue?</span>: <span style="color:#66d9ef">any</span>;
-}
+<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">EntityFormOptions</span> <span class="kr">extends</span> <span class="nx">MSTFormOptions</span> <span class="p">{</span>
+    <span class="nx">model</span>: <span class="kt">EntityModelOptions</span><span class="p">;</span>
+    <span class="nx">initValue?</span>: <span class="kt">any</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">EntityModelOptions</span> {
-    <span style="color:#a6e22e">pick</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
-    <span style="color:#a6e22e">pickOptions</span><span style="color:#f92672">?:</span> {
-        [<span style="color:#a6e22e">fieldName</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">IFormPickOption</span>;
-    };
-    <span style="color:#a6e22e">nest</span><span style="color:#f92672">?:</span> {
-        [<span style="color:#a6e22e">nestFieldName</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">EntityModelOptions</span>;
-    };
-    <span style="color:#a6e22e">extra</span><span style="color:#f92672">?:</span> {
-        [<span style="color:#a6e22e">fieldName</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">IType</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span>, <span style="color:#a6e22e">any</span>, <span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
-    };
-    <span style="color:#a6e22e">related</span><span style="color:#f92672">?:</span> {
-        [<span style="color:#a6e22e">fieldName</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> Array<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>;
-    };
-}
+<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">EntityModelOptions</span> <span class="p">{</span>
+    <span class="nx">pick</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="nx">pickOptions</span><span class="o">?:</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nx">fieldName</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">IFormPickOption</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">nest</span><span class="o">?:</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nx">nestFieldName</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">EntityModelOptions</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">extra</span><span class="o">?:</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nx">fieldName</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">IType</span><span class="o">&lt;</span><span class="nx">any</span><span class="p">,</span> <span class="nx">any</span><span class="p">,</span> <span class="nx">any</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">related</span><span class="o">?:</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nx">fieldName</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">}</span>
 
-</code></pre></div><p>总体来说分为三个阶段：</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>总体来说分为三个阶段：</p>
 <ul>
 <li>创建model（mobx-state-tree）</li>
 <li>创建form</li>
@@ -824,13 +906,13 @@ dataResolver
     <aside class="book-toc">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#bizform的原理">BizForm的原理</a></li>
     <li><a href="#initialcontroller">InitialController</a></li>
     <li><a href="#formcontroller">FormController</a></li>
     <li><a href="#entitycrud">entityCRUD</a></li>
     <li><a href="#formentitycrud的参数">FormEntityCRUD的参数</a></li>
-  </ul>
+  </ol>
 </nav>
 
  

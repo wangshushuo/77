@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Introduction on 77前端文档</title>
-    <link>https://api.wss.cool/docs/example/</link>
+    <link>https://77doc.wss.cool/docs/example/</link>
     <description>Recent content in Introduction on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     
-	<atom:link href="https://api.wss.cool/docs/example/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://77doc.wss.cool/docs/example/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Example Site</title>
-      <link>https://api.wss.cool/docs/example/example/</link>
+      <link>https://77doc.wss.cool/docs/example/example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://api.wss.cool/docs/example/example/</guid>
+      <guid>https://77doc.wss.cool/docs/example/example/</guid>
       <description>Introduction Ferre hinnitibus erat accipitrem dixi Troiae tollens Lorem markdownum, a quoque nutu est quodcumque mandasset veluti. Passim inportuna totidemque nympha fert; repetens pendent, poenarum guttura sed vacet non, mortali undas. Omnis pharetramque gramen portentificisque membris servatum novabis fallit de nubibus atque silvas mihi. Dixit repetitaque Quid; verrit longa; sententia mandat quascumque nescio solebat litore; noctes. Hostem haerentem circuit plenaque tamen.
  Pedum ne indigenae finire invergens carpebat Velit posses summoque De fumos illa foret  Est simul fameque tauri qua ad Locum nullus nisi vomentes.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://api.wss.cool/docs/example/hidden/</link>
+      <link>https://77doc.wss.cool/docs/example/hidden/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://api.wss.cool/docs/example/hidden/</guid>
+      <guid>https://77doc.wss.cool/docs/example/hidden/</guid>
       <description>This page is hidden in menu Quondam non pater est dignior ille Eurotas Latent te facies Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
  Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor  Cum honorum Latona O fallor in sustinui iussorum equidem.</description>
     </item>

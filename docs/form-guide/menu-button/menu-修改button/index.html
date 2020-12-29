@@ -5,20 +5,20 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="向Menu中添加Button 此攻略会向你介绍如何往查看态的menu中加一个按钮
-已有按钮添加到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.getMenuOptions().menus; // 删改menus数组  return menus; } } 在这里修改menus数组就可以了。
+已有按钮添加到menu中 1 2 3 4 5 6 7  class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.getMenuOptions().menus; // 删改menus数组  return menus; } }   在这里修改menus数组就可以了。
 可以直接往里面添加按钮。也可能要根据权限、是不是变更单等条件过滤掉一些按钮。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="修改Menu中的Button" />
 <meta property="og:description" content="向Menu中添加Button 此攻略会向你介绍如何往查看态的menu中加一个按钮
-已有按钮添加到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.getMenuOptions().menus; // 删改menus数组  return menus; } } 在这里修改menus数组就可以了。
+已有按钮添加到menu中 1 2 3 4 5 6 7  class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.getMenuOptions().menus; // 删改menus数组  return menus; } }   在这里修改menus数组就可以了。
 可以直接往里面添加按钮。也可能要根据权限、是不是变更单等条件过滤掉一些按钮。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://api.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/" />
 
 <title>修改Menu中的Button | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.918a9598dfc61d15214db51c631a19da32b48485e7293b02daf6af9a1a64f1fb.js" integrity="sha256-kYqVmN/GHRUhTbUcYxoZ2jK0hIXnKTsC2vavmhpk8fs="></script>
+<script defer src="/en.search.min.40bbcc598e5a319494ee4d8c0bf2736792481e32dde352dab873b92e437df8a3.js" integrity="sha256-QLvMWY5aMZSU7k2MC/JzZ5JIHjLd41LauHO5LkN9&#43;KM="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -632,9 +632,9 @@ https://github.com/alex-shpak/hugo-book
     <aside class="hidden clearfix">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#已有按钮添加到menu中">已有按钮添加到menu中</a></li>
-  </ul>
+  </ol>
 </nav>
 
 
@@ -649,14 +649,27 @@ https://github.com/alex-shpak/hugo-book
 <p>此攻略会向你介绍如何往查看态的menu中加一个按钮</p>
 <p><img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20201219173459_0df051375728f03fe55bfe251d82cfef.png" alt="20201219173459_0df051375728f03fe55bfe251d82cfef.png" /></p>
 <h2 id="已有按钮添加到menu中">已有按钮添加到menu中</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">xxFormPresenter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">EasyBizFormPresenter</span> {
-  <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">getMenuOptions</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">MenuOptions</span> {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">menus</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">getMenuOptions</span>().<span style="color:#a6e22e">menus</span>;
-    <span style="color:#75715e">// 删改menus数组
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">menus</span>;
-  }
-}
-</code></pre></div><p>在这里修改menus数组就可以了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">class</span> <span class="nx">xxFormPresenter</span> <span class="kr">extends</span> <span class="nx">EasyBizFormPresenter</span> <span class="p">{</span>
+  <span class="kr">protected</span> <span class="nx">getMenuOptions</span><span class="p">()</span><span class="o">:</span> <span class="nx">MenuOptions</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">menus</span> <span class="o">=</span> <span class="kr">super</span><span class="p">.</span><span class="nx">getMenuOptions</span><span class="p">().</span><span class="nx">menus</span><span class="p">;</span>
+    <span class="c1">// 删改menus数组
+</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">menus</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在这里修改menus数组就可以了。</p>
 <p>可以直接往里面添加按钮。也可能要根据权限、是不是变更单等条件过滤掉一些按钮。</p>
 </article>
  
@@ -691,9 +704,9 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-toc">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#已有按钮添加到menu中">已有按钮添加到menu中</a></li>
-  </ul>
+  </ol>
 </nav>
 
  

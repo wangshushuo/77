@@ -7,7 +7,7 @@
 <meta name="description" content="接口 后端提供的接口，只能通过go访问，因为前端只能访问到go不能直接访问到后端。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。下面介绍一下实现一个go接口的步骤。
 一、声明后端接口地址 在文件 trek/urls/url.go 中声明接口地址
 比如这样
-// 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost &#43; &#34;/baseapp/BudgetAccount/batchSetIndicators&#34; 其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
+1 2  // 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost &#43; &#34;/baseapp/BudgetAccount/batchSetIndicators&#34;   其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
 二、添加go的接口 找到文件 trek/web/controllers/web-controllers/transparent/index.go
 1. 在 BeforeActivation 方法中创建go的接口 1 2 3 4 5  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &#34;/BudgetAccount/batchSetIndicators&#34;, &#34;BudgetAccountBatchSetIndicators&#34;)  // ... }   其中b.Handle 方法的三个参数分别是
  http method go接口url（前端访问的url） go接口的处理函数  2. 实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法，也就是接口处理函数，内容就是直接给后端发起一个请求。
@@ -16,19 +16,19 @@
 <meta property="og:description" content="接口 后端提供的接口，只能通过go访问，因为前端只能访问到go不能直接访问到后端。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。下面介绍一下实现一个go接口的步骤。
 一、声明后端接口地址 在文件 trek/urls/url.go 中声明接口地址
 比如这样
-// 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost &#43; &#34;/baseapp/BudgetAccount/batchSetIndicators&#34; 其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
+1 2  // 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost &#43; &#34;/baseapp/BudgetAccount/batchSetIndicators&#34;   其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
 二、添加go的接口 找到文件 trek/web/controllers/web-controllers/transparent/index.go
 1. 在 BeforeActivation 方法中创建go的接口 1 2 3 4 5  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &#34;/BudgetAccount/batchSetIndicators&#34;, &#34;BudgetAccountBatchSetIndicators&#34;)  // ... }   其中b.Handle 方法的三个参数分别是
  http method go接口url（前端访问的url） go接口的处理函数  2. 实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法，也就是接口处理函数，内容就是直接给后端发起一个请求。
 其中第11行是第一步中声明的后端url地址 1 2 3 4 5 6 7 8 9 10 11 12  func (c *transparentController) BeforeActivation(b mvc." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://api.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/" />
 
 <title>后端的接口 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.918a9598dfc61d15214db51c631a19da32b48485e7293b02daf6af9a1a64f1fb.js" integrity="sha256-kYqVmN/GHRUhTbUcYxoZ2jK0hIXnKTsC2vavmhpk8fs="></script>
+<script defer src="/en.search.min.40bbcc598e5a319494ee4d8c0bf2736792481e32dde352dab873b92e437df8a3.js" integrity="sha256-QLvMWY5aMZSU7k2MC/JzZ5JIHjLd41LauHO5LkN9&#43;KM="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -642,16 +642,16 @@ https://github.com/alex-shpak/hugo-book
     <aside class="hidden clearfix">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#一声明后端接口地址">一、声明后端接口地址</a></li>
     <li><a href="#二添加go的接口">二、添加go的接口</a>
-      <ul>
+      <ol>
         <li><a href="#1-在-beforeactivation-方法中创建go的接口">1. 在 <code>BeforeActivation</code> 方法中创建go的接口</a></li>
         <li><a href="#2-实现处理函数">2. 实现“处理函数”</a></li>
-      </ul>
+      </ol>
     </li>
     <li><a href="#三前端调接口">三、前端调接口</a></li>
-  </ul>
+  </ol>
 </nav>
 
 
@@ -667,26 +667,34 @@ https://github.com/alex-shpak/hugo-book
 <h2 id="一声明后端接口地址">一、声明后端接口地址</h2>
 <p>在文件 <code>trek/urls/url.go</code> 中声明接口地址</p>
 <p>比如这样</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#75715e">// 批量设置执行指标
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">BudgetBatchSetIndicators</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">BudgetHost</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/baseapp/BudgetAccount/batchSetIndicators&#34;</span>
-</code></pre></div><p>其中的 <code>BudgetHost</code> 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go">	<span class="c1">// 批量设置执行指标
+</span><span class="c1"></span>	<span class="nx">BudgetBatchSetIndicators</span> <span class="o">:=</span> <span class="nx">BudgetHost</span> <span class="o">+</span> <span class="s">&#34;/baseapp/BudgetAccount/batchSetIndicators&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中的 <code>BudgetHost</code> 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。</p>
 <h2 id="二添加go的接口">二、添加go的接口</h2>
 <p>找到文件 <code>trek/web/controllers/web-controllers/transparent/index.go</code></p>
 <h3 id="1-在-beforeactivation-方法中创建go的接口">1. 在 <code>BeforeActivation</code> 方法中创建go的接口</h3>
-<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<p><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="hl"><span class="lnt">3
+</span></span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">BeforeActivation</span>(<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">mvc</span>.<span style="color:#a6e22e">BeforeActivation</span>) {
-  <span style="color:#75715e">// ...
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#75715e"></span>  <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#a6e22e">iris</span>.<span style="color:#a6e22e">MethodPost</span>, <span style="color:#e6db74">&#34;/BudgetAccount/batchSetIndicators&#34;</span>, <span style="color:#e6db74">&#34;BudgetAccountBatchSetIndicators&#34;</span>)
-</span>  <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>}</code></pre></td></tr></table>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">transparentController</span><span class="p">)</span> <span class="nf">BeforeActivation</span><span class="p">(</span><span class="nx">b</span> <span class="nx">mvc</span><span class="p">.</span><span class="nx">BeforeActivation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...
+</span><span class="hl"><span class="c1"></span>  <span class="nx">b</span><span class="p">.</span><span class="nf">Handle</span><span class="p">(</span><span class="nx">iris</span><span class="p">.</span><span class="nx">MethodPost</span><span class="p">,</span> <span class="s">&#34;/BudgetAccount/batchSetIndicators&#34;</span><span class="p">,</span> <span class="s">&#34;BudgetAccountBatchSetIndicators&#34;</span><span class="p">)</span>
+</span>  <span class="c1">// ...
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
 其中<code>b.Handle</code> 方法的三个参数分别是</p>
@@ -698,78 +706,89 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="2-实现处理函数">2. 实现“处理函数”</h3>
 <p>在上面提到的<code>BeforeActivation</code>方法下面，创建一个与它同级的方法，也就是接口处理函数，内容就是直接给后端发起一个请求。</p>
 <p>其中第11行是第一步中声明的后端url地址
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="hl"><span class="lnt"> 6
+</span></span><span class="hl"><span class="lnt"> 7
+</span></span><span class="hl"><span class="lnt"> 8
+</span></span><span class="hl"><span class="lnt"> 9
+</span></span><span class="hl"><span class="lnt">10
+</span></span><span class="hl"><span class="lnt">11
+</span></span><span class="lnt">12
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">BeforeActivation</span>(<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">mvc</span>.<span style="color:#a6e22e">BeforeActivation</span>) {
-  <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#a6e22e">iris</span>.<span style="color:#a6e22e">MethodPost</span>, <span style="color:#e6db74">&#34;/BudgetAccount/batchSetIndicators&#34;</span>, <span style="color:#e6db74">&#34;BudgetAccountBatchSetIndicators&#34;</span>)
-  <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>}
-<span style="display:block;width:100%;background-color:#3c3d38">
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">BudgetAccountBatchSetIndicators</span>() <span style="color:#66d9ef">interface</span>{} {
-</span><span style="display:block;width:100%;background-color:#3c3d38">	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Fetch</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">TFetchOption</span>{
-</span><span style="display:block;width:100%;background-color:#3c3d38">		<span style="color:#a6e22e">Method</span>: <span style="color:#e6db74">&#34;post&#34;</span>,
-</span><span style="display:block;width:100%;background-color:#3c3d38">		<span style="color:#a6e22e">Url</span>:	<span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">BudgetBatchSetIndicators</span>,
-</span><span style="display:block;width:100%;background-color:#3c3d38">	})
-</span>}</code></pre></td></tr></table>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">transparentController</span><span class="p">)</span> <span class="nf">BeforeActivation</span><span class="p">(</span><span class="nx">b</span> <span class="nx">mvc</span><span class="p">.</span><span class="nx">BeforeActivation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...
+</span><span class="c1"></span>  <span class="nx">b</span><span class="p">.</span><span class="nf">Handle</span><span class="p">(</span><span class="nx">iris</span><span class="p">.</span><span class="nx">MethodPost</span><span class="p">,</span> <span class="s">&#34;/BudgetAccount/batchSetIndicators&#34;</span><span class="p">,</span> <span class="s">&#34;BudgetAccountBatchSetIndicators&#34;</span><span class="p">)</span>
+  <span class="c1">// ...
+</span><span class="c1"></span><span class="p">}</span>
+<span class="hl">
+</span><span class="hl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">transparentController</span><span class="p">)</span> <span class="nf">BudgetAccountBatchSetIndicators</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+</span><span class="hl">	<span class="k">return</span> <span class="nf">Fetch</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">context</span><span class="p">.</span><span class="nx">TFetchOption</span><span class="p">{</span>
+</span><span class="hl">		<span class="nx">Method</span><span class="p">:</span> <span class="s">&#34;post&#34;</span><span class="p">,</span>
+</span><span class="hl">		<span class="nx">Url</span><span class="p">:</span>	<span class="nx">urls</span><span class="p">.</span><span class="nx">BudgetBatchSetIndicators</span><span class="p">,</span>
+</span><span class="hl">	<span class="p">})</span>
+</span><span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div></p>
 <h2 id="三前端调接口">三、前端调接口</h2>
 <p>找到文件 <code>apps/link/src/api/urls.ts</code></p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="hl"><span class="lnt"> 6
+</span></span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts">  <span style="color:#a6e22e">budgetControlRule</span><span style="color:#f92672">:</span> {
-    <span style="color:#a6e22e">batchEnable</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ApiHost</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/BudgetControlRule/batchEnable`</span>,
-    <span style="color:#a6e22e">enable</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ApiHost</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/BudgetControlRule/enable`</span>,
-  },
-  <span style="color:#a6e22e">budgetAccount</span><span style="color:#f92672">:</span> {
-<span style="display:block;width:100%;background-color:#3c3d38">    <span style="color:#a6e22e">batchSetIndicators</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ApiHost</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/BudgetAccount/batchSetIndicators`</span>
-</span>  },
-  <span style="color:#75715e">// 资产管理
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">asset</span><span style="color:#f92672">:</span> {
-    <span style="color:#75715e">// 获取资产卡片建卡日期的可选范围
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">getAssetBusinessDateRange</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ApiHost</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/asset/getAssetBusinessDateRange`</span>,
-    <span style="color:#75715e">// 获取变动单或处置单业务日期的可选范围
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">getBusinessDateRange</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ApiHost</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/asset/getBusinessDateRange`</span>,
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts">  <span class="nx">budgetControlRule</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">batchEnable</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">ApiHost</span><span class="si">}</span><span class="sb">/BudgetControlRule/batchEnable`</span><span class="p">,</span>
+    <span class="nx">enable</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">ApiHost</span><span class="si">}</span><span class="sb">/BudgetControlRule/enable`</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">budgetAccount</span><span class="o">:</span> <span class="p">{</span>
+<span class="hl">    <span class="nx">batchSetIndicators</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">ApiHost</span><span class="si">}</span><span class="sb">/BudgetAccount/batchSetIndicators`</span>
+</span>  <span class="p">},</span>
+  <span class="c1">// 资产管理
+</span><span class="c1"></span>  <span class="nx">asset</span><span class="o">:</span> <span class="p">{</span>
+    <span class="c1">// 获取资产卡片建卡日期的可选范围
+</span><span class="c1"></span>    <span class="nx">getAssetBusinessDateRange</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">ApiHost</span><span class="si">}</span><span class="sb">/asset/getAssetBusinessDateRange`</span><span class="p">,</span>
+    <span class="c1">// 获取变动单或处置单业务日期的可选范围
+</span><span class="c1"></span>    <span class="nx">getBusinessDateRange</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">ApiHost</span><span class="si">}</span><span class="sb">/asset/getBusinessDateRange`</span><span class="p">,</span>
 </code></pre></td></tr></table>
 </div>
 </div>
 <p>经过上面的3步麻烦的操作，终于可以调接口了</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">client</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@client&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">urls</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@root/api&#39;</span>;
-...
-<span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">post</span>(<span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">budgetAccount</span>.<span style="color:#a6e22e">batchSetIndicators</span>, <span style="color:#a6e22e">data</span>);
-...
-</code></pre></div></article>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="nx">client</span> <span class="nx">from</span> <span class="s1">&#39;@client&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">urls</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@root/api&#39;</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">urls</span><span class="p">.</span><span class="nx">budgetAccount</span><span class="p">.</span><span class="nx">batchSetIndicators</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+<span class="p">...</span>
+</code></pre></td></tr></table>
+</div>
+</div></article>
  
       
 
@@ -802,16 +821,16 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-toc">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#一声明后端接口地址">一、声明后端接口地址</a></li>
     <li><a href="#二添加go的接口">二、添加go的接口</a>
-      <ul>
+      <ol>
         <li><a href="#1-在-beforeactivation-方法中创建go的接口">1. 在 <code>BeforeActivation</code> 方法中创建go的接口</a></li>
         <li><a href="#2-实现处理函数">2. 实现“处理函数”</a></li>
-      </ul>
+      </ol>
     </li>
     <li><a href="#三前端调接口">三、前端调接口</a></li>
-  </ul>
+  </ol>
 </nav>
 
  

@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BizForm基础 on 77前端文档</title>
-    <link>https://api.wss.cool/docs/form/</link>
+    <link>https://77doc.wss.cool/docs/form/</link>
     <description>Recent content in BizForm基础 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     
-	<atom:link href="https://api.wss.cool/docs/form/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://77doc.wss.cool/docs/form/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>什么是BizForm</title>
-      <link>https://api.wss.cool/docs/form/what-is-bizform/</link>
+      <link>https://77doc.wss.cool/docs/form/what-is-bizform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://api.wss.cool/docs/form/what-is-bizform/</guid>
+      <guid>https://77doc.wss.cool/docs/form/what-is-bizform/</guid>
       <description>什么是BizForm Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。
 先看一下我们系统中的表单长什么样。这是展示了一个编辑态和一个查看态。 这里只简单的看一个样子，其他文档会介绍更加详细的、各个状态、各个部分的内容。</description>
     </item>
     
     <item>
       <title>BizForm的组成部分</title>
-      <link>https://api.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/</link>
+      <link>https://77doc.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://api.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/</guid>
+      <guid>https://77doc.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/</guid>
       <description>查看态  表单状态 异步任务异常 menu-buttons rang-walk 主表 审批流 子表 ？不知道  </description>
     </item>
     
     <item>
       <title>BizForm的原理</title>
-      <link>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</link>
+      <link>https://77doc.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://api.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</guid>
+      <guid>https://77doc.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</guid>
       <description>BizForm的原理  model template  InitialController 由onBeansReady事件开始
  entityName，params，initUrl axios.post  response.data entityName, solution.metadata, solution.template =&amp;gt; configTransformer =&amp;gt; {model,template} model =&amp;gt; BizFormModel =&amp;gt; model   onInitialStart  FormController  创建entityCRUD：formEntityCRUD =&amp;gt; entityCRUD 初始化entityCRUD：initData =&amp;gt; entityCRUD.init  init: initData + initForm() =&amp;gt; entityCRUD.form =&amp;gt; form  initForm: EntityFormHelper.createForm(entityName, mergedFormOptions) =&amp;gt; form      LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
 也就是initForm和createForm。

@@ -5,18 +5,18 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="在apps/link-h5/src/authorize/index.ts文件中 讲下面的代码替换掉原来的代码
-class Authorize{ auth = { &#34;tenantId&#34;: &#34;xxx&#34;, &#34;accountId&#34;: &#34;xxx&#34;, &#34;accessToken&#34;: &#34;xxx&#34;, &#34;refreshToken&#34;: &#34;xxx&#34; } private _token = this.auth.accessToken; private _refreshToken = this.auth.refreshToken; public tenantId = this.auth.tenantId; } auth的值，可以在这里搞 ">
+1 2 3 4 5 6 7 8 9 10 11  class Authorize{ auth = { &#34;tenantId&#34;: &#34;xxx&#34;, &#34;accountId&#34;: &#34;xxx&#34;, &#34;accessToken&#34;: &#34;xxx&#34;, &#34;refreshToken&#34;: &#34;xxx&#34; } private _token = this.auth.accessToken; private _refreshToken = this.auth.refreshToken; public tenantId = this.auth.tenantId; }   auth的值，可以在这里搞 ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
 <meta property="og:description" content="在apps/link-h5/src/authorize/index.ts文件中 讲下面的代码替换掉原来的代码
-class Authorize{ auth = { &#34;tenantId&#34;: &#34;xxx&#34;, &#34;accountId&#34;: &#34;xxx&#34;, &#34;accessToken&#34;: &#34;xxx&#34;, &#34;refreshToken&#34;: &#34;xxx&#34; } private _token = this.auth.accessToken; private _refreshToken = this.auth.refreshToken; public tenantId = this.auth.tenantId; } auth的值，可以在这里搞 " />
+1 2 3 4 5 6 7 8 9 10 11  class Authorize{ auth = { &#34;tenantId&#34;: &#34;xxx&#34;, &#34;accountId&#34;: &#34;xxx&#34;, &#34;accessToken&#34;: &#34;xxx&#34;, &#34;refreshToken&#34;: &#34;xxx&#34; } private _token = this.auth.accessToken; private _refreshToken = this.auth.refreshToken; public tenantId = this.auth.tenantId; }   auth的值，可以在这里搞 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://api.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/" />
 
 <title>登录 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.918a9598dfc61d15214db51c631a19da32b48485e7293b02daf6af9a1a64f1fb.js" integrity="sha256-kYqVmN/GHRUhTbUcYxoZ2jK0hIXnKTsC2vavmhpk8fs="></script>
+<script defer src="/en.search.min.40bbcc598e5a319494ee4d8c0bf2736792481e32dde352dab873b92e437df8a3.js" integrity="sha256-QLvMWY5aMZSU7k2MC/JzZ5JIHjLd41LauHO5LkN9&#43;KM="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -641,18 +641,35 @@ https://github.com/alex-shpak/hugo-book
       
   <article class="markdown"><p>在<code>apps/link-h5/src/authorize/index.ts</code>文件中
 讲下面的代码替换掉原来的代码</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Authorize</span>{
-  <span style="color:#a6e22e">auth</span> <span style="color:#f92672">=</span> {
-    <span style="color:#e6db74">&#34;tenantId&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxx&#34;</span>,
-    <span style="color:#e6db74">&#34;accountId&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxx&#34;</span>,
-    <span style="color:#e6db74">&#34;accessToken&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxx&#34;</span>,
-    <span style="color:#e6db74">&#34;refreshToken&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxx&#34;</span>
-  }
-  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">_token</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">auth</span>.<span style="color:#a6e22e">accessToken</span>;
-  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">_refreshToken</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">auth</span>.<span style="color:#a6e22e">refreshToken</span>;
-  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">tenantId</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">auth</span>.<span style="color:#a6e22e">tenantId</span>;
-}
-</code></pre></div><p>auth的值，可以在这里搞
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">class</span> <span class="nx">Authorize</span><span class="p">{</span>
+  <span class="nx">auth</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&#34;tenantId&#34;</span><span class="o">:</span> <span class="s2">&#34;xxx&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;accountId&#34;</span><span class="o">:</span> <span class="s2">&#34;xxx&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;accessToken&#34;</span><span class="o">:</span> <span class="s2">&#34;xxx&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;refreshToken&#34;</span><span class="o">:</span> <span class="s2">&#34;xxx&#34;</span>
+  <span class="p">}</span>
+  <span class="kr">private</span> <span class="nx">_token</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">accessToken</span><span class="p">;</span>
+  <span class="kr">private</span> <span class="nx">_refreshToken</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">refreshToken</span><span class="p">;</span>
+  <span class="kr">public</span> <span class="nx">tenantId</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">tenantId</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>auth的值，可以在这里搞
 <img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20201224150707_71ea85c9f78eeaa5f9e260b6a58f735e.png" alt="20201224150707_71ea85c9f78eeaa5f9e260b6a58f735e.png" /></p>
 </article>
  

@@ -10,10 +10,10 @@
 高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
  因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
  { BudgetAccount(criteriaStr:&quot;&quot;){ a: exprField(expr:&quot;()&quot;) b: exprField(expr:&quot;()&quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
-常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串 string_agg(object.name, &lsquo;, &lsquo;)
-coalesce：如果alias存在则取alias，不存在取name string_agg((coalesce(indicator.alias, indicator.name)), &lsquo;, &lsquo;)
+常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串 string_agg(object.name, &#39;, &#39;)
+coalesce：如果alias存在则取alias，不存在取name string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
 CONCAT_WS：拼装一条记录的多个字段为一个字段 string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)
- BudgetIndicator(criteriaStr:&quot;isComposite=true&quot;){ id isComposite exprField(expr:&quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&quot;) } DataLoader const settingDataLoader = new DataLoader(EN_Setting, [&#39;values.">
+ BudgetIndicator(criteriaStr:&quot;isComposite=true&quot;){ id isComposite exprField(expr:&quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&quot;) } DataLoader 1 2 3 4 5  const settingDataLoader = new DataLoader(EN_Setting, [&#39;values.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
 <meta property="og:description" content="GQL 普通的gql 最简单的，直接查一个对象（表）的全部数据
 { BudgetAccount{ id name accountType { id name } } } 加一点查询条件
@@ -21,18 +21,18 @@ CONCAT_WS：拼装一条记录的多个字段为一个字段 string_agg(CONCAT_W
 高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
  因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
  { BudgetAccount(criteriaStr:&quot;&quot;){ a: exprField(expr:&quot;()&quot;) b: exprField(expr:&quot;()&quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
-常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串 string_agg(object.name, &lsquo;, &lsquo;)
-coalesce：如果alias存在则取alias，不存在取name string_agg((coalesce(indicator.alias, indicator.name)), &lsquo;, &lsquo;)
+常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串 string_agg(object.name, &#39;, &#39;)
+coalesce：如果alias存在则取alias，不存在取name string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
 CONCAT_WS：拼装一条记录的多个字段为一个字段 string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)
- BudgetIndicator(criteriaStr:&quot;isComposite=true&quot;){ id isComposite exprField(expr:&quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&quot;) } DataLoader const settingDataLoader = new DataLoader(EN_Setting, [&#39;values." />
+ BudgetIndicator(criteriaStr:&quot;isComposite=true&quot;){ id isComposite exprField(expr:&quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&quot;) } DataLoader 1 2 3 4 5  const settingDataLoader = new DataLoader(EN_Setting, [&#39;values." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://api.wss.cool/docs/base/gql/" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/base/gql/" />
 
 <title>Gql | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.918a9598dfc61d15214db51c631a19da32b48485e7293b02daf6af9a1a64f1fb.js" integrity="sha256-kYqVmN/GHRUhTbUcYxoZ2jK0hIXnKTsC2vavmhpk8fs="></script>
+<script defer src="/en.search.min.40bbcc598e5a319494ee4d8c0bf2736792481e32dde352dab873b92e437df8a3.js" integrity="sha256-QLvMWY5aMZSU7k2MC/JzZ5JIHjLd41LauHO5LkN9&#43;KM="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -646,16 +646,16 @@ https://github.com/alex-shpak/hugo-book
     <aside class="hidden clearfix">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#普通的gql">普通的gql</a></li>
     <li><a href="#高级的gql">高级的gql</a>
-      <ul>
+      <ol>
         <li><a href="#常用的sql函数">常用的sql函数</a></li>
-      </ul>
+      </ol>
     </li>
     <li><a href="#dataloader">DataLoader</a></li>
     <li><a href="#不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</a></li>
-  </ul>
+  </ol>
 </nav>
 
 
@@ -705,9 +705,9 @@ https://github.com/alex-shpak/hugo-book
 </code></pre><p>其中<code>a:</code>是个模型上的一个字段起别名，<code>exprField</code>是一个可以扩展的额外字段，利用这两个就可以做成子查询了。</p>
 <h3 id="常用的sql函数">常用的sql函数</h3>
 <p>string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串
-string_agg(object.name, &lsquo;, &lsquo;)</p>
+string_agg(object.name, ', ')</p>
 <p>coalesce：如果alias存在则取alias，不存在取name
-string_agg((coalesce(indicator.alias, indicator.name)), &lsquo;, &lsquo;)</p>
+string_agg((coalesce(indicator.alias, indicator.name)), ', ')</p>
 <p>CONCAT_WS：拼装一条记录的多个字段为一个字段
 string_agg(CONCAT_WS(',',childIndicator.id,childIndicator.name),';')</p>
 <pre><code>  BudgetIndicator(criteriaStr:&quot;isComposite=true&quot;){
@@ -716,26 +716,56 @@ string_agg(CONCAT_WS(',',childIndicator.id,childIndicator.name),';')</p>
     exprField(expr:&quot;(select string_agg(CONCAT_WS(',',childIndicator.id,childIndicator.name),';')  from BudgetIndicatorComposition where parentIndicatorId=m.id)&quot;)
   }
 </code></pre><h2 id="dataloader">DataLoader</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">settingDataLoader</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DataLoader</span>(<span style="color:#a6e22e">EN_Setting</span>, [<span style="color:#e6db74">&#39;values.value&#39;</span>], {
-  <span style="color:#a6e22e">criteriaStr</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`key=&#39;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">accountingBook</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;`</span>,
-} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">QueryOptions</span>);
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">settingDataLoader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DataLoader</span><span class="p">(</span><span class="nx">EN_Setting</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;values.value&#39;</span><span class="p">],</span> <span class="p">{</span>
+  <span class="nx">criteriaStr</span><span class="o">:</span> <span class="sb">`key=&#39;</span><span class="si">${</span><span class="nx">accountingBook</span><span class="si">}</span><span class="sb">&#39;`</span><span class="p">,</span>
+<span class="p">}</span> <span class="kr">as</span> <span class="nx">QueryOptions</span><span class="p">);</span>
 
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">settingDataLoader</span>.<span style="color:#a6e22e">query</span>();
-</code></pre></div><h2 id="不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">client</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@client&#39;</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fetchControlBalance</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> (<span style="color:#a6e22e">criteriaStr</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">dimensionField</span>: <span style="color:#66d9ef">string</span>[]) <span style="color:#f92672">=&gt;</span> {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">query</span><span style="color:#f92672">&lt;</span>{ <span style="color:#a6e22e">data</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">IInvoiceType</span><span style="color:#f92672">&gt;</span> }<span style="color:#f92672">&gt;</span>({
-    <span style="color:#a6e22e">query</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
-</span><span style="color:#e6db74">    {
-</span><span style="color:#e6db74">      data: BudgetControlBalance(criteriaStr: &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">criteriaStr</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;){
-</span><span style="color:#e6db74">        id
-</span><span style="color:#e6db74">      }
-</span><span style="color:#e6db74">    }
-</span><span style="color:#e6db74">    `</span>,
-  });
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">data</span>
-};
-</code></pre></div></article>
+<span class="kr">const</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">settingDataLoader</span><span class="p">.</span><span class="nx">query</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="nx">client</span> <span class="nx">from</span> <span class="s1">&#39;@client&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">fetchControlBalance</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">criteriaStr</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">dimensionField</span>: <span class="kt">string</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">query</span><span class="o">&lt;</span><span class="p">{</span> <span class="nx">data</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">IInvoiceType</span><span class="o">&gt;</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">({</span>
+    <span class="nx">query</span><span class="o">:</span> <span class="sb">`
+</span><span class="sb">    {
+</span><span class="sb">      data: BudgetControlBalance(criteriaStr: &#34;</span><span class="si">${</span><span class="nx">criteriaStr</span><span class="si">}</span><span class="sb">&#34;){
+</span><span class="sb">        id
+</span><span class="sb">      }
+</span><span class="sb">    }
+</span><span class="sb">    `</span><span class="p">,</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></article>
  
       
 
@@ -768,16 +798,16 @@ string_agg(CONCAT_WS(',',childIndicator.id,childIndicator.name),';')</p>
     <aside class="book-toc">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#普通的gql">普通的gql</a></li>
     <li><a href="#高级的gql">高级的gql</a>
-      <ul>
+      <ol>
         <li><a href="#常用的sql函数">常用的sql函数</a></li>
-      </ul>
+      </ol>
     </li>
     <li><a href="#dataloader">DataLoader</a></li>
     <li><a href="#不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</a></li>
-  </ul>
+  </ol>
 </nav>
 
  

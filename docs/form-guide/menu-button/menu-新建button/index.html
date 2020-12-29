@@ -7,26 +7,24 @@
 <meta name="description" content="向Menu中添加Button 此攻略会向你介绍如何往查看态表单的menu中加一个按钮
 新建一个menu按钮 按下面的步骤就可以创建一个按钮，并把它加到menu中
  按钮的名字 按钮的Creator函数 声明按钮 声明分组 添加到menu中  给搞一个名字 在 apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts 文件中在BizFormMenuButtons对象声明按钮的 id 。
-搞Creator函数创建按钮 export const ProjectBudgetCreator = () =&gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&gt; { return ( &lt;React.Fragment&gt; &lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&gt; &lt;/React.Fragment&gt; ); }, }; }; 其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
+搞Creator函数创建按钮 1 2 3 4 5 6 7 8 9 10 11 12  export const ProjectBudgetCreator = () =&gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&gt; { return ( &lt;React.Fragment&gt; &lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&gt; &lt;/React.Fragment&gt; ); }, }; };   其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
 声明按钮 有了id和creator函数，就可以声明按钮了。 在 apps/link/src/solutions/biz-form/page/menu-buttons/index.tsx 文件中声明了所有menu按钮的Creator函数。你新创建的按钮也需要在这里声明。
-export const buildInMenus = { [BizFormMenuButtons.SourcePicking]: SourcePickCreator, [BizFormMenuButtons.ImportConsumeItem]: ImportConsumeItemCreator, } 声明类型 相同类型的按钮会放到同一分组。 在 apps/link/src/solutions/biz-form/page/declare.ts 文件的 BizformMenuButtonType 对象中为按钮一个类型。
-把按钮放到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.">
+1 2 3 4  export const buildInMenus = { [BizFormMenuButtons.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="新建一个MenuButton" />
 <meta property="og:description" content="向Menu中添加Button 此攻略会向你介绍如何往查看态表单的menu中加一个按钮
 新建一个menu按钮 按下面的步骤就可以创建一个按钮，并把它加到menu中
  按钮的名字 按钮的Creator函数 声明按钮 声明分组 添加到menu中  给搞一个名字 在 apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts 文件中在BizFormMenuButtons对象声明按钮的 id 。
-搞Creator函数创建按钮 export const ProjectBudgetCreator = () =&gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&gt; { return ( &lt;React.Fragment&gt; &lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&gt; &lt;/React.Fragment&gt; ); }, }; }; 其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
+搞Creator函数创建按钮 1 2 3 4 5 6 7 8 9 10 11 12  export const ProjectBudgetCreator = () =&gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&gt; { return ( &lt;React.Fragment&gt; &lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&gt; &lt;/React.Fragment&gt; ); }, }; };   其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
 声明按钮 有了id和creator函数，就可以声明按钮了。 在 apps/link/src/solutions/biz-form/page/menu-buttons/index.tsx 文件中声明了所有menu按钮的Creator函数。你新创建的按钮也需要在这里声明。
-export const buildInMenus = { [BizFormMenuButtons.SourcePicking]: SourcePickCreator, [BizFormMenuButtons.ImportConsumeItem]: ImportConsumeItemCreator, } 声明类型 相同类型的按钮会放到同一分组。 在 apps/link/src/solutions/biz-form/page/declare.ts 文件的 BizformMenuButtonType 对象中为按钮一个类型。
-把按钮放到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super." />
+1 2 3 4  export const buildInMenus = { [BizFormMenuButtons." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://api.wss.cool/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/" />
 
 <title>新建一个MenuButton | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.918a9598dfc61d15214db51c631a19da32b48485e7293b02daf6af9a1a64f1fb.js" integrity="sha256-kYqVmN/GHRUhTbUcYxoZ2jK0hIXnKTsC2vavmhpk8fs="></script>
+<script defer src="/en.search.min.40bbcc598e5a319494ee4d8c0bf2736792481e32dde352dab873b92e437df8a3.js" integrity="sha256-QLvMWY5aMZSU7k2MC/JzZ5JIHjLd41LauHO5LkN9&#43;KM="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -640,17 +638,17 @@ https://github.com/alex-shpak/hugo-book
     <aside class="hidden clearfix">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#新建一个menu按钮">新建一个menu按钮</a>
-      <ul>
+      <ol>
         <li><a href="#给搞一个名字">给搞一个名字</a></li>
         <li><a href="#搞creator函数创建按钮">搞Creator函数创建按钮</a></li>
         <li><a href="#声明按钮">声明按钮</a></li>
         <li><a href="#声明类型">声明类型</a></li>
         <li><a href="#把按钮放到menu中">把按钮放到menu中</a></li>
-      </ul>
+      </ol>
     </li>
-  </ul>
+  </ol>
 </nav>
 
 
@@ -676,38 +674,79 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="给搞一个名字">给搞一个名字</h3>
 <p>在 <code>apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts</code> 文件中在BizFormMenuButtons对象声明按钮的 id 。</p>
 <h3 id="搞creator函数创建按钮">搞Creator函数创建按钮</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ProjectBudgetCreator</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> {
-  <span style="color:#66d9ef">return</span> {
-    <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">BizFormMenuButtons.ProjectBudget</span>,
-    <span style="color:#a6e22e">render</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> {
-      <span style="color:#66d9ef">return</span> (
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Fragment</span><span style="color:#f92672">&gt;</span>
-          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ProjectBudgetButton</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">BizFormMenuButtons</span>.<span style="color:#a6e22e">ProjectBudget</span>} <span style="color:#f92672">/&gt;</span>
-        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/React.Fragment&gt;</span>
-      );
-    },
-  };
-};
-</code></pre></div><p>其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-tsx" data-lang="tsx"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">ProjectBudgetCreator</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">id</span>: <span class="kt">BizFormMenuButtons.ProjectBudget</span><span class="p">,</span>
+    <span class="nx">render</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Fragment</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">ProjectBudgetButton</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">BizFormMenuButtons</span><span class="p">.</span><span class="nx">ProjectBudget</span><span class="p">}</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="err">/React.Fragment&gt;</span>
+      <span class="p">);</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。</p>
 <h3 id="声明按钮">声明按钮</h3>
 <p>有了id和creator函数，就可以声明按钮了。
 在 <code>apps/link/src/solutions/biz-form/page/menu-buttons/index.tsx</code> 文件中声明了所有menu按钮的Creator函数。你新创建的按钮也需要在这里声明。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">buildInMenus</span> <span style="color:#f92672">=</span> {
-  [<span style="color:#a6e22e">BizFormMenuButtons</span>.<span style="color:#a6e22e">SourcePicking</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">SourcePickCreator</span>,
-  [<span style="color:#a6e22e">BizFormMenuButtons</span>.<span style="color:#a6e22e">ImportConsumeItem</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">ImportConsumeItemCreator</span>,
-}
-</code></pre></div><h3 id="声明类型">声明类型</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">buildInMenus</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">BizFormMenuButtons</span><span class="p">.</span><span class="nx">SourcePicking</span><span class="p">]</span><span class="o">:</span> <span class="nx">SourcePickCreator</span><span class="p">,</span>
+  <span class="p">[</span><span class="nx">BizFormMenuButtons</span><span class="p">.</span><span class="nx">ImportConsumeItem</span><span class="p">]</span><span class="o">:</span> <span class="nx">ImportConsumeItemCreator</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="声明类型">声明类型</h3>
 <p>相同类型的按钮会放到同一分组。
 在 <code>apps/link/src/solutions/biz-form/page/declare.ts</code> 文件的 BizformMenuButtonType 对象中为按钮一个类型。</p>
 <h3 id="把按钮放到menu中">把按钮放到menu中</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">xxFormPresenter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">EasyBizFormPresenter</span> {
-  <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">getMenuOptions</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">MenuOptions</span> {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">menus</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">getMenuOptions</span>().<span style="color:#a6e22e">menus</span>;
-    <span style="color:#a6e22e">menus</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">buildInMenus</span>.<span style="color:#a6e22e">ProjectPlan</span>());
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">menus</span>;
-  }
-}
-</code></pre></div></article>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">class</span> <span class="nx">xxFormPresenter</span> <span class="kr">extends</span> <span class="nx">EasyBizFormPresenter</span> <span class="p">{</span>
+  <span class="kr">protected</span> <span class="nx">getMenuOptions</span><span class="p">()</span><span class="o">:</span> <span class="nx">MenuOptions</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">menus</span> <span class="o">=</span> <span class="kr">super</span><span class="p">.</span><span class="nx">getMenuOptions</span><span class="p">().</span><span class="nx">menus</span><span class="p">;</span>
+    <span class="nx">menus</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">buildInMenus</span><span class="p">.</span><span class="nx">ProjectPlan</span><span class="p">());</span>
+    <span class="k">return</span> <span class="nx">menus</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></article>
  
       
 
@@ -740,17 +779,17 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-toc">
       
   <nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#新建一个menu按钮">新建一个menu按钮</a>
-      <ul>
+      <ol>
         <li><a href="#给搞一个名字">给搞一个名字</a></li>
         <li><a href="#搞creator函数创建按钮">搞Creator函数创建按钮</a></li>
         <li><a href="#声明按钮">声明按钮</a></li>
         <li><a href="#声明类型">声明类型</a></li>
         <li><a href="#把按钮放到menu中">把按钮放到menu中</a></li>
-      </ul>
+      </ol>
     </li>
-  </ul>
+  </ol>
 </nav>
 
  
