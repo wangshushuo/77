@@ -11,12 +11,12 @@
     
     
     <item>
-      <title></title>
+      <title>如何做详设</title>
       <link>https://77doc.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</guid>
-      <description>如何做详设？ 一个功能如何实现？
+      <description>一个功能如何实现？
  改旧的功能  原来怎么实现的 数据从自哪个entity、哪个字段？进行了哪些拼装、组合、转换？   新的功能  公共的支持吗？  用过吗？  怎么用？     非标的吗？如何设计？  如何管理状态、数据？ 数据从自哪个entity、哪个字段？需要拼装、组合、转换吗？ 有哪些数据需要展示？ 哪些数据分给哪个组件？ 组件  能使用哪些公共组件？ 组件需要的参数 内部需要管理状态吗？   保存数据时需要转换数据吗？ 回显时需要转换数据吗？      </description>
     </item>
     

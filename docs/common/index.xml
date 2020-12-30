@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>通用功能的攻略 on 77前端文档</title>
+    <title>通用功能攻略 on 77前端文档</title>
     <link>https://77doc.wss.cool/docs/common/</link>
-    <description>Recent content in 通用功能的攻略 on 77前端文档</description>
+    <description>Recent content in 通用功能攻略 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     
@@ -11,12 +11,44 @@
     
     
     <item>
+      <title>GQL</title>
+      <link>https://77doc.wss.cool/docs/common/gql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/gql/</guid>
+      <description>普通的gql 最简单的，直接查一个对象（表）的全部数据
+{ BudgetAccount{ id name accountType { id name } } } 加一点查询条件
+{ BudgetAccount(criteriaStr:&amp;quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&amp;quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
+高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
+ 因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
+ { BudgetAccount(criteriaStr:&amp;quot;&amp;quot;){ a: exprField(expr:&amp;quot;()&amp;quot;) b: exprField(expr:&amp;quot;()&amp;quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
+举个例子。对于预算指标，复合指标有若干个子指标，但是直接通过BudgetIndicator模型获取不到它们。就可以这样做
+{ BudgetIndicator(criteriaStr:&amp;quot;isComposite=true&amp;quot;){ id isComposite child: exprField(expr:&amp;quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) } } 这里使用了两个sql函数把多条记录、多个字段组合成了一个字符串。拿到数据后前端经过简单的split转化就可以拿到json对象了。
+常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串
+例子：string_agg(object.name, &#39;, &#39;)
+coalesce：如果alias存在则取alias，不存在取name
+例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
+concat_ws：拼装一条记录的多个字段为一个字段
+例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</guid>
+      <description>数据权限 前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，
+const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { criteriaStr: `projectId=&amp;#39;${this.projectId}&amp;#39;`, sorts: [{ name: &amp;#39;createdTime&amp;#39;, isDesending: true }], contextObject: &amp;#39;ignoreDataAuth&amp;#39;, } as IDataLoaderQueryOptions); </description>
+    </item>
+    
+    <item>
       <title></title>
       <link>https://77doc.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/%E6%9D%83%E9%99%90/</guid>
-      <description>权限 1 2  import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View)   </description>
+      <description>权限 import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View) </description>
     </item>
     
     <item>
@@ -25,14 +57,27 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/</guid>
-      <description>接口 后端提供的接口，只能通过go访问，因为前端只能访问到go不能直接访问到后端。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。下面介绍一下实现一个go接口的步骤。
+      <description>之所以叫“后端的接口”是为了与“go的接口”区分开。
+因为前端只能访问到go不能直接访问到后端，所以后端提供的接口，只能通过go访问。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。
+下面介绍一下实现一个go接口的步骤。
 一、声明后端接口地址 在文件 trek/urls/url.go 中声明接口地址
 比如这样
-1 2  // 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost + &amp;#34;/baseapp/BudgetAccount/batchSetIndicators&amp;#34;   其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
+// 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost + &amp;#34;/baseapp/BudgetAccount/batchSetIndicators&amp;#34; 其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
 二、添加go的接口 找到文件 trek/web/controllers/web-controllers/transparent/index.go
 1. 在 BeforeActivation 方法中创建go的接口 1 2 3 4 5  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &amp;#34;/BudgetAccount/batchSetIndicators&amp;#34;, &amp;#34;BudgetAccountBatchSetIndicators&amp;#34;)  // ... }   其中b.Handle 方法的三个参数分别是
  http method go接口url（前端访问的url） go接口的处理函数  2. 实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法，也就是接口处理函数，内容就是直接给后端发起一个请求。
 其中第11行是第一步中声明的后端url地址 1 2 3 4 5 6 7 8 9 10 11 12  func (c *transparentController) BeforeActivation(b mvc.</description>
+    </item>
+    
+    <item>
+      <title>脱离form对entity进行crud</title>
+      <link>https://77doc.wss.cool/docs/common/entitycrud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/entitycrud/</guid>
+      <description>import { EntityCRUDHelper } from &amp;#39;@root/solutions/entity-crud&amp;#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) 注意事项 entity不能是子表。子表必须通过主表创建。
+EntityCRUDHelper的其他api
+   方法 参数 描述     create entityName, data 创建一条记录   update entityName, data 修改一条记录    </description>
     </item>
     
   </channel>

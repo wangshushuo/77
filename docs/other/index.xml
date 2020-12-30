@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>其他 on 77前端文档</title>
+    <link>https://77doc.wss.cool/docs/other/</link>
+    <description>Recent content in 其他 on 77前端文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://77doc.wss.cool/docs/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>新建开发用租户</title>
+      <link>https://77doc.wss.cool/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</guid>
+      <description>新环境就只有一个test1账号可以用，怎么自己新建一个租户、账号呢？
+找运维开一个运维平台的账号 进入运维平台，http://ops.q7link.com:8080/ 在运维工具&amp;gt;环境信息，中找到你的环境，以bj-test为例，看哪个服务器部署了qbos，然后复制这个服务器的IP  访问服务器IP的5000端口。用test1账号通用密码登录。如果登录失败，要进行初始化管理员  选择test1，点右下角的初始化按钮，就可以了。然后还是用test1登录。   登录后，进到租户页面，点新建按钮创建租户。信息随便填。 在你新建的租户这行的最后面有个操作栏，里面有个”权益”按钮，进去以后在点“新建” 产品名称，选择“标准版”，它的权益比较全  生效时间如果选错了在重选时会不大好操作，可以先把它叉掉。  填好以后，出来到租户列表，操作里有个“开通“按钮，填上名字和”你的手机“，这个手机后面激活账号时要收短信。 开通确定以后要等一会，看”企业属性”栏为正式时，就可以去登录了。 我们开发都是在localhost:3000，这里要激活刚刚那个手机号作为登录的账号  激活后，选一下会计期间，换个页面在选一下启用模块就都WWok了。  </description>
+    </item>
+    
+  </channel>
+</rss>

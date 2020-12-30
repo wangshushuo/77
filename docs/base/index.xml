@@ -11,12 +11,12 @@
     
     
     <item>
-      <title>模型、entity与元数据</title>
+      <title>模型、entity与元数据介绍</title>
       <link>https://77doc.wss.cool/docs/base/entity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/base/entity/</guid>
-      <description>模型、entity与元数据 模型 我们系统的后端是领域模型驱动的。比如下图是预算编制方案的模型，其中包含了很多实体(entity)(蓝色的)。 entity 一个entity就是一个对象，可以通过模型看到各个属性的名字和类型，以及entity之间的关系。
+      <description>模型 我们系统的后端是领域模型驱动的。比如下图是预算编制方案的模型，其中包含了很多实体(entity)(蓝色的)。 entity 一个entity就是一个对象，可以通过模型看到各个属性的名字和类型，以及entity之间的关系。
 我们前端的工作就是为entity制作表单和列表，来创建entity的实例或展示entity的信息。
 元数据 前端的元数据主要是对entity的描述。entity的名字、entity的属性名、属性类型等等。</description>
     </item>
@@ -32,81 +32,11 @@
     
     <item>
       <title></title>
-      <link>https://77doc.wss.cool/docs/base/entitycrud/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/entitycrud/</guid>
-      <description>脱离form对entity进行crud 1 2 3  import { EntityCRUDHelper } from &amp;#39;@root/solutions/entity-crud&amp;#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data)   注意事项 entity不能是子表。子表必须通过主表创建。
-EntityCRUDHelper的其他api 方法 | 参数 | 描述 :---:|:---|:--- create | entityName, data | 创建一条记录 update | entityName, data | 修改一条记录</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://77doc.wss.cool/docs/base/gen%E4%B8%8Etsc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/base/gen%E4%B8%8Etsc/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/base/gql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/gql/</guid>
-      <description>GQL 普通的gql 最简单的，直接查一个对象（表）的全部数据
-{ BudgetAccount{ id name accountType { id name } } } 加一点查询条件
-{ BudgetAccount(criteriaStr:&amp;quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&amp;quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
-高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
- 因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
- { BudgetAccount(criteriaStr:&amp;quot;&amp;quot;){ a: exprField(expr:&amp;quot;()&amp;quot;) b: exprField(expr:&amp;quot;()&amp;quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
-常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串 string_agg(object.name, &#39;, &#39;)
-coalesce：如果alias存在则取alias，不存在取name string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
-CONCAT_WS：拼装一条记录的多个字段为一个字段 string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)
- BudgetIndicator(criteriaStr:&amp;quot;isComposite=true&amp;quot;){ id isComposite exprField(expr:&amp;quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) } DataLoader 1 2 3 4 5  const settingDataLoader = new DataLoader(EN_Setting, [&amp;#39;values.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/base/grid/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/grid/</guid>
-      <description>grid grid是前端解决子表和列表的方案，对应的组件是AdvanceGird。
-editOptions editOptions下面的editParams会传给单元格的渲染组件
-表单 </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</guid>
-      <description>数据权限 前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，
-1 2 3 4 5  const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { criteriaStr: `projectId=&amp;#39;${this.projectId}&amp;#39;`, sorts: [{ name: &amp;#39;createdTime&amp;#39;, isDesending: true }], contextObject: &amp;#39;ignoreDataAuth&amp;#39;, } as IDataLoaderQueryOptions);   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/base/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</guid>
-      <description>新建开发用租户 新环境就只有一个test1账号可以用，怎么自己新建一个租户、账号呢？
-找运维开一个运维平台的账号 进入运维平台，http://ops.q7link.com:8080/ 在运维工具&amp;gt;环境信息，中找到你的环境，以bj-test为例，看哪个服务器部署了qbos，然后复制这个服务器的IP  访问服务器IP的5000端口。用test1账号通用密码登录。如果登录失败，要进行初始化管理员  选择test1，点右下角的初始化按钮，就可以了。然后还是用test1登录。   登录后，进到租户页面，点新建按钮创建租户。信息随便填。 在你新建的租户这行的最后面有个操作栏，里面有个”权益”按钮，进去以后在点“新建” 产品名称，选择“标准版”，它的权益比较全  生效时间如果选错了在重选时会不大好操作，可以先把它叉掉。  填好以后，出来到租户列表，操作里有个“开通“按钮，填上名字和”你的手机“，这个手机后面激活账号时要收短信。 开通确定以后要等一会，看”企业属性”栏为正式时，就可以去登录了。 我们开发都是在localhost:3000，这里要激活刚刚那个手机号作为登录的账号  激活后，选一下会计期间，换个页面在选一下启用模块就都WWok了。  </description>
-    </item>
-    
-    <item>
-      <title>GQL plus</title>
-      <link>https://77doc.wss.cool/docs/base/gql-plus/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/gql-plus/</guid>
-      <description>gql plus 如何用gql做关联查询/子查询呢？看下面的例子。
-BudgetIndicator(criteriaStr: &amp;quot;isComposite=true&amp;quot;) { isComposite id parents { parentIndicatorId childIndicator { name id } } a: exprField(expr: &amp;quot;(select string_agg(id,&#39;,&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) b: exprField(expr: &amp;quot;(select count(id) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) } 每个实体上都有一个exprField字段，这个字段接收一个sql作为expr参数。其中的m.id是主表（BudgetIndicator）的id，也就是说子查询中可以通过m引用到主表。
-这样就可以避免在前端进行多次查gql了。</description>
     </item>
     
   </channel>

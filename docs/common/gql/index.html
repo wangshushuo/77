@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="普通的gql 最简单的，直接查一个对象（表）的全部数据
+{ BudgetAccount{ id name accountType { id name } } } 加一点查询条件
+{ BudgetAccount(criteriaStr:&quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
+高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
+ 因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
+ { BudgetAccount(criteriaStr:&quot;&quot;){ a: exprField(expr:&quot;()&quot;) b: exprField(expr:&quot;()&quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
+举个例子。对于预算指标，复合指标有若干个子指标，但是直接通过BudgetIndicator模型获取不到它们。就可以这样做
+{ BudgetIndicator(criteriaStr:&quot;isComposite=true&quot;){ id isComposite child: exprField(expr:&quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&quot;) } } 这里使用了两个sql函数把多条记录、多个字段组合成了一个字符串。拿到数据后前端经过简单的split转化就可以拿到json对象了。
+常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串
+例子：string_agg(object.name, &#39;, &#39;)
+coalesce：如果alias存在则取alias，不存在取name
+例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
+concat_ws：拼装一条记录的多个字段为一个字段
+例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="GQL" />
+<meta property="og:description" content="普通的gql 最简单的，直接查一个对象（表）的全部数据
+{ BudgetAccount{ id name accountType { id name } } } 加一点查询条件
+{ BudgetAccount(criteriaStr:&quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
+高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
+ 因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
+ { BudgetAccount(criteriaStr:&quot;&quot;){ a: exprField(expr:&quot;()&quot;) b: exprField(expr:&quot;()&quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
+举个例子。对于预算指标，复合指标有若干个子指标，但是直接通过BudgetIndicator模型获取不到它们。就可以这样做
+{ BudgetIndicator(criteriaStr:&quot;isComposite=true&quot;){ id isComposite child: exprField(expr:&quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&quot;) } } 这里使用了两个sql函数把多条记录、多个字段组合成了一个字符串。拿到数据后前端经过简单的split转化就可以拿到json对象了。
+常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串
+例子：string_agg(object.name, &#39;, &#39;)
+coalesce：如果alias存在则取alias，不存在取name
+例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
+concat_ws：拼装一条记录的多个字段为一个字段
+例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/common/gql/" />
+
+<title>GQL | 77前端文档</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.b245da184d72dfce63078863a1e84c70e959a418f38be2a8ccb1934c35f71a90.js" integrity="sha256-skXaGE1y385jB4hjoehMcOlZpBjzi&#43;KozLGTTDX3GpA="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>77前端文档</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <span>前端框架基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/entity/" class="">模型、entity与元数据介绍</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/" class="">预置数据</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>通用功能攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/gql/" class="active">GQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/" class="">数据权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%8E%A5%E5%8F%A3/" class="">后端的接口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/entitycrud/" class="">脱离form对entity进行crud</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/what-is-bizform/" class="">什么是BizForm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="">BizForm的组成部分</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" class="">BizForm的原理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm实用攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/" class="">打印模板</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>Menu Button</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/" class="">修改Menu中的Button</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/" class="">新建一个MenuButton</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/" class="">加一个field</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/" class="">实现一个标准表单</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E7%A9%BF%E9%80%8F/" class="">穿透</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>虚拟字段</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+    
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/" class="">查询方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>组件</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/grid/" class="">Grid</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/tablist/" class="">Tab List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>设计</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/" class="">如何做详设</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>H5/小程序</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E7%99%BB%E5%BD%95/" class="">登录</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/" class="">审批时修改</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E6%9B%B4%E5%A4%9A%E6%8C%89%E9%92%AE/" class="">更多按钮</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%AD%90%E8%A1%A8%E5%B1%95%E7%A4%BA%E6%96%B9%E5%BC%8F/" class="">子表展示方式</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>其他</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/" class="">新建开发用租户</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>GQL</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#普通的gql">普通的gql</a></li>
+    <li><a href="#高级的gql">高级的gql</a>
+      <ul>
+        <li><a href="#常用的sql函数">常用的sql函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#dataloader">DataLoader</a></li>
+    <li><a href="#不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="普通的gql">普通的gql</h2>
+<p>最简单的，直接查一个对象（表）的全部数据</p>
+<pre><code>{
+  BudgetAccount{
+    id
+    name
+    accountType {
+      id
+      name
+    }
+  }
+}
+</code></pre><p>加一点查询条件</p>
+<pre><code>{
+  BudgetAccount(criteriaStr:&quot;name in ('1','2','3')&quot;){
+    id
+    name
+    accountType {
+      id
+      name
+    }
+  }
+}
+</code></pre><p>这个会查到name为1、2、3的多条数据</p>
+<h2 id="高级的gql">高级的gql</h2>
+<p>上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。</p>
+<blockquote>
+<p>因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建</p>
+</blockquote>
+<pre><code>{
+  BudgetAccount(criteriaStr:&quot;&quot;){
+    a: exprField(expr:&quot;()&quot;)
+    b: exprField(expr:&quot;()&quot;)
+  }
+}
+</code></pre><p>其中<code>a:</code>是个模型上的一个字段起别名，<code>exprField</code>是一个可以扩展的额外字段，利用这两个就可以做成子查询了。</p>
+<p>举个例子。对于预算指标，复合指标有若干个子指标，但是直接通过BudgetIndicator模型获取不到它们。就可以这样做</p>
+<pre><code>{
+  BudgetIndicator(criteriaStr:&quot;isComposite=true&quot;){
+    id
+    isComposite
+    child: exprField(expr:&quot;(select string_agg(CONCAT_WS(',',childIndicator.id,childIndicator.name),';')  from BudgetIndicatorComposition where parentIndicatorId=m.id)&quot;)
+  }
+}
+</code></pre><p>这里使用了两个sql函数把多条记录、多个字段组合成了一个字符串。拿到数据后前端经过简单的split转化就可以拿到json对象了。</p>
+<h3 id="常用的sql函数">常用的sql函数</h3>
+<p><strong>string_agg</strong>: 如果查出来有多条结果，会将它们拼装为一个字符串<br>
+例子：string_agg(object.name, ', ')</p>
+<p><strong>coalesce</strong>：如果alias存在则取alias，不存在取name<br>
+例子：string_agg((coalesce(indicator.alias, indicator.name)), ', ')</p>
+<p><strong>concat_ws</strong>：拼装一条记录的多个字段为一个字段<br>
+例子：string_agg(CONCAT_WS(',',childIndicator.id,childIndicator.name),';')</p>
+<h2 id="dataloader">DataLoader</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">settingDataLoader</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DataLoader</span>(<span style="color:#a6e22e">EN_Setting</span>, [<span style="color:#e6db74">&#39;values.value&#39;</span>], {
+  <span style="color:#a6e22e">criteriaStr</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`key=&#39;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">accountingBook</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;`</span>,
+} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">QueryOptions</span>);
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">settingDataLoader</span>.<span style="color:#a6e22e">query</span>();
+</code></pre></div><h2 id="不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">client</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@client&#39;</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fetchControlBalance</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> (<span style="color:#a6e22e">criteriaStr</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">dimensionField</span>: <span style="color:#66d9ef">string</span>[]) <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">query</span><span style="color:#f92672">&lt;</span>{ <span style="color:#a6e22e">data</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">IInvoiceType</span><span style="color:#f92672">&gt;</span> }<span style="color:#f92672">&gt;</span>({
+    <span style="color:#a6e22e">query</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    {
+</span><span style="color:#e6db74">      data: BudgetControlBalance(criteriaStr: &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">criteriaStr</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;){
+</span><span style="color:#e6db74">        id
+</span><span style="color:#e6db74">      }
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">    `</span>,
+  });
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">data</span>
+};
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#普通的gql">普通的gql</a></li>
+    <li><a href="#高级的gql">高级的gql</a>
+      <ul>
+        <li><a href="#常用的sql函数">常用的sql函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#dataloader">DataLoader</a></li>
+    <li><a href="#不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

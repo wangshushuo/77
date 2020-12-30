@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>77前端文档</title>
+    <title>77hub前端文档 on 77前端文档</title>
     <link>https://77doc.wss.cool/</link>
-    <description>Recent content on 77前端文档</description>
+    <description>Recent content in 77hub前端文档 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 28 Sep 2014 00:00:00 +0000</lastBuildDate>
@@ -12,23 +12,35 @@
     
     
     <item>
-      <title>With ToC</title>
-      <link>https://77doc.wss.cool/docs/example/table-of-contents/with-toc/</link>
+      <title></title>
+      <link>https://77doc.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://77doc.wss.cool/docs/example/table-of-contents/with-toc/</guid>
-      <description>Caput vino delphine in tamen vias Cognita laeva illo fracta Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.
- Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit  Natus quaerere Pectora et sine mulcere, coniuge dum tincta incurvae.</description>
+      <guid>https://77doc.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</guid>
+      <description>在apps/link-h5/src/authorize/index.ts文件中 讲下面的代码替换掉原来的代码
+class Authorize{ auth = { &amp;#34;tenantId&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;accountId&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;accessToken&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;refreshToken&amp;#34;: &amp;#34;xxx&amp;#34; } private _token = this.auth.accessToken; private _refreshToken = this.auth.refreshToken; public tenantId = this.auth.tenantId; } auth的值，可以在这里搞</description>
     </item>
     
     <item>
-      <title>Without ToC</title>
-      <link>https://77doc.wss.cool/docs/example/table-of-contents/without-toc/</link>
+      <title>GQL</title>
+      <link>https://77doc.wss.cool/docs/common/gql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://77doc.wss.cool/docs/example/table-of-contents/without-toc/</guid>
-      <description>At me ipso nepotibus nunc celebratior genus Tanto oblite Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque illic demersit imago et aristas questaque posset. Vomit quoque suo inhaesuro clara. Esse cumque, per referri triste. Ut exponit solisque communis in tendens vincetis agisque iamque huic bene ante vetat omina Thebae rates. Aeacus servat admonitu concidit, ad resimas vultus et rugas vultu dignamque Siphnon.
-Quam iugulum regia simulacra, plus meruit humo pecorumque haesit, ab discedunt dixit: ritu pharetramque.</description>
+      <guid>https://77doc.wss.cool/docs/common/gql/</guid>
+      <description>普通的gql 最简单的，直接查一个对象（表）的全部数据
+{ BudgetAccount{ id name accountType { id name } } } 加一点查询条件
+{ BudgetAccount(criteriaStr:&amp;quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&amp;quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
+高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
+ 因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
+ { BudgetAccount(criteriaStr:&amp;quot;&amp;quot;){ a: exprField(expr:&amp;quot;()&amp;quot;) b: exprField(expr:&amp;quot;()&amp;quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
+举个例子。对于预算指标，复合指标有若干个子指标，但是直接通过BudgetIndicator模型获取不到它们。就可以这样做
+{ BudgetIndicator(criteriaStr:&amp;quot;isComposite=true&amp;quot;){ id isComposite child: exprField(expr:&amp;quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) } } 这里使用了两个sql函数把多条记录、多个字段组合成了一个字符串。拿到数据后前端经过简单的split转化就可以拿到json对象了。
+常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串
+例子：string_agg(object.name, &#39;, &#39;)
+coalesce：如果alias存在则取alias，不存在取name
+例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
+concat_ws：拼装一条记录的多个字段为一个字段
+例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)</description>
     </item>
     
     <item>
@@ -53,22 +65,12 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
     </item>
     
     <item>
-      <title>Example Site</title>
-      <link>https://77doc.wss.cool/docs/example/example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/example/example/</guid>
-      <description>Introduction Ferre hinnitibus erat accipitrem dixi Troiae tollens Lorem markdownum, a quoque nutu est quodcumque mandasset veluti. Passim inportuna totidemque nympha fert; repetens pendent, poenarum guttura sed vacet non, mortali undas. Omnis pharetramque gramen portentificisque membris servatum novabis fallit de nubibus atque silvas mihi. Dixit repetitaque Quid; verrit longa; sententia mandat quascumque nescio solebat litore; noctes. Hostem haerentem circuit plenaque tamen.
- Pedum ne indigenae finire invergens carpebat Velit posses summoque De fumos illa foret  Est simul fameque tauri qua ad Locum nullus nisi vomentes.</description>
-    </item>
-    
-    <item>
-      <title>模型、entity与元数据</title>
+      <title>模型、entity与元数据介绍</title>
       <link>https://77doc.wss.cool/docs/base/entity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/base/entity/</guid>
-      <description>模型、entity与元数据 模型 我们系统的后端是领域模型驱动的。比如下图是预算编制方案的模型，其中包含了很多实体(entity)(蓝色的)。 entity 一个entity就是一个对象，可以通过模型看到各个属性的名字和类型，以及entity之间的关系。
+      <description>模型 我们系统的后端是领域模型驱动的。比如下图是预算编制方案的模型，其中包含了很多实体(entity)(蓝色的)。 entity 一个entity就是一个对象，可以通过模型看到各个属性的名字和类型，以及entity之间的关系。
 我们前端的工作就是为entity制作表单和列表，来创建entity的实例或展示entity的信息。
 元数据 前端的元数据主要是对entity的描述。entity的名字、entity的属性名、属性类型等等。</description>
     </item>
@@ -100,7 +102,7 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       <guid>https://77doc.wss.cool/docs/list-guide/%E7%A9%BF%E9%80%8F/</guid>
       <description>穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能，在这里(1)会跳到项目计划详情，(2)会跳到项目详情。
 代码实现 图片中(2)复杂一点，从项目计划列表跳到项目详情页。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IListOption { return { ...super.getListOption(), gridOption: { columnResolver: columnDefs =&amp;gt; { // 将数组转化为map，这个可以不做，直接用find在数组中找到你想找的column  const columnDefsMap = new Map(); columnDefs.forEach(i =&amp;gt; { columnDefsMap.set(i.field, i); }) // 找到column  const projectCode = columnDefsMap.</description>
+class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IListOption { return { ...super.getListOption(), gridOption: { columnResolver: columnDefs =&amp;gt; { // 将数组转化为map，这个可以不做，直接用find在数组中找到你想找的column  const columnDefsMap = new Map(); columnDefs.forEach(i =&amp;gt; { columnDefsMap.set(i.field, i); }) // 找到column  const projectCode = columnDefsMap.get(&amp;#39;project.code&amp;#39;); // 设置样式和点击事件  projectCode.cellClass = &amp;#39;object-cell-linkable&amp;#39;; projectCode.onCellClicked = event =&amp;gt; { // 实用列表方案的api来实现跳转  this.presenter.listSolutionConnector.rowActionController.masterHashResolver( {name: EN_Project} as Entity, BizListActionEnum.View, {id: event.data.project.id}, event.rowIndex, this.presenter.listSolutionConnector.rowActionController.saveSuccess, ); }; } } } } } 代码比较容易理解，通过gridOption的columnResolver来重新定义某以列的columnDef。</description>
     </item>
     
     <item>
@@ -118,7 +120,7 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</guid>
-      <description>BizForm的原理  model template  InitialController 由onBeansReady事件开始
+      <description>model template  InitialController 由onBeansReady事件开始
  entityName，params，initUrl axios.post  response.data entityName, solution.metadata, solution.template =&amp;gt; configTransformer =&amp;gt; {model,template} model =&amp;gt; BizFormModel =&amp;gt; model   onInitialStart  FormController  创建entityCRUD：formEntityCRUD =&amp;gt; entityCRUD 初始化entityCRUD：initData =&amp;gt; entityCRUD.init  init: initData + initForm() =&amp;gt; entityCRUD.form =&amp;gt; form  initForm: EntityFormHelper.createForm(entityName, mergedFormOptions) =&amp;gt; form      LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
 也就是initForm和createForm。
 initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
@@ -161,16 +163,6 @@ Follow the following steps:
     
     <item>
       <title></title>
-      <link>https://77doc.wss.cool/docs/base/entitycrud/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/entitycrud/</guid>
-      <description>脱离form对entity进行crud 1 2 3  import { EntityCRUDHelper } from &amp;#39;@root/solutions/entity-crud&amp;#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data)   注意事项 entity不能是子表。子表必须通过主表创建。
-EntityCRUDHelper的其他api 方法 | 参数 | 描述 :---:|:---|:--- create | entityName, data | 创建一条记录 update | entityName, data | 修改一条记录</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://77doc.wss.cool/docs/base/gen%E4%B8%8Etsc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -180,51 +172,12 @@ EntityCRUDHelper的其他api 方法 | 参数 | 描述 :---:|:---|:--- create | e
     
     <item>
       <title></title>
-      <link>https://77doc.wss.cool/docs/base/gql/</link>
+      <link>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://77doc.wss.cool/docs/base/gql/</guid>
-      <description>GQL 普通的gql 最简单的，直接查一个对象（表）的全部数据
-{ BudgetAccount{ id name accountType { id name } } } 加一点查询条件
-{ BudgetAccount(criteriaStr:&amp;quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&amp;quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
-高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
- 因为有的时候，后端的模型中，没有包含我们需要的子表，只能我们自己构建
- { BudgetAccount(criteriaStr:&amp;quot;&amp;quot;){ a: exprField(expr:&amp;quot;()&amp;quot;) b: exprField(expr:&amp;quot;()&amp;quot;) } } 其中a:是个模型上的一个字段起别名，exprField是一个可以扩展的额外字段，利用这两个就可以做成子查询了。
-常用的sql函数 string_agg: 如果查出来有多条结果，会将它们拼装为一个字符串 string_agg(object.name, &#39;, &#39;)
-coalesce：如果alias存在则取alias，不存在取name string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
-CONCAT_WS：拼装一条记录的多个字段为一个字段 string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)
- BudgetIndicator(criteriaStr:&amp;quot;isComposite=true&amp;quot;){ id isComposite exprField(expr:&amp;quot;(select string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) } DataLoader 1 2 3 4 5  const settingDataLoader = new DataLoader(EN_Setting, [&amp;#39;values.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/base/grid/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/grid/</guid>
-      <description>grid grid是前端解决子表和列表的方案，对应的组件是AdvanceGird。
-editOptions editOptions下面的editParams会传给单元格的渲染组件
-表单 </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</guid>
+      <guid>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</guid>
       <description>数据权限 前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，
-1 2 3 4 5  const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { criteriaStr: `projectId=&amp;#39;${this.projectId}&amp;#39;`, sorts: [{ name: &amp;#39;createdTime&amp;#39;, isDesending: true }], contextObject: &amp;#39;ignoreDataAuth&amp;#39;, } as IDataLoaderQueryOptions);   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/base/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</guid>
-      <description>新建开发用租户 新环境就只有一个test1账号可以用，怎么自己新建一个租户、账号呢？
-找运维开一个运维平台的账号 进入运维平台，http://ops.q7link.com:8080/ 在运维工具&amp;gt;环境信息，中找到你的环境，以bj-test为例，看哪个服务器部署了qbos，然后复制这个服务器的IP  访问服务器IP的5000端口。用test1账号通用密码登录。如果登录失败，要进行初始化管理员  选择test1，点右下角的初始化按钮，就可以了。然后还是用test1登录。   登录后，进到租户页面，点新建按钮创建租户。信息随便填。 在你新建的租户这行的最后面有个操作栏，里面有个”权益”按钮，进去以后在点“新建” 产品名称，选择“标准版”，它的权益比较全  生效时间如果选错了在重选时会不大好操作，可以先把它叉掉。  填好以后，出来到租户列表，操作里有个“开通“按钮，填上名字和”你的手机“，这个手机后面激活账号时要收短信。 开通确定以后要等一会，看”企业属性”栏为正式时，就可以去登录了。 我们开发都是在localhost:3000，这里要激活刚刚那个手机号作为登录的账号  激活后，选一下会计期间，换个页面在选一下启用模块就都WWok了。  </description>
+const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { criteriaStr: `projectId=&amp;#39;${this.projectId}&amp;#39;`, sorts: [{ name: &amp;#39;createdTime&amp;#39;, isDesending: true }], contextObject: &amp;#39;ignoreDataAuth&amp;#39;, } as IDataLoaderQueryOptions); </description>
     </item>
     
     <item>
@@ -233,7 +186,18 @@ editOptions editOptions下面的editParams会传给单元格的渲染组件
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/%E6%9D%83%E9%99%90/</guid>
-      <description>权限 1 2  import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View)   </description>
+      <description>权限 import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View) </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://77doc.wss.cool/docs/component/grid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/component/grid/</guid>
+      <description>grid grid是前端解决子表和列表的方案，对应的组件是AdvanceGird。
+editOptions editOptions下面的editParams会传给单元格的渲染组件
+表单 </description>
     </item>
     
     <item>
@@ -242,37 +206,7 @@ editOptions editOptions下面的editParams会传给单元格的渲染组件
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/component/tablist/</guid>
-      <description>TabList 1 2 3 4 5 6 7 8 9  &amp;lt;TabList focusIndex={this.focusIndex} onTabChange={index =&amp;gt; { }} &amp;gt; &amp;lt;Tab key={1} title=&amp;#34;编码方案&amp;#34; /&amp;gt; &amp;lt;Tab key={2} title=&amp;#34;对照码&amp;#34; /&amp;gt; &amp;lt;/TabList&amp;gt;   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</guid>
-      <description>如何做详设？ 一个功能如何实现？
- 改旧的功能  原来怎么实现的 数据从自哪个entity、哪个字段？进行了哪些拼装、组合、转换？   新的功能  公共的支持吗？  用过吗？  怎么用？     非标的吗？如何设计？  如何管理状态、数据？ 数据从自哪个entity、哪个字段？需要拼装、组合、转换吗？ 有哪些数据需要展示？ 哪些数据分给哪个组件？ 组件  能使用哪些公共组件？ 组件需要的参数 内部需要管理状态吗？   保存数据时需要转换数据吗？ 回显时需要转换数据吗？      </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/example/collapsed/3rd-level/4th-level/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/example/collapsed/3rd-level/4th-level/</guid>
-      <description>4th Level of Menu Caesorum illa tu sentit micat vestes papyriferi Inde aderam facti; Theseus vis de tauri illa peream. Oculos uberaque non regisque vobis cursuque, opus venit quam vulnera. Et maiora necemque, lege modo; gestanda nitidi, vero? Dum ne pectoraque testantur.
-Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii. Cupiens auctoribus pariter rubet, profana magni super nocens. Vos ius sibilat inpar turba visae iusto! Sedes ante dum superest extrema.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/example/hidden/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/example/hidden/</guid>
-      <description>This page is hidden in menu Quondam non pater est dignior ille Eurotas Latent te facies Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
- Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor  Cum honorum Latona O fallor in sustinui iussorum equidem.</description>
+      <description>TabList &amp;lt;TabList focusIndex={this.focusIndex} onTabChange={index =&amp;gt; { }} &amp;gt; &amp;lt;Tab key={1} title=&amp;#34;编码方案&amp;#34; /&amp;gt; &amp;lt;Tab key={2} title=&amp;#34;对照码&amp;#34; /&amp;gt; &amp;lt;/TabList&amp;gt; </description>
     </item>
     
     <item>
@@ -295,16 +229,6 @@ Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii.
     
     <item>
       <title></title>
-      <link>https://77doc.wss.cool/docs/h5/tips/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/h5/tips/</guid>
-      <description>子表单独页面展示 默认不显示子表，需要通过查看明细跳到另一个页面查看。
-如果想在主表下面直接显示子表，像下面这样 可以在DisplayOptions或者constructor中设置isDetailSinglePage为false </description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://77doc.wss.cool/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -320,17 +244,7 @@ Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/h5/%E6%9B%B4%E5%A4%9A%E6%8C%89%E9%92%AE/</guid>
-      <description>更多按钮  过滤掉子按钮：在getMenuOptions方法中可以控制不显示哪些按钮。 动态控制按钮显示：MenuController.setVisible方法  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  class ProjectScheduleFormPresenter extends EasyBizFormPresenter&amp;lt;IProjectSchedule&amp;gt; { constructor(options: IEasyBizFormPresenterOptions) { super(EN_ProjectSchedule, options); } isRestartVisible() { const currentUserId = store.currentUser.id; const formCreateUserId = oc(this.formValue).createdUser.id(&amp;#39;&amp;#39;); this.formPresenter .getBean(BeanNames.MenuController) .setVisible(BizFormMenuButtons.Restart, currentUserId === formCreateUserId); } protected onFormCreated(form: EntityForm, disposers: Array&amp;lt;IDisposer&amp;gt;) { this.isRestartVisible(); } protected getMenuOptions(): MenuOptions { const defaultMenuOptions = super.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/h5/%E7%99%BB%E5%BD%95/</guid>
-      <description>在apps/link-h5/src/authorize/index.ts文件中 讲下面的代码替换掉原来的代码
-1 2 3 4 5 6 7 8 9 10 11  class Authorize{ auth = { &amp;#34;tenantId&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;accountId&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;accessToken&amp;#34;: &amp;#34;xxx&amp;#34;, &amp;#34;refreshToken&amp;#34;: &amp;#34;xxx&amp;#34; } private _token = this.auth.accessToken; private _refreshToken = this.auth.refreshToken; public tenantId = this.auth.tenantId; }   auth的值，可以在这里搞 </description>
+      <description>更多按钮  过滤掉子按钮：在getMenuOptions方法中可以控制不显示哪些按钮。 动态控制按钮显示：MenuController.setVisible方法  class ProjectScheduleFormPresenter extends EasyBizFormPresenter&amp;lt;IProjectSchedule&amp;gt; { constructor(options: IEasyBizFormPresenterOptions) { super(EN_ProjectSchedule, options); } isRestartVisible() { const currentUserId = store.currentUser.id; const formCreateUserId = oc(this.formValue).createdUser.id(&amp;#39;&amp;#39;); this.formPresenter .getBean(BeanNames.MenuController) .setVisible(BizFormMenuButtons.Restart, currentUserId === formCreateUserId); } protected onFormCreated(form: EntityForm, disposers: Array&amp;lt;IDisposer&amp;gt;) { this.isRestartVisible(); } protected getMenuOptions(): MenuOptions { const defaultMenuOptions = super.getMenuOptions(); const excludeButtons: BizFormMenuCreator[] = [buildInMenus.Aborted, buildInMenus.Copy]; const filterCopyMenu = defaultMenuOptions.menus.filter(menu =&amp;gt; !excludeButtons.includes(menu)); return { ...defaultMenuOptions, menus: filterCopyMenu, }; } </description>
     </item>
     
     <item>
@@ -361,107 +275,13 @@ Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii.
     </item>
     
     <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/shortcodes/buttons/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/shortcodes/buttons/</guid>
-      <description>Buttons Buttons are styled links that can lead to local page or external link.
-Example 1 2  {{&amp;lt; button relref=&amp;#34;/&amp;#34; [class=&amp;#34;...&amp;#34;] &amp;gt;}}Get Home{{&amp;lt; /button &amp;gt;}}{{&amp;lt; button href=&amp;#34;https://github.com/alex-shpak/hugo-book&amp;#34; &amp;gt;}}Contribute{{&amp;lt; /button &amp;gt;}}   Get Home  Contribute  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/shortcodes/columns/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/shortcodes/columns/</guid>
-      <description>Columns Columns help organize shorter pieces of content horizontally for readability.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14  {{&amp;lt; columns &amp;gt;}} &amp;lt;!-- begin columns block --&amp;gt; # Left Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic sparator, between columns --&amp;gt; # Mid Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic sparator, between columns --&amp;gt; # Right Content Lorem markdownum insigne... {{&amp;lt; /columns &amp;gt;}}   Example Left Content Lorem markdownum insigne.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/shortcodes/details/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/shortcodes/details/</guid>
-      <description>Details Details shortcode is a helper for details html5 element. It is going to replace expand shortcode.
-Example 1 2 3 4  {{&amp;lt; details &amp;#34;Title&amp;#34; [open] &amp;gt;}}## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}}  1 2 3 4  {{&amp;lt; details title=&amp;#34;Title&amp;#34; open=true &amp;gt;}}## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}}  Title Markdown content Lorem markdownum insigne...   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/shortcodes/expand/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/shortcodes/expand/</guid>
-      <description>Expand Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
-Example Default 1 2 3 4  {{&amp;lt; expand &amp;gt;}}## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}}    Expand ↕  Markdown content Lorem markdownum insigne...    With Custom Label 1 2 3 4  {{&amp;lt; expand &amp;#34;Custom Label&amp;#34; &amp;#34;...&amp;#34; &amp;gt;}}## Markdown content Lorem markdownum insigne.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/shortcodes/hints/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/shortcodes/hints/</guid>
-      <description>Hints Hint shortcode can be used as hint/alerts/notification block.
-There are 3 colors to choose: info, warning and danger.
-1 2 3 4 5  {{&amp;lt; hint [info|warning|danger] &amp;gt;}}**Markdown content** Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa {{&amp;lt; /hint &amp;gt;}}  Example Markdown content
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/shortcodes/katex/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/shortcodes/katex/</guid>
-      <description>KaTeX KaTeX shortcode let you render math typesetting in markdown document. See KaTeX
-Example 1 2 3  {{&amp;lt; katex [display] [class=&amp;#34;text-center&amp;#34;] &amp;gt;}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{&amp;lt; /katex &amp;gt;}}       \[f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi\]    Display Mode Example Here is some inline example:  \(\pi(x)\)  , rendered in the same line. And below is display example, having display: block  \[f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi\]  Text continues here.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/shortcodes/mermaid/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/shortcodes/mermaid/</guid>
-      <description>Mermaid Chart Mermaid is library for generating svg charts and diagrams from text.
-Example 1 2 3 4 5 6 7 8 9 10 11 12  {{&amp;lt; mermaid [class=&amp;#34;text-center&amp;#34;]&amp;gt;}}sequenceDiagram Alice-&amp;gt;&amp;gt;Bob: Hello Bob, how are you? alt is sick Bob-&amp;gt;&amp;gt;Alice: Not so good :( else is well Bob-&amp;gt;&amp;gt;Alice: Feeling fresh like a daisy end opt Extra response Bob-&amp;gt;&amp;gt;Alice: Thanks for asking end {{&amp;lt; /mermaid &amp;gt;}}      mermaid.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/shortcodes/tabs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/shortcodes/tabs/</guid>
-      <description>Tabs Tabs let you organize content by context, for example installation instructions for each supported platform.
-1 2 3 4 5  {{&amp;lt; tabs &amp;#34;uniqueid&amp;#34; &amp;gt;}}{{&amp;lt; tab &amp;#34;MacOS&amp;#34; &amp;gt;}}# MacOS Content {{&amp;lt; /tab &amp;gt;}}{{&amp;lt; tab &amp;#34;Linux&amp;#34; &amp;gt;}}# Linux Content {{&amp;lt; /tab &amp;gt;}}{{&amp;lt; tab &amp;#34;Windows&amp;#34; &amp;gt;}}# Windows Content {{&amp;lt; /tab &amp;gt;}}{{&amp;lt; /tabs &amp;gt;}}  Example MacOS MacOS This is tab MacOS content.
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description>
-    </item>
-    
-    <item>
-      <title>GQL plus</title>
-      <link>https://77doc.wss.cool/docs/base/gql-plus/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/base/gql-plus/</guid>
-      <description>gql plus 如何用gql做关联查询/子查询呢？看下面的例子。
-BudgetIndicator(criteriaStr: &amp;quot;isComposite=true&amp;quot;) { isComposite id parents { parentIndicatorId childIndicator { name id } } a: exprField(expr: &amp;quot;(select string_agg(id,&#39;,&#39;) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) b: exprField(expr: &amp;quot;(select count(id) from BudgetIndicatorComposition where parentIndicatorId=m.id)&amp;quot;) } 每个实体上都有一个exprField字段，这个字段接收一个sql作为expr参数。其中的m.id是主表（BudgetIndicator）的id，也就是说子查询中可以通过m引用到主表。
-这样就可以避免在前端进行多次查gql了。</description>
-    </item>
-    
-    <item>
       <title>修改Menu中的Button</title>
       <link>https://77doc.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/</guid>
       <description>向Menu中添加Button 此攻略会向你介绍如何往查看态的menu中加一个按钮
-已有按钮添加到menu中 1 2 3 4 5 6 7  class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.getMenuOptions().menus; // 删改menus数组  return menus; } }   在这里修改menus数组就可以了。
+已有按钮添加到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.getMenuOptions().menus; // 删改menus数组  return menus; } } 在这里修改menus数组就可以了。
 可以直接往里面添加按钮。也可能要根据权限、是不是变更单等条件过滤掉一些按钮。</description>
     </item>
     
@@ -471,14 +291,46 @@ BudgetIndicator(criteriaStr: &amp;quot;isComposite=true&amp;quot;) { isComposite
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/%E6%8E%A5%E5%8F%A3/</guid>
-      <description>接口 后端提供的接口，只能通过go访问，因为前端只能访问到go不能直接访问到后端。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。下面介绍一下实现一个go接口的步骤。
+      <description>之所以叫“后端的接口”是为了与“go的接口”区分开。
+因为前端只能访问到go不能直接访问到后端，所以后端提供的接口，只能通过go访问。那么就要在go上加一个接口，前端访问go的接口，go访问后端的接口。
+下面介绍一下实现一个go接口的步骤。
 一、声明后端接口地址 在文件 trek/urls/url.go 中声明接口地址
 比如这样
-1 2  // 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost + &amp;#34;/baseapp/BudgetAccount/batchSetIndicators&amp;#34;   其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
+// 批量设置执行指标 	BudgetBatchSetIndicators := BudgetHost + &amp;#34;/baseapp/BudgetAccount/batchSetIndicators&amp;#34; 其中的 BudgetHost 是服务的地址，可以在文件的开头看到，它是根据具体的服务会有所不同的。
 二、添加go的接口 找到文件 trek/web/controllers/web-controllers/transparent/index.go
 1. 在 BeforeActivation 方法中创建go的接口 1 2 3 4 5  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &amp;#34;/BudgetAccount/batchSetIndicators&amp;#34;, &amp;#34;BudgetAccountBatchSetIndicators&amp;#34;)  // ... }   其中b.Handle 方法的三个参数分别是
  http method go接口url（前端访问的url） go接口的处理函数  2. 实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法，也就是接口处理函数，内容就是直接给后端发起一个请求。
 其中第11行是第一步中声明的后端url地址 1 2 3 4 5 6 7 8 9 10 11 12  func (c *transparentController) BeforeActivation(b mvc.</description>
+    </item>
+    
+    <item>
+      <title>如何做详设</title>
+      <link>https://77doc.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/</guid>
+      <description>一个功能如何实现？
+ 改旧的功能  原来怎么实现的 数据从自哪个entity、哪个字段？进行了哪些拼装、组合、转换？   新的功能  公共的支持吗？  用过吗？  怎么用？     非标的吗？如何设计？  如何管理状态、数据？ 数据从自哪个entity、哪个字段？需要拼装、组合、转换吗？ 有哪些数据需要展示？ 哪些数据分给哪个组件？ 组件  能使用哪些公共组件？ 组件需要的参数 内部需要管理状态吗？   保存数据时需要转换数据吗？ 回显时需要转换数据吗？      </description>
+    </item>
+    
+    <item>
+      <title>子表展示方式</title>
+      <link>https://77doc.wss.cool/docs/h5/%E5%AD%90%E8%A1%A8%E5%B1%95%E7%A4%BA%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/h5/%E5%AD%90%E8%A1%A8%E5%B1%95%E7%A4%BA%E6%96%B9%E5%BC%8F/</guid>
+      <description>默认不显示子表，需要通过查看明细跳到另一个页面查看。
+如果想在主表下面直接显示子表，像下面这样
+可以在DisplayOptions或者constructor中设置isDetailSinglePage为false</description>
+    </item>
+    
+    <item>
+      <title>实现一个标准表单</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/</guid>
+      <description>模板 路由 presenter 初始化 </description>
     </item>
     
     <item>
@@ -490,9 +342,31 @@ BudgetIndicator(criteriaStr: &amp;quot;isComposite=true&amp;quot;) { isComposite
       <description>向Menu中添加Button 此攻略会向你介绍如何往查看态表单的menu中加一个按钮
 新建一个menu按钮 按下面的步骤就可以创建一个按钮，并把它加到menu中
  按钮的名字 按钮的Creator函数 声明按钮 声明分组 添加到menu中  给搞一个名字 在 apps/link/src/solutions/biz-form/page/menu-buttons/declare.ts 文件中在BizFormMenuButtons对象声明按钮的 id 。
-搞Creator函数创建按钮 1 2 3 4 5 6 7 8 9 10 11 12  export const ProjectBudgetCreator = () =&amp;gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&amp;gt; { return ( &amp;lt;React.Fragment&amp;gt; &amp;lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&amp;gt; &amp;lt;/React.Fragment&amp;gt; ); }, }; };   其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
+搞Creator函数创建按钮 export const ProjectBudgetCreator = () =&amp;gt; { return { id: BizFormMenuButtons.ProjectBudget, render: () =&amp;gt; { return ( &amp;lt;React.Fragment&amp;gt; &amp;lt;ProjectBudgetButton key={BizFormMenuButtons.ProjectBudget} /&amp;gt; &amp;lt;/React.Fragment&amp;gt; ); }, }; }; 其中的React组件需要自己实现，主要是一个Button组件。要注意模块启用、权限。
 声明按钮 有了id和creator函数，就可以声明按钮了。 在 apps/link/src/solutions/biz-form/page/menu-buttons/index.tsx 文件中声明了所有menu按钮的Creator函数。你新创建的按钮也需要在这里声明。
-1 2 3 4  export const buildInMenus = { [BizFormMenuButtons.</description>
+export const buildInMenus = { [BizFormMenuButtons.SourcePicking]: SourcePickCreator, [BizFormMenuButtons.ImportConsumeItem]: ImportConsumeItemCreator, } 声明类型 相同类型的按钮会放到同一分组。 在 apps/link/src/solutions/biz-form/page/declare.ts 文件的 BizformMenuButtonType 对象中为按钮一个类型。
+把按钮放到menu中 class xxFormPresenter extends EasyBizFormPresenter { protected getMenuOptions(): MenuOptions { const menus = super.</description>
+    </item>
+    
+    <item>
+      <title>新建开发用租户</title>
+      <link>https://77doc.wss.cool/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</guid>
+      <description>新环境就只有一个test1账号可以用，怎么自己新建一个租户、账号呢？
+找运维开一个运维平台的账号 进入运维平台，http://ops.q7link.com:8080/ 在运维工具&amp;gt;环境信息，中找到你的环境，以bj-test为例，看哪个服务器部署了qbos，然后复制这个服务器的IP  访问服务器IP的5000端口。用test1账号通用密码登录。如果登录失败，要进行初始化管理员  选择test1，点右下角的初始化按钮，就可以了。然后还是用test1登录。   登录后，进到租户页面，点新建按钮创建租户。信息随便填。 在你新建的租户这行的最后面有个操作栏，里面有个”权益”按钮，进去以后在点“新建” 产品名称，选择“标准版”，它的权益比较全  生效时间如果选错了在重选时会不大好操作，可以先把它叉掉。  填好以后，出来到租户列表，操作里有个“开通“按钮，填上名字和”你的手机“，这个手机后面激活账号时要收短信。 开通确定以后要等一会，看”企业属性”栏为正式时，就可以去登录了。 我们开发都是在localhost:3000，这里要激活刚刚那个手机号作为登录的账号  激活后，选一下会计期间，换个页面在选一下启用模块就都WWok了。  </description>
+    </item>
+    
+    <item>
+      <title>脱离form对entity进行crud</title>
+      <link>https://77doc.wss.cool/docs/common/entitycrud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/entitycrud/</guid>
+      <description>import { EntityCRUDHelper } from &amp;#39;@root/solutions/entity-crud&amp;#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) 注意事项 entity不能是子表。子表必须通过主表创建。
+EntityCRUDHelper的其他api
+   方法 参数 描述     create entityName, data 创建一条记录   update entityName, data 修改一条记录    </description>
     </item>
     
   </channel>
