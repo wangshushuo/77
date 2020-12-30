@@ -1,5 +1,5 @@
 ---
-title: "列表方案实用攻略"
+title: "列表方案攻略"
 weight: 200
 # bookFlatSection: false
 # bookToc: true

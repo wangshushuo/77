@@ -1,9 +1,8 @@
 ---
 title: GQL
 author: 王书硕
+weight: 1
 ---
-# GQL
-
 ## 普通的gql
 最简单的，直接查一个对象（表）的全部数据
 ```

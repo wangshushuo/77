@@ -1,8 +1,8 @@
 ---
 title: "BizForm的原理"
 weight: 300
+author: 王书硕
 ---
-## BizForm的原理
 
 - model
 - template

@@ -3,3 +3,24 @@ languageCode = "zh-cn"
 title = "77前端文档"
 theme = "book"
 publishDir = "docs"
+
+[markup]
+    defaultMarkdownHandler = "goldmark"
+    [markup.goldmark]
+        [markup.goldmark.extensions]
+            definitionList = true
+            footnote = true
+            linkify = true
+            strikethrough = true
+            table = true
+            taskList = true
+            typographer = false
+        [markup.goldmark.renderer]
+            hardWraps = false
+            unsafe = true
+            xHTML = false
+    [markup.highlight]
+    [markup.tableOfContents]
+        startLevel = 2
+        endLevel = 6
+        ordered = false
