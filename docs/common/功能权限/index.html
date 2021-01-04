@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="使用下面的代码就可以做到查看功能权限
-import { checkAuth } from &#39;@root/func-auth&#39;; import { FunctionAuthActionType } from &#39;@metadata&#39;; checkAuth(EN_Project, FunctionAuthActionType.View)    参数 描述     resourceId 资源id   actionType 权限类型，有新增、查看、导出、打印等等    resourceId可能是entityId，也可能是另外定义的resourceId，在文件packages/athena-gen/src/entity-constants/ResourceConstants.ts中。具体是哪个需要和后端确认。
+<meta name="description" content="实现 使用下面的代码就可以做到查看功能权限
+import { checkAuth } from &#39;@root/func-auth&#39;; import { FunctionAuthActionType } from &#39;@metadata&#39;; checkAuth(EN_Project, FunctionAuthActionType.View) checkAuth方法 checkAuth方法的参数：
+   参数 描述     resourceId 资源id   actionType 权限类型，有新增、查看、导出、打印等等    resourceId可能是entityId，也可能是另外定义的resourceId，在文件packages/athena-gen/src/entity-constants/ResourceConstants.ts中。具体是哪个需要和后端确认。
 actionType的定义在文件apps/link/node_modules/@q7/metadata/src/declare/constants.ts中。摘录到下面。
 /** * 功能权限 Action 集合 */ export enum FunctionAuthActionType { // 新增  Add = &#39;add&#39;, // 查看  View = &#39;view&#39;, // 修改  Update = &#39;update&#39;, // 删除  Delete = &#39;delete&#39;, // 输出  Export = &#39;export&#39;, // 打印  Print = &#39;print&#39;, // 作废  Abort = &#39;abort&#39;, // 弃审  Unapprove = &#39;unapprove&#39;, // 审评  Approve = &#39;approve&#39;, // 执行  Execute = &#39;execute&#39;, // 挂起  Suspend = &#39;suspend&#39;, // 取消挂起  CancelSuspend = &#39;cancelSuspend&#39;, // 关闭  Close = &#39;close&#39;, // 打开  Open = &#39;open&#39;, // 预览  Preview = &#39;preview&#39;, // 附件上传  AttachemetUpload = &#39;attachemetUpload&#39;, // 附件删除  AttachmentDelete = &#39;attachmentDelete&#39;, // 附件预览  AttachmentView = &#39;attachmentView&#39;, // 发布  Publish = &#39;publish&#39;, // 设置  Setup = &#39;setup&#39;, // 变更  Change = &#39;change&#39;, } ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="功能权限" />
-<meta property="og:description" content="使用下面的代码就可以做到查看功能权限
-import { checkAuth } from &#39;@root/func-auth&#39;; import { FunctionAuthActionType } from &#39;@metadata&#39;; checkAuth(EN_Project, FunctionAuthActionType.View)    参数 描述     resourceId 资源id   actionType 权限类型，有新增、查看、导出、打印等等    resourceId可能是entityId，也可能是另外定义的resourceId，在文件packages/athena-gen/src/entity-constants/ResourceConstants.ts中。具体是哪个需要和后端确认。
+<meta property="og:description" content="实现 使用下面的代码就可以做到查看功能权限
+import { checkAuth } from &#39;@root/func-auth&#39;; import { FunctionAuthActionType } from &#39;@metadata&#39;; checkAuth(EN_Project, FunctionAuthActionType.View) checkAuth方法 checkAuth方法的参数：
+   参数 描述     resourceId 资源id   actionType 权限类型，有新增、查看、导出、打印等等    resourceId可能是entityId，也可能是另外定义的resourceId，在文件packages/athena-gen/src/entity-constants/ResourceConstants.ts中。具体是哪个需要和后端确认。
 actionType的定义在文件apps/link/node_modules/@q7/metadata/src/declare/constants.ts中。摘录到下面。
 /** * 功能权限 Action 集合 */ export enum FunctionAuthActionType { // 新增  Add = &#39;add&#39;, // 查看  View = &#39;view&#39;, // 修改  Update = &#39;update&#39;, // 删除  Delete = &#39;delete&#39;, // 输出  Export = &#39;export&#39;, // 打印  Print = &#39;print&#39;, // 作废  Abort = &#39;abort&#39;, // 弃审  Unapprove = &#39;unapprove&#39;, // 审评  Approve = &#39;approve&#39;, // 执行  Execute = &#39;execute&#39;, // 挂起  Suspend = &#39;suspend&#39;, // 取消挂起  CancelSuspend = &#39;cancelSuspend&#39;, // 关闭  Close = &#39;close&#39;, // 打开  Open = &#39;open&#39;, // 预览  Preview = &#39;preview&#39;, // 附件上传  AttachemetUpload = &#39;attachemetUpload&#39;, // 附件删除  AttachmentDelete = &#39;attachmentDelete&#39;, // 附件预览  AttachmentView = &#39;attachmentView&#39;, // 发布  Publish = &#39;publish&#39;, // 设置  Setup = &#39;setup&#39;, // 变更  Change = &#39;change&#39;, } " />
 <meta property="og:type" content="article" />
@@ -19,8 +21,8 @@ actionType的定义在文件apps/link/node_modules/@q7/metadata/src/declare/cons
 <title>功能权限 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.b94a393677b244ea5d8bb06f2034c7d8db4ff05583373708a87a31ac19b85e59.js" integrity="sha256-uUo5NneyROpdi7BvIDTH2NtP8FWDNzcIqHoxrBm4Xlk="></script>
+<link rel="stylesheet" href="/book.min.4dfd0511f7d8efdfddfa94c99906d18cc8879919db1741295f77520f0036c0ec.css" integrity="sha256-Tf0FEffY79/d&#43;pTJmQbRjMiHmRnbF0EpX3dSDwA2wOw=">
+<script defer src="/en.search.min.e438a830b660bf5a887868279fd6a8206bafe596d822273a47514a910efde699.js" integrity="sha256-5DioMLZgv1qIeGgnn9aoIGuv5ZbYIic6R1FKkQ795pk="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -434,17 +436,19 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/component/grid/" class="">Grid</a>
+    <a href="/docs/component/tablist/" class="">Tab List</a>
   
 
         </li>
       
     
       
+    
+      
         <li>
           
   
-    <a href="/docs/component/tablist/" class="">Tab List</a>
+    <a href="/docs/component/grid/" class="">Grid</a>
   
 
         </li>
@@ -641,7 +645,12 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#实现">实现</a></li>
+    <li><a href="#checkauth方法">checkAuth方法</a></li>
+  </ul>
+</nav>
 
 
     </aside>
@@ -651,26 +660,36 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p>使用下面的代码就可以做到查看功能权限</p>
+  <article class="markdown">
+    
+    
+      
+    
+    <h1>功能权限</h1>
+    <p>作者：王书硕</p>
+    <hr/><h2 id="实现">实现</h2>
+<p>使用下面的代码就可以做到查看功能权限</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">checkAuth</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@root/func-auth&#39;</span>;
 <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">FunctionAuthActionType</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@metadata&#39;</span>;
 
 <span style="color:#a6e22e">checkAuth</span>(<span style="color:#a6e22e">EN_Project</span>, <span style="color:#a6e22e">FunctionAuthActionType</span>.<span style="color:#a6e22e">View</span>)
-</code></pre></div><table>
+</code></pre></div><h2 id="checkauth方法">checkAuth方法</h2>
+<p>checkAuth方法的参数：</p>
+<table>
 <thead>
 <tr>
-<th align="center">参数</th>
-<th align="center">描述</th>
+<th align="left">参数</th>
+<th align="left">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">resourceId</td>
-<td align="center">资源id</td>
+<td align="left">resourceId</td>
+<td align="left">资源id</td>
 </tr>
 <tr>
-<td align="center">actionType</td>
-<td align="center">权限类型，有新增、查看、导出、打印等等</td>
+<td align="left">actionType</td>
+<td align="left">权限类型，有新增、查看、导出、打印等等</td>
 </tr>
 </tbody>
 </table>
@@ -755,7 +774,12 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#实现">实现</a></li>
+    <li><a href="#checkauth方法">checkAuth方法</a></li>
+  </ul>
+</nav>
 
  
     </aside>

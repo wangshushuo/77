@@ -4,17 +4,18 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TabList &lt;TabList focusIndex={this.focusIndex} onTabChange={index =&gt; { }} &gt; &lt;Tab key={1} title=&#34;编码方案&#34; /&gt; &lt;Tab key={2} title=&#34;对照码&#34; /&gt; &lt;/TabList&gt; ">
+<meta name="description" content="&lt;TabList focusIndex={this.focusIndex} onTabChange={index =&gt; { }} &gt; &lt;Tab key={1} title=&#34;编码方案&#34; /&gt; &lt;Tab key={2} title=&#34;对照码&#34; /&gt; &lt;/TabList&gt; ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="TabList &lt;TabList focusIndex={this.focusIndex} onTabChange={index =&gt; { }} &gt; &lt;Tab key={1} title=&#34;编码方案&#34; /&gt; &lt;Tab key={2} title=&#34;对照码&#34; /&gt; &lt;/TabList&gt; " />
+<meta property="og:description" content="&lt;TabList focusIndex={this.focusIndex} onTabChange={index =&gt; { }} &gt; &lt;Tab key={1} title=&#34;编码方案&#34; /&gt; &lt;Tab key={2} title=&#34;对照码&#34; /&gt; &lt;/TabList&gt; " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/component/tablist/" />
-
+<meta property="article:published_time" content="2021-01-04T23:57:09+08:00" />
+<meta property="article:modified_time" content="2021-01-04T23:57:09+08:00" />
 <title>Tab List | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
-<script defer src="/en.search.min.b94a393677b244ea5d8bb06f2034c7d8db4ff05583373708a87a31ac19b85e59.js" integrity="sha256-uUo5NneyROpdi7BvIDTH2NtP8FWDNzcIqHoxrBm4Xlk="></script>
+<link rel="stylesheet" href="/book.min.4dfd0511f7d8efdfddfa94c99906d18cc8879919db1741295f77520f0036c0ec.css" integrity="sha256-Tf0FEffY79/d&#43;pTJmQbRjMiHmRnbF0EpX3dSDwA2wOw=">
+<script defer src="/en.search.min.e438a830b660bf5a887868279fd6a8206bafe596d822273a47514a910efde699.js" integrity="sha256-5DioMLZgv1qIeGgnn9aoIGuv5ZbYIic6R1FKkQ795pk="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -428,17 +429,19 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/component/grid/" class="">Grid</a>
+    <a href="/docs/component/tablist/" class="active">Tab List</a>
   
 
         </li>
       
     
       
+    
+      
         <li>
           
   
-    <a href="/docs/component/tablist/" class="active">Tab List</a>
+    <a href="/docs/component/grid/" class="">Grid</a>
   
 
         </li>
@@ -645,16 +648,22 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="tablist">TabList</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">TabList</span>
+  <article class="markdown">
+    
+    
+      
+    
+    <h1>Tab List</h1>
+    <p>作者：王书硕</p>
+    <hr/><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx">&lt;<span style="color:#f92672">TabList</span>
   <span style="color:#a6e22e">focusIndex</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">focusIndex</span>}
-  <span style="color:#a6e22e">onTabChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">index</span> <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#a6e22e">onTabChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">index</span> =&gt; {
     
   }}
-<span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Tab</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">1</span>} <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;编码方案&#34;</span> <span style="color:#f92672">/&gt;</span>
-  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Tab</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">2</span>} <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;对照码&#34;</span> <span style="color:#f92672">/&gt;</span>
-<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/TabList&gt;</span>
+&gt;
+  &lt;<span style="color:#f92672">Tab</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">1</span>} <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;编码方案&#34;</span> /&gt;
+  &lt;<span style="color:#f92672">Tab</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">2</span>} <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;对照码&#34;</span> /&gt;
+&lt;/<span style="color:#f92672">TabList</span>&gt;
 </code></pre></div></article>
  
       

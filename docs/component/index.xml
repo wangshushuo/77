@@ -6,9 +6,28 @@
     <description>Recent content in 组件 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Mon, 04 Jan 2021 23:57:09 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/component/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title></title>
+      <link>https://77doc.wss.cool/docs/component/tablist/</link>
+      <pubDate>Mon, 04 Jan 2021 23:57:09 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/component/tablist/</guid>
+      <description>&amp;lt;TabList focusIndex={this.focusIndex} onTabChange={index =&amp;gt; { }} &amp;gt; &amp;lt;Tab key={1} title=&amp;#34;编码方案&amp;#34; /&amp;gt; &amp;lt;Tab key={2} title=&amp;#34;对照码&amp;#34; /&amp;gt; &amp;lt;/TabList&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>AdvanceDialog</title>
+      <link>https://77doc.wss.cool/docs/component/advancedialog/</link>
+      <pubDate>Mon, 04 Jan 2021 23:57:09 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/component/advancedialog/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title></title>
@@ -19,15 +38,6 @@
       <description>grid grid是前端解决子表和列表的方案，对应的组件是AdvanceGird。
 editOptions editOptions下面的editParams会传给单元格的渲染组件
 表单 </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/component/tablist/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/component/tablist/</guid>
-      <description>TabList &amp;lt;TabList focusIndex={this.focusIndex} onTabChange={index =&amp;gt; { }} &amp;gt; &amp;lt;Tab key={1} title=&amp;#34;编码方案&amp;#34; /&amp;gt; &amp;lt;Tab key={2} title=&amp;#34;对照码&amp;#34; /&amp;gt; &amp;lt;/TabList&amp;gt; </description>
     </item>
     
   </channel>
