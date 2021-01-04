@@ -33,22 +33,15 @@ concat_ws：拼装一条记录的多个字段为一个字段
     </item>
     
     <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</link>
+      <title>功能权限</title>
+      <link>https://77doc.wss.cool/docs/common/%E5%8A%9F%E8%83%BD%E6%9D%83%E9%99%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</guid>
-      <description>数据权限 前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，
-const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { criteriaStr: `projectId=&amp;#39;${this.projectId}&amp;#39;`, sorts: [{ name: &amp;#39;createdTime&amp;#39;, isDesending: true }], contextObject: &amp;#39;ignoreDataAuth&amp;#39;, } as IDataLoaderQueryOptions); </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/common/%E6%9D%83%E9%99%90/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/common/%E6%9D%83%E9%99%90/</guid>
-      <description>权限 import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View) </description>
+      <guid>https://77doc.wss.cool/docs/common/%E5%8A%9F%E8%83%BD%E6%9D%83%E9%99%90/</guid>
+      <description>使用下面的代码就可以做到查看功能权限
+import { checkAuth } from &amp;#39;@root/func-auth&amp;#39;; import { FunctionAuthActionType } from &amp;#39;@metadata&amp;#39;; checkAuth(EN_Project, FunctionAuthActionType.View)    参数 描述     resourceId 资源id   actionType 权限类型，有新增、查看、导出、打印等等    resourceId可能是entityId，也可能是另外定义的resourceId，在文件packages/athena-gen/src/entity-constants/ResourceConstants.ts中。具体是哪个需要和后端确认。
+actionType的定义在文件apps/link/node_modules/@q7/metadata/src/declare/constants.ts中。摘录到下面。
+/** * 功能权限 Action 集合 */ export enum FunctionAuthActionType { // 新增  Add = &amp;#39;add&amp;#39;, // 查看  View = &amp;#39;view&amp;#39;, // 修改  Update = &amp;#39;update&amp;#39;, // 删除  Delete = &amp;#39;delete&amp;#39;, // 输出  Export = &amp;#39;export&amp;#39;, // 打印  Print = &amp;#39;print&amp;#39;, // 作废  Abort = &amp;#39;abort&amp;#39;, // 弃审  Unapprove = &amp;#39;unapprove&amp;#39;, // 审评  Approve = &amp;#39;approve&amp;#39;, // 执行  Execute = &amp;#39;execute&amp;#39;, // 挂起  Suspend = &amp;#39;suspend&amp;#39;, // 取消挂起  CancelSuspend = &amp;#39;cancelSuspend&amp;#39;, // 关闭  Close = &amp;#39;close&amp;#39;, // 打开  Open = &amp;#39;open&amp;#39;, // 预览  Preview = &amp;#39;preview&amp;#39;, // 附件上传  AttachemetUpload = &amp;#39;attachemetUpload&amp;#39;, // 附件删除  AttachmentDelete = &amp;#39;attachmentDelete&amp;#39;, // 附件预览  AttachmentView = &amp;#39;attachmentView&amp;#39;, // 发布  Publish = &amp;#39;publish&amp;#39;, // 设置  Setup = &amp;#39;setup&amp;#39;, // 变更  Change = &amp;#39;change&amp;#39;, } </description>
     </item>
     
     <item>
@@ -67,6 +60,16 @@ const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { crite
 1. 在 BeforeActivation 方法中创建go的接口 1 2 3 4 5  func (c *transparentController) BeforeActivation(b mvc.BeforeActivation) { // ...  b.Handle(iris.MethodPost, &amp;#34;/BudgetAccount/batchSetIndicators&amp;#34;, &amp;#34;BudgetAccountBatchSetIndicators&amp;#34;)  // ... }   其中b.Handle 方法的三个参数分别是
  http method go接口url（前端访问的url） go接口的处理函数  2. 实现“处理函数” 在上面提到的BeforeActivation方法下面，创建一个与它同级的方法，也就是接口处理函数，内容就是直接给后端发起一个请求。
 其中第11行是第一步中声明的后端url地址 1 2 3 4 5 6 7 8 9 10 11 12  func (c *transparentController) BeforeActivation(b mvc.</description>
+    </item>
+    
+    <item>
+      <title>数据权限</title>
+      <link>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</guid>
+      <description>前端的gql默认是会按数据权限过滤的。如果想忽略数据权限的话，需要在option中加contextObject参数，当这个参数是不在数据权限范围内的实体时，就表示忽略数据权限，所以这里以ignoreDataAuth字符串为参数，来达到忽略权限的目的。
+1 2 3 4 5  const dataLoader = new DataLoader(EN_BudgetPlan, [&amp;#39;id&amp;#39;], { criteriaStr: `projectId=&amp;#39;${this.projectId}&amp;#39;`, sorts: [{ name: &amp;#39;createdTime&amp;#39;, isDesending: true }], contextObject: &amp;#39;ignoreDataAuth&amp;#39;, } as IDataLoaderQueryOptions);    </description>
     </item>
     
     <item>

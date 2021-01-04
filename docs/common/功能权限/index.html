@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="使用下面的代码就可以做到查看功能权限
+import { checkAuth } from &#39;@root/func-auth&#39;; import { FunctionAuthActionType } from &#39;@metadata&#39;; checkAuth(EN_Project, FunctionAuthActionType.View)    参数 描述     resourceId 资源id   actionType 权限类型，有新增、查看、导出、打印等等    resourceId可能是entityId，也可能是另外定义的resourceId，在文件packages/athena-gen/src/entity-constants/ResourceConstants.ts中。具体是哪个需要和后端确认。
+actionType的定义在文件apps/link/node_modules/@q7/metadata/src/declare/constants.ts中。摘录到下面。
+/** * 功能权限 Action 集合 */ export enum FunctionAuthActionType { // 新增  Add = &#39;add&#39;, // 查看  View = &#39;view&#39;, // 修改  Update = &#39;update&#39;, // 删除  Delete = &#39;delete&#39;, // 输出  Export = &#39;export&#39;, // 打印  Print = &#39;print&#39;, // 作废  Abort = &#39;abort&#39;, // 弃审  Unapprove = &#39;unapprove&#39;, // 审评  Approve = &#39;approve&#39;, // 执行  Execute = &#39;execute&#39;, // 挂起  Suspend = &#39;suspend&#39;, // 取消挂起  CancelSuspend = &#39;cancelSuspend&#39;, // 关闭  Close = &#39;close&#39;, // 打开  Open = &#39;open&#39;, // 预览  Preview = &#39;preview&#39;, // 附件上传  AttachemetUpload = &#39;attachemetUpload&#39;, // 附件删除  AttachmentDelete = &#39;attachmentDelete&#39;, // 附件预览  AttachmentView = &#39;attachmentView&#39;, // 发布  Publish = &#39;publish&#39;, // 设置  Setup = &#39;setup&#39;, // 变更  Change = &#39;change&#39;, } ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="功能权限" />
+<meta property="og:description" content="使用下面的代码就可以做到查看功能权限
+import { checkAuth } from &#39;@root/func-auth&#39;; import { FunctionAuthActionType } from &#39;@metadata&#39;; checkAuth(EN_Project, FunctionAuthActionType.View)    参数 描述     resourceId 资源id   actionType 权限类型，有新增、查看、导出、打印等等    resourceId可能是entityId，也可能是另外定义的resourceId，在文件packages/athena-gen/src/entity-constants/ResourceConstants.ts中。具体是哪个需要和后端确认。
+actionType的定义在文件apps/link/node_modules/@q7/metadata/src/declare/constants.ts中。摘录到下面。
+/** * 功能权限 Action 集合 */ export enum FunctionAuthActionType { // 新增  Add = &#39;add&#39;, // 查看  View = &#39;view&#39;, // 修改  Update = &#39;update&#39;, // 删除  Delete = &#39;delete&#39;, // 输出  Export = &#39;export&#39;, // 打印  Print = &#39;print&#39;, // 作废  Abort = &#39;abort&#39;, // 弃审  Unapprove = &#39;unapprove&#39;, // 审评  Approve = &#39;approve&#39;, // 执行  Execute = &#39;execute&#39;, // 挂起  Suspend = &#39;suspend&#39;, // 取消挂起  CancelSuspend = &#39;cancelSuspend&#39;, // 关闭  Close = &#39;close&#39;, // 打开  Open = &#39;open&#39;, // 预览  Preview = &#39;preview&#39;, // 附件上传  AttachemetUpload = &#39;attachemetUpload&#39;, // 附件删除  AttachmentDelete = &#39;attachmentDelete&#39;, // 附件预览  AttachmentView = &#39;attachmentView&#39;, // 发布  Publish = &#39;publish&#39;, // 设置  Setup = &#39;setup&#39;, // 变更  Change = &#39;change&#39;, } " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/common/%E5%8A%9F%E8%83%BD%E6%9D%83%E9%99%90/" />
+
+<title>功能权限 | 77前端文档</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.e161f1fe2b283b6a43c29a52fde96e2387fade573e78efa6701d44c8499da76b.css" integrity="sha256-4WHx/isoO2pDwppS/eluI4f63lc&#43;eO&#43;mcB1EyEmdp2s=">
+<script defer src="/en.search.min.b94a393677b244ea5d8bb06f2034c7d8db4ff05583373708a87a31ac19b85e59.js" integrity="sha256-uUo5NneyROpdi7BvIDTH2NtP8FWDNzcIqHoxrBm4Xlk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>77前端文档</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <span>前端框架基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/entity/" class="">模型、entity与元数据介绍</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/" class="">预置数据</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>通用功能攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/gql/" class="">GQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E5%8A%9F%E8%83%BD%E6%9D%83%E9%99%90/" class="active">功能权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%8E%A5%E5%8F%A3/" class="">后端的接口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/" class="">数据权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/entitycrud/" class="">脱离form对entity进行crud</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/what-is-bizform/" class="">什么是BizForm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="">BizForm的组成部分</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" class="">BizForm的原理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm实用攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/" class="">打印模板</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>Menu Button</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/" class="">修改Menu中的Button</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/" class="">新建一个MenuButton</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/" class="">加一个field</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/" class="">实现一个标准表单</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E7%A9%BF%E9%80%8F/" class="">穿透</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>虚拟字段</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+    
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/" class="">查询方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>组件</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/grid/" class="">Grid</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/tablist/" class="">Tab List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>设计</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/" class="">如何做详设</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>H5/小程序</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E7%99%BB%E5%BD%95/" class="">登录</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/" class="">审批时修改</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E6%9B%B4%E5%A4%9A%E6%8C%89%E9%92%AE/" class="">更多按钮</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%AD%90%E8%A1%A8%E5%B1%95%E7%A4%BA%E6%96%B9%E5%BC%8F/" class="">子表展示方式</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>其他</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/" class="">新建开发用租户</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>功能权限</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents"></nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><p>使用下面的代码就可以做到查看功能权限</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">checkAuth</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@root/func-auth&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">FunctionAuthActionType</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@metadata&#39;</span>;
+
+<span style="color:#a6e22e">checkAuth</span>(<span style="color:#a6e22e">EN_Project</span>, <span style="color:#a6e22e">FunctionAuthActionType</span>.<span style="color:#a6e22e">View</span>)
+</code></pre></div><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">resourceId</td>
+<td align="center">资源id</td>
+</tr>
+<tr>
+<td align="center">actionType</td>
+<td align="center">权限类型，有新增、查看、导出、打印等等</td>
+</tr>
+</tbody>
+</table>
+<p>resourceId可能是entityId，也可能是另外定义的resourceId，在文件<code>packages/athena-gen/src/entity-constants/ResourceConstants.ts</code>中。具体是哪个需要和后端确认。</p>
+<p>actionType的定义在文件<code>apps/link/node_modules/@q7/metadata/src/declare/constants.ts</code>中。摘录到下面。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 功能权限 Action 集合
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">FunctionAuthActionType</span> {
+  <span style="color:#75715e">// 新增
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Add</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;add&#39;</span>,
+  <span style="color:#75715e">// 查看
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">View</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;view&#39;</span>,
+  <span style="color:#75715e">// 修改
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Update</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;update&#39;</span>,
+  <span style="color:#75715e">// 删除
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Delete</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;delete&#39;</span>,
+  <span style="color:#75715e">// 输出
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Export</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;export&#39;</span>,
+  <span style="color:#75715e">// 打印
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Print</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;print&#39;</span>,
+  <span style="color:#75715e">// 作废
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Abort</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;abort&#39;</span>,
+  <span style="color:#75715e">// 弃审
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Unapprove</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;unapprove&#39;</span>,
+  <span style="color:#75715e">// 审评
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Approve</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;approve&#39;</span>,
+  <span style="color:#75715e">// 执行
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Execute</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;execute&#39;</span>,
+  <span style="color:#75715e">// 挂起
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Suspend</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;suspend&#39;</span>,
+  <span style="color:#75715e">// 取消挂起
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">CancelSuspend</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cancelSuspend&#39;</span>,
+  <span style="color:#75715e">// 关闭
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Close</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;close&#39;</span>,
+  <span style="color:#75715e">// 打开
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Open</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;open&#39;</span>,
+  <span style="color:#75715e">// 预览
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Preview</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;preview&#39;</span>,
+  <span style="color:#75715e">// 附件上传
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">AttachemetUpload</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;attachemetUpload&#39;</span>,
+  <span style="color:#75715e">// 附件删除
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">AttachmentDelete</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;attachmentDelete&#39;</span>,
+  <span style="color:#75715e">// 附件预览
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">AttachmentView</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;attachmentView&#39;</span>,
+  <span style="color:#75715e">// 发布
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Publish</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;publish&#39;</span>,
+  <span style="color:#75715e">// 设置
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Setup</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;setup&#39;</span>,
+  <span style="color:#75715e">// 变更
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Change</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;change&#39;</span>,
+}
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents"></nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
