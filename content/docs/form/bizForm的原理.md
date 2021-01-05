@@ -1,22 +1,29 @@
 ---
 title: "BizForm的原理"
 weight: 300
-author: 王书硕
+draft: true
 ---
 
-- model
-- template
+## 大致流程
+1. 获取initData、metadata和template
+1. 创建model,template
+1. 创建form
+1. 创建entityCRUD
 
+## 看代码
+
+整个过程是通过一系列事件驱动的。而且还用到来依赖注入。
+
+首先是把所有的bean创建出来，创建好以后开始进入InitialController
 ## InitialController
 由onBeansReady事件开始
 
-- entityName，params，initUrl
-- axios.post
+- 组织url。entityName，params，initUrl
+- 请求。axios.post
     - response.data
     - entityName, solution.metadata, solution.template => configTransformer => {model,template}
     - model => BizFormModel => model
-- onInitialStart
-
+- 触发onInitialStart，进入FormController
 
 ## FormController
 - 创建entityCRUD：formEntityCRUD => entityCRUD
