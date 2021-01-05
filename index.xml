@@ -6,7 +6,7 @@
     <description>Recent content in 77hub前端文档 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 05 Jan 2021 11:25:11 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 Jan 2021 17:48:57 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -135,6 +135,16 @@ initEntityOptions也是值得一提的，它组织了entity初始化需要的参
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>获取业务规则</title>
+      <link>https://77doc.wss.cool/docs/common/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/</link>
+      <pubDate>Tue, 05 Jan 2021 17:48:57 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/</guid>
+      <description>方式一 class ProjectFormPresenter extends EasyBizFormPresenter&amp;lt;IProject&amp;gt;{ private billTypeRules: Array&amp;lt;IBizProcessFuncUnitSetting&amp;gt; = []; xx() { const businessRules = this.bizFormPresenter.api.getBusinessRules() this.billTypeRules = oc(businessRules).rules([]) } } 方式二 import { FuncUnit_Constants } from &amp;#39;@q7/athena-gen/src&amp;#39;; class ProjectPlanButton extends MenuButton { private checkEnableProjectRule = () =&amp;gt; { const enableProject: IBizProcessFuncUnitSetting = this.presenter.api.getBusinessRuleById( FuncUnit_Constants.enableProjectScheduleValidator, ); if (enableProject) { return enableProject.setting; } return; }; } 其中FuncUnit_Constants是根据预置数据生成的，可以问后端你要的业务规则的名字。
+业务规则的类型 interface IBizProcessFuncUnitSetting { applyTo?: { [key: string]: any } // 应用的对象, 	applyToTypeObject?: IEnumValue // 应用对象类型, 	billIoType?</description>
     </item>
     
     <item>
