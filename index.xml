@@ -65,7 +65,7 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
     </item>
     
     <item>
-      <title>模型、entity与元数据介绍</title>
+      <title>模型、entity与元数据</title>
       <link>https://77doc.wss.cool/docs/base/entity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -81,7 +81,12 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/</guid>
-      <description>预置数据 </description>
+      <description>什么是预置数据 预置数据可以理解为软件的出厂自带数据，当用户第一次拿到系统时，就存在于系统中的数据。
+在预置数据的基础上，用户可以对它们进行修改，也可以添加自己的数据。我们把修改和添加的数据叫做用户数据。
+系统中有很多种预置数据。
+比如，菜单、查询方案、列表方案
+用户可以自己新加几个菜单选项。可以修改查询方案中的字段。可以修改列表方案中显示的列、显示的宽度。等等
+预置数据与开发的关系 通常，预置数据都会在需求中提到，由产品提供。有些预置数据是后端直接放到数据库里的，前端通过gql取。还有一些是前端在前端开发包里面配置的，这就涉及到了查询方案、列表方案、参照、全局搜索、移动端模板等场景。</description>
     </item>
     
     <item>
@@ -90,8 +95,9 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form/what-is-bizform/</guid>
-      <description>什么是BizForm Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。
-先看一下我们系统中的表单长什么样。这是展示了一个编辑态和一个查看态。 这里只简单的看一个样子，其他文档会介绍更加详细的、各个状态、各个部分的内容。</description>
+      <description>Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。这些页面是由前端框架中的BizForm类实现的。
+先看一下我们系统中的表单长什么样。
+这是展示了一个编辑态和一个查看态。 这里只简单的看一个样子，其他文档会介绍更加详细的、各个状态、各个部分的内容。</description>
     </item>
     
     <item>
@@ -111,21 +117,10 @@ class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IL
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/</guid>
-      <description>查看态  表单状态 异步任务异常 menu-buttons rang-walk 主表 审批流 子表 ？不知道  </description>
-    </item>
-    
-    <item>
-      <title>BizForm的原理</title>
-      <link>https://77doc.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/</guid>
-      <description>model template  InitialController 由onBeansReady事件开始
- entityName，params，initUrl axios.post  response.data entityName, solution.metadata, solution.template =&amp;gt; configTransformer =&amp;gt; {model,template} model =&amp;gt; BizFormModel =&amp;gt; model   onInitialStart  FormController  创建entityCRUD：formEntityCRUD =&amp;gt; entityCRUD 初始化entityCRUD：initData =&amp;gt; entityCRUD.init  init: initData + initForm() =&amp;gt; entityCRUD.form =&amp;gt; form  initForm: EntityFormHelper.createForm(entityName, mergedFormOptions) =&amp;gt; form      LifecycleEvent.onInitialStart事件触发onInitStart方法，该方法中先是得到了initData，然后对Form进行初始化操作。初始化以后有创建了Form。
-也就是initForm和createForm。
-initForm中进行了initEntityOptions，然后用这个option创建EntityCRUD。 createForm实用initData对entityCRUD进行了初始化。然后触发了LifecycleEvent.onFormCreated事件。
-initEntityOptions也是值得一提的，它组织了entity初始化需要的参数。
- editOptions dataOptions { queryFields, dataResolver }  entityCRUD  options.</description>
+      <description>表单会有不同的状态。
+创建和修改时，表单是可以填写内容的，我们称之为编辑态。
+查看、审批时，不能编辑内容，只能看，我们称之为查看态。
+查看态  表单状态 异步任务异常 menu-buttons rang-walk 主表 审批流 子表 ？不知道  </description>
     </item>
     
     <item>
@@ -226,15 +221,6 @@ editOptions editOptions下面的editParams会传给单元格的渲染组件
       
       <guid>https://77doc.wss.cool/docs/form-guide/menu-button/%E8%81%94%E6%9F%A5%E6%8C%89%E9%92%AE/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</guid>
-      <description>通过go实现 </description>
     </item>
     
     <item>
@@ -348,15 +334,6 @@ actionType的定义在文件apps/link/node_modules/@q7/metadata/src/declare/cons
     </item>
     
     <item>
-      <title>实现一个标准表单</title>
-      <link>https://77doc.wss.cool/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/</guid>
-      <description>模板 路由 presenter 初始化 </description>
-    </item>
-    
-    <item>
       <title>数据权限</title>
       <link>https://77doc.wss.cool/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -399,9 +376,9 @@ export const buildInMenus = { [BizFormMenuButtons.SourcePicking]: SourcePickCrea
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/entitycrud/</guid>
-      <description>import { EntityCRUDHelper } from &amp;#39;@root/solutions/entity-crud&amp;#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) 注意事项 entity不能是子表。子表必须通过主表创建。
-EntityCRUDHelper的其他api
-   方法 参数 描述     create entityName, data 创建一条记录   update entityName, data 修改一条记录    </description>
+      <description>有时我们需要新增、修改、删除一条entity的数据。但是这个entity又没有开发对应的form，无法通过表单来完成。这时就要用到EntityCRUDHelper了
+import { EntityCRUDHelper } from &amp;#39;@root/solutions/entity-crud&amp;#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) EntityCRUDHelper提供了create/update/delete等几个方法，可以直接基于entity进行crud操作。
+   方法 参数 描述     create entityName, data 创建一条记录   update entityName, data 修改一条记录    注意事项 entity不能是子表。子表必须通过主表创建。</description>
     </item>
     
   </channel>

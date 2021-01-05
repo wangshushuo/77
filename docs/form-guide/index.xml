@@ -30,23 +30,5 @@
  选择分类 点新建  自动填写了“项目分类”   怎么实现   在跳转页面时，将需要的参数放入proxyHistory.push的第二个参数passParams中。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26  class ProjectListPagePresenter extends QueryListPagePresenter&amp;lt; IProjectListPagePresenterOption &amp;gt;{ protected commandActionResolver(commandActions: ToolbarAction[]): ToolbarAction[] { commandActions.unshift({ id: &amp;#39;project-view&amp;#39;, group: ToolbarActionGroup.Group1, action: this.presenter.toolbarConnector.makeCreateButton({ onClick: billTypeId =&amp;gt; { const hash = appRouterHashManager.generateHash(EN_Project, PageModeEnum.Form, { mode: BizFormModeEnum.Create, billTypeId: billTypeId, extraParams: { isBase: this.</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://77doc.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/</guid>
-      <description>通过go实现 </description>
-    </item>
-    
-    <item>
-      <title>实现一个标准表单</title>
-      <link>https://77doc.wss.cool/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/</guid>
-      <description>模板 路由 presenter 初始化 </description>
-    </item>
-    
   </channel>
 </rss>

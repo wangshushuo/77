@@ -11,7 +11,7 @@
     
     
     <item>
-      <title>模型、entity与元数据介绍</title>
+      <title>模型、entity与元数据</title>
       <link>https://77doc.wss.cool/docs/base/entity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -27,7 +27,12 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/</guid>
-      <description>预置数据 </description>
+      <description>什么是预置数据 预置数据可以理解为软件的出厂自带数据，当用户第一次拿到系统时，就存在于系统中的数据。
+在预置数据的基础上，用户可以对它们进行修改，也可以添加自己的数据。我们把修改和添加的数据叫做用户数据。
+系统中有很多种预置数据。
+比如，菜单、查询方案、列表方案
+用户可以自己新加几个菜单选项。可以修改查询方案中的字段。可以修改列表方案中显示的列、显示的宽度。等等
+预置数据与开发的关系 通常，预置数据都会在需求中提到，由产品提供。有些预置数据是后端直接放到数据库里的，前端通过gql取。还有一些是前端在前端开发包里面配置的，这就涉及到了查询方案、列表方案、参照、全局搜索、移动端模板等场景。</description>
     </item>
     
     <item>

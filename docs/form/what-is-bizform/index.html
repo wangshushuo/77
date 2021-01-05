@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="什么是BizForm Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。
-先看一下我们系统中的表单长什么样。这是展示了一个编辑态和一个查看态。 这里只简单的看一个样子，其他文档会介绍更加详细的、各个状态、各个部分的内容。">
+<meta name="description" content="Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。这些页面是由前端框架中的BizForm类实现的。
+先看一下我们系统中的表单长什么样。
+这是展示了一个编辑态和一个查看态。 这里只简单的看一个样子，其他文档会介绍更加详细的、各个状态、各个部分的内容。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="什么是BizForm" />
-<meta property="og:description" content="什么是BizForm Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。
-先看一下我们系统中的表单长什么样。这是展示了一个编辑态和一个查看态。 这里只简单的看一个样子，其他文档会介绍更加详细的、各个状态、各个部分的内容。" />
+<meta property="og:description" content="Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。这些页面是由前端框架中的BizForm类实现的。
+先看一下我们系统中的表单长什么样。
+这是展示了一个编辑态和一个查看态。 这里只简单的看一个样子，其他文档会介绍更加详细的、各个状态、各个部分的内容。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/form/what-is-bizform/" />
 
@@ -16,7 +18,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.bdc2dc497f5e13855ded53790845910973c7682cebb8eb67d6bff4230560053c.css" integrity="sha256-vcLcSX9eE4Vd7VN5CEWRCXPHaCzruOtn1r/0IwVgBTw=">
-<script defer src="/en.search.min.eebaa6ea1dd655b8c7b5e382cee2d3790824999f90c6a15bf72d465ad7280284.js" integrity="sha256-7rqm6h3WVbjHteOCzuLTeQgkmZ&#43;QxqFb9y1GWtcoAoQ="></script>
+<script defer src="/en.search.min.08e08fb99b2ec5a4efdb4c7ddc1bd264dfbff0ec791f67a5eff84be82af51ade.js" integrity="sha256-COCPuZsuxaTv20x93BvSZN&#43;/8Ox5H2el7/hL6Cr1Gt4="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -84,7 +86,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/base/entity/" class="">模型、entity与元数据介绍</a>
+    <a href="/docs/base/entity/" class="">模型、entity与元数据</a>
   
 
         </li>
@@ -224,16 +226,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-    <a href="/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" class="">BizForm的原理</a>
-  
-
-        </li>
-      
-    
   </ul>
   
 
@@ -313,26 +305,6 @@ https://github.com/alex-shpak/hugo-book
       
     
   </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/" class="">加一个field</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/" class="">实现一个标准表单</a>
   
 
         </li>
@@ -659,11 +631,7 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#什么是bizform">什么是BizForm</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
 
     </aside>
@@ -679,10 +647,10 @@ https://github.com/alex-shpak/hugo-book
       
     
     <h1>什么是BizForm</h1>
-    <p>作者：</p>
-    <hr/><h2 id="什么是bizform">什么是BizForm</h2>
-<p>Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。</p>
-<p>先看一下我们系统中的表单长什么样。这是展示了一个编辑态和一个查看态。
+    <p>作者：王书硕</p>
+    <hr/><p>Biz是业务的意思，Form是表单的意思，两个词组合起来就是业务表单。业务泛指我们系统要处理的各种业务，比如项目、报销、合同等等。表单比较常见，就是展示或者收集各种信息的页面。这些页面是由前端框架中的BizForm类实现的。</p>
+<p>先看一下我们系统中的表单长什么样。</p>
+<p>这是展示了一个编辑态和一个查看态。
 <img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20201219165848_9df64479ffa1f390edbf3379393cd532.png" alt="编辑态" title="编辑态"/></p>
 <p><img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20201219170020_7dac5b2a0443e00577d51bf61d6fc0dc.png" alt="查看态" title="查看态"/>
 这里只简单的看一个样子，其他文档会介绍更加详细的、各个状态、各个部分的内容。</p>
@@ -718,11 +686,7 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#什么是bizform">什么是BizForm</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
  
     </aside>

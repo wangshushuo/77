@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="import { EntityCRUDHelper } from &#39;@root/solutions/entity-crud&#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) 注意事项 entity不能是子表。子表必须通过主表创建。
-EntityCRUDHelper的其他api
-   方法 参数 描述     create entityName, data 创建一条记录   update entityName, data 修改一条记录    ">
+<meta name="description" content="有时我们需要新增、修改、删除一条entity的数据。但是这个entity又没有开发对应的form，无法通过表单来完成。这时就要用到EntityCRUDHelper了
+import { EntityCRUDHelper } from &#39;@root/solutions/entity-crud&#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) EntityCRUDHelper提供了create/update/delete等几个方法，可以直接基于entity进行crud操作。
+   方法 参数 描述     create entityName, data 创建一条记录   update entityName, data 修改一条记录    注意事项 entity不能是子表。子表必须通过主表创建。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="脱离form对entity进行crud" />
-<meta property="og:description" content="import { EntityCRUDHelper } from &#39;@root/solutions/entity-crud&#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) 注意事项 entity不能是子表。子表必须通过主表创建。
-EntityCRUDHelper的其他api
-   方法 参数 描述     create entityName, data 创建一条记录   update entityName, data 修改一条记录    " />
+<meta property="og:description" content="有时我们需要新增、修改、删除一条entity的数据。但是这个entity又没有开发对应的form，无法通过表单来完成。这时就要用到EntityCRUDHelper了
+import { EntityCRUDHelper } from &#39;@root/solutions/entity-crud&#39;; EntityCRUDHelper.getInstance().update(EN_BudgetAccountDocImport, data) EntityCRUDHelper提供了create/update/delete等几个方法，可以直接基于entity进行crud操作。
+   方法 参数 描述     create entityName, data 创建一条记录   update entityName, data 修改一条记录    注意事项 entity不能是子表。子表必须通过主表创建。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/common/entitycrud/" />
 
@@ -18,7 +18,7 @@ EntityCRUDHelper的其他api
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.bdc2dc497f5e13855ded53790845910973c7682cebb8eb67d6bff4230560053c.css" integrity="sha256-vcLcSX9eE4Vd7VN5CEWRCXPHaCzruOtn1r/0IwVgBTw=">
-<script defer src="/en.search.min.eebaa6ea1dd655b8c7b5e382cee2d3790824999f90c6a15bf72d465ad7280284.js" integrity="sha256-7rqm6h3WVbjHteOCzuLTeQgkmZ&#43;QxqFb9y1GWtcoAoQ="></script>
+<script defer src="/en.search.min.08e08fb99b2ec5a4efdb4c7ddc1bd264dfbff0ec791f67a5eff84be82af51ade.js" integrity="sha256-COCPuZsuxaTv20x93BvSZN&#43;/8Ox5H2el7/hL6Cr1Gt4="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -86,7 +86,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/base/entity/" class="">模型、entity与元数据介绍</a>
+    <a href="/docs/base/entity/" class="">模型、entity与元数据</a>
   
 
         </li>
@@ -226,16 +226,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-    <a href="/docs/form/bizform%E7%9A%84%E5%8E%9F%E7%90%86/" class="">BizForm的原理</a>
-  
-
-        </li>
-      
-    
   </ul>
   
 
@@ -315,26 +305,6 @@ https://github.com/alex-shpak/hugo-book
       
     
   </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/form-guide/%E5%8A%A0%E4%B8%80%E4%B8%AAfield/" class="">加一个field</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/docs/form-guide/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95/" class="">实现一个标准表单</a>
   
 
         </li>
@@ -682,12 +652,11 @@ https://github.com/alex-shpak/hugo-book
     
     <h1>脱离form对entity进行crud</h1>
     <p>作者：王书硕</p>
-    <hr/><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">EntityCRUDHelper</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@root/solutions/entity-crud&#39;</span>;
+    <hr/><p>有时我们需要新增、修改、删除一条entity的数据。但是这个entity又没有开发对应的form，无法通过表单来完成。这时就要用到EntityCRUDHelper了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">EntityCRUDHelper</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@root/solutions/entity-crud&#39;</span>;
 
 <span style="color:#a6e22e">EntityCRUDHelper</span>.<span style="color:#a6e22e">getInstance</span>().<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">EN_BudgetAccountDocImport</span>, <span style="color:#a6e22e">data</span>)
-</code></pre></div><h2 id="注意事项">注意事项</h2>
-<p>entity不能是子表。子表必须通过主表创建。</p>
-<p>EntityCRUDHelper的其他api</p>
+</code></pre></div><p>EntityCRUDHelper提供了create/update/delete等几个方法，可以直接基于entity进行crud操作。</p>
 <table>
 <thead>
 <tr>
@@ -709,6 +678,8 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 </tbody>
 </table>
+<h2 id="注意事项">注意事项</h2>
+<p>entity不能是子表。子表必须通过主表创建。</p>
 </article>
  
       
