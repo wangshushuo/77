@@ -46,6 +46,7 @@
   
   <url>
     <loc>https://77doc.wss.cool/docs/form-guide/</loc>
+    <lastmod>2021-01-05T11:25:11+08:00</lastmod>
   </url>
   
   <url>
@@ -86,22 +87,27 @@
   </url>
   
   <url>
+    <loc>https://77doc.wss.cool/</loc>
+    <lastmod>2021-01-05T11:25:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://77doc.wss.cool/docs/</loc>
+    <lastmod>2021-01-05T11:25:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://77doc.wss.cool/docs/form-guide/init-form/</loc>
+    <lastmod>2021-01-05T11:25:11+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://77doc.wss.cool/docs/component/tablist/</loc>
     <lastmod>2021-01-04T23:57:09+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://77doc.wss.cool/</loc>
-    <lastmod>2021-01-04T23:57:09+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://77doc.wss.cool/docs/component/advancedialog/</loc>
-    <lastmod>2021-01-04T23:57:09+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://77doc.wss.cool/docs/</loc>
     <lastmod>2021-01-04T23:57:09+08:00</lastmod>
   </url>
   

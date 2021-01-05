@@ -6,6 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Tue, 05 Jan 2021 11:25:11 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,6 +18,16 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>创建form时带默认数据</title>
+      <link>https://77doc.wss.cool/docs/form-guide/init-form/</link>
+      <pubDate>Tue, 05 Jan 2021 11:25:11 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/init-form/</guid>
+      <description>场景 在新建”项目“时，选择了项目分类后点新建，所选择的分类会出现在表单的”项目分类“中。
+ 选择分类 点新建  自动填写了“项目分类”   怎么实现   在跳转页面时，将需要的参数放入proxyHistory.push的第二个参数passParams中。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26  class ProjectListPagePresenter extends QueryListPagePresenter&amp;lt; IProjectListPagePresenterOption &amp;gt;{ protected commandActionResolver(commandActions: ToolbarAction[]): ToolbarAction[] { commandActions.unshift({ id: &amp;#39;project-view&amp;#39;, group: ToolbarActionGroup.Group1, action: this.presenter.toolbarConnector.makeCreateButton({ onClick: billTypeId =&amp;gt; { const hash = appRouterHashManager.generateHash(EN_Project, PageModeEnum.Form, { mode: BizFormModeEnum.Create, billTypeId: billTypeId, extraParams: { isBase: this.</description>
     </item>
     
     <item>
