@@ -271,7 +271,7 @@ editOptions editOptions下面的editParams会传给单元格的渲染组件
     </item>
     
     <item>
-      <title>MSTForm（Form状态管理）</title>
+      <title>MSTForm-Form状态管理</title>
       <link>https://77doc.wss.cool/docs/form/mstform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

@@ -14,7 +14,7 @@
 select 对于 MSTForm 来说，最重要的 api 就是 select，select 会返回一个 MSTFormField，MSTFormField 是通过代理模式实现的对原叶子节点封装的带有 ui 状态的操作对象。
 编程模式的转变 带我们使用 MSTForm 对 表单数据进行封装后，我们会发现，以前针对 ui 层面的操作，现在都会被转化为针对数据状态的操作，即我们提升了数据状态的层级，以更加纯净的方式来书写代码，而数据状态 和 真正 ui 层面的更新，则被封装到了更底层的 Level 中。
 从而，我们实现了从 面向UI编程 到 面向数据状态编程 的过度。">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="MSTForm（Form状态管理）" />
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="MSTForm-Form状态管理" />
 <meta property="og:description" content="随着应用复杂度提升，现在不可避免的就是数据状态管理，现在有很多流行框架，redux、mobx、rxjs等等。不同的解决方案在不同场景下会有明显的优劣势，而我们要做的，就是根据场景来选择合适的方案。
 首先，在我们的应用中，我们聚焦到有大量用户输入的表单场景下，我们有以下硬性需求：
  维护用户录入的字段值； 不同的字段之间有联动关系，修改一个会导致另外一个发生改变； 不同的字段之间，状态会相互影响，修改一个会导致另外一个不可编辑； 表单要支持校验；  由这些需求可以看到，在这种场景下，数据驱动方式的 mobx 是最佳的解决方案，我们可以通过 observable data &#43; control component 来实现双向同步的 UI 组件。这样就解决了一个字段同步的问题。
@@ -28,11 +28,11 @@ select 对于 MSTForm 来说，最重要的 api 就是 select，select 会返回
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/form/mstform/" />
 
-<title>MSTForm（Form状态管理） | 77前端文档</title>
+<title>MSTForm-Form状态管理 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.bdc2dc497f5e13855ded53790845910973c7682cebb8eb67d6bff4230560053c.css" integrity="sha256-vcLcSX9eE4Vd7VN5CEWRCXPHaCzruOtn1r/0IwVgBTw=">
-<script defer src="/en.search.min.e541ec82a27f537e7bd61db113cd2d2085a8d35aadac16ef0ff678e19148eeef.js" integrity="sha256-5UHsgqJ/U3571h2xE80tIIWo01qtrBbvD/Z44ZFI7u8="></script>
+<script defer src="/en.search.min.c3a9825b94831cf98060b4e6727de6c416235fc3228ca38d047fa398a2789189.js" integrity="sha256-w6mCW5SDHPmAYLTmcn3mxBYjX8MijKONBH&#43;jmKJ4kYk="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -244,7 +244,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form/mstform/" class="active">MSTForm（Form状态管理）</a>
+    <a href="/docs/form/mstform/" class="active">MSTForm-Form状态管理</a>
   
 
         </li>
@@ -641,7 +641,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>MSTForm（Form状态管理）</strong>
+  <strong>MSTForm-Form状态管理</strong>
 
   <label for="toc-control">
     
@@ -675,7 +675,7 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>MSTForm（Form状态管理）</h1>
+    <h1>MSTForm-Form状态管理</h1>
     <p>作者：郑江</p>
     <hr/><p>随着应用复杂度提升，现在不可避免的就是数据状态管理，现在有很多流行框架，redux、mobx、rxjs等等。不同的解决方案在不同场景下会有明显的优劣势，而我们要做的，就是根据场景来选择合适的方案。</p>
 <p>首先，在我们的应用中，我们聚焦到有大量用户输入的表单场景下，我们有以下硬性需求：</p>
