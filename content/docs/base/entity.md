@@ -1,5 +1,5 @@
 ---
-title: 模型、entity与元数据介绍
+title: 模型、entity与元数据
 weight: 50
 author: 王书硕
 ---
