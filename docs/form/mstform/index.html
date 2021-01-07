@@ -4,18 +4,35 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="列表方案攻略" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/list-guide/" />
+<meta name="description" content="随着应用复杂度提升，现在不可避免的就是数据状态管理，现在有很多流行框架，redux、mobx、rxjs等等。不同的解决方案在不同场景下会有明显的优劣势，而我们要做的，就是根据场景来选择合适的方案。
+首先，在我们的应用中，我们聚焦到有大量用户输入的表单场景下，我们有以下硬性需求：
+ 维护用户录入的字段值； 不同的字段之间有联动关系，修改一个会导致另外一个发生改变； 不同的字段之间，状态会相互影响，修改一个会导致另外一个不可编辑； 表单要支持校验；  由这些需求可以看到，在这种场景下，数据驱动方式的 mobx 是最佳的解决方案，我们可以通过 observable data &#43; control component 来实现双向同步的 UI 组件。这样就解决了一个字段同步的问题。
+同样，当表单复杂以后，我们更倾向于使用树形结构来管理我们的表单数据。
+综上，我们选用了 mobx-state-tree 作为底层框架，来对表单的数据进行管理。
+同时，我们使用 MSTForm 对 mobx-state-tree 进行扩展，使得每一个数据节点（叶子节点）都从一个 value，变成了带有 ui 状态的对象。
+总结一下，MSTForm 是一个用 树形结构 对表单数据进行管理，并使得每一个数据项（即叶子节点）拥有 ui 状态（disabled、readonly、validator、hasError、errorMessage等等）的解决方案。
+select 对于 MSTForm 来说，最重要的 api 就是 select，select 会返回一个 MSTFormField，MSTFormField 是通过代理模式实现的对原叶子节点封装的带有 ui 状态的操作对象。
+编程模式的转变 带我们使用 MSTForm 对 表单数据进行封装后，我们会发现，以前针对 ui 层面的操作，现在都会被转化为针对数据状态的操作，即我们提升了数据状态的层级，以更加纯净的方式来书写代码，而数据状态 和 真正 ui 层面的更新，则被封装到了更底层的 Level 中。
+从而，我们实现了从 面向UI编程 到 面向数据状态编程 的过度。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="MSTForm（Form状态管理）" />
+<meta property="og:description" content="随着应用复杂度提升，现在不可避免的就是数据状态管理，现在有很多流行框架，redux、mobx、rxjs等等。不同的解决方案在不同场景下会有明显的优劣势，而我们要做的，就是根据场景来选择合适的方案。
+首先，在我们的应用中，我们聚焦到有大量用户输入的表单场景下，我们有以下硬性需求：
+ 维护用户录入的字段值； 不同的字段之间有联动关系，修改一个会导致另外一个发生改变； 不同的字段之间，状态会相互影响，修改一个会导致另外一个不可编辑； 表单要支持校验；  由这些需求可以看到，在这种场景下，数据驱动方式的 mobx 是最佳的解决方案，我们可以通过 observable data &#43; control component 来实现双向同步的 UI 组件。这样就解决了一个字段同步的问题。
+同样，当表单复杂以后，我们更倾向于使用树形结构来管理我们的表单数据。
+综上，我们选用了 mobx-state-tree 作为底层框架，来对表单的数据进行管理。
+同时，我们使用 MSTForm 对 mobx-state-tree 进行扩展，使得每一个数据节点（叶子节点）都从一个 value，变成了带有 ui 状态的对象。
+总结一下，MSTForm 是一个用 树形结构 对表单数据进行管理，并使得每一个数据项（即叶子节点）拥有 ui 状态（disabled、readonly、validator、hasError、errorMessage等等）的解决方案。
+select 对于 MSTForm 来说，最重要的 api 就是 select，select 会返回一个 MSTFormField，MSTFormField 是通过代理模式实现的对原叶子节点封装的带有 ui 状态的操作对象。
+编程模式的转变 带我们使用 MSTForm 对 表单数据进行封装后，我们会发现，以前针对 ui 层面的操作，现在都会被转化为针对数据状态的操作，即我们提升了数据状态的层级，以更加纯净的方式来书写代码，而数据状态 和 真正 ui 层面的更新，则被封装到了更底层的 Level 中。
+从而，我们实现了从 面向UI编程 到 面向数据状态编程 的过度。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/form/mstform/" />
 
-<title>列表方案攻略 | 77前端文档</title>
+<title>MSTForm（Form状态管理） | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.bdc2dc497f5e13855ded53790845910973c7682cebb8eb67d6bff4230560053c.css" integrity="sha256-vcLcSX9eE4Vd7VN5CEWRCXPHaCzruOtn1r/0IwVgBTw=">
 <script defer src="/en.search.min.e541ec82a27f537e7bd61db113cd2d2085a8d35aadac16ef0ff678e19148eeef.js" integrity="sha256-5UHsgqJ/U3571h2xE80tIIWo01qtrBbvD/Z44ZFI7u8="></script>
-<link rel="alternate" type="application/rss+xml" href="https://77doc.wss.cool/docs/list-guide/index.xml" title="77前端文档" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -227,7 +244,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form/mstform/" class="">MSTForm（Form状态管理）</a>
+    <a href="/docs/form/mstform/" class="active">MSTForm（Form状态管理）</a>
   
 
         </li>
@@ -624,7 +641,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>列表方案攻略</strong>
+  <strong>MSTForm（Form状态管理）</strong>
 
   <label for="toc-control">
     
@@ -638,7 +655,12 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#select">select</a></li>
+    <li><a href="#编程模式的转变">编程模式的转变</a></li>
+  </ul>
+</nav>
 
 
     </aside>
@@ -653,9 +675,27 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>列表方案攻略</h1>
-    <p>作者：</p>
-    <hr/></article>
+    <h1>MSTForm（Form状态管理）</h1>
+    <p>作者：郑江</p>
+    <hr/><p>随着应用复杂度提升，现在不可避免的就是数据状态管理，现在有很多流行框架，redux、mobx、rxjs等等。不同的解决方案在不同场景下会有明显的优劣势，而我们要做的，就是根据场景来选择合适的方案。</p>
+<p>首先，在我们的应用中，我们聚焦到有大量用户输入的表单场景下，我们有以下硬性需求：</p>
+<ol>
+<li>维护用户录入的字段值；</li>
+<li>不同的字段之间有联动关系，修改一个会导致另外一个发生改变；</li>
+<li>不同的字段之间，状态会相互影响，修改一个会导致另外一个不可编辑；</li>
+<li>表单要支持校验；</li>
+</ol>
+<p>由这些需求可以看到，在这种场景下，数据驱动方式的 mobx 是最佳的解决方案，我们可以通过 <code>observable data</code> + <code>control component</code> 来实现双向同步的 UI 组件。这样就解决了一个字段同步的问题。</p>
+<p>同样，当表单复杂以后，我们更倾向于使用<strong>树形结构</strong>来管理我们的表单数据。</p>
+<p>综上，我们选用了 mobx-state-tree 作为底层框架，来对表单的数据进行管理。</p>
+<p>同时，我们使用 MSTForm 对 mobx-state-tree 进行扩展，使得每一个数据节点（叶子节点）都从一个 value，变成了带有 ui 状态的对象。</p>
+<p>总结一下，MSTForm 是一个用 树形结构 对表单数据进行管理，并使得每一个数据项（即叶子节点）拥有 ui 状态（disabled、readonly、validator、hasError、errorMessage等等）的解决方案。</p>
+<h2 id="select">select</h2>
+<p>对于 MSTForm 来说，最重要的 api 就是 select，select 会返回一个 MSTFormField，<strong>MSTFormField 是通过代理模式实现的对原叶子节点封装的带有 ui 状态的操作对象。</strong></p>
+<h2 id="编程模式的转变">编程模式的转变</h2>
+<p>带我们使用 MSTForm 对 表单数据进行封装后，我们会发现，以前针对 ui 层面的操作，现在都会被转化为针对数据状态的操作，即我们提升了数据状态的层级，以更加纯净的方式来书写代码，而数据状态 和 真正 ui 层面的更新，则被封装到了更底层的 Level 中。</p>
+<p>从而，我们实现了从 <strong>面向UI编程</strong> 到 <strong>面向数据状态编程</strong> 的过度。</p>
+</article>
  
       
 
@@ -675,6 +715,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -683,7 +727,12 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#select">select</a></li>
+    <li><a href="#编程模式的转变">编程模式的转变</a></li>
+  </ul>
+</nav>
 
  
     </aside>
