@@ -16,9 +16,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/list-guide/%E7%A9%BF%E9%80%8F/</guid>
-      <description>穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能，在这里(1)会跳到项目计划详情，(2)会跳到项目详情。
-代码实现 图片中(2)复杂一点，从项目计划列表跳到项目详情页。
-class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IListOption { return { ...super.getListOption(), gridOption: { columnResolver: columnDefs =&amp;gt; { // 将数组转化为map，这个可以不做，直接用find在数组中找到你想找的column  const columnDefsMap = new Map(); columnDefs.forEach(i =&amp;gt; { columnDefsMap.set(i.field, i); }) // 找到column  const projectCode = columnDefsMap.get(&amp;#39;project.code&amp;#39;); // 设置样式和点击事件  projectCode.cellClass = &amp;#39;object-cell-linkable&amp;#39;; projectCode.onCellClicked = event =&amp;gt; { // 实用列表方案的api来实现跳转  this.presenter.listSolutionConnector.rowActionController.masterHashResolver( {name: EN_Project} as Entity, BizListActionEnum.View, {id: event.data.project.id}, event.rowIndex, this.presenter.listSolutionConnector.rowActionController.saveSuccess, ); }; } } } } } 代码比较容易理解，通过gridOption的columnResolver来重新定义某以列的columnDef。</description>
+      <description>穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能。
+在这里展示了两种需求：
+ 会跳到当前单据类型（项目计划）的单据详情页 会跳到其他单据类型（项目）的单据详情页。  代码实现   使用rowActionController.makeRowEditAction 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  class BudgetModelList extends QueryListPagePresenter { { protected getListOption(): IListOption { const listOption = super.getListOption(); return merge(listOption, { gridOption: { actionColumnOption: { visibleSize: 3, }, columnResolver: columnDefs =&amp;gt; { this.</description>
     </item>
     
   </channel>

@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能，在这里(1)会跳到项目计划详情，(2)会跳到项目详情。
-代码实现 图片中(2)复杂一点，从项目计划列表跳到项目详情页。
-class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IListOption { return { ...super.getListOption(), gridOption: { columnResolver: columnDefs =&gt; { // 将数组转化为map，这个可以不做，直接用find在数组中找到你想找的column  const columnDefsMap = new Map(); columnDefs.forEach(i =&gt; { columnDefsMap.set(i.field, i); }) // 找到column  const projectCode = columnDefsMap.get(&#39;project.code&#39;); // 设置样式和点击事件  projectCode.cellClass = &#39;object-cell-linkable&#39;; projectCode.onCellClicked = event =&gt; { // 实用列表方案的api来实现跳转  this.presenter.listSolutionConnector.rowActionController.masterHashResolver( {name: EN_Project} as Entity, BizListActionEnum.View, {id: event.data.project.id}, event.rowIndex, this.presenter.listSolutionConnector.rowActionController.saveSuccess, ); }; } } } } } 代码比较容易理解，通过gridOption的columnResolver来重新定义某以列的columnDef。">
+<meta name="description" content="穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能。
+在这里展示了两种需求：
+ 会跳到当前单据类型（项目计划）的单据详情页 会跳到其他单据类型（项目）的单据详情页。  代码实现   使用rowActionController.makeRowEditAction 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  class BudgetModelList extends QueryListPagePresenter { { protected getListOption(): IListOption { const listOption = super.getListOption(); return merge(listOption, { gridOption: { actionColumnOption: { visibleSize: 3, }, columnResolver: columnDefs =&gt; { this.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能，在这里(1)会跳到项目计划详情，(2)会跳到项目详情。
-代码实现 图片中(2)复杂一点，从项目计划列表跳到项目详情页。
-class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IListOption { return { ...super.getListOption(), gridOption: { columnResolver: columnDefs =&gt; { // 将数组转化为map，这个可以不做，直接用find在数组中找到你想找的column  const columnDefsMap = new Map(); columnDefs.forEach(i =&gt; { columnDefsMap.set(i.field, i); }) // 找到column  const projectCode = columnDefsMap.get(&#39;project.code&#39;); // 设置样式和点击事件  projectCode.cellClass = &#39;object-cell-linkable&#39;; projectCode.onCellClicked = event =&gt; { // 实用列表方案的api来实现跳转  this.presenter.listSolutionConnector.rowActionController.masterHashResolver( {name: EN_Project} as Entity, BizListActionEnum.View, {id: event.data.project.id}, event.rowIndex, this.presenter.listSolutionConnector.rowActionController.saveSuccess, ); }; } } } } } 代码比较容易理解，通过gridOption的columnResolver来重新定义某以列的columnDef。" />
+<meta property="og:description" content="穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能。
+在这里展示了两种需求：
+ 会跳到当前单据类型（项目计划）的单据详情页 会跳到其他单据类型（项目）的单据详情页。  代码实现   使用rowActionController.makeRowEditAction 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  class BudgetModelList extends QueryListPagePresenter { { protected getListOption(): IListOption { const listOption = super.getListOption(); return merge(listOption, { gridOption: { actionColumnOption: { visibleSize: 3, }, columnResolver: columnDefs =&gt; { this." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/list-guide/%E7%A9%BF%E9%80%8F/" />
 
@@ -18,7 +18,7 @@ class TaskPlanListPresenter extends QueryListPagePresenter { getListOption(): IL
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.bdc2dc497f5e13855ded53790845910973c7682cebb8eb67d6bff4230560053c.css" integrity="sha256-vcLcSX9eE4Vd7VN5CEWRCXPHaCzruOtn1r/0IwVgBTw=">
-<script defer src="/en.search.min.c3a9825b94831cf98060b4e6727de6c416235fc3228ca38d047fa398a2789189.js" integrity="sha256-w6mCW5SDHPmAYLTmcn3mxBYjX8MijKONBH&#43;jmKJ4kYk="></script>
+<script defer src="/en.search.min.e17454e1be89939cb9a8897854e24ef902425ba5775e68e0feb0b6c4cc86de94.js" integrity="sha256-4XRU4b6Jk5y5qIl4VOJO&#43;QJCW6V3Xmjg/rC2xMyG3pQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -664,10 +664,122 @@ https://github.com/alex-shpak/hugo-book
     <p>作者：</p>
     <hr/><h1 id="穿透">穿透</h1>
 <p><img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20201220010111_361744852c6e1e48e567a3f4274f615c.png" alt="20201220010111_361744852c6e1e48e567a3f4274f615c.png" />
-我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能，在这里(1)会跳到项目计划详情，(2)会跳到项目详情。</p>
+我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能。</p>
+<p>在这里展示了两种需求：</p>
+<ol>
+<li>会跳到<strong>当前</strong>单据类型（项目计划）的单据详情页</li>
+<li>会跳到<strong>其他</strong>单据类型（项目）的单据详情页。</li>
+</ol>
 <h2 id="代码实现">代码实现</h2>
-<p>图片中(2)复杂一点，从项目计划列表跳到项目详情页。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TaskPlanListPresenter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">QueryListPagePresenter</span> {
+<ol>
+<li>
+<p>使用<code>rowActionController.makeRowEditAction</code>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BudgetModelList</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">QueryListPagePresenter</span> { {
+  <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">getListOption</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">IListOption</span> {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">listOption</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">getListOption</span>();
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">merge</span>(<span style="color:#a6e22e">listOption</span>, {
+      <span style="color:#a6e22e">gridOption</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">actionColumnOption</span><span style="color:#f92672">:</span> {
+          <span style="color:#a6e22e">visibleSize</span>: <span style="color:#66d9ef">3</span>,
+        },
+        <span style="color:#a6e22e">columnResolver</span>: <span style="color:#66d9ef">columnDefs</span> <span style="color:#f92672">=&gt;</span> {
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">projectColumn</span>(<span style="color:#a6e22e">columnDefs</span>);
+          <span style="color:#a6e22e">columnDefs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">colDef</span> <span style="color:#f92672">=&gt;</span> {
+            <span style="color:#66d9ef">if</span> (
+              (<span style="color:#a6e22e">colDef</span>.<span style="color:#a6e22e">field</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;code&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">colDef</span>.<span style="color:#a6e22e">field</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;name&#39;</span>) <span style="color:#f92672">&amp;&amp;</span>
+              <span style="color:#a6e22e">checkAuth</span>(<span style="color:#e6db74">&#39;BudgetModel&#39;</span>, <span style="color:#a6e22e">FunctionAuthActionType</span>.<span style="color:#a6e22e">Update</span>)
+            ) {
+<span style="display:block;width:100%;background-color:#3c3d38">              <span style="color:#a6e22e">colDef</span>.<span style="color:#a6e22e">cellClass</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;object-cell-linkable&#39;</span>;
+</span><span style="display:block;width:100%;background-color:#3c3d38">              <span style="color:#a6e22e">colDef</span>.<span style="color:#a6e22e">onCellClicked</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=&gt;</span> {
+</span><span style="display:block;width:100%;background-color:#3c3d38">                <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">editAction</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">presenter</span>.<span style="color:#a6e22e">listSolutionConnector</span>.<span style="color:#a6e22e">rowActionController</span>.<span style="color:#a6e22e">makeRowEditAction</span>(
+</span><span style="display:block;width:100%;background-color:#3c3d38">                  <span style="color:#66d9ef">undefined</span>,
+</span><span style="display:block;width:100%;background-color:#3c3d38">                  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>,
+</span><span style="display:block;width:100%;background-color:#3c3d38">                );
+</span><span style="display:block;width:100%;background-color:#3c3d38">                <span style="color:#a6e22e">editAction</span>.<span style="color:#a6e22e">onClick</span>(<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">rowIndex</span>, <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>);
+</span><span style="display:block;width:100%;background-color:#3c3d38">              };
+</span><span style="display:block;width:100%;background-color:#3c3d38">            }
+</span>          });
+        },
+      },
+    });
+  }
+}
+</code></pre></td></tr></table>
+</div>
+</div>
+其中的makeRowEditAction是去编辑态的单据，可以换成makeRowViewAction实现去查看态。</p>
+</li>
+<li>
+<p>用masterHashResolver这个api，可以指定跳转目标单据的entity。
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TaskPlanListPresenter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">QueryListPagePresenter</span> {
   <span style="color:#a6e22e">getListOption</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">IListOption</span> {
     <span style="color:#66d9ef">return</span> {
       ...<span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">getListOption</span>(),
@@ -681,23 +793,27 @@ https://github.com/alex-shpak/hugo-book
           <span style="color:#75715e">// 找到column
 </span><span style="color:#75715e"></span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">projectCode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">columnDefsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;project.code&#39;</span>);
           <span style="color:#75715e">// 设置样式和点击事件
-</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">projectCode</span>.<span style="color:#a6e22e">cellClass</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;object-cell-linkable&#39;</span>;
-          <span style="color:#a6e22e">projectCode</span>.<span style="color:#a6e22e">onCellClicked</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=&gt;</span> {
-            <span style="color:#75715e">// 实用列表方案的api来实现跳转
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">presenter</span>.<span style="color:#a6e22e">listSolutionConnector</span>.<span style="color:#a6e22e">rowActionController</span>.<span style="color:#a6e22e">masterHashResolver</span>(
-              {<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">EN_Project</span>} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">Entity</span>,
-              <span style="color:#a6e22e">BizListActionEnum</span>.<span style="color:#a6e22e">View</span>,
-              {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">event.data.project.id</span>},
-              <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">rowIndex</span>,
-              <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">presenter</span>.<span style="color:#a6e22e">listSolutionConnector</span>.<span style="color:#a6e22e">rowActionController</span>.<span style="color:#a6e22e">saveSuccess</span>,
-            );
-          };
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#75715e"></span>          <span style="color:#a6e22e">projectCode</span>.<span style="color:#a6e22e">cellClass</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;object-cell-linkable&#39;</span>;
+</span><span style="display:block;width:100%;background-color:#3c3d38">          <span style="color:#a6e22e">projectCode</span>.<span style="color:#a6e22e">onCellClicked</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=&gt;</span> {
+</span><span style="display:block;width:100%;background-color:#3c3d38">            <span style="color:#75715e">// 实用列表方案的api来实现跳转
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#75715e"></span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">presenter</span>.<span style="color:#a6e22e">listSolutionConnector</span>.<span style="color:#a6e22e">rowActionController</span>.<span style="color:#a6e22e">masterHashResolver</span>(
+</span><span style="display:block;width:100%;background-color:#3c3d38">              {<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">EN_Project</span>} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">Entity</span>,
+</span><span style="display:block;width:100%;background-color:#3c3d38">              <span style="color:#a6e22e">BizListActionEnum</span>.<span style="color:#a6e22e">View</span>,
+</span><span style="display:block;width:100%;background-color:#3c3d38">              {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">event.data.project.id</span>},
+</span><span style="display:block;width:100%;background-color:#3c3d38">              <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">rowIndex</span>,
+</span><span style="display:block;width:100%;background-color:#3c3d38">              <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">presenter</span>.<span style="color:#a6e22e">listSolutionConnector</span>.<span style="color:#a6e22e">rowActionController</span>.<span style="color:#a6e22e">saveSuccess</span>,
+</span><span style="display:block;width:100%;background-color:#3c3d38">            );
+</span>          };
         }
       }
     }
   }
 }
-</code></pre></div><p>代码比较容易理解，通过gridOption的columnResolver来重新定义某以列的columnDef。</p>
+</code></pre></td></tr></table>
+</div>
+</div></p>
+</li>
+</ol>
 </article>
  
       
