@@ -6,10 +6,30 @@
     <description>Recent content in 组件 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 04 Jan 2021 23:57:09 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Jan 2021 19:00:09 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/component/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AdvanceDialog</title>
+      <link>https://77doc.wss.cool/docs/component/advancedialog/</link>
+      <pubDate>Wed, 20 Jan 2021 19:00:09 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/component/advancedialog/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  import { showDialog, requestDialogId, closeDialog } from &amp;#39;@root/common/dialog&amp;#39;; import { AdvanceDialog } from &amp;#39;@components/advance-dialog/AdvanceDialog&amp;#39;; function renderDialog() { const dialogId = requestDialogId();  showDialog(dialogId, (  &amp;lt;AdvanceDialog title=&amp;#34;催办&amp;#34; buttons={[{ text: &amp;#39;确定&amp;#39;, onClick: () =&amp;gt; { closeDialog(dialogId)  } }]} onClose={() =&amp;gt; { closeDialog(dialogId)  }} &amp;gt; &amp;lt;/AdvanceDialog&amp;gt; )) }    </description>
+    </item>
+    
+    <item>
+      <title>Refer</title>
+      <link>https://77doc.wss.cool/docs/component/refer/</link>
+      <pubDate>Wed, 13 Jan 2021 11:39:09 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/component/refer/</guid>
+      <description>form中设置 getEditOptions之editParams editParams是定义每个field（也可以设置子表的field）的编辑态的参数。
+{ [key: fieldName]: 参数对象 } 参数对象需要根据field具体是什么来行确定，比如field可能是数字、字符串、参照等，对应的渲染组件就是NumberField，ReferField，TextField等，参数对象就是对应的渲染组件的参数。
+参数 // 高级参照支持多选 enableMultiInsert: true, criteriaStr: criteriaStr, referConfigResolver: referConfig =&amp;gt; { return Object.assign({}, referConfig, { displayField: &#39;code&#39;, }); }, advanceReferProps: { categoryCriteriaStr: , }, queryFields: [], onMultiInsert: ( data: Array&amp;lt;ICustomizedCarryoverProgrammeSubjectSetting&amp;gt;, editRowField: MSTFormField, ) =&amp;gt; { if (Array.isArray(data) &amp;amp;&amp;amp; data.length &amp;gt; 0) { const origin = editRowField.value || []; for (let i = 0, len = data.length; i &amp;lt; len; i += 1) { data[i] = Object.</description>
+    </item>
     
     <item>
       <title></title>
@@ -18,15 +38,6 @@
       
       <guid>https://77doc.wss.cool/docs/component/tablist/</guid>
       <description>&amp;lt;TabList focusIndex={this.focusIndex} onTabChange={index =&amp;gt; { }} &amp;gt; &amp;lt;Tab key={1} title=&amp;#34;编码方案&amp;#34; /&amp;gt; &amp;lt;Tab key={2} title=&amp;#34;对照码&amp;#34; /&amp;gt; &amp;lt;/TabList&amp;gt; </description>
-    </item>
-    
-    <item>
-      <title>AdvanceDialog</title>
-      <link>https://77doc.wss.cool/docs/component/advancedialog/</link>
-      <pubDate>Mon, 04 Jan 2021 23:57:09 +0800</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/component/advancedialog/</guid>
-      <description></description>
     </item>
     
     <item>

@@ -4,17 +4,37 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
+<meta name="description" content="配置虚拟字段 列表方案是按一定的条件查出一个列表。这个条件在我们的系统中就是“查询方案”。
+我们查询数据是通过 gql 实现的，查询方案最终会转化为 criteriaStr。
+ 进入到开发包中的列表方案。通过 &#43; 加号，就可以添加不同的查询条件。   列表方案都是针对一个entity的，所以查询方案也是针对这个entity的。添加的查询条件根据entity上是否存在field分为两种情况。 其中显示项就是entity上已经存在的field，就是下图这样的。 而虚拟字段就是entity上没有你想要的field作为条件。 需要注意。在这个配置界面，“显示名称”需要先填写英文，确定以后再改成中文，因为我们需要“字段名称”是英文，要在后面的开发中用到。而在最初的配置中的“显示名称”会作为“字段名称”，且字段名称不能修改。 参照和枚举根据需要选择即可。
+虚拟字段的代码开发 每个查询条件在最后都会转化成 criteriaStr 片段，最后组装成一个大的 criteriaStr 。对于非虚拟字段，可以通过通用的方式去处理的。虚拟字段需要我们写代码来转化为 criteriaStr 。
+首先，假设你已经配置好了一个虚拟字段abc。然后就要在goServer上对它进行处理了。
+找到目录trek/services/query-list/middlewares/entities，看有没有你的entity的目录，如果没有就创建一个。这里以budget-control-rule-set为例 需要index.go文件和各个虚拟字段.go文件。 index.go文件如下： 每个虚拟字段需要在这里声明。
+虚拟字段.go 这里是 rule-remarks.go ： 把这里面的 ruleRemarks 都替换成你的自定义的字段（比如abc）。
+  12行，声明字段用来接收查询的值。
+  27行，存储查询的值。枚举会传过来选择的枚举的id，字符串就是字符串本体，区间就会有两个值。
+  字符串、枚举：   区间：     33行是查询语句。根据自己的业务，会不一样，它会作为该虚拟字段的子criteriaStr拼到完整的criteriaStr中。
+  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="列表中显示虚拟字段列" />
+<meta property="og:description" content="配置虚拟字段 列表方案是按一定的条件查出一个列表。这个条件在我们的系统中就是“查询方案”。
+我们查询数据是通过 gql 实现的，查询方案最终会转化为 criteriaStr。
+ 进入到开发包中的列表方案。通过 &#43; 加号，就可以添加不同的查询条件。   列表方案都是针对一个entity的，所以查询方案也是针对这个entity的。添加的查询条件根据entity上是否存在field分为两种情况。 其中显示项就是entity上已经存在的field，就是下图这样的。 而虚拟字段就是entity上没有你想要的field作为条件。 需要注意。在这个配置界面，“显示名称”需要先填写英文，确定以后再改成中文，因为我们需要“字段名称”是英文，要在后面的开发中用到。而在最初的配置中的“显示名称”会作为“字段名称”，且字段名称不能修改。 参照和枚举根据需要选择即可。
+虚拟字段的代码开发 每个查询条件在最后都会转化成 criteriaStr 片段，最后组装成一个大的 criteriaStr 。对于非虚拟字段，可以通过通用的方式去处理的。虚拟字段需要我们写代码来转化为 criteriaStr 。
+首先，假设你已经配置好了一个虚拟字段abc。然后就要在goServer上对它进行处理了。
+找到目录trek/services/query-list/middlewares/entities，看有没有你的entity的目录，如果没有就创建一个。这里以budget-control-rule-set为例 需要index.go文件和各个虚拟字段.go文件。 index.go文件如下： 每个虚拟字段需要在这里声明。
+虚拟字段.go 这里是 rule-remarks.go ： 把这里面的 ruleRemarks 都替换成你的自定义的字段（比如abc）。
+  12行，声明字段用来接收查询的值。
+  27行，存储查询的值。枚举会传过来选择的枚举的id，字符串就是字符串本体，区间就会有两个值。
+  字符串、枚举：   区间：     33行是查询语句。根据自己的业务，会不一样，它会作为该虚拟字段的子criteriaStr拼到完整的criteriaStr中。
+  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/" />
 
-<title>列表 | 77前端文档</title>
+<title>列表中显示虚拟字段列 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.bdc2dc497f5e13855ded53790845910973c7682cebb8eb67d6bff4230560053c.css" integrity="sha256-vcLcSX9eE4Vd7VN5CEWRCXPHaCzruOtn1r/0IwVgBTw=">
-<script defer src="/en.search.min.e17454e1be89939cb9a8897854e24ef902425ba5775e68e0feb0b6c4cc86de94.js" integrity="sha256-4XRU4b6Jk5y5qIl4VOJO&#43;QJCW6V3Xmjg/rC2xMyG3pQ="></script>
+<link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
+<script defer src="/en.search.min.9eb5044aba95af854c9a1af56b99c48e3b43b030bd276a9c9ab8e0743ab3b3de.js" integrity="sha256-nrUESrqVr4VMmhr1a5nEjjtDsDC9J2qcmrjgdDqzs94="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -326,27 +346,6 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <span>列表方案基础</span>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
     <span>列表方案攻略</span>
   
 
@@ -372,6 +371,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/docs/list-guide/%E5%88%B7%E6%96%B0%E5%88%97%E8%A1%A8/" class="">刷新列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <span>虚拟字段</span>
   
 
@@ -386,12 +395,20 @@ https://github.com/alex-shpak/hugo-book
       
     
       
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/" class="">查询方案</a>
+  
+
+        </li>
+      
     
       
         <li>
           
   
-    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/" class="">查询方案</a>
+    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/" class="active">列表中显示虚拟字段列</a>
   
 
         </li>
@@ -402,6 +419,27 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
     
   </ul>
   
@@ -428,12 +466,30 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/component/tablist/" class="">Tab List</a>
+    <a href="/docs/component/advancedialog/" class="">AdvanceDialog</a>
   
 
         </li>
       
     
+      
+        <li>
+          
+  
+    <a href="/docs/component/refer/" class="">Refer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/tablist/" class="">Tab List</a>
+  
+
+        </li>
       
     
       
@@ -548,6 +604,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/docs/debug/" class="">Debug</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <span>其他</span>
   
 
@@ -623,7 +689,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>列表</strong>
+  <strong>列表中显示虚拟字段列</strong>
 
   <label for="toc-control">
     
@@ -637,7 +703,12 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置虚拟字段">配置虚拟字段</a></li>
+    <li><a href="#虚拟字段的代码开发">虚拟字段的代码开发</a></li>
+  </ul>
+</nav>
 
 
     </aside>
@@ -652,9 +723,58 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>列表</h1>
-    <p>作者：</p>
-    <hr/></article>
+    <h1>列表中显示虚拟字段列</h1>
+    <p>作者：王书硕</p>
+    <hr/><h2 id="配置虚拟字段">配置虚拟字段</h2>
+<p>列表方案是按一定的<strong>条件</strong>查出一个列表。这个条件在我们的系统中就是“查询方案”。</p>
+<p>我们查询数据是通过 gql 实现的，查询方案最终会转化为 criteriaStr。</p>
+<ol>
+<li>进入到开发包中的列表方案。通过 + 加号，就可以添加不同的查询条件。
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105326_c306413145c8e03802da695131c6430f.png" alt="20210113105326_c306413145c8e03802da695131c6430f.png" /></li>
+</ol>
+<p>列表方案都是针对一个entity的，所以查询方案也是针对这个entity的。添加的查询条件根据entity上是否存在field分为两种情况。
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105341_ef81586851f75cf8bd08b36f3c02af0f.png" alt="20210113105341_ef81586851f75cf8bd08b36f3c02af0f.png" />
+其中显示项就是entity上已经存在的field，就是下图这样的。
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105351_60e4548f2033a3a07086f77864baa056.png" alt="20210113105351_60e4548f2033a3a07086f77864baa056.png" /></p>
+<p>而虚拟字段就是entity上没有你想要的field作为条件。
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105408_897c6e5995eb17a26b0156d3dec6d2cf.png" alt="20210113105408_897c6e5995eb17a26b0156d3dec6d2cf.png" /></p>
+<p>需要注意。在这个配置界面，“显示名称”需要先填写英文，确定以后再改成中文，因为我们需要“字段名称”是英文，要在后面的开发中用到。而在最初的配置中的“显示名称”会作为“字段名称”，且字段名称不能修改。
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105419_e7124ef04910cbe923d3d856c16dae5e.png" alt="20210113105419_e7124ef04910cbe923d3d856c16dae5e.png" /></p>
+<p>参照和枚举根据需要选择即可。</p>
+<h2 id="虚拟字段的代码开发">虚拟字段的代码开发</h2>
+<p>每个查询条件在最后都会转化成 criteriaStr 片段，最后组装成一个大的 criteriaStr 。对于非虚拟字段，可以通过通用的方式去处理的。虚拟字段需要我们写代码来转化为 criteriaStr 。</p>
+<p>首先，假设你已经配置好了一个虚拟字段abc。然后就要在goServer上对它进行处理了。</p>
+<p>找到目录trek/services/query-list/middlewares/entities，看有没有你的entity的目录，如果没有就创建一个。这里以budget-control-rule-set为例
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105430_738f657469a9723ded0bc5365f510582.png" alt="20210113105430_738f657469a9723ded0bc5365f510582.png" />
+需要index.go文件和各个虚拟字段.go文件。
+index.go文件如下：
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105440_d5212ebe673a415f0d5bcc90ecb718da.png" alt="20210113105440_d5212ebe673a415f0d5bcc90ecb718da.png" />
+每个虚拟字段需要在这里声明。</p>
+<p>虚拟字段.go 这里是 rule-remarks.go ：
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105450_a5af375d2451faf7c7c27c16db8406ef.png" alt="20210113105450_a5af375d2451faf7c7c27c16db8406ef.png" />
+把这里面的 ruleRemarks 都替换成你的自定义的字段（比如abc）。</p>
+<ul>
+<li>
+<p>12行，声明字段用来接收查询的值。</p>
+</li>
+<li>
+<p>27行，存储查询的值。枚举会传过来选择的枚举的id，字符串就是字符串本体，区间就会有两个值。</p>
+<ul>
+<li>
+<p>字符串、枚举：
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105459_ac1a2ea1da49f3cfc951ad86c8de7d02.png" alt="20210113105459_ac1a2ea1da49f3cfc951ad86c8de7d02.png" /></p>
+</li>
+<li>
+<p>区间：
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210113105510_d9afab0840157b0155932c3895af7218.png" alt="20210113105510_d9afab0840157b0155932c3895af7218.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>33行是查询语句。根据自己的业务，会不一样，它会作为该虚拟字段的子criteriaStr拼到完整的criteriaStr中。</p>
+</li>
+</ul>
+</article>
  
       
 
@@ -674,6 +794,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -682,7 +806,12 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置虚拟字段">配置虚拟字段</a></li>
+    <li><a href="#虚拟字段的代码开发">虚拟字段的代码开发</a></li>
+  </ul>
+</nav>
 
  
     </aside>

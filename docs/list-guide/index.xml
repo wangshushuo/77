@@ -6,6 +6,7 @@
     <description>Recent content in 列表方案攻略 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Fri, 15 Jan 2021 14:34:22 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/list-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +20,16 @@
       <description>穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能。
 在这里展示了两种需求：
  会跳到当前单据类型（项目计划）的单据详情页 会跳到其他单据类型（项目）的单据详情页。  代码实现   使用rowActionController.makeRowEditAction 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  class BudgetModelList extends QueryListPagePresenter { { protected getListOption(): IListOption { const listOption = super.getListOption(); return merge(listOption, { gridOption: { actionColumnOption: { visibleSize: 3, }, columnResolver: columnDefs =&amp;gt; { this.</description>
+    </item>
+    
+    <item>
+      <title>刷新列表</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E5%88%B7%E6%96%B0%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Fri, 15 Jan 2021 14:34:22 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E5%88%B7%E6%96%B0%E5%88%97%E8%A1%A8/</guid>
+      <description>场景 有时我需要刷新列表，比如，在列表上面的工具栏中加个按钮，按钮会搞了一个弹窗出来修改数据；比如，新建了一个单据。
+实现 新老列表的presenter中都实现了refresh方法</description>
     </item>
     
   </channel>

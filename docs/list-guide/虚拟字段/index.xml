@@ -12,15 +12,6 @@
     
     <item>
       <title></title>
-      <link>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%AF%BC%E5%87%BA/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -35,6 +26,25 @@
       
       <guid>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/</guid>
       <description>a </description>
+    </item>
+    
+    <item>
+      <title>列表中显示虚拟字段列</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/</guid>
+      <description>配置虚拟字段 列表方案是按一定的条件查出一个列表。这个条件在我们的系统中就是“查询方案”。
+我们查询数据是通过 gql 实现的，查询方案最终会转化为 criteriaStr。
+ 进入到开发包中的列表方案。通过 + 加号，就可以添加不同的查询条件。   列表方案都是针对一个entity的，所以查询方案也是针对这个entity的。添加的查询条件根据entity上是否存在field分为两种情况。 其中显示项就是entity上已经存在的field，就是下图这样的。 而虚拟字段就是entity上没有你想要的field作为条件。 需要注意。在这个配置界面，“显示名称”需要先填写英文，确定以后再改成中文，因为我们需要“字段名称”是英文，要在后面的开发中用到。而在最初的配置中的“显示名称”会作为“字段名称”，且字段名称不能修改。 参照和枚举根据需要选择即可。
+虚拟字段的代码开发 每个查询条件在最后都会转化成 criteriaStr 片段，最后组装成一个大的 criteriaStr 。对于非虚拟字段，可以通过通用的方式去处理的。虚拟字段需要我们写代码来转化为 criteriaStr 。
+首先，假设你已经配置好了一个虚拟字段abc。然后就要在goServer上对它进行处理了。
+找到目录trek/services/query-list/middlewares/entities，看有没有你的entity的目录，如果没有就创建一个。这里以budget-control-rule-set为例 需要index.go文件和各个虚拟字段.go文件。 index.go文件如下： 每个虚拟字段需要在这里声明。
+虚拟字段.go 这里是 rule-remarks.go ： 把这里面的 ruleRemarks 都替换成你的自定义的字段（比如abc）。
+  12行，声明字段用来接收查询的值。
+  27行，存储查询的值。枚举会传过来选择的枚举的id，字符串就是字符串本体，区间就会有两个值。
+  字符串、枚举：   区间：     33行是查询语句。根据自己的业务，会不一样，它会作为该虚拟字段的子criteriaStr拼到完整的criteriaStr中。
+  </description>
     </item>
     
   </channel>
