@@ -13,6 +13,7 @@ function renderDialog() {
 
   showDialog(dialogId, (
     <AdvanceDialog 
+      isOpen
       title="催办" 
       buttons={[{
         text: '确定',
