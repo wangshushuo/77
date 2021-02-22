@@ -17,7 +17,7 @@
       <pubDate>Wed, 20 Jan 2021 19:00:09 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/component/advancedialog/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  import { showDialog, requestDialogId, closeDialog } from &amp;#39;@root/common/dialog&amp;#39;; import { AdvanceDialog } from &amp;#39;@components/advance-dialog/AdvanceDialog&amp;#39;; function renderDialog() { const dialogId = requestDialogId();  showDialog(dialogId, (  &amp;lt;AdvanceDialog isOpen title=&amp;#34;催办&amp;#34; buttons={[{ text: &amp;#39;确定&amp;#39;, onClick: () =&amp;gt; {  closeDialog(dialogId) } }]} onClose={() =&amp;gt; {  closeDialog(dialogId) }} &amp;gt; &amp;lt;/AdvanceDialog&amp;gt; )) }    </description>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  import { showDialog, requestDialogId, closeDialog } from &amp;#39;@root/common/dialog&amp;#39;; import { AdvanceDialog } from &amp;#39;@components/advance-dialog/AdvanceDialog&amp;#39;; function renderDialog() { const dialogId = requestDialogId();  showDialog(dialogId, (  &amp;lt;AdvanceDialog isOpen title=&amp;#34;催办&amp;#34; buttons={[{ text: &amp;#39;确定&amp;#39;, onClick: () =&amp;gt; {  closeDialog(dialogId) } }]} onClose={() =&amp;gt; {  closeDialog(dialogId) }} &amp;gt; &amp;lt;/AdvanceDialog&amp;gt; )) }    列宽可以通过鼠标拖动</description>
     </item>
     
     <item>

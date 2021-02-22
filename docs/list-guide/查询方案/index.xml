@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>查询方案 on 77前端文档</title>
+    <link>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/</link>
+    <description>Recent content in 查询方案 on 77前端文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 26 Jan 2021 11:05:11 +0800</lastBuildDate>
+    
+	<atom:link href="https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>查询项</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9/</link>
+      <pubDate>Tue, 26 Jan 2021 11:05:11 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9/</guid>
+      <description>多列表方案中的 getQueryResolverOptions 方法可以用来设置【查询项】
+class BudgetPlanBasePresenter extends QueryListPagePresenter { protected getQueryResolverOptions(queryListDef, option): IQueryModelResolverOptions { return { someKey: onModelCreated: (item: QueryItem) =&amp;gt; { item.value } } } } 数据结构
+export interface IQueryModelResolverOptions { [key: string]: IQueryModelItemResolverOptions | IQueryModelItemResolverCreator; } export type IQueryModelItemResolverCreator = (options) =&amp;gt; IQueryModelItemResolverOptions; export interface IQueryModelItemResolverOptions&amp;lt;T = any&amp;gt; { // 显示查询方案时，每次都会触发  onModelCreated?: (item: QueryItem) =&amp;gt; void; baseFieldOptionsResovler?: ( item: IQueryCriteria, options: FieldOptions, ) =&amp;gt; MSTFormOptions[&amp;#39;fieldOptions&amp;#39;] | FieldOptions; baseTypeResolver?: (item: IQueryCriteria, type: IType&amp;lt;any, any, any&amp;gt;) =&amp;gt; IType&amp;lt;any, any, any&amp;gt;; itemFieldOptionsResolver?</description>
+    </item>
+    
+  </channel>
+</rss>

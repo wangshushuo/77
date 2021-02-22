@@ -6,7 +6,7 @@
     <description>Recent content in 77hub前端文档 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 20 Jan 2021 19:00:09 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Feb 2021 18:20:56 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -133,12 +133,32 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
     </item>
     
     <item>
+      <title>删除行</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E5%88%A0%E9%99%A4%E8%A1%8C/</link>
+      <pubDate>Mon, 22 Feb 2021 18:20:56 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E5%88%A0%E9%99%A4%E8%A1%8C/</guid>
+      <description>const refDocMappingsField = this.form.select(F_BudgetAccount_refDocMappings); if (refDocMappingsField.value !== undefined) { let len = refDocMappingsField.value.length; while (len&amp;gt;0){ this.formController.deleteRowByRealIndex( F_BudgetAccount_refDocMappings, len - 1, ); len --; } } </description>
+    </item>
+    
+    <item>
+      <title>查询项</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9/</link>
+      <pubDate>Tue, 26 Jan 2021 11:05:11 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9/</guid>
+      <description>多列表方案中的 getQueryResolverOptions 方法可以用来设置【查询项】
+class BudgetPlanBasePresenter extends QueryListPagePresenter { protected getQueryResolverOptions(queryListDef, option): IQueryModelResolverOptions { return { someKey: onModelCreated: (item: QueryItem) =&amp;gt; { item.value } } } } 数据结构
+export interface IQueryModelResolverOptions { [key: string]: IQueryModelItemResolverOptions | IQueryModelItemResolverCreator; } export type IQueryModelItemResolverCreator = (options) =&amp;gt; IQueryModelItemResolverOptions; export interface IQueryModelItemResolverOptions&amp;lt;T = any&amp;gt; { // 显示查询方案时，每次都会触发  onModelCreated?: (item: QueryItem) =&amp;gt; void; baseFieldOptionsResovler?: ( item: IQueryCriteria, options: FieldOptions, ) =&amp;gt; MSTFormOptions[&amp;#39;fieldOptions&amp;#39;] | FieldOptions; baseTypeResolver?: (item: IQueryCriteria, type: IType&amp;lt;any, any, any&amp;gt;) =&amp;gt; IType&amp;lt;any, any, any&amp;gt;; itemFieldOptionsResolver?</description>
+    </item>
+    
+    <item>
       <title>AdvanceDialog</title>
       <link>https://77doc.wss.cool/docs/component/advancedialog/</link>
       <pubDate>Wed, 20 Jan 2021 19:00:09 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/component/advancedialog/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  import { showDialog, requestDialogId, closeDialog } from &amp;#39;@root/common/dialog&amp;#39;; import { AdvanceDialog } from &amp;#39;@components/advance-dialog/AdvanceDialog&amp;#39;; function renderDialog() { const dialogId = requestDialogId();  showDialog(dialogId, (  &amp;lt;AdvanceDialog isOpen title=&amp;#34;催办&amp;#34; buttons={[{ text: &amp;#39;确定&amp;#39;, onClick: () =&amp;gt; {  closeDialog(dialogId) } }]} onClose={() =&amp;gt; {  closeDialog(dialogId) }} &amp;gt; &amp;lt;/AdvanceDialog&amp;gt; )) }    </description>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  import { showDialog, requestDialogId, closeDialog } from &amp;#39;@root/common/dialog&amp;#39;; import { AdvanceDialog } from &amp;#39;@components/advance-dialog/AdvanceDialog&amp;#39;; function renderDialog() { const dialogId = requestDialogId();  showDialog(dialogId, (  &amp;lt;AdvanceDialog isOpen title=&amp;#34;催办&amp;#34; buttons={[{ text: &amp;#39;确定&amp;#39;, onClick: () =&amp;gt; {  closeDialog(dialogId) } }]} onClose={() =&amp;gt; {  closeDialog(dialogId) }} &amp;gt; &amp;lt;/AdvanceDialog&amp;gt; )) }    列宽可以通过鼠标拖动</description>
     </item>
     
     <item>
