@@ -30,3 +30,9 @@ function renderDialog() {
   ))
 }
 {{< / highlight >}}
+
+列宽可以通过鼠标拖动
+```
+enableColResize={true}
+autoContainerWidth={false}
+```
