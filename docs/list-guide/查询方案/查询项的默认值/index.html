@@ -4,31 +4,18 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="随着应用复杂度提升，现在不可避免的就是数据状态管理，现在有很多流行框架，redux、mobx、rxjs等等。不同的解决方案在不同场景下会有明显的优劣势，而我们要做的，就是根据场景来选择合适的方案。
-首先，在我们的应用中，我们聚焦到有大量用户输入的表单场景下，我们有以下硬性需求：
- 维护用户录入的字段值； 不同的字段之间有联动关系，修改一个会导致另外一个发生改变； 不同的字段之间，状态会相互影响，修改一个会导致另外一个不可编辑； 表单要支持校验；  由这些需求可以看到，在这种场景下，数据驱动方式的 mobx 是最佳的解决方案，我们可以通过 observable data &#43; control component 来实现双向同步的 UI 组件。这样就解决了一个字段同步的问题。
-同样，当表单复杂以后，我们更倾向于使用树形结构来管理我们的表单数据。
-综上，我们选用了 mobx-state-tree 作为底层框架，来对表单的数据进行管理。
-同时，我们使用 MSTForm 对 mobx-state-tree 进行扩展，使得每一个数据节点（叶子节点）都从一个 value，变成了带有 ui 状态的对象。
-总结一下，MSTForm 是一个用 树形结构 对表单数据进行管理，并使得每一个数据项（即叶子节点）拥有 ui 状态（disabled、readonly、validator、hasError、errorMessage等等）的解决方案。
-select 对于 MSTForm 来说，最重要的 api 就是 select，select 会返回一个 MSTFormField，MSTFormField 是通过代理模式实现的对原叶子节点封装的带有 ui 状态的操作对象。
-编程模式的转变 带我们使用 MSTForm 对 表单数据进行封装后，我们会发现，以前针对 ui 层面的操作，现在都会被转化为针对数据状态的操作，即我们提升了数据状态的层级，以更加纯净的方式来书写代码，而数据状态 和 真正 ui 层面的更新，则被封装到了更底层的 Level 中。
-从而，我们实现了从 面向UI编程 到 面向数据状态编程 的过度。">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="MSTForm-Form状态管理" />
-<meta property="og:description" content="随着应用复杂度提升，现在不可避免的就是数据状态管理，现在有很多流行框架，redux、mobx、rxjs等等。不同的解决方案在不同场景下会有明显的优劣势，而我们要做的，就是根据场景来选择合适的方案。
-首先，在我们的应用中，我们聚焦到有大量用户输入的表单场景下，我们有以下硬性需求：
- 维护用户录入的字段值； 不同的字段之间有联动关系，修改一个会导致另外一个发生改变； 不同的字段之间，状态会相互影响，修改一个会导致另外一个不可编辑； 表单要支持校验；  由这些需求可以看到，在这种场景下，数据驱动方式的 mobx 是最佳的解决方案，我们可以通过 observable data &#43; control component 来实现双向同步的 UI 组件。这样就解决了一个字段同步的问题。
-同样，当表单复杂以后，我们更倾向于使用树形结构来管理我们的表单数据。
-综上，我们选用了 mobx-state-tree 作为底层框架，来对表单的数据进行管理。
-同时，我们使用 MSTForm 对 mobx-state-tree 进行扩展，使得每一个数据节点（叶子节点）都从一个 value，变成了带有 ui 状态的对象。
-总结一下，MSTForm 是一个用 树形结构 对表单数据进行管理，并使得每一个数据项（即叶子节点）拥有 ui 状态（disabled、readonly、validator、hasError、errorMessage等等）的解决方案。
-select 对于 MSTForm 来说，最重要的 api 就是 select，select 会返回一个 MSTFormField，MSTFormField 是通过代理模式实现的对原叶子节点封装的带有 ui 状态的操作对象。
-编程模式的转变 带我们使用 MSTForm 对 表单数据进行封装后，我们会发现，以前针对 ui 层面的操作，现在都会被转化为针对数据状态的操作，即我们提升了数据状态的层级，以更加纯净的方式来书写代码，而数据状态 和 真正 ui 层面的更新，则被封装到了更底层的 Level 中。
-从而，我们实现了从 面向UI编程 到 面向数据状态编程 的过度。" />
+<meta name="description" content="这里介绍如何为查询项设置默认值。 参看：trek/services/query-list/middlewares/entities/project-schedule/query-default-value.go
+主要的代码是这段
+func (m *billStatusObjectMiddleware) QueryDefHandler(ctx query_list.QueryListContext, api query_list.QueryDefApi) { schema := api.GetQueryItemSchema(billStatusObjectFieldName) if schema != nil { defaultVal := map[string]interface{}{ &#34;values&#34;: []defItem{ { Title: &#34;已生效&#34;, Id: &#34;BillStatus.effective&#34;, }, }, } api.SetDefaultValue(billStatusObjectFieldName, defaultVal) schema.OperatorId = gen_enums.ENUM_CriteriaOperator_in schema.Operator = ctx.GetContext().GetMetadata().GetEnumValue(gen_enums.ENUM_CriteriaOperator, gen_enums.ENUM_CriteriaOperator_in) } } ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="查询项的默认值" />
+<meta property="og:description" content="这里介绍如何为查询项设置默认值。 参看：trek/services/query-list/middlewares/entities/project-schedule/query-default-value.go
+主要的代码是这段
+func (m *billStatusObjectMiddleware) QueryDefHandler(ctx query_list.QueryListContext, api query_list.QueryDefApi) { schema := api.GetQueryItemSchema(billStatusObjectFieldName) if schema != nil { defaultVal := map[string]interface{}{ &#34;values&#34;: []defItem{ { Title: &#34;已生效&#34;, Id: &#34;BillStatus.effective&#34;, }, }, } api.SetDefaultValue(billStatusObjectFieldName, defaultVal) schema.OperatorId = gen_enums.ENUM_CriteriaOperator_in schema.Operator = ctx.GetContext().GetMetadata().GetEnumValue(gen_enums.ENUM_CriteriaOperator, gen_enums.ENUM_CriteriaOperator_in) } } " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/form/mstform/" />
-
-<title>MSTForm-Form状态管理 | 77前端文档</title>
+<meta property="og:url" content="https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/" />
+<meta property="article:published_time" content="2021-03-01T14:29:52+08:00" />
+<meta property="article:modified_time" content="2021-03-01T14:29:52+08:00" />
+<title>查询项的默认值 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
@@ -244,7 +231,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form/mstform/" class="active">MSTForm-Form状态管理</a>
+    <a href="/docs/form/mstform/" class="">MSTForm-Form状态管理</a>
   
 
         </li>
@@ -404,7 +391,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/" class="">查询项的默认值</a>
+    <a href="/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/" class="active">查询项的默认值</a>
   
 
         </li>
@@ -748,7 +735,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>MSTForm-Form状态管理</strong>
+  <strong>查询项的默认值</strong>
 
   <label for="toc-control">
     
@@ -762,12 +749,7 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#select">select</a></li>
-    <li><a href="#编程模式的转变">编程模式的转变</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
 
     </aside>
@@ -782,27 +764,29 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>MSTForm-Form状态管理</h1>
-    <p>作者：郑江</p>
-    <hr/><p>随着应用复杂度提升，现在不可避免的就是数据状态管理，现在有很多流行框架，redux、mobx、rxjs等等。不同的解决方案在不同场景下会有明显的优劣势，而我们要做的，就是根据场景来选择合适的方案。</p>
-<p>首先，在我们的应用中，我们聚焦到有大量用户输入的表单场景下，我们有以下硬性需求：</p>
-<ol>
-<li>维护用户录入的字段值；</li>
-<li>不同的字段之间有联动关系，修改一个会导致另外一个发生改变；</li>
-<li>不同的字段之间，状态会相互影响，修改一个会导致另外一个不可编辑；</li>
-<li>表单要支持校验；</li>
-</ol>
-<p>由这些需求可以看到，在这种场景下，数据驱动方式的 mobx 是最佳的解决方案，我们可以通过 <code>observable data</code> + <code>control component</code> 来实现双向同步的 UI 组件。这样就解决了一个字段同步的问题。</p>
-<p>同样，当表单复杂以后，我们更倾向于使用<strong>树形结构</strong>来管理我们的表单数据。</p>
-<p>综上，我们选用了 mobx-state-tree 作为底层框架，来对表单的数据进行管理。</p>
-<p>同时，我们使用 MSTForm 对 mobx-state-tree 进行扩展，使得每一个数据节点（叶子节点）都从一个 value，变成了带有 ui 状态的对象。</p>
-<p>总结一下，MSTForm 是一个用 树形结构 对表单数据进行管理，并使得每一个数据项（即叶子节点）拥有 ui 状态（disabled、readonly、validator、hasError、errorMessage等等）的解决方案。</p>
-<h2 id="select">select</h2>
-<p>对于 MSTForm 来说，最重要的 api 就是 select，select 会返回一个 MSTFormField，<strong>MSTFormField 是通过代理模式实现的对原叶子节点封装的带有 ui 状态的操作对象。</strong></p>
-<h2 id="编程模式的转变">编程模式的转变</h2>
-<p>带我们使用 MSTForm 对 表单数据进行封装后，我们会发现，以前针对 ui 层面的操作，现在都会被转化为针对数据状态的操作，即我们提升了数据状态的层级，以更加纯净的方式来书写代码，而数据状态 和 真正 ui 层面的更新，则被封装到了更底层的 Level 中。</p>
-<p>从而，我们实现了从 <strong>面向UI编程</strong> 到 <strong>面向数据状态编程</strong> 的过度。</p>
-</article>
+    <h1>查询项的默认值</h1>
+    <p>作者：</p>
+    <hr/><p>这里介绍如何为查询项设置默认值。
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210301155047_3e446d21adad1965938ed4e91c259e24.png" alt="20210301155047_3e446d21adad1965938ed4e91c259e24.png" /></p>
+<p>参看：trek/services/query-list/middlewares/entities/project-schedule/query-default-value.go</p>
+<p>主要的代码是这段</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">billStatusObjectMiddleware</span>) <span style="color:#a6e22e">QueryDefHandler</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">query_list</span>.<span style="color:#a6e22e">QueryListContext</span>, <span style="color:#a6e22e">api</span> <span style="color:#a6e22e">query_list</span>.<span style="color:#a6e22e">QueryDefApi</span>) {
+	<span style="color:#a6e22e">schema</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">GetQueryItemSchema</span>(<span style="color:#a6e22e">billStatusObjectFieldName</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">schema</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">defaultVal</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{
+			<span style="color:#e6db74">&#34;values&#34;</span>: []<span style="color:#a6e22e">defItem</span>{
+				{
+					<span style="color:#a6e22e">Title</span>: <span style="color:#e6db74">&#34;已生效&#34;</span>,
+					<span style="color:#a6e22e">Id</span>:    <span style="color:#e6db74">&#34;BillStatus.effective&#34;</span>,
+				},
+			},
+		}
+		<span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">SetDefaultValue</span>(<span style="color:#a6e22e">billStatusObjectFieldName</span>, <span style="color:#a6e22e">defaultVal</span>)
+		<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">OperatorId</span> = <span style="color:#a6e22e">gen_enums</span>.<span style="color:#a6e22e">ENUM_CriteriaOperator_in</span>
+		<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">Operator</span> = <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">GetContext</span>().<span style="color:#a6e22e">GetMetadata</span>().<span style="color:#a6e22e">GetEnumValue</span>(<span style="color:#a6e22e">gen_enums</span>.<span style="color:#a6e22e">ENUM_CriteriaOperator</span>, <span style="color:#a6e22e">gen_enums</span>.<span style="color:#a6e22e">ENUM_CriteriaOperator_in</span>)
+	}
+}
+</code></pre></div></article>
  
       
 
@@ -834,12 +818,7 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#select">select</a></li>
-    <li><a href="#编程模式的转变">编程模式的转变</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
  
     </aside>

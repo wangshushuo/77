@@ -6,10 +6,21 @@
     <description>Recent content in 查询方案 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Jan 2021 11:05:11 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Mar 2021 14:29:52 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>查询项的默认值</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/</link>
+      <pubDate>Mon, 01 Mar 2021 14:29:52 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/</guid>
+      <description>这里介绍如何为查询项设置默认值。 参看：trek/services/query-list/middlewares/entities/project-schedule/query-default-value.go
+主要的代码是这段
+func (m *billStatusObjectMiddleware) QueryDefHandler(ctx query_list.QueryListContext, api query_list.QueryDefApi) { schema := api.GetQueryItemSchema(billStatusObjectFieldName) if schema != nil { defaultVal := map[string]interface{}{ &amp;#34;values&amp;#34;: []defItem{ { Title: &amp;#34;已生效&amp;#34;, Id: &amp;#34;BillStatus.effective&amp;#34;, }, }, } api.SetDefaultValue(billStatusObjectFieldName, defaultVal) schema.OperatorId = gen_enums.ENUM_CriteriaOperator_in schema.Operator = ctx.GetContext().GetMetadata().GetEnumValue(gen_enums.ENUM_CriteriaOperator, gen_enums.ENUM_CriteriaOperator_in) } } </description>
+    </item>
     
     <item>
       <title>查询项</title>
