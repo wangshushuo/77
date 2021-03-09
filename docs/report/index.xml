@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>报表 on 77前端文档</title>
+    <link>https://77doc.wss.cool/docs/report/</link>
+    <description>Recent content in 报表 on 77前端文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 04 Mar 2021 14:22:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://77doc.wss.cool/docs/report/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>查询项</title>
+      <link>https://77doc.wss.cool/docs/report/%E6%9F%A5%E8%AF%A2%E9%A1%B9/</link>
+      <pubDate>Thu, 04 Mar 2021 14:22:04 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/report/%E6%9F%A5%E8%AF%A2%E9%A1%B9/</guid>
+      <description>做什么 对报表的查询项在前端做一些处理
+怎么找到我想处理的查询项 打开查询方案时，会在network中请求一个接口——http://localhost:3000/cn-north-1/web/bizForm/refresh/ReportDefinition——返回值的data.criterias就是所有查询项的数组。比如现在要处理“填报单位类型”这个查询项，但是不知道他的fieldName，就可以在数组中找。看reportSchemaField字段，title是”填报单位类型“，fieldName是”timesheet.businessDate“。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,7 @@
     <description>Recent content in 通用功能攻略 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 05 Jan 2021 17:48:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Mar 2021 15:48:33 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/common/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,6 +31,15 @@ coalesce：如果alias存在则取alias，不存在取name
 例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
 concat_ws：拼装一条记录的多个字段为一个字段
 例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)</description>
+    </item>
+    
+    <item>
+      <title>获取系统参数</title>
+      <link>https://77doc.wss.cool/docs/common/%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Tue, 09 Mar 2021 15:48:33 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0/</guid>
+      <description>const key = &amp;#39;timesheetCostRateType&amp;#39;; // 参数名 const settingDataLoader = new DataLoader(EN_Setting, [&amp;#39;values.value&amp;#39;], { criteriaStr: `key=&amp;#39;${key}&amp;#39;`, } as QueryOptions); const data = await settingDataLoader.query(); const result = data[0]; // result.value就是该参数的值  </description>
     </item>
     
     <item>

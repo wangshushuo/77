@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="设计" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/design/" />
-
-<title>设计 | 77前端文档</title>
+<meta name="description" content="const key = &#39;timesheetCostRateType&#39;; // 参数名 const settingDataLoader = new DataLoader(EN_Setting, [&#39;values.value&#39;], { criteriaStr: `key=&#39;${key}&#39;`, } as QueryOptions); const data = await settingDataLoader.query(); const result = data[0]; // result.value就是该参数的值  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="获取系统参数" />
+<meta property="og:description" content="const key = &#39;timesheetCostRateType&#39;; // 参数名 const settingDataLoader = new DataLoader(EN_Setting, [&#39;values.value&#39;], { criteriaStr: `key=&#39;${key}&#39;`, } as QueryOptions); const data = await settingDataLoader.query(); const result = data[0]; // result.value就是该参数的值  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/common/%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0/" />
+<meta property="article:published_time" content="2021-03-09T15:48:33+08:00" />
+<meta property="article:modified_time" content="2021-03-09T15:48:33+08:00" />
+<title>获取系统参数 | 77前端文档</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
 <script defer src="/en.search.min.43945a7d8389d9cc0ccccf0e4d1fd479308015e96f2be2fc4facbf0570d01614.js" integrity="sha256-Q5RafYOJ2cwMzM8OTR/UeTCAFelvK&#43;L8T6y/BXDQFhQ="></script>
-<link rel="alternate" type="application/rss+xml" href="https://77doc.wss.cool/docs/design/index.xml" title="77前端文档" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -136,7 +136,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/common/%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0/" class="">获取系统参数</a>
+    <a href="/docs/common/%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0/" class="active">获取系统参数</a>
   
 
         </li>
@@ -782,7 +782,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>设计</strong>
+  <strong>获取系统参数</strong>
 
   <label for="toc-control">
     
@@ -811,9 +811,16 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>设计</h1>
+    <h1>获取系统参数</h1>
     <p>作者：</p>
-    <hr/></article>
+    <hr/><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;timesheetCostRateType&#39;</span>; <span style="color:#75715e">// 参数名
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">settingDataLoader</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DataLoader</span>(<span style="color:#a6e22e">EN_Setting</span>, [<span style="color:#e6db74">&#39;values.value&#39;</span>], {
+  <span style="color:#a6e22e">criteriaStr</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`key=&#39;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;`</span>,
+} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">QueryOptions</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">settingDataLoader</span>.<span style="color:#a6e22e">query</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>[<span style="color:#ae81ff">0</span>]; <span style="color:#75715e">// result.value就是该参数的值
+</span><span style="color:#75715e"></span>
+</code></pre></div></article>
  
       
 
@@ -832,6 +839,10 @@ https://github.com/alex-shpak/hugo-book
       </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
   
  
 

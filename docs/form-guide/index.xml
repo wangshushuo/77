@@ -6,7 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 Feb 2021 14:29:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Mar 2021 15:38:59 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>AllPaths</title>
+      <link>https://77doc.wss.cool/docs/form-guide/allpaths/</link>
+      <pubDate>Mon, 08 Mar 2021 15:38:59 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/allpaths/</guid>
+      <description>bizFormPresenter.api.formController.entityCRUD.allPaths</description>
     </item>
     
     <item>
