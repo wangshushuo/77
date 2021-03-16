@@ -6,7 +6,7 @@
     <description>Recent content in 通用功能攻略 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 11 Mar 2021 11:01:34 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Mar 2021 11:27:50 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/common/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,6 +31,17 @@ coalesce：如果alias存在则取alias，不存在取name
 例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
 concat_ws：拼装一条记录的多个字段为一个字段
 例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)</description>
+    </item>
+    
+    <item>
+      <title>全貌统计加指标</title>
+      <link>https://77doc.wss.cool/docs/common/%E5%85%A8%E8%B2%8C%E7%BB%9F%E8%AE%A1%E5%8A%A0%E6%8C%87%E6%A0%87/</link>
+      <pubDate>Tue, 16 Mar 2021 11:27:50 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E5%85%A8%E8%B2%8C%E7%BB%9F%E8%AE%A1%E5%8A%A0%E6%8C%87%E6%A0%87/</guid>
+      <description>https://shimo.im/sheets/16q8MDar7Ktv0mk7/cayv7，所有的指标会在这个文档里说明。其中【指标编码】是下文中提到的 MeasureId 。
+需要现在go上配置好指标，然后在前端中获取指标并进行设置。
+go  trek/services/dashboard/config/project-overview.go addProjectStatisticsConfig函数 addConfig  // 多值指标 addConfig(&amp;amp;dashboard.EvaluateCardConfig{ Id: &amp;#34;projectTimeStatisticCost&amp;#34;, Title: &amp;#34;工时成本&amp;#34;, Icon: &amp;#34;icongongshi1&amp;#34;, ViewType: dashboard.CardViewType_MultiValue, ValueConfig: []dashboard.EvaluateValueConfig{ { Id: &amp;#34;workingTimeCost&amp;#34;, Icon: &amp;#34;iconzonggongshi&amp;#34;, Title: &amp;#34;总工时成本&amp;#34;, MeasureId: &amp;#34;workingTimeCost&amp;#34;, Unit: dashboard.CardViewUnit_TenThounsand, ClassName: &amp;#34;color1&amp;#34;, SupportPenetrate: true, IsAmount: true, ValuePeriodType: dashboard.MeasurePeriodValueTypeOccurs, }, } }) // 单值指标 addConfig(&amp;amp;dashboard.EvaluateCardConfig{ Id: &amp;#34;workingTimeCost&amp;#34;, Title: &amp;#34;总工时成本&amp;#34;, Icon: &amp;#34;&amp;#34;, ViewType: dashboard.CardViewType_SingleValue, ValueConfig: dashboard.EvaluateValueConfig{ Id: &amp;#34;count&amp;#34;, Icon: &amp;#34;iconzonggongshi&amp;#34;, Title: &amp;#34;总工时成本&amp;#34;, MeasureId: &amp;#34;workingTimeCost&amp;#34;, Unit: dashboard.CardViewUnit_TenThounsand, IsAmount: true, ClassName: &amp;#34;color1&amp;#34;, SupportPenetrate: true, ValuePeriodType: dashboard.</description>
     </item>
     
     <item>
