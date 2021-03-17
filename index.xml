@@ -6,7 +6,7 @@
     <description>Recent content in 77hub前端文档 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Mar 2021 11:27:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Mar 2021 11:53:41 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -133,6 +133,15 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
     </item>
     
     <item>
+      <title>币种精度</title>
+      <link>https://77doc.wss.cool/docs/common/%E5%B8%81%E7%A7%8D%E7%B2%BE%E5%BA%A6/</link>
+      <pubDate>Wed, 17 Mar 2021 11:53:41 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E5%B8%81%E7%A7%8D%E7%B2%BE%E5%BA%A6/</guid>
+      <description>import { store } from &amp;#39;@models&amp;#39;; // 表单中(EasyBizFormPresenter) this.localCurrency.precision // 不在EasyBizFormPresenter中 store.exchangeDefManager.getLocalCurrency().precision </description>
+    </item>
+    
+    <item>
       <title>全貌统计加指标</title>
       <link>https://77doc.wss.cool/docs/common/%E5%85%A8%E8%B2%8C%E7%BB%9F%E8%AE%A1%E5%8A%A0%E6%8C%87%E6%A0%87/</link>
       <pubDate>Tue, 16 Mar 2021 11:27:50 +0800</pubDate>
@@ -169,7 +178,8 @@ gen:
       <pubDate>Tue, 09 Mar 2021 15:48:33 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0/</guid>
-      <description>const key = &amp;#39;timesheetCostRateType&amp;#39;; // 参数名 const settingDataLoader = new DataLoader(EN_Setting, [&amp;#39;values.value&amp;#39;], { criteriaStr: `key=&amp;#39;${key}&amp;#39;`, } as QueryOptions); const data = await settingDataLoader.query(); const result = data[0]; // result.value就是该参数的值  </description>
+      <description>一 先在go上设置需要得系统参数，然后在前端取用。 参考：
+ trek/services/form-services/middlewares/entities/time-sheet/index.go apps/link/src/main/screens/projects/time-sheet/form/TimeSheetFormPresenter.tsx  // 这里定义需要查询的系统参数 form_service_middlewares_creators.AppendSystemSettingKeyMiddlewareCreator( form_service_middlewares_creators.AppendSystemSettingKeyParams{ Keys: []string{ gen_ec.EC_Setting_timsheetWeekStarts, gen_ec.EC_Setting_timesheetPrecision, gen_ec.EC_Setting_timsheetDay2Hour, gen_ec.EC_Setting_timesheetCostRateType, gen_ec.EC_Setting_priceScale, }, }, ), this.bizFormPresenter.api.getSystemSetting(&amp;#39;timesheetCostRateType&amp;#39;); 二 const key = &amp;#39;timesheetCostRateType&amp;#39;; // 参数名 const settingDataLoader = new DataLoader(EN_Setting, [&amp;#39;values.value&amp;#39;], { criteriaStr: `key=&amp;#39;${key}&amp;#39;`, } as QueryOptions); const data = await settingDataLoader.query(); const result = data[0]; // result.value就是该参数的值  </description>
     </item>
     
     <item>
