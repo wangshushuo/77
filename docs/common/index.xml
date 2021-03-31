@@ -6,7 +6,7 @@
     <description>Recent content in 通用功能攻略 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Mar 2021 11:53:41 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Mar 2021 17:37:07 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/common/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,6 +31,16 @@ coalesce：如果alias存在则取alias，不存在取name
 例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
 concat_ws：拼装一条记录的多个字段为一个字段
 例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)</description>
+    </item>
+    
+    <item>
+      <title>提示</title>
+      <link>https://77doc.wss.cool/docs/common/%E6%8F%90%E7%A4%BA/</link>
+      <pubDate>Mon, 22 Mar 2021 17:37:07 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E6%8F%90%E7%A4%BA/</guid>
+      <description>import { showError, showInfo, showSuccess } from &amp;#39;@root/common/toaster&amp;#39;; showSuccess(&amp;#39;text&amp;#39;) 自适应内容高度的提示
+// apps/link/src/main/screens/projects/budget/budget-account/presenter/budget-account-form-presenter/helper.tsx  AlphaWarning( &amp;#39;text&amp;#39;, () =&amp;gt; {}, () =&amp;gt; {}, ); </description>
     </item>
     
     <item>

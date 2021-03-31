@@ -6,7 +6,7 @@
     <description>Recent content in 77hub前端文档 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Mar 2021 11:53:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Mar 2021 10:44:07 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -130,6 +130,35 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>子表</title>
+      <link>https://77doc.wss.cool/docs/form/%E5%AD%90%E8%A1%A8/</link>
+      <pubDate>Wed, 24 Mar 2021 10:44:07 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form/%E5%AD%90%E8%A1%A8/</guid>
+      <description>formPresenter一般都是在路由中初始化的。业务presenter（都是继承了 EasyBizFormPresenter）的构造器中会调用super，super中会调createItemsPresenters将子表也new出来，让子表保存到 itemsPresenters 中。可以在业务presenter中遍历 itemsPresenters 通过 itemsPresenter 的 logicPath （子表的path）拿到某个子表对象。</description>
+    </item>
+    
+    <item>
+      <title>提示</title>
+      <link>https://77doc.wss.cool/docs/common/%E6%8F%90%E7%A4%BA/</link>
+      <pubDate>Mon, 22 Mar 2021 17:37:07 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E6%8F%90%E7%A4%BA/</guid>
+      <description>import { showError, showInfo, showSuccess } from &amp;#39;@root/common/toaster&amp;#39;; showSuccess(&amp;#39;text&amp;#39;) 自适应内容高度的提示
+// apps/link/src/main/screens/projects/budget/budget-account/presenter/budget-account-form-presenter/helper.tsx  AlphaWarning( &amp;#39;text&amp;#39;, () =&amp;gt; {}, () =&amp;gt; {}, ); </description>
+    </item>
+    
+    <item>
+      <title>Value</title>
+      <link>https://77doc.wss.cool/docs/form-guide/value/</link>
+      <pubDate>Wed, 17 Mar 2021 17:01:44 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/value/</guid>
+      <description>Presenter.api.formController.form.select(&#39;modelSubtables/0/dimensions/2&#39;).value
+Presenter.api.formController.form.getSubmitValue()</description>
     </item>
     
     <item>

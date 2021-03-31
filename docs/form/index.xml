@@ -6,6 +6,7 @@
     <description>Recent content in BizForm基础 on 77前端文档</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Wed, 24 Mar 2021 10:44:07 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,6 +32,15 @@
 创建和修改时，表单是可以填写内容的，我们称之为编辑态。
 查看、审批时，不能编辑内容，只能看，我们称之为查看态。
 查看态  表单状态 异步任务异常 menu-buttons rang-walk 主表 审批流 子表 ？不知道  </description>
+    </item>
+    
+    <item>
+      <title>子表</title>
+      <link>https://77doc.wss.cool/docs/form/%E5%AD%90%E8%A1%A8/</link>
+      <pubDate>Wed, 24 Mar 2021 10:44:07 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form/%E5%AD%90%E8%A1%A8/</guid>
+      <description>formPresenter一般都是在路由中初始化的。业务presenter（都是继承了 EasyBizFormPresenter）的构造器中会调用super，super中会调createItemsPresenters将子表也new出来，让子表保存到 itemsPresenters 中。可以在业务presenter中遍历 itemsPresenters 通过 itemsPresenter 的 logicPath （子表的path）拿到某个子表对象。</description>
     </item>
     
     <item>
