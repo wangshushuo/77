@@ -1,6 +1,6 @@
 baseURL = "https://77doc.wss.cool/"
 languageCode = "zh-cn"
-title = "77前端文档"
+title = "新手村生存攻略"
 theme = "book"
 publishDir = "docs"
 
