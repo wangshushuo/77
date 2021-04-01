@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 31 Mar 2021 16:28:22 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Apr 2021 18:19:56 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -133,6 +133,17 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
     </item>
     
     <item>
+      <title>编辑或显示数字精度</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E7%BC%96%E8%BE%91%E6%88%96%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%97%E7%B2%BE%E5%BA%A6/</link>
+      <pubDate>Thu, 01 Apr 2021 18:19:56 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E7%BC%96%E8%BE%91%E6%88%96%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%97%E7%B2%BE%E5%BA%A6/</guid>
+      <description>控制编辑，设置editParams
+public getEditOptions(): EditOptions { return { editParams: { [主表字段名]: () =&amp;gt; { return { numericProps: { decimalPlaces: 精度, minimumValue: &amp;#39;0&amp;#39;, } } }, [`子表名.子表字段名`]: () =&amp;gt; { return { numericProps: { decimalPlaces: 精度, minimumValue: &amp;#39;0&amp;#39;, } } }, } } } 控制显示，子表要自定义渲染
+getGridOptions(): Optional&amp;lt;AdvanceGridProps&amp;gt; { return { columnResolver: (colDefs: ColDef[]) =&amp;gt; { const daysField = colDefs.find(c =&amp;gt; c.field === F_TimesheetLine_days); if (daysField) { daysField.cellRendererFramework = (params) =&amp;gt; { return React.</description>
+    </item>
+    
+    <item>
       <title>水印</title>
       <link>https://77doc.wss.cool/docs/form-guide/%E6%B0%B4%E5%8D%B0/</link>
       <pubDate>Wed, 31 Mar 2021 16:28:22 +0800</pubDate>
@@ -197,7 +208,8 @@ go  trek/services/dashboard/config/project-overview.go addProjectStatisticsConfi
       <pubDate>Thu, 11 Mar 2021 11:01:34 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/%E6%A8%A1%E5%9D%97%E5%90%AF%E7%94%A8/</guid>
-      <description>import { store } from &amp;#39;@models&amp;#39;; class A { b() { const contractModel = store.moduleInitManager.getModuleById(&amp;#39;BusinessModule_contract&amp;#39;); if ( !contractModel || !contractModel.isEnabled ) { // ...  } } } </description>
+      <description>go go项目，获取功能权限是否开启
+b := ctx.GetBusinessModuleById(gen_ec.EC_BusinessModule_BusinessModule_budget) // b.IsEnabled 前端 import { store } from &amp;#39;@models&amp;#39;; class A { b() { const contractModel = store.moduleInitManager.getModuleById(&amp;#39;BusinessModule_contract&amp;#39;); if ( !contractModel || !contractModel.isEnabled ) { // ...  } } } </description>
     </item>
     
     <item>
