@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>BizForm实用攻略 on 77前端文档</title>
+    <title>BizForm实用攻略 on 新手村生存攻略</title>
     <link>https://77doc.wss.cool/docs/form-guide/</link>
-    <description>Recent content in BizForm实用攻略 on 77前端文档</description>
+    <description>Recent content in BizForm实用攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 31 Mar 2021 16:28:22 +0800</lastBuildDate>
@@ -26,8 +26,8 @@
       <pubDate>Wed, 31 Mar 2021 16:28:22 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%B0%B4%E5%8D%B0/</guid>
-      <description>go
- trek/services/form-services/middlewares/entities/【实体名】/params.go  // 1. 哪些变量要作为水印 var watermarkFieldNames = []string{ gen_ef.F_Project_billFullStatusObject, gen_ef.F_Project_budgetStatus, } var ( // 2. 	watermarkSettingParams = form_service_middlewares_common.WatermarkSettingMiddlewareCreatorParams{ Items: form_service_middlewares_common.DefaultWatermarkSettingItemsCreator(watermarkFieldNames...), } // 3. 	billCommonRulesParams = form_service_middlewares_common.BillCommonRulesCreatorParams{ WatermarkSettingMiddlewareCreatorParams: &amp;amp;watermarkSettingParams, } ) trek/services/form-services/middlewares/entities/【实体名】/index.go  func GetMiddlewareCreators() []form_context.FormMiddlewareCreator { middlewareCreators := []form_context.FormMiddlewareCreator{ // 1. 	form_service_middlewares_common.BillCommonRulesMiddlewareCreator(billCommonRulesParams), } } </description>
+      <description>go项目
+ trek/services/form-services/middlewares/entities/【实体名】/params.go  // 1. 实体的哪些字段要作为水印 var watermarkFieldNames = []string{ gen_ef.F_Project_billFullStatusObject, gen_ef.F_Project_budgetStatus, } var ( // 2. 	watermarkSettingParams = form_service_middlewares_common.WatermarkSettingMiddlewareCreatorParams{ Items: form_service_middlewares_common.DefaultWatermarkSettingItemsCreator(watermarkFieldNames...), } // 3. 	billCommonRulesParams = form_service_middlewares_common.BillCommonRulesCreatorParams{ WatermarkSettingMiddlewareCreatorParams: &amp;amp;watermarkSettingParams, } ) trek/services/form-services/middlewares/entities/【实体名】/index.go  func GetMiddlewareCreators() []form_context.FormMiddlewareCreator { middlewareCreators := []form_context.FormMiddlewareCreator{ // 1. 	form_service_middlewares_common.BillCommonRulesMiddlewareCreator(billCommonRulesParams), } } </description>
     </item>
     
     <item>
