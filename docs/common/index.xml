@@ -6,7 +6,7 @@
     <description>Recent content in 通用功能攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 22 Mar 2021 17:37:07 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Apr 2021 18:45:12 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/common/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,6 +31,16 @@ coalesce：如果alias存在则取alias，不存在取name
 例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
 concat_ws：拼装一条记录的多个字段为一个字段
 例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)</description>
+    </item>
+    
+    <item>
+      <title>GridRowAction的popover</title>
+      <link>https://77doc.wss.cool/docs/common/gridrowaction%E7%9A%84popover/</link>
+      <pubDate>Thu, 01 Apr 2021 18:45:12 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/gridrowaction%E7%9A%84popover/</guid>
+      <description>多列表方案中
+getRowActions(rowIndex: number, data: any): IGridAction[] { const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); const disabledTimeAction = { icon: &amp;#39;icontuichu&amp;#39;, title: &amp;#39;停用日期&amp;#39;, key: &amp;#39;disabledDate&amp;#39;, onClick: () =&amp;gt; {}, popoverRender: () =&amp;gt; { return { content: ( &amp;lt;div /&amp;gt; ), }; }, } } </description>
     </item>
     
     <item>
