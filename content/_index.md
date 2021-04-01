@@ -4,7 +4,7 @@ title: 77前端--新手村生存攻略
 author: 77业务组前端
 ---
 
-<span style="font-size: 10vh;line-height: 1.2;">新手共建，新手共赢</span>
+<span style="font-size: 5vh;line-height: 1.2;">新手共建，新手共赢</span>
 
 <span style="font-size: 20vh;line-height: 1.2;">🍻</span>
 <hr />
