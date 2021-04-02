@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Apr 2021 18:45:12 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Apr 2021 10:32:46 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -130,6 +130,19 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>封装变化</title>
+      <link>https://77doc.wss.cool/docs/0.designprinciples/%E5%B0%81%E8%A3%85%E5%8F%98%E5%8C%96/</link>
+      <pubDate>Fri, 02 Apr 2021 10:32:46 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/0.designprinciples/%E5%B0%81%E8%A3%85%E5%8F%98%E5%8C%96/</guid>
+      <description>封装变化（不修改稳定的代码，减少引入和关联的bug）
+多用组合，少用继承（继承是静态的特性，组合可以动态的赋予行为，甚至在运行时决定）
+针对接口变成，不针对实现编程
+为交互对象之间的松耦合设计而努力
+对扩展开发，对修改关闭</description>
     </item>
     
     <item>
