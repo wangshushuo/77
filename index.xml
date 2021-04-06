@@ -6,10 +6,22 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Apr 2021 10:32:46 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Apr 2021 11:44:40 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>初入新手村</title>
+      <link>https://77doc.wss.cool/docs/base/%E5%88%9D%E5%85%A5%E6%96%B0%E6%89%8B%E6%9D%91/</link>
+      <pubDate>Tue, 06 Apr 2021 11:44:40 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/base/%E5%88%9D%E5%85%A5%E6%96%B0%E6%89%8B%E6%9D%91/</guid>
+      <description>一、VPN  申请vpn    等陈欢把vpn的证书发过来。
+  安装openvpn，应用证书。
+  二、安装环境 注意事项：
+ go环境的目录结构，GOROOT/src/ metadata项目的名字，git仓库名和本地文件名不一样 go的证书  </description>
+    </item>
     
     <item>
       <title></title>
