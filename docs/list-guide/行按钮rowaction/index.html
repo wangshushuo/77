@@ -4,9 +4,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="export class BudgetModelList extends QueryListPagePresenter { // 覆盖父类的方法  getRowActions(rowIndex: number, data: any): IGridAction[] { // 获取公共默认的actions  const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); if (data &amp;&amp; data.id) { // 加新的按钮  actions.push({ icon: ICON_VIEW, title: &#39;预览&#39;, key: &#39;preview&#39;, onClick: (rowIndex, data) =&gt; this.preview(data), }); } // 还可以对actions数组进行过滤  return actions; } } ">
+<meta name="description" content="适用于：多列表
+效果图： export class BudgetModelList extends QueryListPagePresenter { // 覆盖父类的方法  getRowActions(rowIndex: number, data: any): IGridAction[] { // 获取公共默认的actions  const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); if (data &amp;&amp; data.id) { // 加新的按钮  actions.push({ icon: ICON_VIEW, title: &#39;预览&#39;, key: &#39;preview&#39;, onClick: (rowIndex, data) =&gt; this.preview(data), }); } // 还可以对actions数组进行过滤  return actions; } } ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="行按钮rowAction" />
-<meta property="og:description" content="export class BudgetModelList extends QueryListPagePresenter { // 覆盖父类的方法  getRowActions(rowIndex: number, data: any): IGridAction[] { // 获取公共默认的actions  const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); if (data &amp;&amp; data.id) { // 加新的按钮  actions.push({ icon: ICON_VIEW, title: &#39;预览&#39;, key: &#39;preview&#39;, onClick: (rowIndex, data) =&gt; this.preview(data), }); } // 还可以对actions数组进行过滤  return actions; } } " />
+<meta property="og:description" content="适用于：多列表
+效果图： export class BudgetModelList extends QueryListPagePresenter { // 覆盖父类的方法  getRowActions(rowIndex: number, data: any): IGridAction[] { // 获取公共默认的actions  const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); if (data &amp;&amp; data.id) { // 加新的按钮  actions.push({ icon: ICON_VIEW, title: &#39;预览&#39;, key: &#39;preview&#39;, onClick: (rowIndex, data) =&gt; this.preview(data), }); } // 还可以对actions数组进行过滤  return actions; } } " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/" />
 <meta property="article:published_time" content="2021-04-14T18:43:40+08:00" />
@@ -15,7 +17,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.5bb82ab720e4a15185f52f1862907aa889fbf7019ce743de1a073f41b39e154a.js" integrity="sha256-W7gqtyDkoVGF9S8YYpB6qIn79wGc50PeGgc/QbOeFUo="></script>
+<script defer src="/en.search.min.a90d8e9f8f439f30c6f827dcabc57f27b50f83f7f5525682356dafe4107cecf2.js" integrity="sha256-qQ2On49DnzDG&#43;Cfcq8V/J7UPg/f1UlaCNW2v5BB87PI="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -84,6 +86,37 @@ https://github.com/alex-shpak/hugo-book
           
   
     <a href="/docs/0.designprinciples/%E5%B0%81%E8%A3%85%E5%8F%98%E5%8C%96/" class="">封装变化</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>陷阱</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/1.%E9%99%B7%E9%98%B1/%E9%99%B7%E9%98%B1/" class="">陷阱</a>
   
 
         </li>
@@ -543,6 +576,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/docs/list-guide/queryfield/" class="">QueryField</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <a href="/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/" class="active">行按钮rowAction</a>
   
 
@@ -991,8 +1034,11 @@ https://github.com/alex-shpak/hugo-book
       
     
     <h1>行按钮rowAction</h1>
-    <p>作者：</p>
-    <hr/><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BudgetModelList</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">QueryListPagePresenter</span> {
+    <p>作者：王书硕</p>
+    <hr/><p>适用于：多列表</p>
+<p>效果图：
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210414185013_5073428437796c793bbcf61706247d3b.png" alt="20210414185013_5073428437796c793bbcf61706247d3b.png" /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BudgetModelList</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">QueryListPagePresenter</span> {
 
   <span style="color:#75715e">// 覆盖父类的方法
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">getRowActions</span>(<span style="color:#a6e22e">rowIndex</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">data</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">IGridAction</span>[] {

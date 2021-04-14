@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 14 Apr 2021 18:43:40 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Apr 2021 18:57:28 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -145,12 +145,33 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
     </item>
     
     <item>
+      <title>QueryField</title>
+      <link>https://77doc.wss.cool/docs/list-guide/queryfield/</link>
+      <pubDate>Wed, 14 Apr 2021 18:57:28 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/queryfield/</guid>
+      <description>列表数据会查询哪些字段一般是在预置数据里设置的。也可以通过代码控制。
+1 2 3 4 5 6 7 8 9 10 11 12 13  export class ProjectConfirmationListListPresenter extends QueryListPagePresenter { getQueryListOption(): IQueryListSolutionPresenterOptions { return { ...super.getQueryListOption(), resourceId: ResourceConstants.Res_ProjectConfirmation, getDynamicQueryFields: () =&amp;gt; { return [&amp;#39;task.project.id&amp;#39;]; }  }; } }    </description>
+    </item>
+    
+    <item>
+      <title>陷阱</title>
+      <link>https://77doc.wss.cool/docs/1.%E9%99%B7%E9%98%B1/%E9%99%B7%E9%98%B1/</link>
+      <pubDate>Wed, 14 Apr 2021 18:52:49 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/1.%E9%99%B7%E9%98%B1/%E9%99%B7%E9%98%B1/</guid>
+      <description>功能权限
+业务规则</description>
+    </item>
+    
+    <item>
       <title>行按钮rowAction</title>
       <link>https://77doc.wss.cool/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/</link>
       <pubDate>Wed, 14 Apr 2021 18:43:40 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/</guid>
-      <description>export class BudgetModelList extends QueryListPagePresenter { // 覆盖父类的方法  getRowActions(rowIndex: number, data: any): IGridAction[] { // 获取公共默认的actions  const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); if (data &amp;amp;&amp;amp; data.id) { // 加新的按钮  actions.push({ icon: ICON_VIEW, title: &amp;#39;预览&amp;#39;, key: &amp;#39;preview&amp;#39;, onClick: (rowIndex, data) =&amp;gt; this.preview(data), }); } // 还可以对actions数组进行过滤  return actions; } } </description>
+      <description>适用于：多列表
+效果图： export class BudgetModelList extends QueryListPagePresenter { // 覆盖父类的方法  getRowActions(rowIndex: number, data: any): IGridAction[] { // 获取公共默认的actions  const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); if (data &amp;amp;&amp;amp; data.id) { // 加新的按钮  actions.push({ icon: ICON_VIEW, title: &amp;#39;预览&amp;#39;, key: &amp;#39;preview&amp;#39;, onClick: (rowIndex, data) =&amp;gt; this.preview(data), }); } // 还可以对actions数组进行过滤  return actions; } } </description>
     </item>
     
     <item>
@@ -180,8 +201,7 @@ this.presenter.listSolutionConnector.selectionItems </description>
       
       <guid>https://77doc.wss.cool/docs/list-guide/%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/</guid>
       <description>适用于：多列表方案
-在如图位置添加按钮
-export class ProjectListPagePresenter extends QueryListPagePresenter{ protected commandActionResolver(commandActions: ToolbarAction[]): ToolbarAction[] { commandActions.unshift({ id: &amp;#39;project-view&amp;#39;, group: ToolbarActionGroup.Group1, action: this.presenter.toolbarConnector.makeCreateButton({ onClick: billTypeId =&amp;gt; { }, }), }); commandActions.push(new ProjectMultiCloseAction(this.presenter.listSolutionConnector)) } }  覆盖父类的commandActionResolver方法。向参数commandActions数组中添加ToolbarAction元素即可。 ToolbarAction有两种方式创建。 简单的话，可以用对象字面量创建。 复杂的话，就用一个对象来实现ToolbarAction。参考ProjectMultiCloseAction  </description>
+效果图： export class ProjectListPagePresenter extends QueryListPagePresenter{ protected commandActionResolver(commandActions: ToolbarAction[]): ToolbarAction[] { // 简单的action  commandActions.unshift({ id: &amp;#39;project-view&amp;#39;, group: ToolbarActionGroup.Group1, action: this.presenter.toolbarConnector.makeCreateButton({ onClick: billTypeId =&amp;gt; { }, }), }); // 复杂的action  commandActions.push(new ProjectMultiCloseAction(this.presenter.listSolutionConnector)) } }  覆盖父类的commandActionResolver方法。向参数commandActions数组中添加ToolbarAction元素即可。 ToolbarAction有两种方式创建。 简单的话，可以用对象字面量创建。 复杂的话，就用一个对象来实现ToolbarAction。参考ProjectMultiCloseAction  </description>
     </item>
     
     <item>

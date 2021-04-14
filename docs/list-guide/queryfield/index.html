@@ -4,18 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="golang" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://77doc.wss.cool/tags/golang/" />
-<meta property="og:updated_time" content="2014-04-02T00:00:00+00:00" />
-<title>golang | 新手村生存攻略</title>
+<meta name="description" content="列表数据会查询哪些字段一般是在预置数据里设置的。也可以通过代码控制。
+1 2 3 4 5 6 7 8 9 10 11 12 13  export class ProjectConfirmationListListPresenter extends QueryListPagePresenter { getQueryListOption(): IQueryListSolutionPresenterOptions { return { ...super.getQueryListOption(), resourceId: ResourceConstants.Res_ProjectConfirmation, getDynamicQueryFields: () =&gt; { return [&#39;task.project.id&#39;]; }  }; } }    ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="QueryField" />
+<meta property="og:description" content="列表数据会查询哪些字段一般是在预置数据里设置的。也可以通过代码控制。
+1 2 3 4 5 6 7 8 9 10 11 12 13  export class ProjectConfirmationListListPresenter extends QueryListPagePresenter { getQueryListOption(): IQueryListSolutionPresenterOptions { return { ...super.getQueryListOption(), resourceId: ResourceConstants.Res_ProjectConfirmation, getDynamicQueryFields: () =&gt; { return [&#39;task.project.id&#39;]; }  }; } }    " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/list-guide/queryfield/" />
+<meta property="article:published_time" content="2021-04-14T18:57:28+08:00" />
+<meta property="article:modified_time" content="2021-04-14T18:57:28+08:00" />
+<title>QueryField | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
 <script defer src="/en.search.min.a90d8e9f8f439f30c6f827dcabc57f27b50f83f7f5525682356dafe4107cecf2.js" integrity="sha256-qQ2On49DnzDG&#43;Cfcq8V/J7UPg/f1UlaCNW2v5BB87PI="></script>
-<link rel="alternate" type="application/rss+xml" href="https://77doc.wss.cool/tags/golang/index.xml" title="新手村生存攻略" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -574,7 +576,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/list-guide/queryfield/" class="">QueryField</a>
+    <a href="/docs/list-guide/queryfield/" class="active">QueryField</a>
   
 
         </li>
@@ -1002,7 +1004,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>golang</strong>
+  <strong>QueryField</strong>
 
   <label for="toc-control">
     
@@ -1016,69 +1018,7 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav>
-  <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/categories/development/">Development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/tags/development/">development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/go/">go</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/hugo/">hugo</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/templates/">templates</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/themes/">themes</a>
-          <span>1</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
 
     </aside>
@@ -1088,86 +1028,48 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/goisforlovers/">(Hu)go Template Primer</a>
-    </h2>
+  <article class="markdown">
     
-  <h5>April 2, 2014</h5>
-
-
-
-  
-  <div>
     
-      <a href="/categories/development/">Development</a>, 
-      <a href="/categories/golang/">golang</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/development/">development</a>, 
-      <a href="/tags/go/">go</a>, 
-      <a href="/tags/golang/">golang</a>, 
-      <a href="/tags/templates/">templates</a>, 
-      <a href="/tags/themes/">themes</a>
-  </div>
-  
-
-
-    <p>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.
-        <a href="/posts/goisforlovers/">...</a>
       
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/hugoisforlovers/">Getting Started with Hugo</a>
-    </h2>
     
-  <h5>April 2, 2014</h5>
+    <h1>QueryField</h1>
+    <p>作者：王书硕</p>
+    <hr/><p>列表数据会查询哪些字段一般是在预置数据里设置的。也可以通过代码控制。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProjectConfirmationListListPresenter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">QueryListPagePresenter</span> {
 
+   <span style="color:#a6e22e">getQueryListOption</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">IQueryListSolutionPresenterOptions</span> {
+    <span style="color:#66d9ef">return</span> {
+      ...<span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">getQueryListOption</span>(),
+      <span style="color:#a6e22e">resourceId</span>: <span style="color:#66d9ef">ResourceConstants.Res_ProjectConfirmation</span>,
+<span style="display:block;width:100%;background-color:#3c3d38">      <span style="color:#a6e22e">getDynamicQueryFields</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> {
+</span><span style="display:block;width:100%;background-color:#3c3d38">        <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#39;task.project.id&#39;</span>];
+</span><span style="display:block;width:100%;background-color:#3c3d38">      }
+</span>    };
+  }
 
-
-  
-  <div>
-    
-      <a href="/categories/development/">Development</a>, 
-      <a href="/categories/golang/">golang</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/development/">development</a>, 
-      <a href="/tags/go/">go</a>, 
-      <a href="/tags/golang/">golang</a>, 
-      <a href="/tags/hugo/">hugo</a>
-  </div>
-  
-
-
-    <p>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:
-        <a href="/posts/hugoisforlovers/">...</a>
-      
-    </p>
-  </article>
-  
-
-  
-
-
+}
+</code></pre></td></tr></table>
+</div>
+</div>
+</article>
  
       
 
@@ -1187,6 +1089,10 @@ Follow the following steps:
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1195,69 +1101,7 @@ Follow the following steps:
     
     <aside class="book-toc">
       
-  <nav>
-  <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/categories/development/">Development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/tags/development/">development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/go/">go</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/hugo/">hugo</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/templates/">templates</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/themes/">themes</a>
-          <span>1</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
  
     </aside>
