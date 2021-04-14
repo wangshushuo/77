@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 06 Apr 2021 11:44:40 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Apr 2021 18:43:40 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -145,6 +145,46 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
     </item>
     
     <item>
+      <title>行按钮rowAction</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/</link>
+      <pubDate>Wed, 14 Apr 2021 18:43:40 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/</guid>
+      <description>export class BudgetModelList extends QueryListPagePresenter { // 覆盖父类的方法  getRowActions(rowIndex: number, data: any): IGridAction[] { // 获取公共默认的actions  const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); if (data &amp;amp;&amp;amp; data.id) { // 加新的按钮  actions.push({ icon: ICON_VIEW, title: &amp;#39;预览&amp;#39;, key: &amp;#39;preview&amp;#39;, onClick: (rowIndex, data) =&amp;gt; this.preview(data), }); } // 还可以对actions数组进行过滤  return actions; } } </description>
+    </item>
+    
+    <item>
+      <title>自定义单据</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E6%8D%AE/</link>
+      <pubDate>Tue, 13 Apr 2021 21:07:54 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E6%8D%AE/</guid>
+      <description>两部分组成：
+ 创建form form组件  function createForm(): EntityForm { const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &amp;#39;关闭日期&amp;#39;, required: false, visible: false, }, }, closedReason: { type: FieldTypeEnum.JsonObject, referType: EN_BizReason, initState: { label: &amp;#39;关闭原因&amp;#39;, required: false, visible: false, }, }, closedReasonExplain: { type: FieldTypeEnum.String, initState: { label: &amp;#39;关闭原因说明&amp;#39;, required: false, visible: false, }, }, }; const formBuilder = new FormBuilder(); Object.entries(formScheme).forEach(([key, value]) =&amp;gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder.</description>
+    </item>
+    
+    <item>
+      <title>选中行</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E9%80%89%E4%B8%AD%E8%A1%8C/</link>
+      <pubDate>Tue, 13 Apr 2021 21:06:01 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E9%80%89%E4%B8%AD%E8%A1%8C/</guid>
+      <description>适用于：多列表方案
+this.presenter.listSolutionConnector.selectionItems </description>
+    </item>
+    
+    <item>
+      <title>顶部按钮ToolbarAction</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/</link>
+      <pubDate>Tue, 13 Apr 2021 20:55:08 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/</guid>
+      <description>适用于：多列表方案
+在如图位置添加按钮
+export class ProjectListPagePresenter extends QueryListPagePresenter{ protected commandActionResolver(commandActions: ToolbarAction[]): ToolbarAction[] { commandActions.unshift({ id: &amp;#39;project-view&amp;#39;, group: ToolbarActionGroup.Group1, action: this.presenter.toolbarConnector.makeCreateButton({ onClick: billTypeId =&amp;gt; { }, }), }); commandActions.push(new ProjectMultiCloseAction(this.presenter.listSolutionConnector)) } }  覆盖父类的commandActionResolver方法。向参数commandActions数组中添加ToolbarAction元素即可。 ToolbarAction有两种方式创建。 简单的话，可以用对象字面量创建。 复杂的话，就用一个对象来实现ToolbarAction。参考ProjectMultiCloseAction  </description>
+    </item>
+    
+    <item>
       <title>封装变化</title>
       <link>https://77doc.wss.cool/docs/0.designprinciples/%E5%B0%81%E8%A3%85%E5%8F%98%E5%8C%96/</link>
       <pubDate>Fri, 02 Apr 2021 10:32:46 +0800</pubDate>
@@ -154,7 +194,8 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
 多用组合，少用继承（继承是静态的特性，组合可以动态的赋予行为，甚至在运行时决定）
 针对接口变成，不针对实现编程
 为交互对象之间的松耦合设计而努力
-对扩展开发，对修改关闭</description>
+类应该对扩展开发，对修改关闭
+依赖抽象，不要依赖具体类</description>
     </item>
     
     <item>

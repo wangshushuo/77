@@ -6,7 +6,7 @@
     <description>Recent content in 列表方案攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Mar 2021 14:29:52 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Apr 2021 18:43:40 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/list-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,36 @@
       <description>穿透 我比较喜欢叫它超链接，就是点击列表上的单元格会跳到其他页面的功能。
 在这里展示了两种需求：
  会跳到当前单据类型（项目计划）的单据详情页 会跳到其他单据类型（项目）的单据详情页。  代码实现   使用rowActionController.makeRowEditAction 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  class BudgetModelList extends QueryListPagePresenter { { protected getListOption(): IListOption { const listOption = super.getListOption(); return merge(listOption, { gridOption: { actionColumnOption: { visibleSize: 3, }, columnResolver: columnDefs =&amp;gt; { this.</description>
+    </item>
+    
+    <item>
+      <title>行按钮rowAction</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/</link>
+      <pubDate>Wed, 14 Apr 2021 18:43:40 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/</guid>
+      <description>export class BudgetModelList extends QueryListPagePresenter { // 覆盖父类的方法  getRowActions(rowIndex: number, data: any): IGridAction[] { // 获取公共默认的actions  const actions = this.presenter.listSolutionConnector.rowActionController.makeDefaultRowActions( data, ); if (data &amp;amp;&amp;amp; data.id) { // 加新的按钮  actions.push({ icon: ICON_VIEW, title: &amp;#39;预览&amp;#39;, key: &amp;#39;preview&amp;#39;, onClick: (rowIndex, data) =&amp;gt; this.preview(data), }); } // 还可以对actions数组进行过滤  return actions; } } </description>
+    </item>
+    
+    <item>
+      <title>选中行</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E9%80%89%E4%B8%AD%E8%A1%8C/</link>
+      <pubDate>Tue, 13 Apr 2021 21:06:01 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E9%80%89%E4%B8%AD%E8%A1%8C/</guid>
+      <description>适用于：多列表方案
+this.presenter.listSolutionConnector.selectionItems </description>
+    </item>
+    
+    <item>
+      <title>顶部按钮ToolbarAction</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/</link>
+      <pubDate>Tue, 13 Apr 2021 20:55:08 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/</guid>
+      <description>适用于：多列表方案
+在如图位置添加按钮
+export class ProjectListPagePresenter extends QueryListPagePresenter{ protected commandActionResolver(commandActions: ToolbarAction[]): ToolbarAction[] { commandActions.unshift({ id: &amp;#39;project-view&amp;#39;, group: ToolbarActionGroup.Group1, action: this.presenter.toolbarConnector.makeCreateButton({ onClick: billTypeId =&amp;gt; { }, }), }); commandActions.push(new ProjectMultiCloseAction(this.presenter.listSolutionConnector)) } }  覆盖父类的commandActionResolver方法。向参数commandActions数组中添加ToolbarAction元素即可。 ToolbarAction有两种方式创建。 简单的话，可以用对象字面量创建。 复杂的话，就用一个对象来实现ToolbarAction。参考ProjectMultiCloseAction  </description>
     </item>
     
     <item>

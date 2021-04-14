@@ -6,7 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Apr 2021 18:19:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Apr 2021 21:07:54 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,16 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>自定义单据</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E6%8D%AE/</link>
+      <pubDate>Tue, 13 Apr 2021 21:07:54 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E6%8D%AE/</guid>
+      <description>两部分组成：
+ 创建form form组件  function createForm(): EntityForm { const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &amp;#39;关闭日期&amp;#39;, required: false, visible: false, }, }, closedReason: { type: FieldTypeEnum.JsonObject, referType: EN_BizReason, initState: { label: &amp;#39;关闭原因&amp;#39;, required: false, visible: false, }, }, closedReasonExplain: { type: FieldTypeEnum.String, initState: { label: &amp;#39;关闭原因说明&amp;#39;, required: false, visible: false, }, }, }; const formBuilder = new FormBuilder(); Object.entries(formScheme).forEach(([key, value]) =&amp;gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder.</description>
     </item>
     
     <item>
