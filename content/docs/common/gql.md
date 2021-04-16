@@ -4,7 +4,7 @@ author: 王书硕
 weight: 1
 ---
 ## 普通的gql
-最简单的，直接查一个对象（表）的全部数据
+最简单的，直接查一个对象的全部数据
 ```
 {
   BudgetAccount{
@@ -71,9 +71,14 @@ weight: 1
 
 ## DataLoader
 ```ts
-const settingDataLoader = new DataLoader(EN_Setting, ['values.value'], {
-  criteriaStr: `key='${accountingBook}'`,
-} as QueryOptions);
+const settingDataLoader = new DataLoader(
+  EN_Setting, // 要查的业务对象
+  ['values.value'], // 要查的字段
+  {
+    criteriaStr: `key='${accountingBook}'`, // 查询条件
+    sorts:[{{name:"code", isDesending:false}] // 排序
+  } as QueryOptions
+);
 
 const ret = await settingDataLoader.query();
 ```
