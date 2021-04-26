@@ -4,6 +4,8 @@ date: 2021-04-26T17:49:17+08:00
 author: 
 ---
 
+如果表单的A字段设置了reaction监听。当修改A的value的时候，对应的reaction都会触发。如果希望不触发reaction，就要用到下面的场景值reaction
+
 ```ts
 // 根据场景值忽略执行的reaction
 const reactionOmit = this.bizFormPresenter.api.reactionOmitCreator(
