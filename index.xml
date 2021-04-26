@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 26 Apr 2021 15:38:47 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Apr 2021 15:58:49 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -144,6 +144,15 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>表头字段自定义渲染</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E8%A1%A8%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B8%B2%E6%9F%93/</link>
+      <pubDate>Mon, 26 Apr 2021 15:58:49 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E8%A1%A8%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B8%B2%E6%9F%93/</guid>
+      <description>protected getDisplayOptions(): DisplayOptions { return { masterRender: { [&amp;#39;project&amp;#39;]: props =&amp;gt; { const LinkDiv = styled.div` height: 100%; display: flex; align-items: center; padding-left: 8px; cursor: pointer; color: var(--primary-500); text-decoration: underline; text-underline-position: under; ` return ( &amp;lt;MSTFormElement label={props.template.title} path={&amp;#39;project&amp;#39;} colspan={1} disableError={true} disabled={true} isRequired={false} labelResolver={value =&amp;gt; value[&amp;#39;project&amp;#39;]} // value 对应的 path={...}中的值  contentRenderer={() =&amp;gt; { const data = props.form.value.project return ( &amp;lt;LinkDiv&amp;gt; &amp;lt;span onClick={async () =&amp;gt; { const hash = appRouterHashManager.generateHash(EN_Project, PageModeEnum.Form, { mode: BizFormModeEnum.</description>
     </item>
     
     <item>
