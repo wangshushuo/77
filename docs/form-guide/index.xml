@@ -26,7 +26,8 @@
       <pubDate>Mon, 26 Apr 2021 17:49:17 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E5%9C%BA%E6%99%AF%E5%80%BCreaction/</guid>
-      <description>// 根据场景值忽略执行的reaction const reactionOmit = this.bizFormPresenter.api.reactionOmitCreator( BizFormScenarios.SourcePicking, ); // 使用reactionOmit监听 disposers.push( reactionOmit( () =&amp;gt; form.select(&amp;#39;F_TimesheetLine_orgRoleType&amp;#39;).value, value =&amp;gt; { } ) ) // 使用reactionOmit对应的场景值赋值，就不会触发reaction this.bizFormPresenter.api.runInScenarios(BizFormScenarios.SourcePicking, () =&amp;gt; { rowField.select(F_TimesheetLine_orgRoleType).value = { id: EN_Department, title: &amp;#39;部门&amp;#39;, name: EN_Department, }; }) </description>
+      <description>如果表单的A字段设置了reaction监听。当修改A的value的时候，对应的reaction都会触发。如果希望不触发reaction，就要用到下面的场景值reaction
+// 根据场景值忽略执行的reaction const reactionOmit = this.bizFormPresenter.api.reactionOmitCreator( BizFormScenarios.SourcePicking, ); // 使用reactionOmit监听 disposers.push( reactionOmit( () =&amp;gt; form.select(&amp;#39;F_TimesheetLine_orgRoleType&amp;#39;).value, value =&amp;gt; { } ) ) // 使用reactionOmit对应的场景值赋值，就不会触发reaction this.bizFormPresenter.api.runInScenarios(BizFormScenarios.SourcePicking, () =&amp;gt; { rowField.select(F_TimesheetLine_orgRoleType).value = { id: EN_Department, title: &amp;#39;部门&amp;#39;, name: EN_Department, }; }) </description>
     </item>
     
     <item>
