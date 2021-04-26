@@ -6,7 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 26 Apr 2021 15:58:49 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Apr 2021 17:49:17 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>场景值reaction</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E5%9C%BA%E6%99%AF%E5%80%BCreaction/</link>
+      <pubDate>Mon, 26 Apr 2021 17:49:17 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E5%9C%BA%E6%99%AF%E5%80%BCreaction/</guid>
+      <description>// 根据场景值忽略执行的reaction const reactionOmit = this.bizFormPresenter.api.reactionOmitCreator( BizFormScenarios.SourcePicking, ); // 使用reactionOmit监听 disposers.push( reactionOmit( () =&amp;gt; form.select(&amp;#39;F_TimesheetLine_orgRoleType&amp;#39;).value, value =&amp;gt; { } ) ) // 使用reactionOmit对应的场景值赋值，就不会触发reaction this.bizFormPresenter.api.runInScenarios(BizFormScenarios.SourcePicking, () =&amp;gt; { rowField.select(F_TimesheetLine_orgRoleType).value = { id: EN_Department, title: &amp;#39;部门&amp;#39;, name: EN_Department, }; }) </description>
     </item>
     
     <item>
