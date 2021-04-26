@@ -152,7 +152,10 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       <pubDate>Mon, 26 Apr 2021 15:58:49 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E8%A1%A8%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B8%B2%E6%9F%93/</guid>
-      <description>protected getDisplayOptions(): DisplayOptions { return { masterRender: { [&amp;#39;project&amp;#39;]: props =&amp;gt; { const LinkDiv = styled.div` height: 100%; display: flex; align-items: center; padding-left: 8px; cursor: pointer; color: var(--primary-500); text-decoration: underline; text-underline-position: under; ` return ( &amp;lt;MSTFormElement label={props.template.title} path={&amp;#39;project&amp;#39;} colspan={1} disableError={true} disabled={true} isRequired={false} labelResolver={value =&amp;gt; value[&amp;#39;project&amp;#39;]} // value 对应的 path={...}中的值  contentRenderer={() =&amp;gt; { const data = props.form.value.project return ( &amp;lt;LinkDiv&amp;gt; &amp;lt;span onClick={async () =&amp;gt; { const hash = appRouterHashManager.generateHash(EN_Project, PageModeEnum.Form, { mode: BizFormModeEnum.</description>
+      <description>表单中配置masterRender可以实现表头字段的自定义渲染，但是外键字段不能通过masterRender处理。
+在MasterRendererController.tsx中有一段代码
+const after: IMasterFieldRender[] = [new LinkRender(), new ForeignKeyLinkRender(), new CommonFieldRender()]; 外键字段会走到ForeignKeyLinkRender组件，而masterRender只在CommonFieldRender中才有使用。
+protected getDisplayOptions(): DisplayOptions { return { masterRender: { [&amp;#39;project&amp;#39;]: props =&amp;gt; { const LinkDiv = styled.div` height: 100%; display: flex; align-items: center; padding-left: 8px; cursor: pointer; color: var(--primary-500); text-decoration: underline; text-underline-position: under; ` return ( &amp;lt;MSTFormElement label={props.template.title} path={&amp;#39;project&amp;#39;} colspan={1} disableError={true} disabled={true} isRequired={false} labelResolver={value =&amp;gt; value[&amp;#39;project&amp;#39;]} // value 对应的 path={...}中的值  contentRenderer={() =&amp;gt; { const data = props.form.value.project return ( &amp;lt;LinkDiv&amp;gt; &amp;lt;span onClick={async () =&amp;gt; { const hash = appRouterHashManager.</description>
     </item>
     
     <item>
