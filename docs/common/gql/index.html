@@ -40,7 +40,7 @@ concat_ws：拼装一条记录的多个字段为一个字段
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.21968a373f70bec691d528aa5cd2c19a1871fdb2fd6ec5f7e73718ec6bca0bcc.js" integrity="sha256-IZaKNz9wvsaR1SiqXNLBmhhx/bL9bsX35zcY7GvKC8w="></script>
+<script defer src="/en.search.min.6343886e9cb8be326573ec9ca94d18a6041d02f1efe3fd53e1aa0ed6beacda84.js" integrity="sha256-Y0OIbpy4vjJlc&#43;ycqU0YpgQdAvHv4/1T4aoO1r6s2oQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -890,6 +890,27 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <span>Go</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <span>H5/小程序</span>
   
 
@@ -1091,6 +1112,7 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#dataloader">DataLoader</a></li>
     <li><a href="#不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</a></li>
+    <li><a href="#go怎么查gql">Go怎么查GQL</a></li>
   </ul>
 </nav>
 
@@ -1181,7 +1203,47 @@ https://github.com/alex-shpak/hugo-book
   });
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">data</span>
 };
-</code></pre></div></article>
+</code></pre></div><h2 id="go怎么查gql">Go怎么查GQL</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetFieldMapping</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">TrekContext</span>, <span style="color:#a6e22e">billClassId</span> <span style="color:#66d9ef">string</span>) []<span style="color:#a6e22e">Mapping</span> {
+	<span style="color:#a6e22e">queryString</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`{
+</span><span style="color:#e6db74">  BudgetDimensionFieldMapping(criteriaStr:&#34;billClassId = &#39;</span><span style="color:#75715e">{{</span><span style="color:#a6e22e">.billClassId</span><span style="color:#75715e">}}</span><span style="color:#e6db74">&#39; and dimensionId = &#39;FinancialOrg&#39;&#34;){
+</span><span style="color:#e6db74">    mappingToWhereId mappingField
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">}`</span>
+	<span style="color:#a6e22e">query</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">graphql</span>.<span style="color:#a6e22e">GraphqlTemplate</span>(<span style="color:#a6e22e">queryString</span>, <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{
+		<span style="color:#e6db74">&#34;billClassId&#34;</span>: <span style="color:#a6e22e">billClassId</span>,
+	})
+
+	<span style="color:#a6e22e">data</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{
+		<span style="color:#e6db74">&#34;query&#34;</span>: <span style="color:#a6e22e">query</span>,
+	}
+
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dataJson</span> <span style="color:#a6e22e">FieldMappingRes</span>
+
+	<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">HttpRequest</span>.<span style="color:#a6e22e">DoHTTPPost</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">AppGraphQL</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">HTTPOptions</span>{
+		<span style="color:#a6e22e">BindBody</span>:    <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">dataJson</span>,
+		<span style="color:#a6e22e">ParamStruct</span>: <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">data</span>,
+	})
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dataJson</span>.<span style="color:#a6e22e">Data</span>.<span style="color:#a6e22e">BudgetDimensionFieldMapping</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mapping</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">MappingToWhereId</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;mappingToWhereId&#34;`</span>
+	<span style="color:#a6e22e">MappingField</span>     <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;mappingField&#34;`</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">FieldMappingRes</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Data</span> <span style="color:#66d9ef">struct</span> {
+		<span style="color:#a6e22e">BudgetDimensionFieldMapping</span> []<span style="color:#a6e22e">Mapping</span> <span style="color:#e6db74">`json:&#34;BudgetDimensionFieldMapping&#34;`</span>
+	} <span style="color:#e6db74">`json:&#34;data&#34;`</span>
+	<span style="color:#a6e22e">Errors</span> []<span style="color:#66d9ef">interface</span>{} <span style="color:#e6db74">`json:&#34;errors&#34;`</span>
+}
+</code></pre></div><ol>
+<li>queryString定义语句的模板，其中可以包含一些模板变量</li>
+<li>GraphqlTemplate将模板变量引用到模板</li>
+<li>用DoHTTPPost发起请求</li>
+</ol>
+</article>
  
       
 
@@ -1223,6 +1285,7 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#dataloader">DataLoader</a></li>
     <li><a href="#不适用dataloader直接使用gql">不适用DataLoader，直接使用gql</a></li>
+    <li><a href="#go怎么查gql">Go怎么查GQL</a></li>
   </ul>
 </nav>
 

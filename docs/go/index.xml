@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on 新手村生存攻略</title>
+    <link>https://77doc.wss.cool/docs/go/</link>
+    <description>Recent content in Go on 新手村生存攻略</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://77doc.wss.cool/docs/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

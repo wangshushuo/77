@@ -204,7 +204,8 @@ public getQueryListOption(): IQueryListSolutionPresenterOptions { return { ...su
       
       <guid>https://77doc.wss.cool/docs/1.%E9%99%B7%E9%98%B1/%E9%99%B7%E9%98%B1/</guid>
       <description>功能权限
-业务规则</description>
+业务规则
+重写默认按钮时注意refresh 重写表单的【新建、复制、修改，删除】等按钮时，要保证可以刷新列表</description>
     </item>
     
     <item>
