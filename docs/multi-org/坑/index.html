@@ -4,24 +4,16 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="封装变化（不修改稳定的代码，减少引入和关联的bug）
-多用组合，少用继承（继承是静态的特性，组合可以动态的赋予行为，甚至在运行时决定）
-针对接口变成，不针对实现编程
-为交互对象之间的松耦合设计而努力
-类应该对扩展开发，对修改关闭
-依赖抽象，不要依赖具体类">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="封装变化" />
-<meta property="og:description" content="封装变化（不修改稳定的代码，减少引入和关联的bug）
-多用组合，少用继承（继承是静态的特性，组合可以动态的赋予行为，甚至在运行时决定）
-针对接口变成，不针对实现编程
-为交互对象之间的松耦合设计而努力
-类应该对扩展开发，对修改关闭
-依赖抽象，不要依赖具体类" />
+<meta name="description" content="列表的路由不能传path参数 文档里说要用renderDocumentListRouters这个方法生成路由，但是不能传path参数指定url。 它的内部用renderDocumentList和renderMultiOrgDocumentList2个方法生成了一个普通列表路由，一个多组织列表的路由。
+为了解决传path的问题，可以像下面这样写代码。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32  { ...renderDocumentList({ title: &#39;编制方案设置&#39;, entityName: EN_BudgetModel, groupName: `${EN_BudgetModel}_list`, createPresenter: async options =&gt; { const { BudgetModelList } = await import( &#39;@main/screens/projects/budget/budget-model/list/BudgetModelList&#39; ); return new BudgetModelList({ ...options }); }, }), refreshWhenParamsChanged: true, path: appRouterHashManager.generateHashDef(EN_BudgetModel, PageModeEnum.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="坑" />
+<meta property="og:description" content="列表的路由不能传path参数 文档里说要用renderDocumentListRouters这个方法生成路由，但是不能传path参数指定url。 它的内部用renderDocumentList和renderMultiOrgDocumentList2个方法生成了一个普通列表路由，一个多组织列表的路由。
+为了解决传path的问题，可以像下面这样写代码。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32  { ...renderDocumentList({ title: &#39;编制方案设置&#39;, entityName: EN_BudgetModel, groupName: `${EN_BudgetModel}_list`, createPresenter: async options =&gt; { const { BudgetModelList } = await import( &#39;@main/screens/projects/budget/budget-model/list/BudgetModelList&#39; ); return new BudgetModelList({ ...options }); }, }), refreshWhenParamsChanged: true, path: appRouterHashManager.generateHashDef(EN_BudgetModel, PageModeEnum." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/0.designprinciples/%E5%B0%81%E8%A3%85%E5%8F%98%E5%8C%96/" />
-<meta property="article:published_time" content="2021-04-02T10:32:46+08:00" />
-<meta property="article:modified_time" content="2021-04-02T10:32:46+08:00" />
-<title>封装变化 | 新手村生存攻略</title>
+<meta property="og:url" content="https://77doc.wss.cool/docs/multi-org/%E5%9D%91/" />
+<meta property="article:published_time" content="2021-06-28T14:16:16+08:00" />
+<meta property="article:modified_time" content="2021-06-28T14:16:16+08:00" />
+<title>坑 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
@@ -93,7 +85,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/0.designprinciples/%E5%B0%81%E8%A3%85%E5%8F%98%E5%8C%96/" class="active">封装变化</a>
+    <a href="/docs/0.designprinciples/%E5%B0%81%E8%A3%85%E5%8F%98%E5%8C%96/" class="">封装变化</a>
   
 
         </li>
@@ -604,7 +596,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/multi-org/%E5%9D%91/" class="">坑</a>
+    <a href="/docs/multi-org/%E5%9D%91/" class="active">坑</a>
   
 
         </li>
@@ -1104,7 +1096,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>封装变化</strong>
+  <strong>坑</strong>
 
   <label for="toc-control">
     
@@ -1118,7 +1110,12 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#列表的路由不能传path参数">列表的路由不能传path参数</a></li>
+    <li><a href="#多组织查询按钮不显示">多组织查询按钮不显示</a></li>
+  </ul>
+</nav>
 
 
     </aside>
@@ -1133,15 +1130,88 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>封装变化</h1>
+    <h1>坑</h1>
     <p>作者：</p>
-    <hr/><p>封装变化（不修改稳定的代码，减少引入和关联的bug）</p>
-<p>多用组合，少用继承（继承是静态的特性，组合可以动态的赋予行为，甚至在运行时决定）</p>
-<p>针对接口变成，不针对实现编程</p>
-<p>为交互对象之间的松耦合设计而努力</p>
-<p>类应该对扩展开发，对修改关闭</p>
-<p>依赖抽象，不要依赖具体类</p>
-</article>
+    <hr/><h2 id="列表的路由不能传path参数">列表的路由不能传path参数</h2>
+<p>文档里说要用renderDocumentListRouters这个方法生成路由，但是不能传path参数指定url。
+它的内部用renderDocumentList和renderMultiOrgDocumentList2个方法生成了一个普通列表路由，一个多组织列表的路由。</p>
+<p>为了解决传path的问题，可以像下面这样写代码。
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  {
+    ...<span style="color:#a6e22e">renderDocumentList</span>({
+      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;编制方案设置&#39;</span>,
+      <span style="color:#a6e22e">entityName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">EN_BudgetModel</span>,
+      <span style="color:#a6e22e">groupName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">EN_BudgetModel</span><span style="color:#e6db74">}</span><span style="color:#e6db74">_list`</span>,
+      <span style="color:#a6e22e">createPresenter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">options</span> =&gt; {
+        <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">BudgetModelList</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">import</span>(
+          <span style="color:#e6db74">&#39;@main/screens/projects/budget/budget-model/list/BudgetModelList&#39;</span>
+        );
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">BudgetModelList</span>({
+          ...<span style="color:#a6e22e">options</span>
+        });
+      },
+    }),
+    <span style="color:#a6e22e">refreshWhenParamsChanged</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+<span style="display:block;width:100%;background-color:#3c3d38">    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">appRouterHashManager</span>.<span style="color:#a6e22e">generateHashDef</span>(<span style="color:#a6e22e">EN_BudgetModel</span>, <span style="color:#a6e22e">PageModeEnum</span>.<span style="color:#a6e22e">List</span>),
+</span>  },
+  {
+    ...<span style="color:#a6e22e">renderMultiOrgDocumentList</span>({
+      <span style="color:#a6e22e">entityName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">EN_BudgetModel</span>,
+      <span style="color:#a6e22e">groupName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">defaultMultiOrgGroupName</span>(<span style="color:#a6e22e">EN_BudgetModel</span>),
+      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`编制方案设置多组织查询`</span>,
+      <span style="color:#a6e22e">createPresenter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">options</span> =&gt; {
+        <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">BudgetModelList</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">import</span>(
+          <span style="color:#e6db74">&#39;@main/screens/projects/budget/budget-model/list/BudgetModelList&#39;</span>
+          );
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">BudgetModelList</span>({
+          ...<span style="color:#a6e22e">options</span>
+        });
+      },
+    })
+  },
+</code></pre></td></tr></table>
+</div>
+</div>
+这里就是用renderDocumentList和renderMultiOrgDocumentList分别创建两个路由。</p>
+<h2 id="多组织查询按钮不显示">多组织查询按钮不显示</h2>
+<p>如果列表presenter中有commandActionResolver方法，则需要调一下super方法，否则的话就不会显示出多组织查询按钮。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">actions</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">commandActionResolver</span>(<span style="color:#a6e22e">commandActions</span>)
+</code></pre></div></article>
  
       
 
@@ -1173,7 +1243,12 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#列表的路由不能传path参数">列表的路由不能传path参数</a></li>
+    <li><a href="#多组织查询按钮不显示">多组织查询按钮不显示</a></li>
+  </ul>
+</nav>
 
  
     </aside>
