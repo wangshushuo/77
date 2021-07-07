@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Jun 2021 14:16:16 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jul 2021 10:06:36 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -144,6 +144,25 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>线上调试</title>
+      <link>https://77doc.wss.cool/docs/common/%E7%BA%BF%E4%B8%8A%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Wed, 07 Jul 2021 10:06:36 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E7%BA%BF%E4%B8%8A%E8%B0%83%E8%AF%95/</guid>
+      <description>线上系统的url后面加?ui-test=t可以让系统加载source map</description>
+    </item>
+    
+    <item>
+      <title>EntityDataTree</title>
+      <link>https://77doc.wss.cool/docs/common/entitydatatree/</link>
+      <pubDate>Tue, 29 Jun 2021 13:41:36 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/entitydatatree/</guid>
+      <description>寻找自定义该组件中的gql的方法 预算项目列表中的左树用了CustomerCategory组件，它又用了CategoryTree组件，其中又用了EntityDataTree组件，其中又用到了CommonProvider类，最终的gql就是在CommonProvider中生成并使用的。
+return client .query&amp;lt;{ data: T[] }&amp;gt;({ query: `query{ data: ${queryBuilder.toString()} }` }) </description>
     </item>
     
     <item>
