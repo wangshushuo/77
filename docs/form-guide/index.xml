@@ -6,7 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 06 May 2021 10:59:01 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Jul 2021 17:02:03 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,16 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>视图</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Thu, 08 Jul 2021 17:02:03 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E8%A7%86%E5%9B%BE/</guid>
+      <description>适用于表单。
+ 主表presenter的getDataOptions  dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &amp;#39;viewName(视图名字)&amp;#39;, }, 子表presenter  // 视图的数据 private viewData = observable.array([]); // 查看态 onFormViewed(form: EntityForm&amp;lt;any&amp;gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态 onFormCreated(form: EntityForm&amp;lt;any&amp;gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&amp;gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &amp;#39;viewName&amp;#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&amp;gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&amp;gt; { const data = this.</description>
     </item>
     
     <item>

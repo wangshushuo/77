@@ -4,18 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Development" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://77doc.wss.cool/categories/development/" />
-<meta property="og:updated_time" content="2014-04-02T00:00:00+00:00" />
-<title>Development | 新手村生存攻略</title>
+<meta name="description" content="适用于表单。
+ 主表presenter的getDataOptions  dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &#39;viewName(视图名字)&#39;, }, 子表presenter  // 视图的数据 private viewData = observable.array([]); // 查看态 onFormViewed(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态 onFormCreated(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &#39;viewName&#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&gt; { const data = this.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="视图" />
+<meta property="og:description" content="适用于表单。
+ 主表presenter的getDataOptions  dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &#39;viewName(视图名字)&#39;, }, 子表presenter  // 视图的数据 private viewData = observable.array([]); // 查看态 onFormViewed(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态 onFormCreated(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &#39;viewName&#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&gt; { const data = this." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/%E8%A7%86%E5%9B%BE/" />
+<meta property="article:published_time" content="2021-07-08T17:02:03+08:00" />
+<meta property="article:modified_time" content="2021-07-08T17:02:03+08:00" />
+<title>视图 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
 <script defer src="/en.search.min.d6930a31b3843e99dcd6754057751ee03698ac8d138d587a7d12142922840865.js" integrity="sha256-1pMKMbOEPpnc1nVAV3Ue4DaYrI0TjVh6fRIUKSKECGU="></script>
-<link rel="alternate" type="application/rss+xml" href="https://77doc.wss.cool/categories/development/index.xml" title="新手村生存攻略" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -440,7 +442,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form-guide/%E8%A7%86%E5%9B%BE/" class="">视图</a>
+    <a href="/docs/form-guide/%E8%A7%86%E5%9B%BE/" class="active">视图</a>
   
 
         </li>
@@ -1124,7 +1126,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Development</strong>
+  <strong>视图</strong>
 
   <label for="toc-control">
     
@@ -1138,69 +1140,7 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav>
-  <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/categories/development/">Development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/tags/development/">development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/go/">go</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/hugo/">hugo</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/templates/">templates</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/themes/">themes</a>
-          <span>1</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
 
     </aside>
@@ -1210,86 +1150,61 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/goisforlovers/">(Hu)go Template Primer</a>
-    </h2>
+  <article class="markdown">
     
-  <h5>April 2, 2014</h5>
-
-
-
-  
-  <div>
     
-      <a href="/categories/development/">Development</a>, 
-      <a href="/categories/golang/">golang</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/development/">development</a>, 
-      <a href="/tags/go/">go</a>, 
-      <a href="/tags/golang/">golang</a>, 
-      <a href="/tags/templates/">templates</a>, 
-      <a href="/tags/themes/">themes</a>
-  </div>
-  
-
-
-    <p>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.
-        <a href="/posts/goisforlovers/">...</a>
       
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/hugoisforlovers/">Getting Started with Hugo</a>
-    </h2>
     
-  <h5>April 2, 2014</h5>
+    <h1>视图</h1>
+    <p>作者：</p>
+    <hr/><p>适用于表单。</p>
+<ol>
+<li>主表presenter的getDataOptions</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">dynamicViews</span><span style="color:#f92672">:</span> {
+  [<span style="color:#a6e22e">F_BudgetAccount_refDocMappings</span>(<span style="color:#960050;background-color:#1e0010">子表名字</span>)]<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;viewName(视图名字)&#39;</span>,
+},
+</code></pre></div><ol start="2">
+<li>子表presenter</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// 视图的数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">viewData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">observable</span>.<span style="color:#a6e22e">array</span>([]);
 
+<span style="color:#75715e">// 查看态
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">onFormViewed</span>(<span style="color:#a6e22e">form</span>: <span style="color:#66d9ef">EntityForm</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>, <span style="color:#a6e22e">disposers</span>: <span style="color:#66d9ef">IDisposer</span>[]) {
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addView</span>(<span style="color:#a6e22e">disposers</span>)
+}
 
+<span style="color:#75715e">// 编辑态
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">onFormCreated</span>(<span style="color:#a6e22e">form</span>: <span style="color:#66d9ef">EntityForm</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>, <span style="color:#a6e22e">disposers</span>: <span style="color:#66d9ef">IDisposer</span>[]) {
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addView</span>(<span style="color:#a6e22e">disposers</span>)
+}
 
-  
-  <div>
-    
-      <a href="/categories/development/">Development</a>, 
-      <a href="/categories/golang/">golang</a>
-  </div>
-  
+<span style="color:#a6e22e">addView</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">disposers</span>) <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">formPresenter</span>.<span style="color:#a6e22e">formController</span>.<span style="color:#a6e22e">addDynamicView</span>(
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">logicPath</span>,
+    <span style="color:#e6db74">&#39;viewName&#39;</span>,
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">viewData</span>,
+  )
 
-  
-  <div>
-    
-      <a href="/tags/development/">development</a>, 
-      <a href="/tags/go/">go</a>, 
-      <a href="/tags/golang/">golang</a>, 
-      <a href="/tags/hugo/">hugo</a>
-  </div>
-  
+  <span style="color:#a6e22e">disposers</span>.<span style="color:#a6e22e">push</span>(
+    <span style="color:#75715e">// 监听子表的数据变化
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">reaction</span>(
+      () <span style="color:#f92672">=&gt;</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">logicPath</span>).<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">slice</span>();
+      },
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">updateData</span>,
+      { <span style="color:#a6e22e">fireImmediately</span>: <span style="color:#66d9ef">true</span> },
+    ),
+  );
+}
 
-
-    <p>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:
-        <a href="/posts/hugoisforlovers/">...</a>
-      
-    </p>
-  </article>
-  
-
-  
-
-
+<span style="color:#75715e">// 将子表数据进行处理后赋值给视图数据
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">updateData</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">logicPath</span>).<span style="color:#a6e22e">value</span>
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">viewData</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">filter</span>());
+}
+</code></pre></div></article>
  
       
 
@@ -1309,6 +1224,10 @@ Follow the following steps:
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1317,69 +1236,7 @@ Follow the following steps:
     
     <aside class="book-toc">
       
-  <nav>
-  <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/categories/development/">Development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/tags/development/">development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/go/">go</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/hugo/">hugo</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/templates/">templates</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/themes/">themes</a>
-          <span>1</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
  
     </aside>
