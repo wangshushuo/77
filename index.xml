@@ -755,8 +755,11 @@ export const buildInMenus = { [BizFormMenuButtons.SourcePicking]: SourcePickCrea
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/</guid>
-      <description>新环境就只有一个test1账号可以用，怎么自己新建一个租户、账号呢？
-找运维开一个运维平台的账号 进入运维平台，http://ops.q7link.com:8080/ 在运维工具&amp;gt;环境信息，中找到你的环境，以bj-test为例，看哪个服务器部署了qbos，然后复制这个服务器的IP  访问服务器IP的5000端口。用test1账号通用密码登录。如果登录失败，要进行初始化管理员  选择test1，点右下角的初始化按钮，就可以了。然后还是用test1登录。   登录后，进到租户页面，点新建按钮创建租户。信息随便填。 在你新建的租户这行的最后面有个操作栏，里面有个”权益”按钮，进去以后在点“新建” 产品名称，选择“标准版”，它的权益比较全  生效时间如果选错了在重选时会不大好操作，可以先把它叉掉。  填好以后，出来到租户列表，操作里有个“开通“按钮，填上名字和”你的手机“，这个手机后面激活账号时要收短信。 开通确定以后要等一会，看”企业属性”栏为正式时，就可以去登录了。 我们开发都是在localhost:3000，这里要激活刚刚那个手机号作为登录的账号  激活后，选一下会计期间，换个页面在选一下启用模块就都WWok了。  </description>
+      <description>创建新的租户（账号）的方法如下。
+  进入运维平台（如果没账号找运维开一个），http://ops.q7link.com:8080/，找到创建租户。   选择环境，手机号搞一个能记住的，其他随便填。然后确定   大改一分钟后刷新页面，看是不是成功了。   成功以后，进入系统，用刚刚的手机号登录，密码是123456，会提示密码简单需要重置。
+  重置的话，需要手机号接收验证码。验证码可以通过gql查到。gql地址。需要把下面链接中的IP地址替换成你的环境对应的（见下一步）。
+ http://172.31.50.170:9999/graphiql/index.html?query=%7B%0A%20%20VerificationCode(criteriaStr%3A%22verifyIdFlag%20in%20(%2713344445555%27)%20and%20to_char(expiredTime%2C%20%27yyyymmddhh24miss%27)%20%3E%3D%20to_char(CURRENT_TIMESTAMP%2C%20%27yyyymmddhh24miss%27)%20and%20isUsed%20%3D%20%27false%27%22)%7B%0A%20%20%20%20code%0A%20%20%20%20expiredTime%0A%20%20%20%20verifyIdFlag%0A%20%20%7D%0A%7D    这里。找到你的环境，环境会有两个IP，看哪个IP有9999这个服务，把对应的IP放到上面的链接中。   在gql中替换掉你的手机号，就可以查到验证码了。然后重置密码，进入系统就可以了。
+  </description>
     </item>
     
     <item>
