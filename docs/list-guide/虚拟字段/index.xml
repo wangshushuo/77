@@ -38,5 +38,16 @@
   </description>
     </item>
     
+    <item>
+      <title>导出</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%AF%BC%E5%87%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%AF%BC%E5%87%BA/</guid>
+      <description>适用场景：列表中有虚拟字段、自定义渲染的字段
+参考：trek/services/query-list/middlewares/entities/budget-model/report-expression.go
+其中的ReportExpression是打印和导出时用到的sql，</description>
+    </item>
+    
   </channel>
 </rss>
