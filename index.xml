@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 08 Jul 2021 17:02:03 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Jul 2021 14:51:56 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -144,6 +144,16 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>应用中显示所有模块</title>
+      <link>https://77doc.wss.cool/docs/h5/%E5%BA%94%E7%94%A8%E4%B8%AD%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Mon, 26 Jul 2021 14:51:56 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/h5/%E5%BA%94%E7%94%A8%E4%B8%AD%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/</guid>
+      <description>文件：apps/link-h5/src/subpackages/basicArchives/utils.ts checkApplyAuth方法中authFilter会进行过滤，将代码改为不过滤，就可以显示所有模块了。
+- const authApples = apples.filter(authFilter); + const authApples = apples; </description>
     </item>
     
     <item>
