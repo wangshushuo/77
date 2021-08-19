@@ -6,9 +6,19 @@
     <description>Recent content in Go on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Thu, 19 Aug 2021 11:00:12 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fetch Gql</title>
+      <link>https://77doc.wss.cool/docs/go/fetch-gql/</link>
+      <pubDate>Thu, 19 Aug 2021 11:00:12 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/go/fetch-gql/</guid>
+      <description>import ( gql_util &amp;#34;q7link.com/app/trek/services/form-services/middlewares/entities/project/gql-util&amp;#34; ) func fetchBudgetPlan(projectId string, usedOrgId string, ctx form_context.FormContext) []Plan { result := FieldMappingRes{} gql := gql_util.GQL{ QueryGqlTemplate: `{ BudgetPlan(criteriaStr: &amp;#34;createdOrgId=&amp;#39;{{.createdOrgId}}&amp;#39; AND projectId=&amp;#39;{{.projectId}}&amp;#39;&amp;#34;) { billStatus } }`, BindVars: map[string]string{ &amp;#34;createdOrgId&amp;#34;: usedOrgId, &amp;#34;projectId&amp;#34;: projectId, }, Result: &amp;amp;result, Ctx: ctx.GetContext(), } gql.Fetch() return result.Data.BudgetPlan } </description>
+    </item>
     
   </channel>
 </rss>
