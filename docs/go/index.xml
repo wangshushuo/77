@@ -6,10 +6,19 @@
     <description>Recent content in Go on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 19 Aug 2021 11:00:12 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Sep 2021 11:25:54 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>是否启用多组织</title>
+      <link>https://77doc.wss.cool/docs/go/%E6%98%AF%E5%90%A6%E5%90%AF%E7%94%A8%E5%A4%9A%E7%BB%84%E7%BB%87/</link>
+      <pubDate>Wed, 15 Sep 2021 11:25:54 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/go/%E6%98%AF%E5%90%A6%E5%90%AF%E7%94%A8%E5%A4%9A%E7%BB%84%E7%BB%87/</guid>
+      <description>func isEnableMultiOrg() bool { systemSettingValues := ctx.GetContext().Values().Get(systemSettingValuesConstants) values, ok := systemSettingValues.(map[string]*datamodels.SettingValue) if ok { isEnabledMultiOrg := values[gen_ec.EC_Setting_isEnabledMultiOrg] if isEnabledMultiOrg.Value.(bool) { return true } } return false } </description>
+    </item>
     
     <item>
       <title>Fetch Gql</title>

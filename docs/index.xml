@@ -6,10 +6,20 @@
     <description>Recent content in Docs on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 19 Aug 2021 11:00:12 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Sep 2021 11:25:54 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>业务规则数字单元格点击错误排查</title>
+      <link>https://77doc.wss.cool/docs/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99%E6%95%B0%E5%AD%97%E5%8D%95%E5%85%83%E6%A0%BC%E7%82%B9%E5%87%BB%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/</link>
+      <pubDate>Fri, 20 Aug 2021 10:37:45 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99%E6%95%B0%E5%AD%97%E5%8D%95%E5%85%83%E6%A0%BC%E7%82%B9%E5%87%BB%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/</guid>
+      <description>工时的业务规则中又一个“填报单位允许最小工时”是数字类型，默认值是空。
+对于form来说它的field.value就是null，组件渲染顺序是这样的。最后到ReactNumberic组件会，它有一段代码value.toString()就会报错了。 </description>
+    </item>
     
     <item>
       <title>Debug</title>
