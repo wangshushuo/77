@@ -79,7 +79,9 @@ protected getDisplayOptions(): DisplayOptions { return { masterRender: { [&amp;#
       <guid>https://77doc.wss.cool/docs/form-guide/%E7%BC%96%E8%BE%91%E6%88%96%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%97%E7%B2%BE%E5%BA%A6/</guid>
       <description>控制编辑，设置editParams
 public getEditOptions(): EditOptions { return { editParams: { [主表字段名]: () =&amp;gt; { return { numericProps: { decimalPlaces: 精度, minimumValue: &amp;#39;0&amp;#39;, } } }, [`子表名.子表字段名`]: () =&amp;gt; { return { numericProps: { decimalPlaces: 精度, minimumValue: &amp;#39;0&amp;#39;, } } }, } } } 控制显示，子表要自定义渲染
-getGridOptions(): Optional&amp;lt;AdvanceGridProps&amp;gt; { return { columnResolver: (colDefs: ColDef[]) =&amp;gt; { const daysField = colDefs.find(c =&amp;gt; c.field === F_TimesheetLine_days); if (daysField) { daysField.cellRendererFramework = (params) =&amp;gt; { return React.</description>
+控制千分符：
+const fmt = `#,##0.${&amp;#39;&amp;#39;.padEnd(precision, &amp;#39;0&amp;#39;)}`; coreUtils.toString(value, fmt); 自定义渲染：
+getGridOptions(): Optional&amp;lt;AdvanceGridProps&amp;gt; { return { columnResolver: (colDefs: ColDef[]) =&amp;gt; { const daysField = colDefs.find(c =&amp;gt; c.field === F_TimesheetLine_days); if (daysField) { daysField.</description>
     </item>
     
     <item>
