@@ -4,19 +4,14 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="表单会有不同的状态。
-创建和修改时，表单是可以填写内容的，我们称之为编辑态。
-查看、审批时，不能编辑内容，只能看，我们称之为查看态。
-查看态  表单状态 异步任务异常 menu-buttons rang-walk 主表 审批流 子表 ？不知道  ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="BizForm的组成部分" />
-<meta property="og:description" content="表单会有不同的状态。
-创建和修改时，表单是可以填写内容的，我们称之为编辑态。
-查看、审批时，不能编辑内容，只能看，我们称之为查看态。
-查看态  表单状态 异步任务异常 menu-buttons rang-walk 主表 审批流 子表 ？不知道  " />
+<meta name="description" content="private get billTypeId() { const billTypeId = this.presenter.options.dataOptions.billTypeId || (this.form.select(&#39;billType&#39;).value &amp;&amp; this.form.select(&#39;billType&#39;).value.id); return billTypeId; } ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="单据类型" />
+<meta property="og:description" content="private get billTypeId() { const billTypeId = this.presenter.options.dataOptions.billTypeId || (this.form.select(&#39;billType&#39;).value &amp;&amp; this.form.select(&#39;billType&#39;).value.id); return billTypeId; } " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" />
-
-<title>BizForm的组成部分 | 新手村生存攻略</title>
+<meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/%E5%8D%95%E6%8D%AE%E7%B1%BB%E5%9E%8B/" />
+<meta property="article:published_time" content="2021-11-01T18:23:06+08:00" />
+<meta property="article:modified_time" content="2021-11-01T18:23:06+08:00" />
+<title>单据类型 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
@@ -384,7 +379,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="active">BizForm的组成部分</a>
+    <a href="/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="">BizForm的组成部分</a>
   
 
         </li>
@@ -445,7 +440,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form-guide/%E5%8D%95%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">单据类型</a>
+    <a href="/docs/form-guide/%E5%8D%95%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="active">单据类型</a>
   
 
         </li>
@@ -1189,7 +1184,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>BizForm的组成部分</strong>
+  <strong>单据类型</strong>
 
   <label for="toc-control">
     
@@ -1203,11 +1198,7 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#查看态">查看态</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
 
     </aside>
@@ -1222,24 +1213,15 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>BizForm的组成部分</h1>
-    <p>作者：王书硕</p>
-    <hr/><p>表单会有不同的状态。</p>
-<p>创建和修改时，表单是可以填写内容的，我们称之为编辑态。</p>
-<p>查看、审批时，不能编辑内容，只能看，我们称之为查看态。</p>
-<h2 id="查看态">查看态</h2>
-<p><img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20201219171254_fa9424f19d5a07884c007ffef6f5c596.png" alt="20201219171254_fa9424f19d5a07884c007ffef6f5c596.png" /></p>
-<ol>
-<li>表单状态</li>
-<li>异步任务异常</li>
-<li>menu-buttons</li>
-<li>rang-walk</li>
-<li>主表</li>
-<li>审批流</li>
-<li>子表</li>
-<li>？不知道</li>
-</ol>
-</article>
+    <h1>单据类型</h1>
+    <p>作者：</p>
+    <hr/><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts">  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">billTypeId() {</span>
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">billTypeId</span> <span style="color:#f92672">=</span>
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">presenter</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">dataOptions</span>.<span style="color:#a6e22e">billTypeId</span> <span style="color:#f92672">||</span>
+      (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;billType&#39;</span>).<span style="color:#a6e22e">value</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;billType&#39;</span>).<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">id</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">billTypeId</span>;
+  }
+</code></pre></div></article>
  
       
 
@@ -1271,11 +1253,7 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#查看态">查看态</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
  
     </aside>
