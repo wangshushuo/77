@@ -88,3 +88,47 @@ EntityFormGrid一般用在自定义渲染，需要渲染一个表格（子表）
   data={this.formValue}
 />
 ```
+
+```jsx
+ <EntityFormGrid
+  autoHeightMaxRows={999}
+  autoHeightMinRows={3}
+  columnDefs={this.presenter.ColDefs}
+  data={this.presenter.data}
+  shouldRowInitialized={() => true}
+  onRowInitialized={(
+    logicPath: string,
+    rowField: MSTFormField,
+    rowIndex: number,
+    disposers: Array<IDisposer>,
+  ) => {
+    const depnDepartment = rowField.select(F_AssetValueItem_depnDepartment);
+    if (!depnDepartment) {
+      return;
+    }
+    disposers.push(
+      reaction(
+        () => depnDepartment.value,
+        value => {}
+      ),
+    );
+  }}
+  mstFormOption={{
+    form: this.formPresenter.form,
+    logicPath: 'mappingItems',
+    path: 'mappingItems',
+    isEmptyRow(rowData: any): boolean {
+      return !rowData[VOUCHER_TEMPLATE_FACT_ITEM];
+    },
+    onWillAppendRow: () => {
+      this.formPresenter.entityCRUD.appendRow('mappingItems', {});
+    },
+  }}
+  suppressAutoAppendRow
+  actionColumnOption={{
+    rowActions: this.rowActions(),
+  }}
+  // key={this.presenter.realIndex}
+/>
+
+```
