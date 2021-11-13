@@ -99,3 +99,44 @@ const fetchControlBalance = async (criteriaStr: string, dimensionField: string[]
   return res.data.data
 };
 ```
+
+## Go怎么查GQL
+```go
+func GetFieldMapping(c context.TrekContext, billClassId string) []Mapping {
+	queryString := `{
+  BudgetDimensionFieldMapping(criteriaStr:"billClassId = '{{.billClassId}}' and dimensionId = 'FinancialOrg'"){
+    mappingToWhereId mappingField
+}
+}`
+	query := graphql.GraphqlTemplate(queryString, map[string]string{
+		"billClassId": billClassId,
+	})
+
+	data := map[string]interface{}{
+		"query": query,
+	}
+
+	var dataJson FieldMappingRes
+
+	context.HttpRequest.DoHTTPPost(c, urls.AppGraphQL, &context.HTTPOptions{
+		BindBody:    &dataJson,
+		ParamStruct: &data,
+	})
+	return dataJson.Data.BudgetDimensionFieldMapping
+}
+
+type Mapping struct {
+	MappingToWhereId string `json:"mappingToWhereId"`
+	MappingField     string `json:"mappingField"`
+}
+
+type FieldMappingRes struct {
+	Data struct {
+		BudgetDimensionFieldMapping []Mapping `json:"BudgetDimensionFieldMapping"`
+	} `json:"data"`
+	Errors []interface{} `json:"errors"`
+}
+```
+1. queryString定义语句的模板，其中可以包含一些模板变量
+2. GraphqlTemplate将模板变量引用到模板
+3. 用DoHTTPPost发起请求
