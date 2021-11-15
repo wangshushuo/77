@@ -16,7 +16,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/</guid>
-      <description>a </description>
+      <description>a   开发包，列表方案，查询项。加虚拟字段。
+  在go上处理虚拟字段
+  参考文件services/query-list/middlewares/entities/budget-model/project-fields.go</description>
     </item>
     
     <item>

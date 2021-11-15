@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 03 Nov 2021 17:34:49 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Nov 2021 01:48:25 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -39,7 +39,7 @@ class Authorize{ auth = { &amp;#34;tenantId&amp;#34;: &amp;#34;xxx&amp;#34;, &am
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/gql/</guid>
-      <description>普通的gql 最简单的，直接查一个对象（表）的全部数据
+      <description>普通的gql 最简单的，直接查一个对象的全部数据
 { BudgetAccount{ id name accountType { id name } } } 加一点查询条件
 { BudgetAccount(criteriaStr:&amp;quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&amp;quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
 高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
@@ -144,6 +144,35 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>接口中获取参数</title>
+      <link>https://77doc.wss.cool/docs/go/%E6%8E%A5%E5%8F%A3%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Sun, 14 Nov 2021 01:48:25 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/go/%E6%8E%A5%E5%8F%A3%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0/</guid>
+      <description>func (c *transparentController) GetBudgetSourceBillSet() interface{} { orgId := c.Ctx.Params().Get(&amp;#34;orgId&amp;#34;) objectType := c.Ctx.URLParam(&amp;#34;objectType&amp;#34;) return Fetch(c, context.TFetchOption{ Method: &amp;#34;get&amp;#34;, Url: urls.GetSourceBillSet + &amp;#34;/&amp;#34; + orgId, }) } </description>
+    </item>
+    
+    <item>
+      <title>CloumnDef</title>
+      <link>https://77doc.wss.cool/docs/common/cloumndef/</link>
+      <pubDate>Sat, 13 Nov 2021 15:29:37 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/cloumndef/</guid>
+      <description>典型用例 { field: &amp;#39;reimburseVoucherId&amp;#39;, headerName: &amp;#39;报销凭证&amp;#39;, editable: !disabledStatus, type: FieldTypeEnum.JsonObject, valueFormatter: params =&amp;gt; { const { reimburseVoucherId } = params.data; return oc(reimburseVoucherId).name(&amp;#39;&amp;#39;) || &amp;#39;&amp;#39;; }, cellEditorParams: params =&amp;gt; { const criteriaStr = this.getReimburseVoucherCriteriaStr; return { queryFields: [ F_ReimburseVoucher_id, F_ReimburseVoucher_code, F_ReimburseVoucher_name, F_ReimburseVoucher_deductionTaxRate, ], criteriaStr: criteriaStr, }; }, } cellEditorParams: params =&amp;gt; { const criteriaStr = this.getCostCriteriaStr; return { queryFields: [F_Cost_id, F_Cost_code, F_Cost_name, F_Cost_isLeaf], criteriaStr: criteriaStr, referConfigResolver: (referConfig: IReferConfig) =&amp;gt; { return Object.</description>
+    </item>
+    
+    <item>
+      <title>EntityFormGrid</title>
+      <link>https://77doc.wss.cool/docs/form-guide/entityformgrid/</link>
+      <pubDate>Fri, 05 Nov 2021 17:49:01 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/entityformgrid/</guid>
+      <description>EntityFormGrid一般用在自定义渲染，需要渲染一个表格（子表），行上有删除等按钮。
+下面是一些例子：
+&amp;lt;EntityFormGrid autoHeightMaxRows={999} autoHeightMinRows={3} columnDefs={this.presenter.ColDefs} data={this.presenter.data} shouldRowInitialized={() =&amp;gt; true} onRowInitialized={( logicPath: string, rowField: MSTFormField, rowIndex: number, disposers: Array&amp;lt;IDisposer&amp;gt;, ) =&amp;gt; { const depnDepartment = rowField.select(F_AssetValueItem_depnDepartment); if (!depnDepartment) { return; } disposers.push( reaction( () =&amp;gt; depnDepartment.value, value =&amp;gt; {} ), ); }} mstFormOption={mstFormOption} suppressAutoAppendRow actionColumnOption={{ rowActions: this.rowActions(), }} // key={this.presenter.realIndex} /&amp;gt; &amp;lt;EntityFormGrid autoContainerWidth={false} // onRowHovered={(index) =&amp;gt; this.handleRowHover} shouldRowInitialized={() =&amp;gt; { return true; }} onRowInitialized={() =&amp;gt; { }} isRowChanged={(rowIndex, rowData) =&amp;gt; { return rowData.</description>
     </item>
     
     <item>
@@ -677,7 +706,9 @@ editOptions editOptions下面的editParams会传给单元格的渲染组件
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/</guid>
-      <description>a </description>
+      <description>a   开发包，列表方案，查询项。加虚拟字段。
+  在go上处理虚拟字段
+  参考文件services/query-list/middlewares/entities/budget-model/project-fields.go</description>
     </item>
     
     <item>

@@ -6,7 +6,7 @@
     <description>Recent content in 通用功能攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 07 Jul 2021 10:06:36 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 13 Nov 2021 15:29:37 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/common/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/gql/</guid>
-      <description>普通的gql 最简单的，直接查一个对象（表）的全部数据
+      <description>普通的gql 最简单的，直接查一个对象的全部数据
 { BudgetAccount{ id name accountType { id name } } } 加一点查询条件
 { BudgetAccount(criteriaStr:&amp;quot;name in (&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)&amp;quot;){ id name accountType { id name } } } 这个会查到name为1、2、3的多条数据
 高级的gql 上面只能查到一个表的数据及其关联的外键，子表的数据。下面来搞一个子查询。
@@ -31,6 +31,15 @@ coalesce：如果alias存在则取alias，不存在取name
 例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
 concat_ws：拼装一条记录的多个字段为一个字段
 例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)</description>
+    </item>
+    
+    <item>
+      <title>CloumnDef</title>
+      <link>https://77doc.wss.cool/docs/common/cloumndef/</link>
+      <pubDate>Sat, 13 Nov 2021 15:29:37 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/cloumndef/</guid>
+      <description>典型用例 { field: &amp;#39;reimburseVoucherId&amp;#39;, headerName: &amp;#39;报销凭证&amp;#39;, editable: !disabledStatus, type: FieldTypeEnum.JsonObject, valueFormatter: params =&amp;gt; { const { reimburseVoucherId } = params.data; return oc(reimburseVoucherId).name(&amp;#39;&amp;#39;) || &amp;#39;&amp;#39;; }, cellEditorParams: params =&amp;gt; { const criteriaStr = this.getReimburseVoucherCriteriaStr; return { queryFields: [ F_ReimburseVoucher_id, F_ReimburseVoucher_code, F_ReimburseVoucher_name, F_ReimburseVoucher_deductionTaxRate, ], criteriaStr: criteriaStr, }; }, } cellEditorParams: params =&amp;gt; { const criteriaStr = this.getCostCriteriaStr; return { queryFields: [F_Cost_id, F_Cost_code, F_Cost_name, F_Cost_isLeaf], criteriaStr: criteriaStr, referConfigResolver: (referConfig: IReferConfig) =&amp;gt; { return Object.</description>
     </item>
     
     <item>

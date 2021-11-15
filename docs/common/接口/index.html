@@ -34,7 +34,7 @@ project: CloseProject: &#34;/Project/close&#34; 其中的 project 是模块，�
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.50155f22e63fdf1ba69d2d2163ec1c85007766b6ebbca2412bc57f2beac7ade6.js" integrity="sha256-UBVfIuY/3xumnS0hY&#43;wchQB3ZrbrvKJBK8V/K&#43;rHreY="></script>
+<script defer src="/en.search.min.37d5d727fd51182656b1065d4d425d2d7deb64016231c43f2d7023f8f09c3bf8.js" integrity="sha256-N9XXJ/1RGCZWsQZdTUJdLX3rZAFiMcQ/LXAj&#43;PCcO/g="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -218,6 +218,16 @@ https://github.com/alex-shpak/hugo-book
           
   
     <a href="/docs/common/gql/" class="">GQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/cloumndef/" class="">CloumnDef</a>
   
 
         </li>
@@ -450,6 +460,16 @@ https://github.com/alex-shpak/hugo-book
           
   
     <a href="/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/" class="">打印模板</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/entityformgrid/" class="">EntityFormGrid</a>
   
 
         </li>
@@ -980,6 +1000,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/docs/go/%E6%8E%A5%E5%8F%A3%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0/" class="">接口中获取参数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <a href="/docs/go/%E6%98%AF%E5%90%A6%E5%90%AF%E7%94%A8%E5%A4%9A%E7%BB%84%E7%BB%87/" class="">是否启用多组织</a>
   
 
@@ -1237,6 +1267,7 @@ https://github.com/alex-shpak/hugo-book
       </ul>
     </li>
     <li><a href="#三前端调接口">三、前端调接口</a></li>
+    <li><a href="#透传的通用解">透传的通用解</a></li>
   </ul>
 </nav>
 
@@ -1364,6 +1395,51 @@ https://github.com/alex-shpak/hugo-book
 ...
 <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">post</span>(<span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">budgetAccount</span>.<span style="color:#a6e22e">batchSetIndicators</span>, <span style="color:#a6e22e">data</span>);
 ...
+</code></pre></div><h2 id="透传的通用解">透传的通用解</h2>
+<ol>
+<li>在各个模块下都定义一个A接口</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">project</span>:
+  <span style="color:#66d9ef">ProjectA</span>: <span style="color:#e6db74">&#34;/&#34;</span>
+
+<span style="color:#66d9ef">contract</span>:
+  <span style="color:#66d9ef">ContractA</span>: <span style="color:#e6db74">&#34;/&#34;</span>
+</code></pre></div><ol start="2">
+<li>接口处理</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">BeforeActivation</span>(<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">mvc</span>.<span style="color:#a6e22e">BeforeActivation</span>) {
+  <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#a6e22e">iris</span>.<span style="color:#a6e22e">MethodPost</span>, <span style="color:#e6db74">&#34;/A&#34;</span>, <span style="color:#e6db74">&#34;A&#34;</span>)
+}
+<span style="color:#66d9ef">var</span> (
+	<span style="color:#a6e22e">method</span> = <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">String</span>(<span style="color:#e6db74">&#34;method&#34;</span>, <span style="color:#e6db74">&#34;method&#34;</span>, <span style="color:#e6db74">&#34;backend interface method&#34;</span>)
+	<span style="color:#a6e22e">url</span> = <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">String</span>(<span style="color:#e6db74">&#34;url&#34;</span>, <span style="color:#e6db74">&#34;url&#34;</span>, <span style="color:#e6db74">&#34;backend interface url&#34;</span>)
+	<span style="color:#a6e22e">module</span> = <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">String</span>(<span style="color:#e6db74">&#34;module&#34;</span>, <span style="color:#e6db74">&#34;module&#34;</span>, <span style="color:#e6db74">&#34;backend interface module&#34;</span>)
+)
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">hostMap</span> = <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{
+	<span style="color:#e6db74">&#34;project&#34;</span>: <span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">ProjectA</span>,
+  <span style="color:#e6db74">&#34;contract&#34;</span>: <span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">ContractA</span>,
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">transparentController</span>) <span style="color:#a6e22e">A</span>() <span style="color:#66d9ef">interface</span>{} {
+	<span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
+	<span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Ctx</span>.<span style="color:#a6e22e">Params</span>().<span style="color:#a6e22e">Get</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">method</span>)
+	<span style="color:#a6e22e">u</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Ctx</span>.<span style="color:#a6e22e">Params</span>().<span style="color:#a6e22e">Get</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">url</span>)
+	<span style="color:#a6e22e">mod</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Ctx</span>.<span style="color:#a6e22e">Params</span>().<span style="color:#a6e22e">Get</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">module</span>)
+	
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Fetch</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">TFetchOption</span>{
+		<span style="color:#a6e22e">Method</span>: <span style="color:#a6e22e">m</span>,
+		<span style="color:#a6e22e">Url</span>:    <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">Join</span>(<span style="color:#a6e22e">hostMap</span>[<span style="color:#a6e22e">mod</span>], <span style="color:#a6e22e">u</span>),
+	})
+}
+</code></pre></div><ol start="3">
+<li>前端使用</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">client</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@client&#39;</span>;
+
+<span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#34;/A&#34;</span>, {
+  <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;post&#39;</span>,
+  <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/project/closeStage&#39;</span>,
+  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;project&#39;</span>,
+});
 </code></pre></div></article>
  
       
@@ -1406,6 +1482,7 @@ https://github.com/alex-shpak/hugo-book
       </ul>
     </li>
     <li><a href="#三前端调接口">三、前端调接口</a></li>
+    <li><a href="#透传的通用解">透传的通用解</a></li>
   </ul>
 </nav>
 
