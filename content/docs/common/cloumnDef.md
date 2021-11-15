@@ -53,3 +53,20 @@ cellEditorParams: params => {
   };
 }
 ```
+
+设置选项
+```
+{
+    headerName: '对齐方式',
+    field: 'textAlign',
+    editable: true,
+    cellEditorFramework: 'Select',
+    cellEditorParams: {
+        options: [
+            'left', 'center', 'right'
+        ]
+    },
+    width: 100,
+    filter: 'set'
+},
+````
