@@ -6,10 +6,20 @@
     <description>Recent content in Docs on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 14 Nov 2021 01:48:25 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Nov 2021 10:59:00 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>表单顶部按钮</title>
+      <link>https://77doc.wss.cool/docs/buttons/%E8%A1%A8%E5%8D%95%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/</link>
+      <pubDate>Mon, 15 Nov 2021 10:51:25 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/buttons/%E8%A1%A8%E5%8D%95%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/</guid>
+      <description>特征 首先它两个特征：presenter和MenuButton
+@contextProvider(PresenterConsumer, &amp;#39;presenter&amp;#39;) @observer export class OpenButton extends MenuButton { // ... } presenter的结构 它是 BizFormPresenter 类型的。</description>
+    </item>
     
     <item>
       <title>预置菜单</title>

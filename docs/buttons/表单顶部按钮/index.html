@@ -4,21 +4,16 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="创建新的租户（账号）的方法如下。
-  进入运维平台（如果没账号找运维开一个），http://ops.q7link.com:8080/，找到创建租户。   选择环境，手机号搞一个能记住的，其他随便填。然后确定   大改一分钟后刷新页面，看是不是成功了。   成功以后，进入系统，用刚刚的手机号登录，密码是123456，会提示密码简单需要重置。
-  重置的话，需要手机号接收验证码。验证码可以通过gql查到。gql地址。需要把下面链接中的IP地址替换成你的环境对应的（见下一步）。
- http://172.31.50.170:9999/graphiql/index.html?query=%7B%0A%20%20VerificationCode(criteriaStr%3A%22verifyIdFlag%20in%20(%2713344445555%27)%20and%20to_char(expiredTime%2C%20%27yyyymmddhh24miss%27)%20%3E%3D%20to_char(CURRENT_TIMESTAMP%2C%20%27yyyymmddhh24miss%27)%20and%20isUsed%20%3D%20%27false%27%22)%7B%0A%20%20%20%20code%0A%20%20%20%20expiredTime%0A%20%20%20%20verifyIdFlag%0A%20%20%7D%0A%7D    这里。找到你的环境，环境会有两个IP，看哪个IP有9999这个服务，把对应的IP放到上面的链接中。   在gql中替换掉你的手机号，就可以查到验证码了。然后重置密码，进入系统就可以了。
-  ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="新建开发用租户" />
-<meta property="og:description" content="创建新的租户（账号）的方法如下。
-  进入运维平台（如果没账号找运维开一个），http://ops.q7link.com:8080/，找到创建租户。   选择环境，手机号搞一个能记住的，其他随便填。然后确定   大改一分钟后刷新页面，看是不是成功了。   成功以后，进入系统，用刚刚的手机号登录，密码是123456，会提示密码简单需要重置。
-  重置的话，需要手机号接收验证码。验证码可以通过gql查到。gql地址。需要把下面链接中的IP地址替换成你的环境对应的（见下一步）。
- http://172.31.50.170:9999/graphiql/index.html?query=%7B%0A%20%20VerificationCode(criteriaStr%3A%22verifyIdFlag%20in%20(%2713344445555%27)%20and%20to_char(expiredTime%2C%20%27yyyymmddhh24miss%27)%20%3E%3D%20to_char(CURRENT_TIMESTAMP%2C%20%27yyyymmddhh24miss%27)%20and%20isUsed%20%3D%20%27false%27%22)%7B%0A%20%20%20%20code%0A%20%20%20%20expiredTime%0A%20%20%20%20verifyIdFlag%0A%20%20%7D%0A%7D    这里。找到你的环境，环境会有两个IP，看哪个IP有9999这个服务，把对应的IP放到上面的链接中。   在gql中替换掉你的手机号，就可以查到验证码了。然后重置密码，进入系统就可以了。
-  " />
+<meta name="description" content="特征 首先它两个特征：presenter和MenuButton
+@contextProvider(PresenterConsumer, &#39;presenter&#39;) @observer export class OpenButton extends MenuButton { // ... } presenter的结构 它是 BizFormPresenter 类型的。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="表单顶部按钮" />
+<meta property="og:description" content="特征 首先它两个特征：presenter和MenuButton
+@contextProvider(PresenterConsumer, &#39;presenter&#39;) @observer export class OpenButton extends MenuButton { // ... } presenter的结构 它是 BizFormPresenter 类型的。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/" />
-
-<title>新建开发用租户 | 新手村生存攻略</title>
+<meta property="og:url" content="https://77doc.wss.cool/docs/buttons/%E8%A1%A8%E5%8D%95%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/" />
+<meta property="article:published_time" content="2021-11-15T10:51:25+08:00" />
+<meta property="article:modified_time" content="2021-11-15T10:51:25+08:00" />
+<title>表单顶部按钮 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
@@ -1105,7 +1100,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/buttons/%E8%A1%A8%E5%8D%95%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/" class="">表单顶部按钮</a>
+    <a href="/docs/buttons/%E8%A1%A8%E5%8D%95%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/" class="active">表单顶部按钮</a>
   
 
         </li>
@@ -1191,7 +1186,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/" class="active">新建开发用租户</a>
+    <a href="/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/" class="">新建开发用租户</a>
   
 
         </li>
@@ -1251,7 +1246,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>新建开发用租户</strong>
+  <strong>表单顶部按钮</strong>
 
   <label for="toc-control">
     
@@ -1265,7 +1260,12 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#特征">特征</a></li>
+    <li><a href="#presenter的结构">presenter的结构</a></li>
+  </ul>
+</nav>
 
 
     </aside>
@@ -1280,39 +1280,17 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>新建开发用租户</h1>
-    <p>作者：王书硕</p>
-    <hr/><p>创建新的租户（账号）的方法如下。</p>
-<ol>
-<li>
-<p>进入运维平台（如果没账号找运维开一个），http://ops.q7link.com:8080/，找到创建租户。
-<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210714095643_ee80d685e417eb877a4b0131fe736ffa.png" alt="20210714095643_ee80d685e417eb877a4b0131fe736ffa.png" /></p>
-</li>
-<li>
-<p>选择环境，手机号搞一个能记住的，其他随便填。然后确定
-<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210714100853_0a70e1e0aa82223bd106bb66774d39c6.png" alt="20210714100853_0a70e1e0aa82223bd106bb66774d39c6.png" /></p>
-</li>
-<li>
-<p>大改一分钟后刷新页面，看是不是成功了。
-<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210714095943_0f6265e15d460acd1a43a19fb92bef09.png" alt="20210714095943_0f6265e15d460acd1a43a19fb92bef09.png" /></p>
-</li>
-<li>
-<p>成功以后，进入系统，用刚刚的手机号登录，密码是123456，会提示密码简单需要重置。</p>
-</li>
-<li>
-<p>重置的话，需要手机号接收验证码。验证码可以通过gql查到。<a href="http://172.31.50.170:9999/graphiql/index.html?query=%7B%0A%20%20VerificationCode%28criteriaStr%3A%22verifyIdFlag%20in%20%28%2713344445555%27%29%20and%20to_char%28expiredTime%2C%20%27yyyymmddhh24miss%27%29%20%3E%3D%20to_char%28CURRENT_TIMESTAMP%2C%20%27yyyymmddhh24miss%27%29%20and%20isUsed%20%3D%20%27false%27%22%29%7B%0A%20%20%20%20code%0A%20%20%20%20expiredTime%0A%20%20%20%20verifyIdFlag%0A%20%20%7D%0A%7D">gql地址</a>。需要把下面链接中的IP地址替换成你的环境对应的（见下一步）。</p>
-<ul>
-<li><textarea style="width:100%;">http://172.31.50.170:9999/graphiql/index.html?query=%7B%0A%20%20VerificationCode(criteriaStr%3A%22verifyIdFlag%20in%20(%2713344445555%27)%20and%20to_char(expiredTime%2C%20%27yyyymmddhh24miss%27)%20%3E%3D%20to_char(CURRENT_TIMESTAMP%2C%20%27yyyymmddhh24miss%27)%20and%20isUsed%20%3D%20%27false%27%22)%7B%0A%20%20%20%20code%0A%20%20%20%20expiredTime%0A%20%20%20%20verifyIdFlag%0A%20%20%7D%0A%7D</textarea></li>
-</ul>
-</li>
-<li>
-<p>这里。找到你的环境，环境会有两个IP，看哪个IP有9999这个服务，把对应的IP放到上面的链接中。
-<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210714101021_369d2f5f3790121f66d62149fc1803ac.png" alt="20210714101021_369d2f5f3790121f66d62149fc1803ac.png" /></p>
-</li>
-<li>
-<p>在gql中替换掉你的手机号，就可以查到验证码了。然后重置密码，进入系统就可以了。</p>
-</li>
-</ol>
+    <h1>表单顶部按钮</h1>
+    <p>作者：</p>
+    <hr/><h2 id="特征">特征</h2>
+<p>首先它两个特征：presenter和MenuButton</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">@contextProvider</span>(<span style="color:#a6e22e">PresenterConsumer</span>, <span style="color:#e6db74">&#39;presenter&#39;</span>)
+<span style="color:#66d9ef">@observer</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OpenButton</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">MenuButton</span> {
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h2 id="presenter的结构">presenter的结构</h2>
+<p>它是 BizFormPresenter 类型的。</p>
 </article>
  
       
@@ -1345,7 +1323,12 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#特征">特征</a></li>
+    <li><a href="#presenter的结构">presenter的结构</a></li>
+  </ul>
+</nav>
 
  
     </aside>

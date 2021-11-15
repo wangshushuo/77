@@ -6,7 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 05 Nov 2021 17:49:01 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Nov 2021 10:59:00 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,16 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>BizFormPresenter</title>
+      <link>https://77doc.wss.cool/docs/form-guide/bizformpresenter/</link>
+      <pubDate>Mon, 15 Nov 2021 10:59:00 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/bizformpresenter/</guid>
+      <description>顶层结构 options api config 就是init接口的返回值 获取常用的数据 当前form的billType 有两种方式：
+ config.data.billType api.formController.initData.billType  billStatus api.formController.stateController.billStatus</description>
     </item>
     
     <item>
