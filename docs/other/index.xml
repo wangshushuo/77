@@ -6,9 +6,21 @@
     <description>Recent content in 其他 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Sat, 20 Nov 2021 00:47:22 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/other/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>尝试加速编译</title>
+      <link>https://77doc.wss.cool/docs/other/%E5%B0%9D%E8%AF%95%E5%8A%A0%E9%80%9F%E7%BC%96%E8%AF%91/</link>
+      <pubDate>Sat, 20 Nov 2021 00:47:22 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/other/%E5%B0%9D%E8%AF%95%E5%8A%A0%E9%80%9F%E7%BC%96%E8%AF%91/</guid>
+      <description>apps/link/src/main/index.tsx 这是项目的入口。
+（尝试）用下面的代码直接渲染表单页面。
+const search = &amp;#39;?billTypeId=ER3CCW52BV70002&amp;#39; const queryParams: any = queryString.parse(search.replace(&amp;#39;?&amp;#39;, &amp;#39;&amp;#39;)); const fromId = queryParams[&amp;#39;fromId&amp;#39;] || &amp;#39;&amp;#39;; const props = { mode: &amp;#39;Edit&amp;#39;, passParams: {}, billTypeId: queryParams[&amp;#39;billTypeId&amp;#39;], businessTypeId: queryParams[&amp;#39;businessTypeId&amp;#39;], templateId: queryParams[&amp;#39;templateId&amp;#39;], contextOrgIds: queryParams[&amp;#39;contextOrgIds&amp;#39;], needOrgFieldStateControl: queryParams[&amp;#39;needOrgFieldStateControl&amp;#39;] || &amp;#39;&amp;#39;, fromEntityName: queryParams[&amp;#39;fromEntityName&amp;#39;], fromIds: !fromId ? [] : fromId.split(&amp;#39;,&amp;#39;) }; const presenter = new CalendarEntryFormPresenter({ ...props, }); const app = (&amp;lt;CalendarForm // componentRef={ref}  presenter={presenter} /&amp;gt;) const render = Component =&amp;gt; { ReactDOM.</description>
+    </item>
     
     <item>
       <title>新建开发用租户</title>
