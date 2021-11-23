@@ -17,6 +17,12 @@ author:
 就是init接口的返回值
 ![20211115110316_f25898b7a4030002dfe74875f6c3ccde.png](https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20211115110316_f25898b7a4030002dfe74875f6c3ccde.png)
 
+## 业务表单的Presenter
+```ts
+class CalendarEntryFormPresenter extends EasyBizFormPresenter{}
+```
+calendarEntryFormPresenter.formPresenter是BizFormPresenter类型的。
+
 ## 获取常用的数据
 
 ### 当前form的billType
