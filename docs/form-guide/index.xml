@@ -26,7 +26,8 @@
       <pubDate>Mon, 15 Nov 2021 10:59:00 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form-guide/bizformpresenter/</guid>
-      <description>顶层结构 options api config 就是init接口的返回值 获取常用的数据 当前form的billType 有两种方式：
+      <description>顶层结构 options api config 就是init接口的返回值 业务表单的Presenter class CalendarEntryFormPresenter extends EasyBizFormPresenter{} calendarEntryFormPresenter.formPresenter是BizFormPresenter类型的。
+获取常用的数据 当前form的billType 有两种方式：
  config.data.billType api.formController.initData.billType  billStatus api.formController.stateController.billStatus</description>
     </item>
     
