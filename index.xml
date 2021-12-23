@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 20 Nov 2021 00:47:22 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 Dec 2021 15:38:47 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -144,6 +144,29 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>查询条件</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6/</link>
+      <pubDate>Thu, 23 Dec 2021 15:38:47 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6/</guid>
+      <description>加查询条件是通过两个方法。
+ctx.AddDetailCriteriaPiplineItem(m.CriteriaHandler) ctx.AddCriteriaPiplineItem(m.CriteriaHandler) 一个给子表添加查询条件，一个给主表添加查询条件。
+只给子表加查询条件 trek/services/query-list/middlewares/entities/calendar-entry/index.go
+middlewareCreators := []query_list.QueryListMiddlewareCreator{ SetDetailQueryListCondition(func() string { return &amp;#34;participantTypeId=&amp;#39;WorkforceResource&amp;#39;&amp;#34; }), } SetDetailQueryListCondition的实现原理可以参考这个文件： trek/services/query-list/middlewares/entities/calendar-entry/detailQueryListCondition.go</description>
+    </item>
+    
+    <item>
+      <title>老变更</title>
+      <link>https://77doc.wss.cool/docs/form-guide/%E8%80%81%E5%8F%98%E6%9B%B4/</link>
+      <pubDate>Thu, 23 Dec 2021 15:38:47 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/%E8%80%81%E5%8F%98%E6%9B%B4/</guid>
+      <description>变更保存时需要一个额外的接口，后端会提供。前端需要自己搞一个EntryCRUD，参考这个文件： CalendarEntryCRUD.ts
+FormPresenter中接受EntryCRUD：
+protected getDataOptions(): DataOptions { return { entityCRUDCreator: (options: IEntityOptions) =&amp;gt; { return new CalendarEntryCRUD(options, this); } }; } </description>
     </item>
     
     <item>

@@ -4,16 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="两部分组成：
- 创建form form组件  function createForm(): EntityForm { const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &#39;关闭日期&#39;, required: false, visible: false, }, }, closedReason: { type: FieldTypeEnum.JsonObject, referType: EN_BizReason, initState: { label: &#39;关闭原因&#39;, required: false, visible: false, }, }, closedReasonExplain: { type: FieldTypeEnum.String, initState: { label: &#39;关闭原因说明&#39;, required: false, visible: false, }, }, }; const formBuilder = new FormBuilder(); Object.entries(formScheme).forEach(([key, value]) =&gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="自定义单据" />
-<meta property="og:description" content="两部分组成：
- 创建form form组件  function createForm(): EntityForm { const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &#39;关闭日期&#39;, required: false, visible: false, }, }, closedReason: { type: FieldTypeEnum.JsonObject, referType: EN_BizReason, initState: { label: &#39;关闭原因&#39;, required: false, visible: false, }, }, closedReasonExplain: { type: FieldTypeEnum.String, initState: { label: &#39;关闭原因说明&#39;, required: false, visible: false, }, }, }; const formBuilder = new FormBuilder(); Object.entries(formScheme).forEach(([key, value]) =&gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder." />
+<meta name="description" content="加查询条件是通过两个方法。
+ctx.AddDetailCriteriaPiplineItem(m.CriteriaHandler) ctx.AddCriteriaPiplineItem(m.CriteriaHandler) 一个给子表添加查询条件，一个给主表添加查询条件。
+只给子表加查询条件 trek/services/query-list/middlewares/entities/calendar-entry/index.go
+middlewareCreators := []query_list.QueryListMiddlewareCreator{ SetDetailQueryListCondition(func() string { return &#34;participantTypeId=&#39;WorkforceResource&#39;&#34; }), } SetDetailQueryListCondition的实现原理可以参考这个文件： trek/services/query-list/middlewares/entities/calendar-entry/detailQueryListCondition.go">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="查询条件" />
+<meta property="og:description" content="加查询条件是通过两个方法。
+ctx.AddDetailCriteriaPiplineItem(m.CriteriaHandler) ctx.AddCriteriaPiplineItem(m.CriteriaHandler) 一个给子表添加查询条件，一个给主表添加查询条件。
+只给子表加查询条件 trek/services/query-list/middlewares/entities/calendar-entry/index.go
+middlewareCreators := []query_list.QueryListMiddlewareCreator{ SetDetailQueryListCondition(func() string { return &#34;participantTypeId=&#39;WorkforceResource&#39;&#34; }), } SetDetailQueryListCondition的实现原理可以参考这个文件： trek/services/query-list/middlewares/entities/calendar-entry/detailQueryListCondition.go" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E6%8D%AE/" />
-<meta property="article:published_time" content="2021-04-13T21:07:54+08:00" />
-<meta property="article:modified_time" content="2021-04-13T21:07:54+08:00" />
-<title>自定义单据 | 新手村生存攻略</title>
+<meta property="og:url" content="https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6/" />
+<meta property="article:published_time" content="2021-12-23T15:38:47+08:00" />
+<meta property="article:modified_time" content="2021-12-23T15:38:47+08:00" />
+<title>查询条件 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
@@ -542,7 +546,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form-guide/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E6%8D%AE/" class="active">自定义单据</a>
+    <a href="/docs/form-guide/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E6%8D%AE/" class="">自定义单据</a>
   
 
         </li>
@@ -696,7 +700,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6/" class="">查询条件</a>
+    <a href="/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6/" class="active">查询条件</a>
   
 
         </li>
@@ -1286,7 +1290,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>自定义单据</strong>
+  <strong>查询条件</strong>
 
   <label for="toc-control">
     
@@ -1300,7 +1304,11 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#只给子表加查询条件">只给子表加查询条件</a></li>
+  </ul>
+</nav>
 
 
     </aside>
@@ -1315,70 +1323,22 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>自定义单据</h1>
+    <h1>查询条件</h1>
     <p>作者：王书硕</p>
-    <hr/><p>两部分组成：</p>
-<ol>
-<li>创建form</li>
-<li>form组件</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createForm</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">EntityForm</span> {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formScheme</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">closeDate</span><span style="color:#f92672">:</span> {
-      <span style="color:#a6e22e">type</span>: <span style="color:#66d9ef">FieldTypeEnum.Timestamp</span>,
-      <span style="color:#a6e22e">initState</span><span style="color:#f92672">:</span> {
-        <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;关闭日期&#39;</span>,
-        <span style="color:#a6e22e">required</span>: <span style="color:#66d9ef">false</span>,
-        <span style="color:#a6e22e">visible</span>: <span style="color:#66d9ef">false</span>,
-      },
-    },
-    <span style="color:#a6e22e">closedReason</span><span style="color:#f92672">:</span> {
-      <span style="color:#a6e22e">type</span>: <span style="color:#66d9ef">FieldTypeEnum.JsonObject</span>,
-      <span style="color:#a6e22e">referType</span>: <span style="color:#66d9ef">EN_BizReason</span>,
-      <span style="color:#a6e22e">initState</span><span style="color:#f92672">:</span> {
-        <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;关闭原因&#39;</span>,
-        <span style="color:#a6e22e">required</span>: <span style="color:#66d9ef">false</span>,
-        <span style="color:#a6e22e">visible</span>: <span style="color:#66d9ef">false</span>,
-      },
-    },
-    <span style="color:#a6e22e">closedReasonExplain</span><span style="color:#f92672">:</span> {
-      <span style="color:#a6e22e">type</span>: <span style="color:#66d9ef">FieldTypeEnum.String</span>,
-      <span style="color:#a6e22e">initState</span><span style="color:#f92672">:</span> {
-        <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;关闭原因说明&#39;</span>,
-        <span style="color:#a6e22e">required</span>: <span style="color:#66d9ef">false</span>,
-        <span style="color:#a6e22e">visible</span>: <span style="color:#66d9ef">false</span>,
-      },
-    },
-  };
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formBuilder</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormBuilder</span>();
-  Object.<span style="color:#a6e22e">entries</span>(<span style="color:#a6e22e">formScheme</span>).<span style="color:#a6e22e">forEach</span>(([<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>]) <span style="color:#f92672">=&gt;</span> {
-    <span style="color:#a6e22e">formBuilder</span>.<span style="color:#a6e22e">appendField</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">makeField</span>(<span style="color:#a6e22e">value</span>));
-  });
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">formBuilder</span>.<span style="color:#a6e22e">toForm</span>({});
+    <hr/><p>加查询条件是通过两个方法。</p>
+<pre><code>ctx.AddDetailCriteriaPiplineItem(m.CriteriaHandler)
+ctx.AddCriteriaPiplineItem(m.CriteriaHandler)
+</code></pre><p>一个给子表添加查询条件，一个给主表添加查询条件。</p>
+<h2 id="只给子表加查询条件">只给子表加查询条件</h2>
+<p>trek/services/query-list/middlewares/entities/calendar-entry/index.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">middlewareCreators</span> <span style="color:#f92672">:=</span> []<span style="color:#a6e22e">query_list</span>.<span style="color:#a6e22e">QueryListMiddlewareCreator</span>{
+    <span style="color:#a6e22e">SetDetailQueryListCondition</span>(<span style="color:#66d9ef">func</span>() <span style="color:#66d9ef">string</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;participantTypeId=&#39;WorkforceResource&#39;&#34;</span>
+    }),
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">CloseInfoForm</span>({ <span style="color:#a6e22e">form</span> }<span style="color:#f92672">:</span> { <span style="color:#a6e22e">form</span>: <span style="color:#66d9ef">EntityForm</span> }) {
-  <span style="color:#66d9ef">return</span> (
-    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MSTFormLayout</span> <span style="color:#a6e22e">form</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">form</span>} <span style="color:#a6e22e">columnSize</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">1</span>}<span style="color:#f92672">&gt;</span>
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MSTFormElement</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;closeDate&#39;</span>} <span style="color:#f92672">/&gt;</span>
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MSTFormElement</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;closedReason&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Observer</span><span style="color:#f92672">&gt;</span>
-          {() <span style="color:#f92672">=&gt;</span> (
-            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Refer</span>
-              <span style="color:#a6e22e">entityName</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">EN_BizReason</span>}
-              <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">value</span>[<span style="color:#e6db74">&#39;closedReason&#39;</span>]}
-              <span style="color:#a6e22e">isMulti</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">false</span>}
-              <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">value</span> <span style="color:#f92672">=&gt;</span> {
-                <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;closedReason&#39;</span>).<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">value</span>;
-              }}
-            <span style="color:#f92672">/&gt;</span>
-          )}
-        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/Observer&gt;</span>
-      <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/MSTFormElement&gt;</span>
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MSTFormElement</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;closedReasonExplain&#34;</span> <span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/MSTFormLayout&gt;</span>
-  );
-}
-</code></pre></div></article>
+</code></pre></div><p>SetDetailQueryListCondition的实现原理可以参考这个文件：
+<code>trek/services/query-list/middlewares/entities/calendar-entry/detailQueryListCondition.go</code></p>
+</article>
  
       
 
@@ -1410,7 +1370,11 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#只给子表加查询条件">只给子表加查询条件</a></li>
+  </ul>
+</nav>
 
  
     </aside>
