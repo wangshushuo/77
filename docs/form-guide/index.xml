@@ -6,7 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 23 Dec 2021 15:38:47 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 28 Dec 2021 15:38:47 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,16 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>FormBuilder</title>
+      <link>https://77doc.wss.cool/docs/form-guide/formbuilder/</link>
+      <pubDate>Tue, 28 Dec 2021 15:38:47 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/formbuilder/</guid>
+      <description>由两部分组成： 一个是form，一个是UI组件
+const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &amp;#39;关闭日期&amp;#39;, required: true, visible: false, }, validators: [validators.required] }, }; const createForm = (): EntityForm =&amp;gt; { const formBuilder = new FormBuilder(); Object.entries(this.formScheme).forEach(([key, value]) =&amp;gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder.toForm({ closeDate: this.getDefaultCloseDate(), }); } export function CloseForm(props) { return ( &amp;lt;MSTFormLayout form={props.form} columnSize={1}&amp;gt; &amp;lt;MSTFormElement path={&amp;#39;closeDate&amp;#39;} minDate={props.minCloseDate} /&amp;gt; &amp;lt;MSTFormElement path=&amp;#34;closedReason&amp;#34; criteriaStr={`objectBizActions.objectBizAction.objectType = &amp;#39;CalendarEntry&amp;#39; and objectBizActions.objectBizAction.action.id = &amp;#39;close&amp;#39; and isDisabled = false`} isMulti={false} contextOrgIds={props.</description>
     </item>
     
     <item>
