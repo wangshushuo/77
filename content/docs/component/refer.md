@@ -63,3 +63,42 @@ if (referParams.enableMultiInsert && this.presenter.api.isDetailInsertable(detai
     },
   });
 ```
+
+### suppressQuickCreate
+参照中默认显示了一个新建按钮，如果不需要，可以设置为true。
+
+## 高级参照多选
+
+```
+ return {
+    entityName: 'WorkforceResource',
+    criteriaStr: criteriaStr,
+    queryFields: ['id', 'code', 'name'],
+    enableMultiInsert: true,
+    advanceReferProps: {
+      criteriaStr: criteriaStr,
+      isMulti: true,
+      onChange: value => {
+        if (!value.length) return;
+        runInAction(() => {
+          const index = this.formPresenter.formController.getNotEmptyView(this.logicPath).length;
+          if (index !== 0) {
+            params.data.participantType = this.defaultParticipantType
+            params.data.participant = value[0]
+            params.data.participantWorkforceResource = value[0]
+          }
+          for (let i = index; i < value.length; i++) {
+            const participant = value[i];
+            const rowValue = {
+              participantType: this.defaultParticipantType,
+              participant,
+              participantWorkforceResource: participant,
+            }
+            this.bizFormPresenter.api.insertRow(this.logicPath, i, rowValue);
+          }
+        })
+      },
+    },
+  };
+}
+```
