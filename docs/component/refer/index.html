@@ -19,7 +19,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.4a404ecfe532c2df83c5f66811cffa4e0d46ee154da80142ca1232e60aec4782.js" integrity="sha256-SkBOz&#43;Uywt&#43;DxfZoEc/6Tg1G7hVNqAFCyhIy5grsR4I="></script>
+<script defer src="/en.search.min.20a290d173a04d0159849faca7e753b622899edcd6320b84b5302ccd13586a0a.js" integrity="sha256-IKKQ0XOgTQFZhJ&#43;sp&#43;dTtiKJntzWMguEtTAszRNYago="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1322,8 +1322,10 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#参数">参数</a>
       <ul>
         <li><a href="#enablemultiinsert">enableMultiInsert</a></li>
+        <li><a href="#suppressquickcreate">suppressQuickCreate</a></li>
       </ul>
     </li>
+    <li><a href="#高级参照多选">高级参照多选</a></li>
   </ul>
 </nav>
 
@@ -1391,7 +1393,41 @@ onMultiInsert: (
       );
     },
   });
-</code></pre></div></article>
+</code></pre></div><h3 id="suppressquickcreate">suppressQuickCreate</h3>
+<p>参照中默认显示了一个新建按钮，如果不需要，可以设置为true。</p>
+<h2 id="高级参照多选">高级参照多选</h2>
+<pre><code> return {
+    entityName: 'WorkforceResource',
+    criteriaStr: criteriaStr,
+    queryFields: ['id', 'code', 'name'],
+    enableMultiInsert: true,
+    advanceReferProps: {
+      criteriaStr: criteriaStr,
+      isMulti: true,
+      onChange: value =&gt; {
+        if (!value.length) return;
+        runInAction(() =&gt; {
+          const index = this.formPresenter.formController.getNotEmptyView(this.logicPath).length;
+          if (index !== 0) {
+            params.data.participantType = this.defaultParticipantType
+            params.data.participant = value[0]
+            params.data.participantWorkforceResource = value[0]
+          }
+          for (let i = index; i &lt; value.length; i++) {
+            const participant = value[i];
+            const rowValue = {
+              participantType: this.defaultParticipantType,
+              participant,
+              participantWorkforceResource: participant,
+            }
+            this.bizFormPresenter.api.insertRow(this.logicPath, i, rowValue);
+          }
+        })
+      },
+    },
+  };
+}
+</code></pre></article>
  
       
 
@@ -1433,8 +1469,10 @@ onMultiInsert: (
     <li><a href="#参数">参数</a>
       <ul>
         <li><a href="#enablemultiinsert">enableMultiInsert</a></li>
+        <li><a href="#suppressquickcreate">suppressQuickCreate</a></li>
       </ul>
     </li>
+    <li><a href="#高级参照多选">高级参照多选</a></li>
   </ul>
 </nav>
 
