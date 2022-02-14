@@ -73,13 +73,12 @@ protected getDataOptions(): DataOptions { return { entityCRUDCreator: (options: 
     </item>
     
     <item>
-      <title>视图</title>
+      <title>表单子表视图的使用方法</title>
       <link>https://77doc.wss.cool/docs/form-guide/%E8%A7%86%E5%9B%BE/</link>
       <pubDate>Thu, 08 Jul 2021 17:02:03 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E8%A7%86%E5%9B%BE/</guid>
-      <description>适用于表单。
- 主表presenter的getDataOptions  dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &amp;#39;viewName(视图名字)&amp;#39;, }, 子表presenter  // 视图的数据 private viewData = observable.array([]); // 查看态 onFormViewed(form: EntityForm&amp;lt;any&amp;gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态 onFormCreated(form: EntityForm&amp;lt;any&amp;gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&amp;gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &amp;#39;viewName&amp;#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&amp;gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&amp;gt; { const data = this.</description>
+      <description>主表在formPresenter的getDataOptions中声明给哪个子表设置视图  getDataOptions(): DataOptions { return { dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &amp;#39;viewName(视图名字)&amp;#39;, }, }; } 子表presenter，需要做下面几件事  // 视图的数据 private viewData = observable.array([]); // 查看态，渲染视图 onFormViewed(form: EntityForm&amp;lt;any&amp;gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态，渲染视图 onFormCreated(form: EntityForm&amp;lt;any&amp;gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&amp;gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &amp;#39;viewName&amp;#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&amp;gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&amp;gt; { const data = this.</description>
     </item>
     
     <item>

@@ -19,7 +19,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.20a290d173a04d0159849faca7e753b622899edcd6320b84b5302ccd13586a0a.js" integrity="sha256-IKKQ0XOgTQFZhJ&#43;sp&#43;dTtiKJntzWMguEtTAszRNYago="></script>
+<script defer src="/en.search.min.79dc709ad5b27e5dafc8ef9d66071cbaacb9f630b1309deabb1b160637168db2.js" integrity="sha256-edxwmtWyfl2vyO&#43;dZgccuqy59jCxMJ3quxsWBjcWjbI="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -514,7 +514,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form-guide/%E8%A7%86%E5%9B%BE/" class="">视图</a>
+    <a href="/docs/form-guide/%E8%A7%86%E5%9B%BE/" class="">表单子表视图的使用方法</a>
   
 
         </li>
@@ -1326,6 +1326,7 @@ https://github.com/alex-shpak/hugo-book
       </ul>
     </li>
     <li><a href="#高级参照多选">高级参照多选</a></li>
+    <li><a href="#忽略数据权限">忽略数据权限</a></li>
   </ul>
 </nav>
 
@@ -1396,6 +1397,7 @@ onMultiInsert: (
 </code></pre></div><h3 id="suppressquickcreate">suppressQuickCreate</h3>
 <p>参照中默认显示了一个新建按钮，如果不需要，可以设置为true。</p>
 <h2 id="高级参照多选">高级参照多选</h2>
+<p>针对高级参照的多选的一种实现：</p>
 <pre><code> return {
     entityName: 'WorkforceResource',
     criteriaStr: criteriaStr,
@@ -1427,6 +1429,29 @@ onMultiInsert: (
     },
   };
 }
+</code></pre><h2 id="忽略数据权限">忽略数据权限</h2>
+<p>针对<code>AgRefer</code>组件，3种场景</p>
+<ol>
+<li>ignoreAuth最简单的方式，但是可能有问题</li>
+</ol>
+<pre><code>&lt;AgRefer
+  ignoreAuth={true}
+/&gt;
+</code></pre><ol start="2">
+<li>如果第一种方式不行，可以用这种方式。</li>
+</ol>
+<pre><code>&lt;AgRefer
+  scenarioContextObject={'ignoreDataAuth'}
+  scenarioActionId={'view'}
+/&gt;
+</code></pre><ol start="3">
+<li>如果需要忽略组织隔离，可以加上<code>isDisabledOrgScope={true}</code></li>
+</ol>
+<pre><code>&lt;AgRefer
+  isDisabledOrgScope={true}
+  scenarioContextObject={'ignoreDataAuth'}
+  scenarioActionId={'view'}
+/&gt;
 </code></pre></article>
  
       
@@ -1473,6 +1498,7 @@ onMultiInsert: (
       </ul>
     </li>
     <li><a href="#高级参照多选">高级参照多选</a></li>
+    <li><a href="#忽略数据权限">忽略数据权限</a></li>
   </ul>
 </nav>
 

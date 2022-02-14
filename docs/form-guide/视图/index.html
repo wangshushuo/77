@@ -4,20 +4,18 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="适用于表单。
- 主表presenter的getDataOptions  dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &#39;viewName(视图名字)&#39;, }, 子表presenter  // 视图的数据 private viewData = observable.array([]); // 查看态 onFormViewed(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态 onFormCreated(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &#39;viewName&#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&gt; { const data = this.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="视图" />
-<meta property="og:description" content="适用于表单。
- 主表presenter的getDataOptions  dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &#39;viewName(视图名字)&#39;, }, 子表presenter  // 视图的数据 private viewData = observable.array([]); // 查看态 onFormViewed(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态 onFormCreated(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &#39;viewName&#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&gt; { const data = this." />
+<meta name="description" content="主表在formPresenter的getDataOptions中声明给哪个子表设置视图  getDataOptions(): DataOptions { return { dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &#39;viewName(视图名字)&#39;, }, }; } 子表presenter，需要做下面几件事  // 视图的数据 private viewData = observable.array([]); // 查看态，渲染视图 onFormViewed(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态，渲染视图 onFormCreated(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &#39;viewName&#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&gt; { const data = this.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="表单子表视图的使用方法" />
+<meta property="og:description" content="主表在formPresenter的getDataOptions中声明给哪个子表设置视图  getDataOptions(): DataOptions { return { dynamicViews: { [F_BudgetAccount_refDocMappings(子表名字)]: &#39;viewName(视图名字)&#39;, }, }; } 子表presenter，需要做下面几件事  // 视图的数据 private viewData = observable.array([]); // 查看态，渲染视图 onFormViewed(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } // 编辑态，渲染视图 onFormCreated(form: EntityForm&lt;any&gt;, disposers: IDisposer[]) { this.addView(disposers) } addView = (disposers) =&gt; { this.formPresenter.formController.addDynamicView( this.logicPath, &#39;viewName&#39;, this.viewData, ) disposers.push( // 监听子表的数据变化  reaction( () =&gt; { return this.form.select(this.logicPath).value.slice(); }, this.updateData, { fireImmediately: true }, ), ); } // 将子表数据进行处理后赋值给视图数据 updateData = () =&gt; { const data = this." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/%E8%A7%86%E5%9B%BE/" />
 <meta property="article:published_time" content="2021-07-08T17:02:03+08:00" />
 <meta property="article:modified_time" content="2021-07-08T17:02:03+08:00" />
-<title>视图 | 新手村生存攻略</title>
+<title>表单子表视图的使用方法 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.20a290d173a04d0159849faca7e753b622899edcd6320b84b5302ccd13586a0a.js" integrity="sha256-IKKQ0XOgTQFZhJ&#43;sp&#43;dTtiKJntzWMguEtTAszRNYago="></script>
+<script defer src="/en.search.min.79dc709ad5b27e5dafc8ef9d66071cbaacb9f630b1309deabb1b160637168db2.js" integrity="sha256-edxwmtWyfl2vyO&#43;dZgccuqy59jCxMJ3quxsWBjcWjbI="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -512,7 +510,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form-guide/%E8%A7%86%E5%9B%BE/" class="active">视图</a>
+    <a href="/docs/form-guide/%E8%A7%86%E5%9B%BE/" class="active">表单子表视图的使用方法</a>
   
 
         </li>
@@ -1296,7 +1294,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>视图</strong>
+  <strong>表单子表视图的使用方法</strong>
 
   <label for="toc-control">
     
@@ -1310,7 +1308,11 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#注意事项">注意事项</a></li>
+  </ul>
+</nav>
 
 
     </aside>
@@ -1325,27 +1327,31 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>视图</h1>
+    <h1>表单子表视图的使用方法</h1>
     <p>作者：</p>
-    <hr/><p>适用于表单。</p>
-<ol>
-<li>主表presenter的getDataOptions</li>
+    <hr/><ol>
+<li>主表在formPresenter的getDataOptions中声明给哪个子表设置视图</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">dynamicViews</span><span style="color:#f92672">:</span> {
-  [<span style="color:#a6e22e">F_BudgetAccount_refDocMappings</span>(<span style="color:#960050;background-color:#1e0010">子表名字</span>)]<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;viewName(视图名字)&#39;</span>,
-},
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">getDataOptions</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">DataOptions</span> {
+  <span style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">dynamicViews</span><span style="color:#f92672">:</span> {
+      [<span style="color:#a6e22e">F_BudgetAccount_refDocMappings</span>(<span style="color:#960050;background-color:#1e0010">子表名字</span>)]<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;viewName(视图名字)&#39;</span>,
+    },
+  };
+}
+
 </code></pre></div><ol start="2">
-<li>子表presenter</li>
+<li>子表presenter，需要做下面几件事</li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// 视图的数据
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">viewData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">observable</span>.<span style="color:#a6e22e">array</span>([]);
 
-<span style="color:#75715e">// 查看态
+<span style="color:#75715e">// 查看态，渲染视图
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">onFormViewed</span>(<span style="color:#a6e22e">form</span>: <span style="color:#66d9ef">EntityForm</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>, <span style="color:#a6e22e">disposers</span>: <span style="color:#66d9ef">IDisposer</span>[]) {
   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addView</span>(<span style="color:#a6e22e">disposers</span>)
 }
 
-<span style="color:#75715e">// 编辑态
+<span style="color:#75715e">// 编辑态，渲染视图
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">onFormCreated</span>(<span style="color:#a6e22e">form</span>: <span style="color:#66d9ef">EntityForm</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>, <span style="color:#a6e22e">disposers</span>: <span style="color:#66d9ef">IDisposer</span>[]) {
   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addView</span>(<span style="color:#a6e22e">disposers</span>)
 }
@@ -1374,7 +1380,11 @@ https://github.com/alex-shpak/hugo-book
   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">logicPath</span>).<span style="color:#a6e22e">value</span>
   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">viewData</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">filter</span>());
 }
-</code></pre></div></article>
+</code></pre></div><h2 id="注意事项">注意事项</h2>
+<ol>
+<li><code>this.viewData.replace()</code>这里要求参数是js原生数据类型，不能是observable。</li>
+</ol>
+</article>
  
       
 
@@ -1406,7 +1416,11 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#注意事项">注意事项</a></li>
+  </ul>
+</nav>
 
  
     </aside>
