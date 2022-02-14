@@ -69,6 +69,8 @@ if (referParams.enableMultiInsert && this.presenter.api.isDetailInsertable(detai
 
 ## 高级参照多选
 
+针对高级参照的多选的一种实现：
+
 ```
  return {
     entityName: 'WorkforceResource',
@@ -101,4 +103,32 @@ if (referParams.enableMultiInsert && this.presenter.api.isDetailInsertable(detai
     },
   };
 }
+```
+
+## 忽略数据权限
+
+针对`AgRefer`组件，3种场景
+
+1. ignoreAuth最简单的方式，但是可能有问题
+```
+<AgRefer
+  ignoreAuth={true}
+/>
+```
+
+2. 如果第一种方式不行，可以用这种方式。
+```
+<AgRefer
+  scenarioContextObject={'ignoreDataAuth'}
+  scenarioActionId={'view'}
+/>
+```
+
+3. 如果需要忽略组织隔离，可以加上`isDisabledOrgScope={true}`
+```
+<AgRefer
+  isDisabledOrgScope={true}
+  scenarioContextObject={'ignoreDataAuth'}
+  scenarioActionId={'view'}
+/>
 ```
