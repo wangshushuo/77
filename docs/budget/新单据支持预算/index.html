@@ -4,18 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="apps/link/src/main/index.tsx 这是项目的入口。
-（尝试）用下面的代码直接渲染表单页面。
-const search = &#39;?billTypeId=ER3CCW52BV70002&#39; const queryParams: any = queryString.parse(search.replace(&#39;?&#39;, &#39;&#39;)); const fromId = queryParams[&#39;fromId&#39;] || &#39;&#39;; const props = { mode: &#39;Edit&#39;, passParams: {}, billTypeId: queryParams[&#39;billTypeId&#39;], businessTypeId: queryParams[&#39;businessTypeId&#39;], templateId: queryParams[&#39;templateId&#39;], contextOrgIds: queryParams[&#39;contextOrgIds&#39;], needOrgFieldStateControl: queryParams[&#39;needOrgFieldStateControl&#39;] || &#39;&#39;, fromEntityName: queryParams[&#39;fromEntityName&#39;], fromIds: !fromId ? [] : fromId.split(&#39;,&#39;) }; const presenter = new CalendarEntryFormPresenter({ ...props, }); const app = (&lt;CalendarForm // componentRef={ref}  presenter={presenter} /&gt;) const render = Component =&gt; { ReactDOM.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="尝试加速编译" />
-<meta property="og:description" content="apps/link/src/main/index.tsx 这是项目的入口。
-（尝试）用下面的代码直接渲染表单页面。
-const search = &#39;?billTypeId=ER3CCW52BV70002&#39; const queryParams: any = queryString.parse(search.replace(&#39;?&#39;, &#39;&#39;)); const fromId = queryParams[&#39;fromId&#39;] || &#39;&#39;; const props = { mode: &#39;Edit&#39;, passParams: {}, billTypeId: queryParams[&#39;billTypeId&#39;], businessTypeId: queryParams[&#39;businessTypeId&#39;], templateId: queryParams[&#39;templateId&#39;], contextOrgIds: queryParams[&#39;contextOrgIds&#39;], needOrgFieldStateControl: queryParams[&#39;needOrgFieldStateControl&#39;] || &#39;&#39;, fromEntityName: queryParams[&#39;fromEntityName&#39;], fromIds: !fromId ? [] : fromId.split(&#39;,&#39;) }; const presenter = new CalendarEntryFormPresenter({ ...props, }); const app = (&lt;CalendarForm // componentRef={ref}  presenter={presenter} /&gt;) const render = Component =&gt; { ReactDOM." />
+<meta name="description" content="受控单据设置 表格中的选项由后端负责控制。说明文字中加新的单据类型名字，要在文件 apps/link/src/main/screens/projects/budget/budget-control/list/BudgetSourceBillList.tsx 的 490&#43;行处添加。
+表单中的预算项目 表单的中间件中加budgetEffect的中间件 trek/services/form-services/middlewares/entities/purchase-invoice/index.go
+func GetMiddlewareCreators() []form_context.FormMiddlewareCreator { middlewareCreators := []form_context.FormMiddlewareCreator{ budget_effects.NewBudgetEffectsMiddleware(), } return middlewareCreators } 如果这个单据没有中间件，需要我们注册一个。 trek/services/form-services/middlewares/entities/index.go
+func initMiddlewares() { entitiesMiddlewares[gen_en.EN_PurchaseInvoice] = purchase_invoice.GetMiddlewareCreators() } 维度取值 apps/link/src/main/screens/projects/budget/budget-model/mapping/base/TreeData.ts">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="新单据支持预算" />
+<meta property="og:description" content="受控单据设置 表格中的选项由后端负责控制。说明文字中加新的单据类型名字，要在文件 apps/link/src/main/screens/projects/budget/budget-control/list/BudgetSourceBillList.tsx 的 490&#43;行处添加。
+表单中的预算项目 表单的中间件中加budgetEffect的中间件 trek/services/form-services/middlewares/entities/purchase-invoice/index.go
+func GetMiddlewareCreators() []form_context.FormMiddlewareCreator { middlewareCreators := []form_context.FormMiddlewareCreator{ budget_effects.NewBudgetEffectsMiddleware(), } return middlewareCreators } 如果这个单据没有中间件，需要我们注册一个。 trek/services/form-services/middlewares/entities/index.go
+func initMiddlewares() { entitiesMiddlewares[gen_en.EN_PurchaseInvoice] = purchase_invoice.GetMiddlewareCreators() } 维度取值 apps/link/src/main/screens/projects/budget/budget-model/mapping/base/TreeData.ts" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/other/%E5%B0%9D%E8%AF%95%E5%8A%A0%E9%80%9F%E7%BC%96%E8%AF%91/" />
-<meta property="article:published_time" content="2021-11-20T00:47:22+08:00" />
-<meta property="article:modified_time" content="2021-11-20T00:47:22+08:00" />
-<title>尝试加速编译 | 新手村生存攻略</title>
+<meta property="og:url" content="https://77doc.wss.cool/docs/budget/%E6%96%B0%E5%8D%95%E6%8D%AE%E6%94%AF%E6%8C%81%E9%A2%84%E7%AE%97/" />
+<meta property="article:published_time" content="2022-02-14T10:51:25+08:00" />
+<meta property="article:modified_time" content="2022-02-14T10:51:25+08:00" />
+<title>新单据支持预算 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
@@ -149,7 +151,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/budget/%E6%96%B0%E5%8D%95%E6%8D%AE%E6%94%AF%E6%8C%81%E9%A2%84%E7%AE%97/" class="">新单据支持预算</a>
+    <a href="/docs/budget/%E6%96%B0%E5%8D%95%E6%8D%AE%E6%94%AF%E6%8C%81%E9%A2%84%E7%AE%97/" class="active">新单据支持预算</a>
   
 
         </li>
@@ -1188,7 +1190,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/other/%E5%B0%9D%E8%AF%95%E5%8A%A0%E9%80%9F%E7%BC%96%E8%AF%91/" class="active">尝试加速编译</a>
+    <a href="/docs/other/%E5%B0%9D%E8%AF%95%E5%8A%A0%E9%80%9F%E7%BC%96%E8%AF%91/" class="">尝试加速编译</a>
   
 
         </li>
@@ -1329,7 +1331,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>尝试加速编译</strong>
+  <strong>新单据支持预算</strong>
 
   <label for="toc-control">
     
@@ -1343,7 +1345,13 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#受控单据设置">受控单据设置</a></li>
+    <li><a href="#表单中的预算项目">表单中的预算项目</a></li>
+    <li><a href="#维度取值">维度取值</a></li>
+  </ul>
+</nav>
 
 
     </aside>
@@ -1358,42 +1366,28 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>尝试加速编译</h1>
+    <h1>新单据支持预算</h1>
     <p>作者：</p>
-    <hr/><p><code>apps/link/src/main/index.tsx</code> 这是项目的入口。</p>
-<p>（尝试）用下面的代码直接渲染表单页面。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">search</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;?billTypeId=ER3CCW52BV70002&#39;</span>
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">queryParams</span>: <span style="color:#66d9ef">any</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">queryString</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">search</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#39;?&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>));
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fromId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">queryParams</span>[<span style="color:#e6db74">&#39;fromId&#39;</span>] <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;&#39;</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">props</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Edit&#39;</span>,
-  <span style="color:#a6e22e">passParams</span><span style="color:#f92672">:</span> {},
-  <span style="color:#a6e22e">billTypeId</span>: <span style="color:#66d9ef">queryParams</span>[<span style="color:#e6db74">&#39;billTypeId&#39;</span>],
-  <span style="color:#a6e22e">businessTypeId</span>: <span style="color:#66d9ef">queryParams</span>[<span style="color:#e6db74">&#39;businessTypeId&#39;</span>],
-  <span style="color:#a6e22e">templateId</span>: <span style="color:#66d9ef">queryParams</span>[<span style="color:#e6db74">&#39;templateId&#39;</span>],
-  <span style="color:#a6e22e">contextOrgIds</span>: <span style="color:#66d9ef">queryParams</span>[<span style="color:#e6db74">&#39;contextOrgIds&#39;</span>],
-  <span style="color:#a6e22e">needOrgFieldStateControl</span>: <span style="color:#66d9ef">queryParams</span>[<span style="color:#e6db74">&#39;needOrgFieldStateControl&#39;</span>] <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;&#39;</span>,
-  <span style="color:#a6e22e">fromEntityName</span>: <span style="color:#66d9ef">queryParams</span>[<span style="color:#e6db74">&#39;fromEntityName&#39;</span>],
-  <span style="color:#a6e22e">fromIds</span><span style="color:#f92672">:</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">fromId</span> <span style="color:#f92672">?</span> [] <span style="color:#f92672">:</span> <span style="color:#a6e22e">fromId</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;,&#39;</span>)
-};
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">presenter</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CalendarEntryFormPresenter</span>({
-  ...<span style="color:#a6e22e">props</span>,
-});
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> (<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">CalendarForm</span>
-  <span style="color:#75715e">// componentRef={ref}
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">presenter</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">presenter</span>}
-<span style="color:#960050;background-color:#1e0010">/&gt;)</span>
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">render</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Component</span> <span style="color:#f92672">=&gt;</span> {
-  <span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
-    <span style="color:#a6e22e">app</span>
-    <span style="color:#75715e">// &lt;Component client={client} store={store} metadata={metadata} /&gt;
-</span><span style="color:#75715e"></span>    ,
-    document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;root&#39;</span>)<span style="color:#f92672">!</span>,
-  );
-};
+    <hr/><h2 id="受控单据设置">受控单据设置</h2>
+<p>表格中的选项由后端负责控制。说明文字中加新的单据类型名字，要在文件 apps/link/src/main/screens/projects/budget/budget-control/list/BudgetSourceBillList.tsx 的 490+行处添加。</p>
+<h2 id="表单中的预算项目">表单中的预算项目</h2>
+<p>表单的中间件中加budgetEffect的中间件
+trek/services/form-services/middlewares/entities/purchase-invoice/index.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetMiddlewareCreators</span>() []<span style="color:#a6e22e">form_context</span>.<span style="color:#a6e22e">FormMiddlewareCreator</span> {
+	<span style="color:#a6e22e">middlewareCreators</span> <span style="color:#f92672">:=</span> []<span style="color:#a6e22e">form_context</span>.<span style="color:#a6e22e">FormMiddlewareCreator</span>{
+		<span style="color:#a6e22e">budget_effects</span>.<span style="color:#a6e22e">NewBudgetEffectsMiddleware</span>(),
+	}
 
-<span style="color:#a6e22e">render</span>(<span style="color:#a6e22e">App</span>);
-</code></pre></div></article>
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">middlewareCreators</span>
+}
+</code></pre></div><p>如果这个单据没有中间件，需要我们注册一个。
+trek/services/form-services/middlewares/entities/index.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">initMiddlewares</span>() {
+  <span style="color:#a6e22e">entitiesMiddlewares</span>[<span style="color:#a6e22e">gen_en</span>.<span style="color:#a6e22e">EN_PurchaseInvoice</span>] = <span style="color:#a6e22e">purchase_invoice</span>.<span style="color:#a6e22e">GetMiddlewareCreators</span>()
+}
+</code></pre></div><h2 id="维度取值">维度取值</h2>
+<p>apps/link/src/main/screens/projects/budget/budget-model/mapping/base/TreeData.ts</p>
+</article>
  
       
 
@@ -1425,7 +1419,13 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#受控单据设置">受控单据设置</a></li>
+    <li><a href="#表单中的预算项目">表单中的预算项目</a></li>
+    <li><a href="#维度取值">维度取值</a></li>
+  </ul>
+</nav>
 
  
     </aside>
