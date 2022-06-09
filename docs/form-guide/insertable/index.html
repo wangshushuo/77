@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="class x extends EasyBizFormPresenter{ protected getOtherFormOptions(): IBizFormOptions { return { gridOptions: { [&#39;subscriptions&#39;]: { indicateColumnOption: { // insertable: ,  isRowInsertable: (rowIndex) =&gt; { if (!this.form || !this.form.select(&#39;createdUser&#39;) || !this.form.select(&#39;createdUser&#39;).value) return true; return this.form.select(&#39;createdUser&#39;).value.id === oc(this.userInfo).id(&#39;&#39;) } }, }, }, } } } ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Insertable" />
+<meta property="og:description" content="class x extends EasyBizFormPresenter{ protected getOtherFormOptions(): IBizFormOptions { return { gridOptions: { [&#39;subscriptions&#39;]: { indicateColumnOption: { // insertable: ,  isRowInsertable: (rowIndex) =&gt; { if (!this.form || !this.form.select(&#39;createdUser&#39;) || !this.form.select(&#39;createdUser&#39;).value) return true; return this.form.select(&#39;createdUser&#39;).value.id === oc(this.userInfo).id(&#39;&#39;) } }, }, }, } } } " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/insertable/" />
+<meta property="article:published_time" content="2022-06-08T15:54:27+08:00" />
+<meta property="article:modified_time" content="2022-06-08T15:54:27+08:00" />
+<title>Insertable | 新手村生存攻略</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
+<script defer src="/en.search.min.a5e1a9ea378bba9a0f93959fe5b1ce999a311b6fbfddc1d571ea941f416402fd.js" integrity="sha256-peGp6jeLupoPk5Wf5bHOmZoxG2&#43;/3cHVceqUH0FkAv0="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>新手村生存攻略</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <span>设计原则</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/0.designprinciples/%E5%B0%81%E8%A3%85%E5%8F%98%E5%8C%96/" class="">封装变化</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>陷阱</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/1.%E9%99%B7%E9%98%B1/%E9%99%B7%E9%98%B1/" class="">陷阱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>预算</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/budget/%E6%96%B0%E5%8D%95%E6%8D%AE%E6%94%AF%E6%8C%81%E9%A2%84%E7%AE%97/" class="">新单据支持预算</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/budget/%E7%BC%96%E5%88%B6%E6%96%B9%E6%A1%88-%E8%B0%83%E8%AF%95/" class="">新单据支持预算</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>前端框架基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/%E5%88%9D%E5%85%A5%E6%96%B0%E6%89%8B%E6%9D%91/" class="">初入新手村</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/entity/" class="">模型、entity与元数据</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/base/%E9%A2%84%E7%BD%AE%E6%95%B0%E6%8D%AE/" class="">预置数据</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>通用功能攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/gql/" class="">GQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/cloumndef/" class="">CloumnDef</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E7%BA%BF%E4%B8%8A%E8%B0%83%E8%AF%95/" class="">线上调试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/entitydatatree/" class="">EntityDataTree</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/gridrowaction%E7%9A%84popover/" class="">GridRowAction的popover</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%8F%90%E7%A4%BA/" class="">提示</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E5%B8%81%E7%A7%8D%E7%B2%BE%E5%BA%A6/" class="">币种精度</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E5%85%A8%E8%B2%8C%E7%BB%9F%E8%AE%A1%E5%8A%A0%E6%8C%87%E6%A0%87/" class="">全貌统计加指标</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%A8%A1%E5%9D%97%E5%90%AF%E7%94%A8/" class="">模块启用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/gen/" class="">Gen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0/" class="">获取系统参数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/" class="">获取业务规则</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E5%8A%9F%E8%83%BD%E6%9D%83%E9%99%90/" class="">功能权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%8E%A5%E5%8F%A3/" class="">后端的接口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90/" class="">数据权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/entitycrud/" class="">脱离form对entity进行crud</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/what-is-bizform/" class="">什么是BizForm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="">BizForm的组成部分</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/%E5%AD%90%E8%A1%A8/" class="">子表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/mstform/" class="">MSTForm-Form状态管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form/%E5%AD%90%E8%A1%A8rowactions%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" class="">子表RowActions问题排查</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>BizForm实用攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/" class="">打印模板</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/insertable/" class="active">Insertable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/formbuilder/" class="">FormBuilder</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E8%80%81%E5%8F%98%E6%9B%B4/" class="">老变更</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/bizformpresenter/" class="">BizFormPresenter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/entityformgrid/" class="">EntityFormGrid</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%8D%95%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">单据类型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E8%A7%86%E5%9B%BE/" class="">表单子表视图的使用方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%A4%96%E9%94%AE%E7%A9%BF%E9%80%8F%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/" class="">外键穿透的自定义点击事件</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%9C%BA%E6%99%AF%E5%80%BCreaction/" class="">场景值reaction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E8%A1%A8%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B8%B2%E6%9F%93/" class="">表头字段自定义渲染</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E6%8D%AE/" class="">自定义单据</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E7%BC%96%E8%BE%91%E6%88%96%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%97%E7%B2%BE%E5%BA%A6/" class="">编辑或显示数字精度</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E6%B0%B4%E5%8D%B0/" class="">水印</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/value/" class="">Value</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/allpaths/" class="">AllPaths</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%8D%95%E6%8D%AE%E7%8A%B6%E6%80%81/" class="">单据状态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/%E5%88%A0%E9%99%A4%E8%A1%8C/" class="">删除行</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/init-form/" class="">创建form时带默认数据</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>Menu Button</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-button/menu-%E4%BF%AE%E6%94%B9button/" class="">修改Menu中的Button</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/form-guide/menu-button/menu-%E6%96%B0%E5%BB%BAbutton/" class="">新建一个MenuButton</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案攻略</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E7%A9%BF%E9%80%8F/" class="">穿透</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>查询方案</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/go%E5%A4%84%E7%90%86%E5%8F%82%E6%95%B0/" class="">Go处理参数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/" class="">查询项的默认值</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/%E6%9F%A5%E8%AF%A2%E9%A1%B9/" class="">查询项</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6/" class="">查询条件</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E6%8C%89%E9%92%AE%E6%9D%83%E9%99%90/" class="">按钮权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/queryfield/" class="">QueryField</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E8%A1%8C%E6%8C%89%E9%92%AErowaction/" class="">行按钮rowAction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E9%80%89%E4%B8%AD%E8%A1%8C/" class="">选中行</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/" class="">顶部按钮ToolbarAction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E5%88%B7%E6%96%B0%E5%88%97%E8%A1%A8/" class="">刷新列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>虚拟字段</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/" class="">查询方案</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%88%97%E8%A1%A8/" class="">列表中显示虚拟字段列</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/list-guide/%E8%99%9A%E6%8B%9F%E5%AD%97%E6%AE%B5/%E5%AF%BC%E5%87%BA/" class="">导出</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>多组织</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/multi-org/%E5%9D%91/" class="">坑</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>列表方案基础</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>组件</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/advancedialog/" class="">AdvanceDialog</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/refer/" class="">Refer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/tablist/" class="">Tab List</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/component/grid/" class="">Grid</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>设计</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/design/%E5%A6%82%E4%BD%95%E5%81%9A%E8%AF%A6%E8%AE%BE/" class="">如何做详设</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>Go</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/go/%E6%8E%A5%E5%8F%A3%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0/" class="">接口中获取参数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/go/%E6%98%AF%E5%90%A6%E5%90%AF%E7%94%A8%E5%A4%9A%E7%BB%84%E7%BB%87/" class="">是否启用多组织</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/go/fetch-gql/" class="">Fetch Gql</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>H5/小程序</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E7%99%BB%E5%BD%95/" class="">登录</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%BA%94%E7%94%A8%E4%B8%AD%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/" class="">应用中显示所有模块</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%AE%A1%E6%89%B9%E6%97%B6%E4%BF%AE%E6%94%B9/" class="">审批时修改</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E6%9B%B4%E5%A4%9A%E6%8C%89%E9%92%AE/" class="">更多按钮</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/h5/%E5%AD%90%E8%A1%A8%E5%B1%95%E7%A4%BA%E6%96%B9%E5%BC%8F/" class="">子表展示方式</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/%E8%B7%AF%E7%94%B1/" class="">路由</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>问题记录</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>其他</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/other/%E5%B0%9D%E8%AF%95%E5%8A%A0%E9%80%9F%E7%BC%96%E8%AF%91/" class="">尝试加速编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/other/%E6%96%B0%E5%BB%BA%E7%A7%9F%E6%88%B7/" class="">新建开发用租户</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/buttons/%E8%A1%A8%E5%8D%95%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/" class="">表单顶部按钮</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/%E9%A2%84%E7%BD%AE%E8%8F%9C%E5%8D%95/" class="">预置菜单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99%E6%95%B0%E5%AD%97%E5%8D%95%E5%85%83%E6%A0%BC%E7%82%B9%E5%87%BB%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/" class="">业务规则数字单元格点击错误排查</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>报表</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/docs/report/%E6%9F%A5%E8%AF%A2%E9%A1%B9/" class="">查询项</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/debug/" class="">Debug</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Insertable</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents"></nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown">
+    
+    
+      
+    
+    <h1>Insertable</h1>
+    <p>作者：</p>
+    <hr/><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">x</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">EasyBizFormPresenter</span>{
+  <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">getOtherFormOptions</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">IBizFormOptions</span> {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">gridOptions</span><span style="color:#f92672">:</span> {
+        [<span style="color:#e6db74">&#39;subscriptions&#39;</span>]<span style="color:#f92672">:</span> {
+          <span style="color:#a6e22e">indicateColumnOption</span><span style="color:#f92672">:</span> {
+            <span style="color:#75715e">// insertable: ,
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">isRowInsertable</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">rowIndex</span>) <span style="color:#f92672">=&gt;</span> {
+              <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;createdUser&#39;</span>) <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;createdUser&#39;</span>).<span style="color:#a6e22e">value</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+              <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;createdUser&#39;</span>).<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">oc</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userInfo</span>).<span style="color:#a6e22e">id</span>(<span style="color:#e6db74">&#39;&#39;</span>)
+            }
+          },
+        },
+      },
+    }
+  }
+}
+ 
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents"></nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

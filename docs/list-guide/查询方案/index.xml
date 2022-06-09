@@ -6,10 +6,22 @@
     <description>Recent content in 查询方案 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Mar 2021 14:29:52 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 18 May 2022 23:49:05 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go处理参数</title>
+      <link>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/go%E5%A4%84%E7%90%86%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Wed, 18 May 2022 23:49:05 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/list-guide/%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88/go%E5%A4%84%E7%90%86%E5%8F%82%E6%95%B0/</guid>
+      <description>trek/services/query-list/middlewares/entities/workforceResource/resource-load-query.go
+中间件会处理前端传过来的查询条件，形成一个可以直接用的规则语句，它又会进入data-provider中。
+option.CriteriaStr就是最终的规则语句，可以直接传给后端或者查gql用。
+还有各个查询条件的原始数据结构。</description>
+    </item>
     
     <item>
       <title>查询项的默认值</title>

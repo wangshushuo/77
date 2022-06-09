@@ -6,7 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 28 Dec 2021 15:38:47 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jun 2022 15:54:27 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>Insertable</title>
+      <link>https://77doc.wss.cool/docs/form-guide/insertable/</link>
+      <pubDate>Wed, 08 Jun 2022 15:54:27 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/insertable/</guid>
+      <description>class x extends EasyBizFormPresenter{ protected getOtherFormOptions(): IBizFormOptions { return { gridOptions: { [&amp;#39;subscriptions&amp;#39;]: { indicateColumnOption: { // insertable: ,  isRowInsertable: (rowIndex) =&amp;gt; { if (!this.form || !this.form.select(&amp;#39;createdUser&amp;#39;) || !this.form.select(&amp;#39;createdUser&amp;#39;).value) return true; return this.form.select(&amp;#39;createdUser&amp;#39;).value.id === oc(this.userInfo).id(&amp;#39;&amp;#39;) } }, }, }, } } } </description>
     </item>
     
     <item>

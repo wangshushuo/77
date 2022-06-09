@@ -6,10 +6,19 @@
     <description>Recent content in Docs on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Feb 2022 10:51:25 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jun 2022 15:54:27 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>路由</title>
+      <link>https://77doc.wss.cool/docs/%E8%B7%AF%E7%94%B1/</link>
+      <pubDate>Thu, 12 May 2022 20:00:53 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/%E8%B7%AF%E7%94%B1/</guid>
+      <description>表单 const hash = appRouterHashManager.generateHash(EN_WorkforceResource, PageModeEnum.Form, { id: props.data.id, mode: BizFormModeEnum.View, }); proxyHistory.push(hash, { onSuccess: () =&amp;gt; { console.log(111, &amp;#39;onSuccess&amp;#39;); }, }); 列表 /** * ListSolution 的透传支持传递查询条件 */ export interface IListHashOptions&amp;lt;T = extraParamsType&amp;gt; { groupName: string; queryItems?: IQueryItem[]; criteriaStr?: string; queryStringParams?: { [key: string]: string }; queryCriterias?: IQueryCriteria[]; queryListDefId?: string; listColumnsDefId?: string; autoload?: boolean; isOldWay?: boolean; extraParams?: T; } // 列表，只跳转 const hash = appRouterHashManager.generateHash(EN_SettlementMethod, PageModeEnum.List); // 列表，指定列表方案 const hash = appRouterHashManager.</description>
+    </item>
     
     <item>
       <title>表单顶部按钮</title>
