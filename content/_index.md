@@ -3,21 +3,43 @@ bookFlatSection: true
 title: 77前端--新手村生存攻略
 ---
 
-<span style="font-size: 20vh;line-height: 1.2;">🍻</span>
-<hr />
-贡献指南：
-
-0. github仓库地址： [https://github.com/wangshushuo/77](https://github.com/wangshushuo/77)
-
-1. 克隆项目：`git clone --recurse-submodules https://github.com/wangshushuo/77.git`
-
-2. 创建文档：
-```
----
-title: "标题"
-author: 
----
-正文markdown
-```
-
-3. 不嫌麻烦的话，可以装一个go-hugo
+- 表单
+  - 顶部按钮
+    - 添加自定义联查按钮
+  - 水印
+  - 底部左侧按钮
+  - 底部右侧按钮
+  - 查看态自定义穿透事件
+  - 字段参数
+    - 参照
+      - 权限
+      - 显示停用
+      - 快捷创建
+      - 条件
+      - 高级参照
+        - 多选并添加多行
+    - 数字精度
+  - 主表
+    - 字段自定义渲染
+  - 子表
+    - 子表头部按钮
+    - 行按钮
+    - 自定义子表
+    - 视图
+  - 自定义section
+- 列表
+  - 查询虚拟字段
+    - 添加
+  - 主表/子表criteriaStr
+  - 列表显示虚拟字段
+    - 添加
+    - 导出
+  - 顶部按钮
+  - 行按钮
+- 通用
+  - go
+    - 发起请求
+    - 并行
+    - 网络请求接口
+- 审批流
+  - 允许行编辑
