@@ -6,7 +6,7 @@
     <description>Recent content in BizForm实用攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 08 Jun 2022 15:54:27 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jun 2022 14:40:58 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/form-guide/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,21 @@
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>Map</title>
+      <link>https://77doc.wss.cool/docs/form-guide/map/</link>
+      <pubDate>Wed, 15 Jun 2022 14:40:58 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/map/</guid>
+      <description>表单， 查看态， 水印，自定义水印， 顶部按钮：自定义联查，导出打印，自定义， 字段穿透的自定义事件，
+编辑态， 界面，数据， 单据类型， 业务规则， 模板， 字段， 子表， 子表字段， 行操作按钮，自定义， 视图 变更， 新变更（审批） 老变更
+底部按钮：选单，取消，保存，提交，自定义
+编制方案，预算项目，指标设置， 预算单，控制规则，受控单据设置， 操作
+本周工作 解决了9个资源迭代bug 完成了预算业务分享
+下周计划 开发预算迭代
+其他事项 ecaRule分享：无进展 vite分享：无进展</description>
     </item>
     
     <item>

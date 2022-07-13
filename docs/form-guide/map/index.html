@@ -4,14 +4,26 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  import { showDialog, requestDialogId, closeDialog } from &#39;@root/common/dialog&#39;; import { AdvanceDialog } from &#39;@components/advance-dialog/AdvanceDialog&#39;; function renderDialog() { const dialogId = requestDialogId();  showDialog(dialogId, (  &lt;AdvanceDialog isOpen title=&#34;催办&#34; buttons={[{ text: &#39;确定&#39;, onClick: () =&gt; {  closeDialog(dialogId) } }]} onClose={() =&gt; {  closeDialog(dialogId) }} &gt; &lt;/AdvanceDialog&gt; )) }    列宽可以通过鼠标拖动">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="AdvanceDialog" />
-<meta property="og:description" content="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  import { showDialog, requestDialogId, closeDialog } from &#39;@root/common/dialog&#39;; import { AdvanceDialog } from &#39;@components/advance-dialog/AdvanceDialog&#39;; function renderDialog() { const dialogId = requestDialogId();  showDialog(dialogId, (  &lt;AdvanceDialog isOpen title=&#34;催办&#34; buttons={[{ text: &#39;确定&#39;, onClick: () =&gt; {  closeDialog(dialogId) } }]} onClose={() =&gt; {  closeDialog(dialogId) }} &gt; &lt;/AdvanceDialog&gt; )) }    列宽可以通过鼠标拖动" />
+<meta name="description" content="表单， 查看态， 水印，自定义水印， 顶部按钮：自定义联查，导出打印，自定义， 字段穿透的自定义事件，
+编辑态， 界面，数据， 单据类型， 业务规则， 模板， 字段， 子表， 子表字段， 行操作按钮，自定义， 视图 变更， 新变更（审批） 老变更
+底部按钮：选单，取消，保存，提交，自定义
+编制方案，预算项目，指标设置， 预算单，控制规则，受控单据设置， 操作
+本周工作 解决了9个资源迭代bug 完成了预算业务分享
+下周计划 开发预算迭代
+其他事项 ecaRule分享：无进展 vite分享：无进展">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Map" />
+<meta property="og:description" content="表单， 查看态， 水印，自定义水印， 顶部按钮：自定义联查，导出打印，自定义， 字段穿透的自定义事件，
+编辑态， 界面，数据， 单据类型， 业务规则， 模板， 字段， 子表， 子表字段， 行操作按钮，自定义， 视图 变更， 新变更（审批） 老变更
+底部按钮：选单，取消，保存，提交，自定义
+编制方案，预算项目，指标设置， 预算单，控制规则，受控单据设置， 操作
+本周工作 解决了9个资源迭代bug 完成了预算业务分享
+下周计划 开发预算迭代
+其他事项 ecaRule分享：无进展 vite分享：无进展" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/component/advancedialog/" />
-<meta property="article:published_time" content="2021-01-20T19:00:09+08:00" />
-<meta property="article:modified_time" content="2021-01-20T19:00:09+08:00" />
-<title>AdvanceDialog | 新手村生存攻略</title>
+<meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/map/" />
+<meta property="article:published_time" content="2022-06-15T14:40:58+08:00" />
+<meta property="article:modified_time" content="2022-06-15T14:40:58+08:00" />
+<title>Map | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
@@ -501,7 +513,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/form-guide/map/" class="">Map</a>
+    <a href="/docs/form-guide/map/" class="active">Map</a>
   
 
         </li>
@@ -1010,7 +1022,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/component/advancedialog/" class="active">AdvanceDialog</a>
+    <a href="/docs/component/advancedialog/" class="">AdvanceDialog</a>
   
 
         </li>
@@ -1408,7 +1420,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>AdvanceDialog</strong>
+  <strong>Map</strong>
 
   <label for="toc-control">
     
@@ -1437,67 +1449,39 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>AdvanceDialog</h1>
-    <p>作者：王书硕</p>
-    <hr/><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">showDialog</span>, <span style="color:#a6e22e">requestDialogId</span>, <span style="color:#a6e22e">closeDialog</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@root/common/dialog&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AdvanceDialog</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@components/advance-dialog/AdvanceDialog&#39;</span>;
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">renderDialog() {</span>
-<span style="display:block;width:100%;background-color:#3c3d38">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dialogId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">requestDialogId</span>();
-</span>
-<span style="display:block;width:100%;background-color:#3c3d38">  <span style="color:#a6e22e">showDialog</span>(<span style="color:#a6e22e">dialogId</span>, (
-</span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">AdvanceDialog</span> 
-      <span style="color:#a6e22e">isOpen</span>
-      <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;催办&#34;</span> 
-      <span style="color:#a6e22e">buttons</span><span style="color:#f92672">=</span>{[{
-        <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;确定&#39;</span>,
-<span style="display:block;width:100%;background-color:#3c3d38">        <span style="color:#a6e22e">onClick</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> {
-</span>          <span style="color:#a6e22e">closeDialog</span>(<span style="color:#a6e22e">dialogId</span>)
-        }
-      }]}
-<span style="display:block;width:100%;background-color:#3c3d38">      <span style="color:#a6e22e">onClose</span><span style="color:#f92672">=</span>{() <span style="color:#f92672">=&gt;</span> {
-</span>        <span style="color:#a6e22e">closeDialog</span>(<span style="color:#a6e22e">dialogId</span>)
-      }} 
-    <span style="color:#f92672">&gt;</span>
-      
-    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/AdvanceDialog&gt;</span>
-  ))
-}
-</code></pre></td></tr></table>
-</div>
-</div>
-<p>列宽可以通过鼠标拖动</p>
-<pre><code>enableColResize={true}
-autoContainerWidth={false}
-</code></pre></article>
+    <h1>Map</h1>
+    <p>作者：</p>
+    <hr/><p>表单，
+查看态，
+水印，自定义水印，
+顶部按钮：自定义联查，导出打印，自定义，
+字段穿透的自定义事件，</p>
+<p>编辑态，
+界面，数据，
+单据类型，
+业务规则，
+模板，
+字段，
+子表，
+子表字段，
+行操作按钮，自定义，
+视图
+变更，
+新变更（审批）
+老变更</p>
+<p>底部按钮：选单，取消，保存，提交，自定义</p>
+<p>编制方案，预算项目，指标设置，
+预算单，控制规则，受控单据设置，
+操作</p>
+<p>本周工作
+解决了9个资源迭代bug
+完成了预算业务分享</p>
+<p>下周计划
+开发预算迭代</p>
+<p>其他事项
+ecaRule分享：无进展
+vite分享：无进展</p>
+</article>
  
       
 

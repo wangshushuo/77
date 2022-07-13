@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 08 Jun 2022 15:54:27 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Jul 2022 14:27:15 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -144,6 +144,30 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>Spread.js</title>
+      <link>https://77doc.wss.cool/docs/spread.js/</link>
+      <pubDate>Wed, 13 Jul 2022 14:27:15 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/spread.js/</guid>
+      <description>开启过滤功能 // Configure Workbook and Worksheet var spread = new GC.Spread.Sheets.Workbook(&amp;#34;ss&amp;#34;); var activeSheet = spread.getActiveSheet(); activeSheet.setValue(0, 0, &amp;#34;North&amp;#34;); activeSheet.setValue(1, 0, &amp;#34;South&amp;#34;); activeSheet.setValue(2, 0, &amp;#34;East&amp;#34;); activeSheet.setValue(3, 0, &amp;#34;South&amp;#34;); activeSheet.setValue(4, 0, &amp;#34;North&amp;#34;); activeSheet.setValue(5, 0, &amp;#34;North&amp;#34;); activeSheet.setValue(6, 0, &amp;#34;West&amp;#34;); activeSheet.setColumnWidth(0, 80); // Set a row Filter activeSheet.rowFilter(new GC.Spread.Sheets.Filter.HideRowFilter(new GC.Spread.Sheets.Range(0, 0, 7, 1))); // Filter column 1 by &amp;#34;North&amp;#34; var rowFilter = spread.getActiveSheet().rowFilter(); var condition = new GC.Spread.Sheets.ConditionalFormatting.Condition( GC.Spread.Sheets.ConditionalFormatting.ConditionType.textCondition, { compareType: GC.Spread.Sheets.ConditionalFormatting.TextCompareType.equalsTo, expected: &amp;#34;North&amp;#34; }); rowFilter.</description>
+    </item>
+    
+    <item>
+      <title>Map</title>
+      <link>https://77doc.wss.cool/docs/form-guide/map/</link>
+      <pubDate>Wed, 15 Jun 2022 14:40:58 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/form-guide/map/</guid>
+      <description>表单， 查看态， 水印，自定义水印， 顶部按钮：自定义联查，导出打印，自定义， 字段穿透的自定义事件，
+编辑态， 界面，数据， 单据类型， 业务规则， 模板， 字段， 子表， 子表字段， 行操作按钮，自定义， 视图 变更， 新变更（审批） 老变更
+底部按钮：选单，取消，保存，提交，自定义
+编制方案，预算项目，指标设置， 预算单，控制规则，受控单据设置， 操作
+本周工作 解决了9个资源迭代bug 完成了预算业务分享
+下周计划 开发预算迭代
+其他事项 ecaRule分享：无进展 vite分享：无进展</description>
     </item>
     
     <item>
