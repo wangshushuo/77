@@ -4,20 +4,34 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="方式一 class ProjectFormPresenter extends EasyBizFormPresenter&lt;IProject&gt;{ private billTypeRules: Array&lt;IBizProcessFuncUnitSetting&gt; = []; xx() { const businessRules = this.bizFormPresenter.api.getBusinessRules() this.billTypeRules = oc(businessRules).rules([]) } } 方式二 import { FuncUnit_Constants } from &#39;@q7/athena-gen/src&#39;; class ProjectPlanButton extends MenuButton { private checkEnableProjectRule = () =&gt; { const enableProject: IBizProcessFuncUnitSetting = this.presenter.api.getBusinessRuleById( FuncUnit_Constants.enableProjectScheduleValidator, ); if (enableProject) { return enableProject.setting; } return; }; } 其中FuncUnit_Constants是根据预置数据生成的，可以问后端你要的业务规则的名字。
-业务规则的类型 interface IBizProcessFuncUnitSetting { applyTo?: { [key: string]: any } // 应用的对象, 	applyToTypeObject?: IEnumValue // 应用对象类型, 	billIoType?">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="获取业务规则" />
-<meta property="og:description" content="方式一 class ProjectFormPresenter extends EasyBizFormPresenter&lt;IProject&gt;{ private billTypeRules: Array&lt;IBizProcessFuncUnitSetting&gt; = []; xx() { const businessRules = this.bizFormPresenter.api.getBusinessRules() this.billTypeRules = oc(businessRules).rules([]) } } 方式二 import { FuncUnit_Constants } from &#39;@q7/athena-gen/src&#39;; class ProjectPlanButton extends MenuButton { private checkEnableProjectRule = () =&gt; { const enableProject: IBizProcessFuncUnitSetting = this.presenter.api.getBusinessRuleById( FuncUnit_Constants.enableProjectScheduleValidator, ); if (enableProject) { return enableProject.setting; } return; }; } 其中FuncUnit_Constants是根据预置数据生成的，可以问后端你要的业务规则的名字。
-业务规则的类型 interface IBizProcessFuncUnitSetting { applyTo?: { [key: string]: any } // 应用的对象, 	applyToTypeObject?: IEnumValue // 应用对象类型, 	billIoType?" />
+<meta name="description" content="当新增一个业务规则，且“用户规则”列是枚举或者参照时，就需要写代码干预。
+前端处理渲染 apps/link/src/main/screens/archive/bill-type/business-rule
+export const budgetPlanBusinessRule: { [keys: string]: IBusinessRuleCustomizedDef } = ({ [&#39;xxId&#39;]: { cellValueSubmitHandler, cellEditor: opt =&gt; { const { rowField, params } = opt; const field = rowField.select(&#39;userRule&#39;); const dataFieldProps: any = { ...params, field, path: field.path, type: &#39;enum&#39;, enumType: &#39;ChangeViewType&#39;, }; return &lt;AgDataField {...dataFieldProps} /&gt;; }, cellRenderer: createCellRender(), } as IBusinessRuleCustomizedDef, }) budgetPlanBusinessRule 是单据类型对象。其中的key是业务规则名，value是渲染的参数。dataFieldProps中的type为渲染的类型enum代表枚举，enumType是枚举的名字。
+cellValueSubmitHandler和createCellRender是已提供的函数，可以直接使用。
+Go处理返回值 由于后端存的是字符串，对于枚举和参照，存的都是Id，就需要在Go上把Id转化为结构化数据。
+如果是枚举用GetEnumValue方法获取结构化数据即可。如果是参照对象，就需要GQL请求会对应的数据了。
+trek/web/controllers/web-controllers/bill-type-setting/bill-type-setting.go
+在此文件中加一个 case
+case &#34;xxId&#34;: u, ok := result.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="新增一个业务规则" />
+<meta property="og:description" content="当新增一个业务规则，且“用户规则”列是枚举或者参照时，就需要写代码干预。
+前端处理渲染 apps/link/src/main/screens/archive/bill-type/business-rule
+export const budgetPlanBusinessRule: { [keys: string]: IBusinessRuleCustomizedDef } = ({ [&#39;xxId&#39;]: { cellValueSubmitHandler, cellEditor: opt =&gt; { const { rowField, params } = opt; const field = rowField.select(&#39;userRule&#39;); const dataFieldProps: any = { ...params, field, path: field.path, type: &#39;enum&#39;, enumType: &#39;ChangeViewType&#39;, }; return &lt;AgDataField {...dataFieldProps} /&gt;; }, cellRenderer: createCellRender(), } as IBusinessRuleCustomizedDef, }) budgetPlanBusinessRule 是单据类型对象。其中的key是业务规则名，value是渲染的参数。dataFieldProps中的type为渲染的类型enum代表枚举，enumType是枚举的名字。
+cellValueSubmitHandler和createCellRender是已提供的函数，可以直接使用。
+Go处理返回值 由于后端存的是字符串，对于枚举和参照，存的都是Id，就需要在Go上把Id转化为结构化数据。
+如果是枚举用GetEnumValue方法获取结构化数据即可。如果是参照对象，就需要GQL请求会对应的数据了。
+trek/web/controllers/web-controllers/bill-type-setting/bill-type-setting.go
+在此文件中加一个 case
+case &#34;xxId&#34;: u, ok := result." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/common/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/" />
-<meta property="article:published_time" content="2021-01-05T17:48:57+08:00" />
-<meta property="article:modified_time" content="2021-01-05T17:48:57+08:00" />
-<title>获取业务规则 | 新手村生存攻略</title>
+<meta property="og:url" content="https://77doc.wss.cool/docs/common/%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/" />
+<meta property="article:published_time" content="2022-07-19T17:27:31+08:00" />
+<meta property="article:modified_time" content="2022-07-19T17:27:31+08:00" />
+<title>新增一个业务规则 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.bd4ae46cf8a0d4dcb716166e972f9bdd9bef941b80276e5d691b926bf254c55c.js" integrity="sha256-vUrkbPig1Ny3FhZuly&#43;b3ZvvlBuAJ25daRuSa/JUxVw="></script>
+<script defer src="/en.search.min.1848e69e7f87f1ce9996c0b70639af1f335c72f5bb5d5188139f42976eee86df.js" integrity="sha256-GEjmnn&#43;H8c6ZlsC3BjmvHzNccvW7XVGIE59Cl27uht8="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -251,6 +265,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/docs/common/%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/" class="active">新增一个业务规则</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <a href="/docs/common/cloumndef/" class="">CloumnDef</a>
   
 
@@ -351,7 +375,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/common/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/" class="active">获取业务规则</a>
+    <a href="/docs/common/%E8%8E%B7%E5%8F%96%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/" class="">获取业务规则</a>
   
 
         </li>
@@ -1410,7 +1434,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>获取业务规则</strong>
+  <strong>新增一个业务规则</strong>
 
   <label for="toc-control">
     
@@ -1426,9 +1450,8 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#方式一">方式一</a></li>
-    <li><a href="#方式二">方式二</a></li>
-    <li><a href="#业务规则的类型">业务规则的类型</a></li>
+    <li><a href="#前端处理渲染">前端处理渲染</a></li>
+    <li><a href="#go处理返回值">Go处理返回值</a></li>
   </ul>
 </nav>
 
@@ -1445,73 +1468,47 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>获取业务规则</h1>
-    <p>作者：王书硕</p>
-    <hr/><h2 id="方式一">方式一</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProjectFormPresenter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">EasyBizFormPresenter</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">IProject</span><span style="color:#f92672">&gt;</span>{
-  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">billTypeRules</span>: <span style="color:#66d9ef">Array</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">IBizProcessFuncUnitSetting</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> [];
-
-  <span style="color:#a6e22e">xx() {</span>
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">businessRules</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">bizFormPresenter</span>.<span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">getBusinessRules</span>()
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">billTypeRules</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oc</span>(<span style="color:#a6e22e">businessRules</span>).<span style="color:#a6e22e">rules</span>([])
-  }
-}
-</code></pre></div><h2 id="方式二">方式二</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">FuncUnit_Constants</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@q7/athena-gen/src&#39;</span>;
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProjectPlanButton</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">MenuButton</span> {
-  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">checkEnableProjectRule</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">enableProject</span>: <span style="color:#66d9ef">IBizProcessFuncUnitSetting</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">presenter</span>.<span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">getBusinessRuleById</span>(
-      <span style="color:#a6e22e">FuncUnit_Constants</span>.<span style="color:#a6e22e">enableProjectScheduleValidator</span>,
-    );
-    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">enableProject</span>) {
-      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">enableProject</span>.<span style="color:#a6e22e">setting</span>;
-    }
-    <span style="color:#66d9ef">return</span>;
-  };
-}
-</code></pre></div><p>其中<code>FuncUnit_Constants</code>是根据预置数据生成的，可以问后端你要的业务规则的名字。</p>
-<h2 id="业务规则的类型">业务规则的类型</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IBizProcessFuncUnitSetting</span> {
-  <span style="color:#a6e22e">applyTo</span><span style="color:#f92672">?:</span> { [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> } <span style="color:#75715e">// 应用的对象,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">applyToTypeObject?</span>: <span style="color:#66d9ef">IEnumValue</span> <span style="color:#75715e">// 应用对象类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">billIoType?</span>: <span style="color:#66d9ef">IEnumValue</span> <span style="color:#75715e">// 单据方向,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">billType?</span>: <span style="color:#66d9ef">IBillType</span> <span style="color:#75715e">// 单据类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">bizObjectInfoWs?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// 业务对象信息,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">businessType?</span>: <span style="color:#66d9ef">IBusinessType</span> <span style="color:#75715e">// 业务类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">createdTime?</span>: <span style="color:#66d9ef">number</span> <span style="color:#75715e">// 创建时间,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">createdUser?</span>: <span style="color:#66d9ef">IUser</span> <span style="color:#75715e">// 创建人,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">criteria</span><span style="color:#f92672">?:</span> { [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> } <span style="color:#75715e">// 条件,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">customizedFields</span><span style="color:#f92672">?:</span> { [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> } <span style="color:#75715e">// 自定义属性,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">dataObject?</span>: <span style="color:#66d9ef">IObjectType</span> <span style="color:#75715e">// 对象类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">dataVersion?</span>: <span style="color:#66d9ef">number</span> <span style="color:#75715e">// 数据版本,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">elseSetting</span><span style="color:#f92672">?:</span> { [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> } <span style="color:#75715e">// 其他的值,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">entrySrcSystem?</span>: <span style="color:#66d9ef">IEnumValue</span> <span style="color:#75715e">// 数据来源类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">externalObjectId?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// 外部系统唯一标识,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">externalObjectType?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// 外部系统对象类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">externalSystemCode?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// 外部系统标识,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">funcUnitBillOfBizProcess?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// 业务过程处理单元,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">funcUnit?</span>: <span style="color:#66d9ef">IFuncUnit</span> <span style="color:#75715e">// 功能部件,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">id?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// ID,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">isDeleted?</span>: <span style="color:#66d9ef">boolean</span> <span style="color:#75715e">// 是否为删除数据,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">isInitData?</span>: <span style="color:#66d9ef">boolean</span> <span style="color:#75715e">// 是否为预置数据,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">isSystem?</span>: <span style="color:#66d9ef">boolean</span> <span style="color:#75715e">// 是否为系统数据,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">lastModifiedTime?</span>: <span style="color:#66d9ef">number</span> <span style="color:#75715e">// 最后修改时间,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">lastModifiedUser?</span>: <span style="color:#66d9ef">IUser</span> <span style="color:#75715e">// 最后修改人,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">lastRequestId?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// 最后一次更新请求的requestId,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">listFieldName?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// 应用的列表字段名,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">modifiedTime?</span>: <span style="color:#66d9ef">number</span> <span style="color:#75715e">// 修改时间,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">modifiedUser?</span>: <span style="color:#66d9ef">IUser</span> <span style="color:#75715e">// 修改人,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">objectTypeObject?</span>: <span style="color:#66d9ef">IObjectType</span> <span style="color:#75715e">// 对象类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">overrideModeObject?</span>: <span style="color:#66d9ef">IEnumValue</span> <span style="color:#75715e">// 重载模式,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">setting</span><span style="color:#f92672">?:</span> { [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> } <span style="color:#75715e">// 设置,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">settingDisplayInfo?</span>: <span style="color:#66d9ef">string</span> <span style="color:#75715e">// 描述,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sourceBillIoType?</span>: <span style="color:#66d9ef">IEnumValue</span> <span style="color:#75715e">// 允许来源的单据方向,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sourceBillType?</span>: <span style="color:#66d9ef">IBillType</span> <span style="color:#75715e">// 允许来源的单据类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sourceBusinessType?</span>: <span style="color:#66d9ef">IBusinessType</span> <span style="color:#75715e">// 允许来源的业务类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sourceObjectTypeObject?</span>: <span style="color:#66d9ef">IObjectType</span> <span style="color:#75715e">// 允许来源的对象类型,
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">uiOption</span><span style="color:#f92672">?:</span> { [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> } <span style="color:#75715e">// 前端保存的值
-</span><span style="color:#75715e"></span>}
+    <h1>新增一个业务规则</h1>
+    <p>作者：</p>
+    <hr/><p>当新增一个业务规则，且“用户规则”列是<del>枚举</del>或者<del>参照</del>时，就需要写代码干预。</p>
+<h2 id="前端处理渲染">前端处理渲染</h2>
+<p>apps/link/src/main/screens/archive/bill-type/business-rule</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">budgetPlanBusinessRule</span><span style="color:#f92672">:</span> { [<span style="color:#a6e22e">keys</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">IBusinessRuleCustomizedDef</span> } <span style="color:#f92672">=</span> ({
+  [<span style="color:#e6db74">&#39;xxId&#39;</span>]<span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">cellValueSubmitHandler</span>,
+    <span style="color:#a6e22e">cellEditor</span>: <span style="color:#66d9ef">opt</span> <span style="color:#f92672">=&gt;</span> {
+      <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">rowField</span>, <span style="color:#a6e22e">params</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">opt</span>;
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">field</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">rowField</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;userRule&#39;</span>);
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dataFieldProps</span>: <span style="color:#66d9ef">any</span> <span style="color:#f92672">=</span> {
+        ...<span style="color:#a6e22e">params</span>,
+        <span style="color:#a6e22e">field</span>,
+        <span style="color:#a6e22e">path</span>: <span style="color:#66d9ef">field.path</span>,
+        <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;enum&#39;</span>,
+        <span style="color:#a6e22e">enumType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ChangeViewType&#39;</span>,
+      };
+      <span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">AgDataField</span> {...<span style="color:#a6e22e">dataFieldProps</span>} <span style="color:#f92672">/&gt;</span>;
+    },
+    <span style="color:#a6e22e">cellRenderer</span>: <span style="color:#66d9ef">createCellRender</span>(),
+  } <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">IBusinessRuleCustomizedDef</span>,
+})
+</code></pre></div><p>budgetPlanBusinessRule 是单据类型对象。其中的key是业务规则名，value是渲染的参数。dataFieldProps中的type为渲染的类型enum代表枚举，enumType是枚举的名字。</p>
+<p>cellValueSubmitHandler和createCellRender是已提供的函数，可以直接使用。</p>
+<h2 id="go处理返回值">Go处理返回值</h2>
+<p>由于后端存的是字符串，对于枚举和参照，存的都是Id，就需要在Go上把Id转化为结构化数据。</p>
+<p>如果是枚举用GetEnumValue方法获取结构化数据即可。如果是参照对象，就需要GQL请求会对应的数据了。</p>
+<p>trek/web/controllers/web-controllers/bill-type-setting/bill-type-setting.go</p>
+<p>在此文件中加一个 case</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;xxId&#34;</span>:
+		<span style="color:#a6e22e">u</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">UserRule</span>.(<span style="color:#66d9ef">string</span>)
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ok</span> {
+			<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">enumValue</span> = <span style="color:#a6e22e">metadata</span>.<span style="color:#a6e22e">GetMetadata</span>().<span style="color:#a6e22e">GetEnumValue</span>(<span style="color:#a6e22e">gen_enums</span>.<span style="color:#a6e22e">ENUM_ChangeViewType</span>, <span style="color:#a6e22e">u</span>)
+			<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">UserRule</span> = <span style="color:#a6e22e">enumValue</span>
+		}
+		<span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">SystemRule</span>.(<span style="color:#66d9ef">string</span>)
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ok</span> {
+			<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">enumValue</span> = <span style="color:#a6e22e">metadata</span>.<span style="color:#a6e22e">GetMetadata</span>().<span style="color:#a6e22e">GetEnumValue</span>(<span style="color:#a6e22e">gen_enums</span>.<span style="color:#a6e22e">ENUM_ChangeViewType</span>, <span style="color:#a6e22e">s</span>)
+			<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">SystemRule</span> = <span style="color:#a6e22e">enumValue</span>
+		}
 </code></pre></div></article>
  
       
@@ -1546,9 +1543,8 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#方式一">方式一</a></li>
-    <li><a href="#方式二">方式二</a></li>
-    <li><a href="#业务规则的类型">业务规则的类型</a></li>
+    <li><a href="#前端处理渲染">前端处理渲染</a></li>
+    <li><a href="#go处理返回值">Go处理返回值</a></li>
   </ul>
 </nav>
 

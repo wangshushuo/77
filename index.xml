@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Jul 2022 14:27:15 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Jul 2022 17:27:31 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -144,6 +144,23 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>新增一个业务规则</title>
+      <link>https://77doc.wss.cool/docs/common/%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/</link>
+      <pubDate>Tue, 19 Jul 2022 17:27:31 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/</guid>
+      <description>当新增一个业务规则，且“用户规则”列是枚举或者参照时，就需要写代码干预。
+前端处理渲染 apps/link/src/main/screens/archive/bill-type/business-rule
+export const budgetPlanBusinessRule: { [keys: string]: IBusinessRuleCustomizedDef } = ({ [&amp;#39;xxId&amp;#39;]: { cellValueSubmitHandler, cellEditor: opt =&amp;gt; { const { rowField, params } = opt; const field = rowField.select(&amp;#39;userRule&amp;#39;); const dataFieldProps: any = { ...params, field, path: field.path, type: &amp;#39;enum&amp;#39;, enumType: &amp;#39;ChangeViewType&amp;#39;, }; return &amp;lt;AgDataField {...dataFieldProps} /&amp;gt;; }, cellRenderer: createCellRender(), } as IBusinessRuleCustomizedDef, }) budgetPlanBusinessRule 是单据类型对象。其中的key是业务规则名，value是渲染的参数。dataFieldProps中的type为渲染的类型enum代表枚举，enumType是枚举的名字。
+cellValueSubmitHandler和createCellRender是已提供的函数，可以直接使用。
+Go处理返回值 由于后端存的是字符串，对于枚举和参照，存的都是Id，就需要在Go上把Id转化为结构化数据。
+如果是枚举用GetEnumValue方法获取结构化数据即可。如果是参照对象，就需要GQL请求会对应的数据了。
+trek/web/controllers/web-controllers/bill-type-setting/bill-type-setting.go
+在此文件中加一个 case
+case &amp;#34;xxId&amp;#34;: u, ok := result.</description>
     </item>
     
     <item>
@@ -739,12 +756,13 @@ bizFormPresenter.api.formController.entityCRUD </description>
     
     <item>
       <title>获取业务规则</title>
-      <link>https://77doc.wss.cool/docs/common/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/</link>
+      <link>https://77doc.wss.cool/docs/common/%E8%8E%B7%E5%8F%96%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/</link>
       <pubDate>Tue, 05 Jan 2021 17:48:57 +0800</pubDate>
       
-      <guid>https://77doc.wss.cool/docs/common/%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/</guid>
-      <description>方式一 class ProjectFormPresenter extends EasyBizFormPresenter&amp;lt;IProject&amp;gt;{ private billTypeRules: Array&amp;lt;IBizProcessFuncUnitSetting&amp;gt; = []; xx() { const businessRules = this.bizFormPresenter.api.getBusinessRules() this.billTypeRules = oc(businessRules).rules([]) } } 方式二 import { FuncUnit_Constants } from &amp;#39;@q7/athena-gen/src&amp;#39;; class ProjectPlanButton extends MenuButton { private checkEnableProjectRule = () =&amp;gt; { const enableProject: IBizProcessFuncUnitSetting = this.presenter.api.getBusinessRuleById( FuncUnit_Constants.enableProjectScheduleValidator, ); if (enableProject) { return enableProject.setting; } return; }; } 其中FuncUnit_Constants是根据预置数据生成的，可以问后端你要的业务规则的名字。
-业务规则的类型 interface IBizProcessFuncUnitSetting { applyTo?: { [key: string]: any } // 应用的对象, 	applyToTypeObject?: IEnumValue // 应用对象类型, 	billIoType?</description>
+      <guid>https://77doc.wss.cool/docs/common/%E8%8E%B7%E5%8F%96%E4%B8%9A%E5%8A%A1%E8%A7%84%E5%88%99/</guid>
+      <description>列表 先在Go上查一次，通过列表方案的extraData传到前端。
+func ViewTypeMiddleware() query_list.QueryListMiddleware { return &amp;amp;viewTypeMiddleware{} } func (m *viewTypeMiddleware) Register(ctx query_list.QueryListContext) { ctx.AddResponsePiplineItem(m.appendExtraData) } func (m *viewTypeMiddleware) appendExtraData(ctx query_list.QueryDataContext, response *query_list.QueryResponse) { funcUnit := calendar_entry.FetchFuncUnit(&amp;#34;BudgetPlan&amp;#34;, []string{&amp;#34;budgetPlanViewTypeProcessor&amp;#34;}, ctx.GetContext()) response.ExtraData[&amp;#34;changeViewTypeId&amp;#34;] = funcUnit } 前端通过列表presenter.listDefController获取，由于列表中可能包含多个单据类型，需要根据单据类型获取
+private getChangeViewType = (billTypeId: string) =&amp;gt; { const extraData = this.presenter.listDefController.dataSource.data.extraData if(extraData &amp;amp;&amp;amp; extraData.changeViewTypeId) { const changeViewTypeId = extraData.changeViewTypeId.find(i =&amp;gt; get(i, &amp;#39;billType.id&amp;#39;) === billTypeId) return get(changeViewTypeId, &amp;#39;setting&amp;#39;); } } 表单 方式一：FormPresenter class ProjectFormPresenter extends EasyBizFormPresenter&amp;lt;IProject&amp;gt;{ private billTypeRules: Array&amp;lt;IBizProcessFuncUnitSetting&amp;gt; = []; xx() { const businessRules = this.</description>
     </item>
     
     <item>
