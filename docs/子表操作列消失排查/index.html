@@ -4,18 +4,28 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="列表方案基础" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://77doc.wss.cool/docs/list/" />
-
-<title>列表方案基础 | 新手村生存攻略</title>
+<meta name="description" content="actionColumnOption.initVisible ： false
+管理员 actionColumnOption: initVisible: true
+子表没有“操作”列 PropsBuilder的构造器和updateProps方法中，都接收了一个参数——initGridProps，其中有 actionColumnOption: initVisible: true，被它影响了，那么这个参数是从哪来的呢？
+在DetailGrid.tsx中，
+const actionColumnOption = Object.assign( { rowActions: this.rowActions, initVisible: this.getActionColumnVisible(), visibleSize: 3, }, dynamicProps.actionColumnOption || {}, );  有两个来源：this.getActionColumnVisible() 和 dynamicProps.actionColumnOption
+ this.getActionColumnVisible() 这里判断了附件按钮，如果没有附件权限，就隐藏了。 dynamicProps.actionColumnOption  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="子表操作列消失排查" />
+<meta property="og:description" content="actionColumnOption.initVisible ： false
+管理员 actionColumnOption: initVisible: true
+子表没有“操作”列 PropsBuilder的构造器和updateProps方法中，都接收了一个参数——initGridProps，其中有 actionColumnOption: initVisible: true，被它影响了，那么这个参数是从哪来的呢？
+在DetailGrid.tsx中，
+const actionColumnOption = Object.assign( { rowActions: this.rowActions, initVisible: this.getActionColumnVisible(), visibleSize: 3, }, dynamicProps.actionColumnOption || {}, );  有两个来源：this.getActionColumnVisible() 和 dynamicProps.actionColumnOption
+ this.getActionColumnVisible() 这里判断了附件按钮，如果没有附件权限，就隐藏了。 dynamicProps.actionColumnOption  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://77doc.wss.cool/docs/%E5%AD%90%E8%A1%A8%E6%93%8D%E4%BD%9C%E5%88%97%E6%B6%88%E5%A4%B1%E6%8E%92%E6%9F%A5/" />
+<meta property="article:published_time" content="2022-09-02T15:29:52+08:00" />
+<meta property="article:modified_time" content="2022-09-02T15:29:52+08:00" />
+<title>子表操作列消失排查 | 新手村生存攻略</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.1848e69e7f87f1ce9996c0b70639af1f335c72f5bb5d5188139f42976eee86df.js" integrity="sha256-GEjmnn&#43;H8c6ZlsC3BjmvHzNccvW7XVGIE59Cl27uht8="></script>
-<link rel="alternate" type="application/rss+xml" href="https://77doc.wss.cool/docs/list/index.xml" title="新手村生存攻略" />
+<script defer src="/en.search.min.6407c83bfa71bea6d9ba9b0c18a8951abc4ed8c8ddae07c1dd07358f7a6e95da.js" integrity="sha256-ZAfIO/pxvqbZupsMGKiVGrxO2MjdrgfB3Qc1j3puldo="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -240,6 +250,26 @@ https://github.com/alex-shpak/hugo-book
           
   
     <a href="/docs/common/gql/" class="">GQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/loading/" class="">Loading</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/common/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-mock/" class="">单元测试 Mock</a>
   
 
         </li>
@@ -984,27 +1014,6 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <span>列表方案基础</span>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
     <span>组件</span>
   
 
@@ -1219,6 +1228,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/docs/%E5%AD%90%E8%A1%A8%E6%93%8D%E4%BD%9C%E5%88%97%E6%B6%88%E5%A4%B1%E6%8E%92%E6%9F%A5/" class="active">子表操作列消失排查</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <a href="/docs/spread.js/" class="">Spread.js</a>
   
 
@@ -1418,7 +1437,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>列表方案基础</strong>
+  <strong>子表操作列消失排查</strong>
 
   <label for="toc-control">
     
@@ -1447,9 +1466,31 @@ https://github.com/alex-shpak/hugo-book
     
       
     
-    <h1>列表方案基础</h1>
+    <h1>子表操作列消失排查</h1>
     <p>作者：</p>
-    <hr/></article>
+    <hr/><p>actionColumnOption.initVisible ： false</p>
+<p>管理员
+actionColumnOption:
+initVisible: true</p>
+<h1 id="子表没有操作列">子表没有“操作”列</h1>
+<p>PropsBuilder的构造器和updateProps方法中，都接收了一个参数——initGridProps，其中有 actionColumnOption: initVisible: true，被它影响了，那么这个参数是从哪来的呢？</p>
+<p>在DetailGrid.tsx中，</p>
+<pre><code>const actionColumnOption = Object.assign(
+  {
+    rowActions: this.rowActions,
+    initVisible: this.getActionColumnVisible(),
+    visibleSize: 3,
+  },
+  dynamicProps.actionColumnOption || {},
+);
+</code></pre>
+<p>有两个来源：this.getActionColumnVisible() 和 dynamicProps.actionColumnOption</p>
+<ol>
+<li>this.getActionColumnVisible()
+这里判断了附件按钮，如果没有附件权限，就隐藏了。</li>
+<li>dynamicProps.actionColumnOption</li>
+</ol>
+</article>
  
       
 
@@ -1468,6 +1509,10 @@ https://github.com/alex-shpak/hugo-book
       </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
   
  
 

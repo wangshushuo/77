@@ -6,7 +6,7 @@
     <description>Recent content in 通用功能攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 19 Jul 2022 17:27:31 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Oct 2022 16:47:30 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/common/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,6 +31,24 @@ coalesce：如果alias存在则取alias，不存在取name
 例子：string_agg((coalesce(indicator.alias, indicator.name)), &#39;, &#39;)
 concat_ws：拼装一条记录的多个字段为一个字段
 例子：string_agg(CONCAT_WS(&#39;,&#39;,childIndicator.id,childIndicator.name),&#39;;&#39;)</description>
+    </item>
+    
+    <item>
+      <title>Loading</title>
+      <link>https://77doc.wss.cool/docs/common/loading/</link>
+      <pubDate>Mon, 10 Oct 2022 16:47:30 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/loading/</guid>
+      <description>import { closeLoadingMask, showLoadingMask } from &amp;#39;@common/loadingMask&amp;#39;; showLoadingMask(&amp;#39;加载编制详情...&amp;#39;); try { const params = router.getParams(&amp;#39;/budgetPlanChange/detail&amp;#39;); const data = await client.get(`${urls.budgetPlan.compare}/${params.id}/${params.bassBillId}`); const diffCells = data &amp;amp;&amp;amp; data.data.data; if (diffCells) { this.setDiffCells(diffCells); } } catch (e) { showErrorMessage(e.message || &amp;#39;编制详情加载失败&amp;#39;); } finally { closeLoadingMask(); } </description>
+    </item>
+    
+    <item>
+      <title>单元测试 Mock</title>
+      <link>https://77doc.wss.cool/docs/common/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-mock/</link>
+      <pubDate>Mon, 25 Jul 2022 14:19:57 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-mock/</guid>
+      <description>common advance-grid jest.mock(&amp;#39;@athena-ui/components/ag-grid/entities/colDef&amp;#39;); jest.mock(&amp;#39;@components/advance-grid&amp;#39;) jest.mock(&amp;#39;@components/advance-grid&amp;#39;, () =&amp;gt; { return { CommonUsedActions: { view: { click: jest.fn((rowIndex, data) =&amp;gt; { return { onClick: jest.fn() } }) } } } }) 路由 const appRouterHashManager = { generateHash: jest.fn() } const proxyHistory = { push: jest.fn(), } jest.mock(&amp;#39;@root/router-manager&amp;#39;, () =&amp;gt; { return { appRouterHashManager: { generateHash: (...options) =&amp;gt; appRouterHashManager.generateHash(...options) } } }); jest.mock(&amp;#39;@root/router-history&amp;#39;, () =&amp;gt; { return { default: { push: (...option) =&amp;gt; proxyHistory.</description>
     </item>
     
     <item>

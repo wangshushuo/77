@@ -6,7 +6,7 @@
     <description>Recent content in 77前端--新手村生存攻略 on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 19 Jul 2022 17:27:31 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Oct 2022 16:47:30 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/index.xml" rel="self" type="application/rss+xml" />
     
@@ -144,6 +144,38 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       
       <guid>https://77doc.wss.cool/docs/form-guide/%E6%89%93%E5%8D%B0%E6%A8%A1%E6%9D%BF/</guid>
       <description>打印模板 通常可以通过“单据设计”功能设置一个打印模板，但是不知道为什么有些字段无法通过这种方式配到，只能通过代码加出来。</description>
+    </item>
+    
+    <item>
+      <title>Loading</title>
+      <link>https://77doc.wss.cool/docs/common/loading/</link>
+      <pubDate>Mon, 10 Oct 2022 16:47:30 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/loading/</guid>
+      <description>import { closeLoadingMask, showLoadingMask } from &amp;#39;@common/loadingMask&amp;#39;; showLoadingMask(&amp;#39;加载编制详情...&amp;#39;); try { const params = router.getParams(&amp;#39;/budgetPlanChange/detail&amp;#39;); const data = await client.get(`${urls.budgetPlan.compare}/${params.id}/${params.bassBillId}`); const diffCells = data &amp;amp;&amp;amp; data.data.data; if (diffCells) { this.setDiffCells(diffCells); } } catch (e) { showErrorMessage(e.message || &amp;#39;编制详情加载失败&amp;#39;); } finally { closeLoadingMask(); } </description>
+    </item>
+    
+    <item>
+      <title>子表操作列消失排查</title>
+      <link>https://77doc.wss.cool/docs/%E5%AD%90%E8%A1%A8%E6%93%8D%E4%BD%9C%E5%88%97%E6%B6%88%E5%A4%B1%E6%8E%92%E6%9F%A5/</link>
+      <pubDate>Fri, 02 Sep 2022 15:29:52 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/%E5%AD%90%E8%A1%A8%E6%93%8D%E4%BD%9C%E5%88%97%E6%B6%88%E5%A4%B1%E6%8E%92%E6%9F%A5/</guid>
+      <description>actionColumnOption.initVisible ： false
+管理员 actionColumnOption: initVisible: true
+子表没有“操作”列 PropsBuilder的构造器和updateProps方法中，都接收了一个参数——initGridProps，其中有 actionColumnOption: initVisible: true，被它影响了，那么这个参数是从哪来的呢？
+在DetailGrid.tsx中，
+const actionColumnOption = Object.assign( { rowActions: this.rowActions, initVisible: this.getActionColumnVisible(), visibleSize: 3, }, dynamicProps.actionColumnOption || {}, );  有两个来源：this.getActionColumnVisible() 和 dynamicProps.actionColumnOption
+ this.getActionColumnVisible() 这里判断了附件按钮，如果没有附件权限，就隐藏了。 dynamicProps.actionColumnOption  </description>
+    </item>
+    
+    <item>
+      <title>单元测试 Mock</title>
+      <link>https://77doc.wss.cool/docs/common/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-mock/</link>
+      <pubDate>Mon, 25 Jul 2022 14:19:57 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/common/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-mock/</guid>
+      <description>common advance-grid jest.mock(&amp;#39;@athena-ui/components/ag-grid/entities/colDef&amp;#39;); jest.mock(&amp;#39;@components/advance-grid&amp;#39;) jest.mock(&amp;#39;@components/advance-grid&amp;#39;, () =&amp;gt; { return { CommonUsedActions: { view: { click: jest.fn((rowIndex, data) =&amp;gt; { return { onClick: jest.fn() } }) } } } }) 路由 const appRouterHashManager = { generateHash: jest.fn() } const proxyHistory = { push: jest.fn(), } jest.mock(&amp;#39;@root/router-manager&amp;#39;, () =&amp;gt; { return { appRouterHashManager: { generateHash: (...options) =&amp;gt; appRouterHashManager.generateHash(...options) } } }); jest.mock(&amp;#39;@root/router-history&amp;#39;, () =&amp;gt; { return { default: { push: (...option) =&amp;gt; proxyHistory.</description>
     </item>
     
     <item>
