@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="由两部分组成： 一个是form，一个是UI组件
-const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &#39;关闭日期&#39;, required: true, visible: false, }, validators: [validators.required] }, }; const createForm = (): EntityForm =&gt; { const formBuilder = new FormBuilder(); Object.entries(this.formScheme).forEach(([key, value]) =&gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder.toForm({ closeDate: this.getDefaultCloseDate(), }); } export function CloseForm(props) { return ( &lt;MSTFormLayout form={props.form} columnSize={1}&gt; &lt;MSTFormElement path={&#39;closeDate&#39;} minDate={props.minCloseDate} /&gt; &lt;MSTFormElement path=&#34;closedReason&#34; criteriaStr={`objectBizActions.objectBizAction.objectType = &#39;CalendarEntry&#39; and objectBizActions.objectBizAction.action.id = &#39;close&#39; and isDisabled = false`} isMulti={false} contextOrgIds={props.">
+<meta name="description" content="它由两部分组成： 一个是form，一个是UI组件
+创建form const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &#39;关闭日期&#39;, required: true, visible: false, }, validators: [validators.required] }, }; const createForm = (): EntityForm =&gt; { const formBuilder = new FormBuilder(); Object.entries(this.formScheme).forEach(([key, value]) =&gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder.toForm({ closeDate: this.getDefaultCloseDate(), }); }  formScheme定义字段 createForm创建form，appendField创建字段，toForm方法，获取form，参数为初始值  UI组件 export function CloseForm(props) { return ( &lt;MSTFormLayout form={props.form} columnSize={1}&gt; &lt;MSTFormElement path={&#39;closeDate&#39;} minDate={props.minCloseDate} /&gt; &lt;MSTFormElement path=&#34;closedReason&#34; criteriaStr={`objectBizActions.objectBizAction.objectType = &#39;CalendarEntry&#39; and objectBizActions.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="FormBuilder" />
-<meta property="og:description" content="由两部分组成： 一个是form，一个是UI组件
-const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &#39;关闭日期&#39;, required: true, visible: false, }, validators: [validators.required] }, }; const createForm = (): EntityForm =&gt; { const formBuilder = new FormBuilder(); Object.entries(this.formScheme).forEach(([key, value]) =&gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder.toForm({ closeDate: this.getDefaultCloseDate(), }); } export function CloseForm(props) { return ( &lt;MSTFormLayout form={props.form} columnSize={1}&gt; &lt;MSTFormElement path={&#39;closeDate&#39;} minDate={props.minCloseDate} /&gt; &lt;MSTFormElement path=&#34;closedReason&#34; criteriaStr={`objectBizActions.objectBizAction.objectType = &#39;CalendarEntry&#39; and objectBizActions.objectBizAction.action.id = &#39;close&#39; and isDisabled = false`} isMulti={false} contextOrgIds={props." />
+<meta property="og:description" content="它由两部分组成： 一个是form，一个是UI组件
+创建form const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { label: &#39;关闭日期&#39;, required: true, visible: false, }, validators: [validators.required] }, }; const createForm = (): EntityForm =&gt; { const formBuilder = new FormBuilder(); Object.entries(this.formScheme).forEach(([key, value]) =&gt; { formBuilder.appendField(key, makeField(value)); }); return formBuilder.toForm({ closeDate: this.getDefaultCloseDate(), }); }  formScheme定义字段 createForm创建form，appendField创建字段，toForm方法，获取form，参数为初始值  UI组件 export function CloseForm(props) { return ( &lt;MSTFormLayout form={props.form} columnSize={1}&gt; &lt;MSTFormElement path={&#39;closeDate&#39;} minDate={props.minCloseDate} /&gt; &lt;MSTFormElement path=&#34;closedReason&#34; criteriaStr={`objectBizActions.objectBizAction.objectType = &#39;CalendarEntry&#39; and objectBizActions." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://77doc.wss.cool/docs/form-guide/formbuilder/" />
 <meta property="article:published_time" content="2021-12-28T15:38:47+08:00" />
@@ -17,7 +17,7 @@ const formScheme = { closeDate: { type: FieldTypeEnum.Timestamp, initState: { la
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.5fb9c30a4d22c4d6ba5ab83e46b5cdc2a6947c0b19feaaa3ccd791ba340f0730.css" integrity="sha256-X7nDCk0ixNa6Wrg&#43;RrXNwqaUfAsZ/qqjzNeRujQPBzA=">
-<script defer src="/en.search.min.ada80ad9bdbfda0a396e15b5fef55c20b760a2405a75f89aadfe1134e0434602.js" integrity="sha256-ragK2b2/2go5bhW1/vVcILdgokBadfiarf4RNOBDRgI="></script>
+<script defer src="/en.search.min.9fa351ee5ef5faf9e689350f2d5cdb4580080ed251233ef1a5234b1a27ff18d9.js" integrity="sha256-n6NR7l71&#43;vnmiTUPLVzbRYAIDtJRIz7xpSNLGif/GNk="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -508,7 +508,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <span>BizForm实用攻略</span>
+    <a href="/docs/form-guide/" class="">BizForm实用攻略</a>
   
 
           
@@ -1232,7 +1232,17 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/docs/%E6%96%B0%E6%89%8B%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/" class="">新人教程</a>
+    <a href="/docs/%E6%96%B0%E6%89%8B%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/" class="">新手开发指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/docs/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BA%94%E7%94%A8%E9%A1%B5%E9%9D%A2%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BD%93/" class="">移动端应用页面新增一个实体</a>
   
 
         </li>
@@ -1467,6 +1477,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#创建form">创建form</a></li>
+    <li><a href="#ui组件">UI组件</a></li>
+    <li><a href="#校验validate">校验validate</a></li>
     <li><a href="#坑">坑</a></li>
   </ul>
 </nav>
@@ -1486,8 +1499,9 @@ https://github.com/alex-shpak/hugo-book
     
     <h1>FormBuilder</h1>
     <p>作者：王书硕</p>
-    <hr/><p>由两部分组成：
+    <hr/><p>它由两部分组成：
 一个是form，一个是UI组件</p>
+<h2 id="创建form">创建form</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formScheme</span> <span style="color:#f92672">=</span> {
     <span style="color:#a6e22e">closeDate</span><span style="color:#f92672">:</span> {
         <span style="color:#a6e22e">type</span>: <span style="color:#66d9ef">FieldTypeEnum.Timestamp</span>,
@@ -1500,16 +1514,21 @@ https://github.com/alex-shpak/hugo-book
     },
 };
 
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">createForm</span> <span style="color:#f92672">=</span> ()<span style="color:#f92672">:</span> <span style="color:#a6e22e">EntityForm</span> <span style="color:#f92672">=&gt;</span>  {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formBuilder</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormBuilder</span>();
-    Object.<span style="color:#a6e22e">entries</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">formScheme</span>).<span style="color:#a6e22e">forEach</span>(([<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>]) <span style="color:#f92672">=&gt;</span> {
-      <span style="color:#a6e22e">formBuilder</span>.<span style="color:#a6e22e">appendField</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">makeField</span>(<span style="color:#a6e22e">value</span>));
-    });
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">formBuilder</span>.<span style="color:#a6e22e">toForm</span>({
-      <span style="color:#a6e22e">closeDate</span>: <span style="color:#66d9ef">this.getDefaultCloseDate</span>(),
-    });
-  }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">CloseForm</span>(<span style="color:#a6e22e">props</span>) {
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">createForm</span> <span style="color:#f92672">=</span> ()<span style="color:#f92672">:</span> <span style="color:#a6e22e">EntityForm</span> <span style="color:#f92672">=&gt;</span>  {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formBuilder</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormBuilder</span>();
+  Object.<span style="color:#a6e22e">entries</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">formScheme</span>).<span style="color:#a6e22e">forEach</span>(([<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>]) <span style="color:#f92672">=&gt;</span> {
+    <span style="color:#a6e22e">formBuilder</span>.<span style="color:#a6e22e">appendField</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">makeField</span>(<span style="color:#a6e22e">value</span>));
+  });
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">formBuilder</span>.<span style="color:#a6e22e">toForm</span>({
+    <span style="color:#a6e22e">closeDate</span>: <span style="color:#66d9ef">this.getDefaultCloseDate</span>(),
+  });
+}
+</code></pre></div><ol>
+<li>formScheme定义字段</li>
+<li>createForm创建form，appendField创建字段，toForm方法，获取form，参数为初始值</li>
+</ol>
+<h2 id="ui组件">UI组件</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">CloseForm</span>(<span style="color:#a6e22e">props</span>) {
   <span style="color:#66d9ef">return</span> (
     <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MSTFormLayout</span> <span style="color:#a6e22e">form</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">form</span>} <span style="color:#a6e22e">columnSize</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">1</span>}<span style="color:#f92672">&gt;</span>
       <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MSTFormElement</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;closeDate&#39;</span>} <span style="color:#a6e22e">minDate</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">minCloseDate</span>} <span style="color:#f92672">/&gt;</span>
@@ -1523,11 +1542,19 @@ https://github.com/alex-shpak/hugo-book
     <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/MSTFormLayout&gt;</span>
   );
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">valid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">validate</span>();
+</code></pre></div><ol>
+<li>MSTFormLayout是容器，form就是上面创建的form</li>
+<li>MSTFormElement是字段，各个字段分别使用该组件渲染，根据字段的具体类型，传入相应的参数。</li>
+</ol>
+<h2 id="校验validate">校验validate</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">valid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">validate</span>();
 <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">valid</span>) {
     <span style="color:#66d9ef">return</span>;
 }
-</code></pre></div><h2 id="坑">坑</h2>
+</code></pre></div><ol>
+<li>在保存等场景，如果需要校验，就调这个方法，会在对应的行出现错误提示</li>
+</ol>
+<h2 id="坑">坑</h2>
 <ol>
 <li>不要给MSTFormElement组件传<code>isRequire={true}</code>的参数。传了这个参数在手动删除输入框里的值的时候，不会修改form中的值。</li>
 <li>如果字段是必填，除了<code>initState.required</code>，还必须要<code>validators: [validators.required]</code></li>
@@ -1567,6 +1594,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#创建form">创建form</a></li>
+    <li><a href="#ui组件">UI组件</a></li>
+    <li><a href="#校验validate">校验validate</a></li>
     <li><a href="#坑">坑</a></li>
   </ul>
 </nav>

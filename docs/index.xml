@@ -21,12 +21,24 @@
     </item>
     
     <item>
-      <title>新人教程</title>
+      <title>新手开发指南</title>
       <link>https://77doc.wss.cool/docs/%E6%96%B0%E6%89%8B%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</link>
       <pubDate>Tue, 25 Oct 2022 16:29:29 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/%E6%96%B0%E6%89%8B%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</guid>
       <description> 表单  顶部按钮  添加自定义联查按钮   水印 底部左侧按钮 底部右侧按钮 查看态自定义穿透事件 字段参数  参照  权限 显示停用 快捷创建 条件 高级参照  多选并添加多行     数字精度   主表  字段自定义渲染   子表  子表头部按钮 行按钮 自定义子表 视图   自定义section   列表  查询虚拟字段  添加   主表/子表criteriaStr 列表显示虚拟字段  添加 导出   顶部按钮 行按钮   通用  go  发起请求 并行 网络请求接口     审批流  允许行编辑    Form  List </description>
+    </item>
+    
+    <item>
+      <title>移动端应用页面新增一个实体</title>
+      <link>https://77doc.wss.cool/docs/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BA%94%E7%94%A8%E9%A1%B5%E9%9D%A2%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BD%93/</link>
+      <pubDate>Tue, 18 Oct 2022 20:02:44 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BA%94%E7%94%A8%E9%A1%B5%E9%9D%A2%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BD%93/</guid>
+      <description>我这次新加了一个人员档案列表及查看表单，记录一下
+预制移动端列表和表单 列表路由 apps/link-h5/src/stackNavigator/defines/subpackage.tsx
+常量配置 apps/link-h5/src/subpackages/basicArchives/consts/lang/en.ts ，英文名称 apps/link-h5/src/subpackages/basicArchives/consts/lang/zh-cn.ts，中文名称 apps/link-h5/src/subpackages/basicArchives/consts/applyNames.ts，实体名字 apps/link-h5/src/subpackages/basicArchives/consts/applyPagePaths.ts，实体的路由 apps/link-h5/src/subpackages/basicArchives/consts/applyStatic.ts，图标的图标 apps/link-h5/src/subpackages/basicArchives/consts/config.ts，“人员”是“往来单位”的下级 表单presenter apps/link-h5/src/subpackages/biz-forms/pages/biz-form/presenter.ts，实体对应的formPresenter apps/link-h5/src/subpackages/biz-forms/pages/biz-form/presenters/user/UserFormPresenter.tsx，一个最简单的FormPresenter
+列表presenter apps/link-h5/src/subpackages/biz-forms/pages/user-list/UserListPagePresenter.tsx，一个最简单的ListPresenter</description>
     </item>
     
     <item>
