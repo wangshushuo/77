@@ -15,38 +15,25 @@ author: 王书硕
 
 ## 怎么实现
 
-1. 在跳转页面时，将需要的参数放入proxyHistory.push的第二个参数passParams中。
-{{< highlight ts "linenos=table,hl_lines=19,linenostart=1" >}}
-class ProjectListPagePresenter extends QueryListPagePresenter<
-  IProjectListPagePresenterOption
->{
-  protected commandActionResolver(commandActions: ToolbarAction[]): ToolbarAction[] {
-    commandActions.unshift({
-      id: 'project-view',
-      group: ToolbarActionGroup.Group1,
-      action: this.presenter.toolbarConnector.makeCreateButton({
-        onClick: billTypeId => {
-          const hash = appRouterHashManager.generateHash(EN_Project, PageModeEnum.Form, {
-            mode: BizFormModeEnum.Create,
-            billTypeId: billTypeId,
-            extraParams: {
-              isBase: this.isBase,
-            },
-          });
-          proxyHistory.push(hash, {
-            onSuccess: this.presenter.refresh,
-            category: this.category.curParent,
-          });
-        },
-      }),
-    });
-    return commandActions;
-  }
+### 1.通过路由传数据
+在跳转页面时，将需要的参数放入proxyHistory.push的第二个参数passParams中。
+```
+function onClick(billTypeId) {
+  const hash = appRouterHashManager.generateHash(EN_Project, PageModeEnum.Form, {
+    mode: BizFormModeEnum.Create,
+    billTypeId: billTypeId,
+  });
+  proxyHistory.push(hash, {
+    onSuccess: this.presenter.refresh,
+    category: this.category.curParent,
+  });
 }
-{{< / highlight >}}
+```
+proxyHistory.push方法的第二个参数会被放到FormPresenter的options.passParams中。
 
-2. passParams中的数据会放到formPresenter的option中，取出使用即可。
-{{< highlight ts "linenos=table,hl_lines=2 6 17,linenostart=1" >}}
+### 2.在formPresenter中取数据
+passParams中的数据会放到formPresenter的option中，取出使用即可。
+```
 class ProjectFormPresenter extends EasyBizFormPresenter<IProject> {
   private options: IEasyBizFormPresenterOptions;
 
@@ -57,21 +44,12 @@ class ProjectFormPresenter extends EasyBizFormPresenter<IProject> {
 
   @autobind
   protected onFormCreated(form: EntityForm<IProject>, disposers: Lambda[]) {
-    // ...
-    const stageGroup = form.select(F_Project_stageGroup);
-    if (stageGroup && stageGroup.required) {
-      form.select(F_Project_enableStage).value = true;
+    const category = this.opotions.passParams.category;
+    if (category) {
+      form.select(F_Project_category).value = category;
     }
-    if (this.opotions.passParams.category) {
-      form.select(F_Project_category).value = this.options.passParams.category;
-    }
-    if (this.bizFormPresenter.api.mode === 'Copy') {
-      const clearFields = [
-        'startDate',
-        'closedDate',
-        'changedReason',
-        'lastChangedTime',
-    // ...
   }
+
 }
-{{< / highlight >}}
+```
+❗这里需要注意❗由于表单的入口可能有多个，在使用passParams时，要注意判空。
