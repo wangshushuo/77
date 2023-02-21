@@ -6,10 +6,28 @@
     <description>Recent content in Docs on 新手村生存攻略</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 10 Oct 2022 16:47:30 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Oct 2022 16:46:02 +0800</lastBuildDate>
     
 	<atom:link href="https://77doc.wss.cool/docs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>预算项目匹配</title>
+      <link>https://77doc.wss.cool/docs/%E9%A2%84%E7%AE%97%E9%A1%B9%E7%9B%AE%E5%8C%B9%E9%85%8D/</link>
+      <pubDate>Tue, 25 Oct 2022 16:46:02 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/%E9%A2%84%E7%AE%97%E9%A1%B9%E7%9B%AE%E5%8C%B9%E9%85%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>新人教程</title>
+      <link>https://77doc.wss.cool/docs/%E6%96%B0%E6%89%8B%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Tue, 25 Oct 2022 16:29:29 +0800</pubDate>
+      
+      <guid>https://77doc.wss.cool/docs/%E6%96%B0%E6%89%8B%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</guid>
+      <description> 表单  顶部按钮  添加自定义联查按钮   水印 底部左侧按钮 底部右侧按钮 查看态自定义穿透事件 字段参数  参照  权限 显示停用 快捷创建 条件 高级参照  多选并添加多行     数字精度   主表  字段自定义渲染   子表  子表头部按钮 行按钮 自定义子表 视图   自定义section   列表  查询虚拟字段  添加   主表/子表criteriaStr 列表显示虚拟字段  添加 导出   顶部按钮 行按钮   通用  go  发起请求 并行 网络请求接口     审批流  允许行编辑    Form  List </description>
+    </item>
     
     <item>
       <title>子表操作列消失排查</title>
