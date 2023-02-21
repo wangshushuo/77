@@ -152,7 +152,7 @@ We&#39;ll start with creating a new site with a very basic template.</descriptio
       <pubDate>Mon, 10 Oct 2022 16:47:30 +0800</pubDate>
       
       <guid>https://77doc.wss.cool/docs/common/loading/</guid>
-      <description>import { closeLoadingMask, showLoadingMask } from &amp;#39;@common/loadingMask&amp;#39;; showLoadingMask(&amp;#39;加载编制详情...&amp;#39;); try { const params = router.getParams(&amp;#39;/budgetPlanChange/detail&amp;#39;); const data = await client.get(`${urls.budgetPlan.compare}/${params.id}/${params.bassBillId}`); const diffCells = data &amp;amp;&amp;amp; data.data.data; if (diffCells) { this.setDiffCells(diffCells); } } catch (e) { showErrorMessage(e.message || &amp;#39;编制详情加载失败&amp;#39;); } finally { closeLoadingMask(); } </description>
+      <description>移动端 import { closeLoadingMask, showLoadingMask } from &amp;#39;@common/loadingMask&amp;#39;; showLoadingMask(&amp;#39;加载编制详情...&amp;#39;); try { const params = router.getParams(&amp;#39;/budgetPlanChange/detail&amp;#39;); const data = await client.get(`${urls.budgetPlan.compare}/${params.id}/${params.bassBillId}`); const diffCells = data &amp;amp;&amp;amp; data.data.data; if (diffCells) { this.setDiffCells(diffCells); } } catch (e) { showErrorMessage(e.message || &amp;#39;编制详情加载失败&amp;#39;); } finally { closeLoadingMask(); } web端 import { hideLoading, showLoading } from &amp;#39;@root/common/loading&amp;#39;; showLoading({ message: &amp;#39;正在取消中...&amp;#39;, closeable: true, }); try { await this.requestController.revertBudgetPlanDetail(); const res = await this.initialController.queryData(); this.renderSpreadFromJson(res); } catch (err) { showError(oc(err).</description>
     </item>
     
     <item>
