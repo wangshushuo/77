@@ -4,6 +4,8 @@ title = "新手村生存攻略"
 theme = "book"
 publishDir = "docs"
 
+BookRepo = 'https://github.com/wangshushuo/77'
+
 [markup]
     defaultMarkdownHandler = "goldmark"
     [markup.goldmark]
