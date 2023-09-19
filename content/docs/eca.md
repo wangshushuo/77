@@ -19,3 +19,27 @@ author:
     }
 }
 ```
+
+```json
+{
+    "name": "FieldStatus",
+    "description": "金额型存货【数量】不可编辑",
+    "params": {
+        "expr": "true",
+        "field": "quantity",
+        "status": "Visible"
+    }
+},
+```
+
+```json
+{
+    "name": "FieldStatus",
+    "description": "金额型存货【数量】不可编辑",
+    "params": {
+        "expr": "false",
+        "field": "quantity",
+        "status": "Readonly"
+    }
+},
+```
