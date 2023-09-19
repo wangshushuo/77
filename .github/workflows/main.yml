@@ -28,12 +28,3 @@ jobs:
           publish_dir: ./docs
           keep_files: false
           publish_branch: gh-pages
-#          cname: 77doc.wss.cool
-      - name: Upload COS
-        uses: zkqiang/tencent-cos-action@v0.1.0
-        with:
-          args: delete -r -f / && upload -r ./docs/ /
-          secret_id: ${{ secrets.COS_SECRET_ID }}
-          secret_key: ${{ secrets.COS_SECRET_KEY }}
-          bucket: ${{ secrets.COS_BUCKET }}
-          region: ap-nanjing
