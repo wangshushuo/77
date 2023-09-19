@@ -2,7 +2,7 @@ baseURL = "https://77doc.wss.cool/"
 languageCode = "zh-cn"
 title = "新手村生存攻略"
 theme = "book"
-publishDir = "docs"
+publishDir = "public"
 
 BookRepo = 'https://github.com/wangshushuo/77'
 BookEditPath = 'edit/master/exampleSite'
