@@ -6,7 +6,7 @@ author: 王书硕
 
 {{< highlight tsx "linenos=table,hl_lines=5 7 13 17,linenostart=1" >}}
 import { showDialog, requestDialogId, closeDialog } from '@root/common/dialog';
-import { AdvanceDialog } from '@components/advance-dialog/AdvanceDialog';
+import { AdvanceDialog } from '@q7/micro-core-web-app/advance-dialog/index';
 
 function renderDialog() {
   const dialogId = requestDialogId();
@@ -36,3 +36,15 @@ function renderDialog() {
 enableColResize={true}
 autoContainerWidth={false}
 ```
+
+
+```ts
+import {
+  closeDialog,
+  requestDialogId,
+  showDialogInTab,
+  showDialog,
+} from "@q7/micro-core-web-app/common/dialog";
+import { AdvanceDialog } from '@q7/micro-core-web-app/advance-dialog/index';
+```
+在tab页签内部打开dialog ———— showDialogInTab
