@@ -17,7 +17,7 @@ author: 王书硕
 
 ### 1.通过路由传数据
 在跳转页面时，将需要的参数放入proxyHistory.push的第二个参数passParams中。
-```
+```ts
 function onClick(billTypeId) {
   const hash = appRouterHashManager.generateHash(EN_Project, PageModeEnum.Form, {
     mode: BizFormModeEnum.Create,
@@ -33,7 +33,7 @@ proxyHistory.push方法的第二个参数会被放到FormPresenter的options.pas
 
 ### 2.在formPresenter中取数据
 passParams中的数据会放到formPresenter的option中，取出使用即可。
-```
+```ts
 class ProjectFormPresenter extends EasyBizFormPresenter<IProject> {
   private options: IEasyBizFormPresenterOptions;
 

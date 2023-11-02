@@ -12,3 +12,9 @@ bizFormPresenter.api.formController.entityCRUD.allPaths
 ```
 bizFormPresenter.api.getForm().select('timesheetLines/0/indvRole')
 ```
+
+## value
+
+Presenter.api.formController.form.select('modelSubtables/0/dimensions/2').value
+
+Presenter.api.formController.form.getSubmitValue()
