@@ -45,3 +45,6 @@ const fixChildTableDisabled = reaction(
     }
 )
 ```
+
+## 审批流中设置了允许增删行，但是表单不显示按钮
+如果有审批模板的话，审批流中设置的新增删除就不生效了

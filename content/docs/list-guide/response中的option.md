@@ -1,0 +1,4 @@
+
+列表方案请求数据的处理，从网络请求的 Initiator 中可以找到发起请求的代码。会把response中的option存到下面的变量中。
+
+this.presenter.listDefController.queryListDef.lastQueryObject;
